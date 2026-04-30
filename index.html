@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echo Verse — Where Music Paints Worlds</title>
-    <meta name="description" content="Echo Verse creates atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia and Echo Sleep with Mira.">
+    <meta name="description" content="Echo Verse creates atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia, Echo Sleep with Mira, and Echo Garden with Lilia.">
     <meta name="theme-color" content="#0a0a12">
 
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://echo-verse.world/">
     <meta property="og:title" content="Echo Verse — Where Music Paints Worlds">
-    <meta property="og:description" content="Atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia and Echo Sleep with Mira.">
+    <meta property="og:description" content="Atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia, Echo Sleep with Mira, and Echo Garden with Lilia.">
     <meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Echo Verse — Where Music Paints Worlds">
-    <meta name="twitter:description" content="Atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia and Echo Sleep with Mira.">
+    <meta name="twitter:description" content="Atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia, Echo Sleep with Mira, and Echo Garden with Lilia.">
     <meta name="twitter:image" content="https://echo-verse.world/assets/og_image.jpg">
     <link rel="icon" type="image/png" href="assets/logos/favicon.png">
 
@@ -41,6 +41,8 @@
             --accent-verse: #c0a0ff;
             --glow-horizons: rgba(43, 181, 163, 0.3);
             --glow-sleep: rgba(127, 119, 221, 0.3);
+            --accent-garden: #6B9E6B;
+            --glow-garden: rgba(107, 158, 107, 0.3);
             --font-display: 'Cinzel', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -115,7 +117,7 @@
             font-size: clamp(2.4rem, 6vw, 4.5rem);
             font-weight: 700;
             letter-spacing: 0.15em;
-            background: linear-gradient(135deg, var(--accent-horizons), var(--accent-verse), var(--accent-sleep));
+            background: linear-gradient(135deg, var(--accent-horizons), var(--accent-garden), var(--accent-verse), var(--accent-sleep));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -158,9 +160,9 @@
 
         .worlds-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
             gap: 3rem;
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
         }
 
@@ -199,6 +201,8 @@
 
         .world-card.horizons { --card-glow: var(--glow-horizons); --card-accent: var(--accent-horizons); }
         .world-card.sleep { --card-glow: var(--glow-sleep); --card-accent: var(--accent-sleep); }
+        .world-card.garden { --card-glow: var(--glow-garden); --card-accent: var(--accent-garden); }
+        .world-card.garden:hover { box-shadow: 0 12px 40px var(--glow-garden); }
 
         .world-card h3 {
             font-family: var(--font-display);
@@ -303,6 +307,7 @@
 
         .char-kaia { --char-glow: var(--glow-horizons); --char-accent: var(--accent-horizons); }
         .char-mira { --char-glow: var(--glow-sleep); --char-accent: var(--accent-sleep); }
+        .char-lilia { --char-glow: var(--glow-garden); --char-accent: var(--accent-garden); }
 
         /* ── CTA Buttons ───────────────────────────── */
         .cta-row {
@@ -510,6 +515,24 @@
                 </div>
             </div>
 
+            <!-- Garden -->
+            <div class="world-card garden fade-in">
+                <img src="assets/logos/garden_full.png" alt="Echo Garden Logo" class="world-card-logo">
+                <h3>Echo Garden</h3>
+                <div class="genre-tags">
+                    <span class="genre-tag">Meadow Acoustic</span>
+                    <span class="genre-tag">Forest Piano</span>
+                    <span class="genre-tag">Cave Ambient</span>
+                </div>
+                <p>Enchanted soundscapes rooted in the living earth. Sunlit meadows, whispering canopies, and ancient caverns deep below. Nature ambient for grounding, reflection, and gentle wonder.</p>
+                <div class="cta-row">
+                    <a href="https://www.youtube.com/@Echo_Garden_Ambient" target="_blank" rel="noopener" class="cta-btn">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#0a0a12"/></svg>
+                        Watch on YouTube
+                    </a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -537,6 +560,20 @@
                 <h3>Mira</h3>
                 <p class="char-role">Dreamweaver of Echo Sleep</p>
                 <p>A quiet soul with a silver crescent pendant that glows softly in the dark. Mira moves through the space between waking and dreaming &mdash; through candlelit rooms, endless silver fog, and moonlit garden paths &mdash; weaving soundscapes from starlight and silence. She walks so you can rest.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ LILIA ═══ -->
+    <section>
+        <div class="character-section char-lilia fade-in">
+            <div class="character-image-wrapper">
+                <img src="assets/characters/lilia_profile_web.png" alt="Lilia — Keeper of Echo Garden" class="character-image">
+            </div>
+            <div class="character-info">
+                <h3>Lilia</h3>
+                <p class="char-role">Keeper of Echo Garden</p>
+                <p>A dryad with moss-green hair woven with tiny branch antlers, vine markings tracing her arms, and amber eyes that see the slow pulse of growing things. Lilia tends the spaces where nature breathes deepest &mdash; sunlit clearings, ancient canopies, and caverns where crystal formations hum with forgotten melodies. She listens, so the earth can sing.</p>
             </div>
         </div>
     </section>
