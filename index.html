@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Echo Verse — Where Music Paints Worlds</title>
-    <meta name="description" content="Echo Verse creates atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia, Echo Sleep with Mira, and Echo Garden with Lilia.">
+    <meta name="description" content="Echo Verse creates atmospheric music experiences across five unique worlds. From sunlit chillhop to deep dark ambient and neon-lit synthetic soundscapes.">
     <meta name="theme-color" content="#0a0a12">
 
     <!-- Open Graph / Social -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://echo-verse.world/">
     <meta property="og:title" content="Echo Verse — Where Music Paints Worlds">
-    <meta property="og:description" content="Atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia, Echo Sleep with Mira, and Echo Garden with Lilia.">
+    <meta property="og:description" content="Atmospheric music experiences across five worlds — each with its own character, aesthetic, and soundscape. Lofi, Ambient, Dark Ambient, Nature, Synthetic.">
     <meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Echo Verse — Where Music Paints Worlds">
-    <meta name="twitter:description" content="Atmospheric lofi and ambient music experiences. Explore Echo Horizons with Kaia, Echo Sleep with Mira, and Echo Garden with Lilia.">
+    <meta name="twitter:description" content="Atmospheric music experiences across five worlds — each with its own character, aesthetic, and soundscape. Lofi, Ambient, Dark Ambient, Nature, Synthetic.">
     <meta name="twitter:image" content="https://echo-verse.world/assets/og_image.jpg">
     <link rel="icon" type="image/png" href="assets/logos/favicon.png">
 
@@ -43,6 +43,10 @@
             --glow-sleep: rgba(127, 119, 221, 0.3);
             --accent-garden: #6B9E6B;
             --glow-garden: rgba(107, 158, 107, 0.3);
+            --accent-abyss: #6B3FA0;
+            --glow-abyss: rgba(107, 63, 160, 0.3);
+            --accent-circuit: #00C9A7;
+            --glow-circuit: rgba(0, 201, 167, 0.3);
             --font-display: 'Cinzel', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -117,7 +121,7 @@
             font-size: clamp(2.4rem, 6vw, 4.5rem);
             font-weight: 700;
             letter-spacing: 0.15em;
-            background: linear-gradient(135deg, var(--accent-horizons), var(--accent-garden), var(--accent-verse), var(--accent-sleep));
+            background: linear-gradient(135deg, var(--accent-horizons), var(--accent-garden), var(--accent-verse), var(--accent-sleep), var(--accent-abyss), var(--accent-circuit));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -160,7 +164,7 @@
 
         .worlds-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
             gap: 3rem;
             max-width: 1200px;
             width: 100%;
@@ -203,6 +207,10 @@
         .world-card.sleep { --card-glow: var(--glow-sleep); --card-accent: var(--accent-sleep); }
         .world-card.garden { --card-glow: var(--glow-garden); --card-accent: var(--accent-garden); }
         .world-card.garden:hover { box-shadow: 0 12px 40px var(--glow-garden); }
+        .world-card.abyss { --card-glow: var(--glow-abyss); --card-accent: var(--accent-abyss); }
+        .world-card.abyss:hover { box-shadow: 0 12px 40px var(--glow-abyss); }
+        .world-card.circuit { --card-glow: var(--glow-circuit); --card-accent: var(--accent-circuit); }
+        .world-card.circuit:hover { box-shadow: 0 12px 40px var(--glow-circuit); }
 
         .world-card h3 {
             font-family: var(--font-display);
@@ -308,6 +316,42 @@
         .char-kaia { --char-glow: var(--glow-horizons); --char-accent: var(--accent-horizons); }
         .char-mira { --char-glow: var(--glow-sleep); --char-accent: var(--accent-sleep); }
         .char-lilia { --char-glow: var(--glow-garden); --char-accent: var(--accent-garden); }
+        .char-vesper { --char-glow: var(--glow-abyss); --char-accent: var(--accent-abyss); }
+        .char-serin { --char-glow: var(--glow-circuit); --char-accent: var(--accent-circuit); }
+
+        /* ── Status Badges ──────────────────────── */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+        .status-badge.live {
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.25);
+        }
+        .status-badge.live::before {
+            content: '';
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #22c55e;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .status-badge.soon {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
 
         /* ── CTA Buttons ───────────────────────────── */
         .cta-row {
@@ -495,6 +539,7 @@
                         Watch on YouTube
                     </a>
                 </div>
+                <span class="status-badge live">Live</span>
             </div>
 
             <!-- Sleep -->
@@ -513,6 +558,7 @@
                         Watch on YouTube
                     </a>
                 </div>
+                <span class="status-badge live">Live</span>
             </div>
 
             <!-- Garden -->
@@ -525,14 +571,35 @@
                     <span class="genre-tag">Cave Ambient</span>
                 </div>
                 <p>Enchanted soundscapes rooted in the living earth. Sunlit meadows, whispering canopies, and ancient caverns deep below. Nature ambient for grounding, reflection, and gentle wonder.</p>
-                <div class="cta-row">
-                    <a href="https://www.youtube.com/@Echo_Garden_Ambient" target="_blank" rel="noopener" class="cta-btn">
-                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/><path d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="#0a0a12"/></svg>
-                        Watch on YouTube
-                    </a>
-                </div>
+                <span class="status-badge soon">Coming Soon</span>
             </div>
 
+
+            <!-- Abyss -->
+            <div class="world-card abyss fade-in">
+                <img src="assets/logos/abyss_full.png" alt="Echo Abyss Logo" class="world-card-logo">
+                <h3>Echo Abyss</h3>
+                <div class="genre-tags">
+                    <span class="genre-tag">Deep Drone</span>
+                    <span class="genre-tag">Dark Ambient</span>
+                    <span class="genre-tag">Void Ambient</span>
+                </div>
+                <p>Soundscapes forged in absolute darkness. Cavernous halls of obsidian, ember-lit ritual chambers, and pale transmissions from the cosmic void. Where silence becomes its own instrument.</p>
+                <span class="status-badge soon">Coming Soon</span>
+            </div>
+
+            <!-- Circuit -->
+            <div class="world-card circuit fade-in">
+                <img src="assets/logos/circuit_full.png" alt="Echo Circuit Logo" class="world-card-logo">
+                <h3>Echo Circuit</h3>
+                <div class="genre-tags">
+                    <span class="genre-tag">Pulse Synth</span>
+                    <span class="genre-tag">Glitch Ambient</span>
+                    <span class="genre-tag">Digital Whisper</span>
+                </div>
+                <p>Synthetic textures from the neon-lit edges of the city. Rain-slicked rooftops, backstreet code shops, and deep grid corridors where forgotten networks still hum with ghost frequencies.</p>
+                <span class="status-badge soon">Coming Soon</span>
+            </div>
         </div>
     </section>
 
@@ -578,6 +645,34 @@
         </div>
     </section>
 
+
+    <!-- ═══ VESPER ═══ -->
+    <section>
+        <div class="character-section char-vesper reverse fade-in">
+            <div class="character-image-wrapper">
+                <img src="assets/characters/vesper_profile_web.png" alt="Vesper — Priestess of Echo Abyss" class="character-image">
+            </div>
+            <div class="character-info">
+                <h3>Vesper</h3>
+                <p class="char-role">Priestess of Echo Abyss</p>
+                <p>A figure wrapped in darkness and quiet grace &mdash; choker at her throat, a vambrace etched with fading symbols on one arm, pale lavender eyes that see through shadow. Vesper walks the boundary between silence and sound, through obsidian halls where echoes never fade, ember-lit chambers where warmth is a memory, and pale signal corridors at the edge of the void. She listens to what the darkness has to say.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ SERIN ═══ -->
+    <section>
+        <div class="character-section char-serin fade-in">
+            <div class="character-image-wrapper">
+                <img src="assets/characters/serin_profile_web.png" alt="Serin — Drifter of Echo Circuit" class="character-image">
+            </div>
+            <div class="character-info">
+                <h3>Serin</h3>
+                <p class="char-role">Drifter of Echo Circuit</p>
+                <p>Platinum-white hair with a cyan streak, round dark glasses, a cropped jacket over quiet confidence. Serin looks ordinary &mdash; the neon comes from the world around her, not from within. She drifts through rain-slicked rooftops, backstreet code shops humming with glitch frequencies, and deep grid corridors where forgotten networks still carry whispered transmissions. The city is electric. She just knows how to listen.</p>
+            </div>
+        </div>
+    </section>
     <!-- ═══ CONTACT ═══ -->
     <section class="contact">
         <h2 class="fade-in">Get in Touch</h2>
