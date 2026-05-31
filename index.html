@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Echo Verse — Where Music Paints Worlds</title>
-<meta name="description" content="Echo Verse: Five worlds, five souls, one frequency. Atmospheric ambient and lofi music across interconnected YouTube channels.">
+<meta name="description" content="Echo Verse: Six worlds, six souls, one frequency. Atmospheric ambient and lofi music across interconnected YouTube channels.">
 <meta property="og:title" content="Echo Verse — Where Music Paints Worlds">
-<meta property="og:description" content="Five worlds. Five souls. One frequency. Atmospheric ambient and lofi music experiences.">
+<meta property="og:description" content="Six worlds. Six souls. One frequency. Atmospheric ambient and lofi music experiences.">
 <meta property="og:image" content="assets/logos/echoverse_full.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Echo Verse — Where Music Paints Worlds">
-<meta name="twitter:description" content="Five worlds. Five souls. One frequency.">
+<meta name="twitter:description" content="Six worlds. Six souls. One frequency.">
 <meta name="twitter:image" content="assets/logos/echoverse_full.png">
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +32,7 @@
   --accent-garden:#6B9E6B;
   --accent-abyss:#6B3FA0;
   --accent-circuit:#00C9A7;
+  --accent-drift:#FF2D9B;
   --accent-verse:#c0a0ff;
   --glass-bg:rgba(10,10,18,0.75);
   --glass-border:rgba(255,255,255,0.08);
@@ -185,7 +186,7 @@ section{position:relative;z-index:1}
 .hero-title{
   font-family:var(--font-display);font-size:clamp(2.4rem,6vw,4.5rem);
   font-weight:700;letter-spacing:8px;
-  background:linear-gradient(90deg,var(--accent-horizons),var(--accent-sleep),var(--accent-garden),var(--accent-abyss),var(--accent-circuit),var(--accent-horizons));
+  background:linear-gradient(90deg,var(--accent-horizons),var(--accent-sleep),var(--accent-garden),var(--accent-abyss),var(--accent-circuit),var(--accent-drift),var(--accent-horizons));
   background-size:300% 100%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   background-clip:text;
@@ -302,6 +303,7 @@ section{position:relative;z-index:1}
 .world-section.garden::before{background:radial-gradient(circle,var(--accent-garden),transparent 70%)}
 .world-section.abyss::before{background:radial-gradient(circle,var(--accent-abyss),transparent 70%)}
 .world-section.circuit::before{background:radial-gradient(circle,var(--accent-circuit),transparent 70%)}
+.world-section.drift::before{background:radial-gradient(circle,var(--accent-drift),transparent 70%)}
 
 .world-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:60px;
@@ -341,6 +343,8 @@ section{position:relative;z-index:1}
 .world-cta.horizons-cta:hover{background:var(--accent-horizons);color:var(--bg-deep)}
 .world-cta.sleep-cta{border:1px solid var(--accent-sleep);color:var(--accent-sleep)}
 .world-cta.sleep-cta:hover{background:var(--accent-sleep);color:var(--bg-deep)}
+.world-cta.drift-cta{border:1px solid var(--accent-drift);color:var(--accent-drift)}
+.world-cta.drift-cta:hover{background:var(--accent-drift);color:var(--bg-deep)}
 
 /* Character visual */
 .world-visual{display:flex;flex-direction:column;align-items:center;gap:16px}
@@ -361,6 +365,7 @@ section{position:relative;z-index:1}
 .garden .char-frame{color:var(--accent-garden)}
 .abyss .char-frame{color:var(--accent-abyss)}
 .circuit .char-frame{color:var(--accent-circuit)}
+.drift .char-frame{color:var(--accent-drift)}
 .char-name{font-family:var(--font-display);font-size:1.2rem;text-align:center}
 .char-role{font-size:0.85rem;color:var(--text-dim);text-align:center}
 .char-quote{
@@ -377,6 +382,7 @@ section{position:relative;z-index:1}
 .garden .char-quote::before{color:var(--accent-garden)}
 .abyss .char-quote::before{color:var(--accent-abyss)}
 .circuit .char-quote::before{color:var(--accent-circuit)}
+.drift .char-quote::before{color:var(--accent-drift)}
 
 @media(max-width:768px){
   .world-grid,.world-grid.reverse{grid-template-columns:1fr}
@@ -413,6 +419,7 @@ section{position:relative;z-index:1}
 .badge-garden{background:rgba(107,158,107,0.2);color:var(--accent-garden);border:1px solid rgba(107,158,107,0.3)}
 .badge-abyss{background:rgba(107,63,160,0.2);color:var(--accent-abyss);border:1px solid rgba(107,63,160,0.3)}
 .badge-circuit{background:rgba(0,201,167,0.2);color:var(--accent-circuit);border:1px solid rgba(0,201,167,0.3)}
+.badge-drift{background:rgba(255,45,155,0.2);color:var(--accent-drift);border:1px solid rgba(255,45,155,0.3)}
 .char-card-content h3{font-size:1.5rem;margin-bottom:4px}
 .char-card-content .char-card-title{font-size:0.85rem;color:var(--text-dim);margin-bottom:16px;letter-spacing:1px}
 .char-card-content p{color:var(--text-secondary);font-size:0.92rem;line-height:1.8;margin-bottom:12px}
@@ -645,9 +652,9 @@ footer{
       <div class="section-label">The Universe</div>
       <h2 class="section-title">A Cosmos of Sound</h2>
     </div>
-    <p class="universe-quote anim fade-up">Five worlds. Five souls. One frequency.</p>
+    <p class="universe-quote anim fade-up">Six worlds. Six souls. One frequency.</p>
     <div class="universe-text anim fade-up">
-      <p>Echo Verse is a music universe spanning five interconnected worlds, each with its own atmosphere, sonic identity, and guiding soul. From sun-drenched horizons to neon-lit circuits, every world is a living soundscape designed to accompany your moments of focus, rest, wonder, and reflection.</p>
+      <p>Echo Verse is a music universe spanning six interconnected worlds, each with its own atmosphere, sonic identity, and guiding soul. From sun-drenched horizons to neon-lit circuits, every world is a living soundscape designed to accompany your moments of focus, rest, wonder, and reflection.</p>
       <p>Each world hosts its own YouTube channel, curated playlists, and an ever-growing library of original ambient and lofi compositions. Together, they form a single constellation — a place where music doesn't just play, it paints.</p>
     </div>
 
@@ -659,26 +666,28 @@ footer{
         <circle cx="160" cy="160" r="110" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
         <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
         <!-- Connecting lines -->
-        <line x1="160" y1="90" x2="250" y2="130" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="250" y1="130" x2="220" y2="240" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="220" y1="240" x2="100" y2="240" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="100" y1="240" x2="70" y2="130" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="70" y1="130" x2="160" y2="90" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="160" y1="88" x2="222" y2="124" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="222" y1="124" x2="222" y2="196" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="222" y1="196" x2="160" y2="232" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="160" y1="232" x2="98" y2="196" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="98" y1="196" x2="98" y2="124" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+        <line x1="98" y1="124" x2="160" y2="88" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
         <!-- Center dot -->
         <circle cx="160" cy="160" r="6" fill="var(--accent-verse)" class="center-pulse" opacity="0.6"/>
         <!-- World dots -->
-        <g class="orbit-dot"><circle cx="160" cy="90" r="5" fill="var(--accent-horizons)"/><text x="160" y="78" text-anchor="middle" fill="var(--accent-horizons)" font-size="9" font-family="Inter,sans-serif">Horizons</text></g>
-        <g class="orbit-dot"><circle cx="250" cy="130" r="5" fill="var(--accent-sleep)"/><text x="264" y="126" fill="var(--accent-sleep)" font-size="9" font-family="Inter,sans-serif">Sleep</text></g>
-        <g class="orbit-dot"><circle cx="220" cy="240" r="5" fill="var(--accent-garden)"/><text x="240" y="252" fill="var(--accent-garden)" font-size="9" font-family="Inter,sans-serif">Garden</text></g>
-        <g class="orbit-dot"><circle cx="100" cy="240" r="5" fill="var(--accent-abyss)"/><text x="76" y="252" fill="var(--accent-abyss)" font-size="9" font-family="Inter,sans-serif">Abyss</text></g>
-        <g class="orbit-dot"><circle cx="70" cy="130" r="5" fill="var(--accent-circuit)"/><text x="50" y="126" fill="var(--accent-circuit)" font-size="9" font-family="Inter,sans-serif">Circuit</text></g>
+        <g class="orbit-dot"><circle cx="160" cy="88" r="5" fill="var(--accent-horizons)"/><text x="160" y="76" text-anchor="middle" fill="var(--accent-horizons)" font-size="9" font-family="Inter,sans-serif">Horizons</text></g>
+        <g class="orbit-dot"><circle cx="222" cy="124" r="5" fill="var(--accent-sleep)"/><text x="234" y="120" fill="var(--accent-sleep)" font-size="9" font-family="Inter,sans-serif">Sleep</text></g>
+        <g class="orbit-dot"><circle cx="222" cy="196" r="5" fill="var(--accent-garden)"/><text x="234" y="204" fill="var(--accent-garden)" font-size="9" font-family="Inter,sans-serif">Garden</text></g>
+        <g class="orbit-dot"><circle cx="160" cy="232" r="5" fill="var(--accent-abyss)"/><text x="160" y="248" text-anchor="middle" fill="var(--accent-abyss)" font-size="9" font-family="Inter,sans-serif">Abyss</text></g>
+        <g class="orbit-dot"><circle cx="98" cy="196" r="5" fill="var(--accent-circuit)"/><text x="86" y="204" text-anchor="end" fill="var(--accent-circuit)" font-size="9" font-family="Inter,sans-serif">Circuit</text></g>
+        <g class="orbit-dot"><circle cx="98" cy="124" r="5" fill="var(--accent-drift)"/><text x="86" y="120" text-anchor="end" fill="var(--accent-drift)" font-size="9" font-family="Inter,sans-serif">Drift</text></g>
       </svg>
     </div>
 
     <!-- Animated Counters -->
     <div class="counter-row anim fade-up" id="counters">
-      <div class="counter-item"><span class="num" data-target="5">0</span><span class="label">Worlds</span></div>
-      <div class="counter-item"><span class="num" data-target="15">0</span><span class="label">Sub-Series</span></div>
+      <div class="counter-item"><span class="num" data-target="6">0</span><span class="label">Worlds</span></div>
+      <div class="counter-item"><span class="num" data-target="18">0</span><span class="label">Sub-Series</span></div>
       <div class="counter-item"><span class="num" data-target="436" data-suffix="+">0</span><span class="label">Songs</span></div>
       <div class="counter-item"><span class="num" data-target="1" data-display="Infinite">0</span><span class="label">Horizons</span></div>
     </div>
@@ -812,6 +821,31 @@ footer{
   </div>
 </section>
 
+<!-- ===== WORLD: ECHO DRIFT ===== -->
+<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,45 C240,75 480,15 720,45 C960,75 1200,15 1440,45 L1440,80 L0,80 Z" fill="rgba(255,45,155,0.06)"/></svg></div>
+<section class="world-section drift" data-world="drift">
+  <div class="world-grid reverse">
+    <div class="world-info anim fade-right">
+      <img src="assets/logos/drift_full.png" alt="Echo Drift" class="world-logo" loading="lazy">
+      <h2 class="world-name">Echo Drift</h2>
+      <p class="world-tagline">Phonk for the neon highway at full throttle</p>
+      <p class="world-desc">Aggressive drift phonk pulsing through rain-slicked highways and underground garages. Echo Drift is the dark heartbeat of the night drive — distorted 808s, hammering cowbells, and Memphis grit wrapped in hot-magenta neon. From a composed midnight cruise to flat-out redline adrenaline, this is the world that moves.</p>
+      <div class="world-subs">
+        <div class="world-sub"><span class="dot" style="background:var(--accent-drift)"></span><span class="sub-name">Midnight Drift</span> — Dark Drift Phonk — composed night cruise, neon highways, controlled power</div>
+        <div class="world-sub"><span class="dot" style="background:var(--accent-drift)"></span><span class="sub-name">Redline</span> — Aggressive Gym Phonk — maximum pressure, concrete garages, pure adrenaline</div>
+        <div class="world-sub"><span class="dot" style="background:var(--accent-drift)"></span><span class="sub-name">Afterglow</span> — Melodic Chill Phonk — the comedown, dawn overlooks, warm and bittersweet</div>
+      </div>
+      <div class="world-status soon">Coming 2026</div>
+    </div>
+    <div class="world-visual anim fade-left">
+      <div class="char-frame"><img src="assets/characters/nyx_profile_web.jpg" alt="Nyx" loading="lazy"></div>
+      <div class="char-name">Nyx</div>
+      <div class="char-role">Runner of Echo Drift</div>
+      <div class="char-quote">The city sleeps, the road opens, and the engine answers. Out here at night, speed isn't escape — it's the only honest conversation I know.</div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CHARACTERS ===== -->
 <section id="characters">
   <div class="container">
@@ -900,6 +934,22 @@ footer{
           </div>
         </div>
       </div>
+      <!-- NYX -->
+      <div class="char-card anim fade-up" data-tilt>
+        <div class="char-card-image">
+          <img src="assets/characters/nyx_profile_web.jpg" alt="Nyx" loading="lazy">
+          <span class="char-card-badge badge-drift">Drift</span>
+        </div>
+        <div class="char-card-content">
+          <h3>Nyx</h3>
+          <div class="char-card-title">Runner of Echo Drift</div>
+          <p>A masked drift runner who lives for the night roads. Black hood up, a diagonal half-mask glowing hot magenta over her eyes, long black hair streaked with magenta and pale silver tips. A cropped black tech jacket with gold zipper and magenta piping, fingerless gloves, and a single gold key pendant swinging from a choker — the key to an engine only she knows how to start.</p>
+          <p>Where the other guides listen, Nyx moves. She doesn't narrate the world; she cuts through it — headlights carving the dark, tail lights bleeding into the rain behind her. Composed at midnight, relentless at the redline, quiet only in the afterglow. The city is electric, and she is the current.</p>
+          <div class="char-tags">
+            <span>Kinetic &amp; nocturnal</span><span>Magenta eye-mask</span><span>Black tech jacket</span><span>Gold key pendant</span><span>Glowing magenta energy</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -917,6 +967,7 @@ footer{
       <button data-filter="sleep">Sleep</button>
       <button data-filter="garden">Garden</button>
       <button data-filter="circuit">Circuit</button>
+      <button data-filter="drift">Drift</button>
     </div>
     <div class="gallery-grid" id="gallery-grid">
       <div class="gallery-item anim scale-up" data-world="horizons" data-index="0"><img src="assets/gallery/horizons_1.jpg" alt="Horizons Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-horizons)">Horizons</span></div></div>
@@ -931,6 +982,9 @@ footer{
       <div class="gallery-item anim scale-up" data-world="circuit" data-index="9"><img src="assets/gallery/circuit_1.jpg" alt="Circuit Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-circuit)">Circuit</span></div></div>
       <div class="gallery-item anim scale-up" data-world="circuit" data-index="10"><img src="assets/gallery/circuit_2.jpg" alt="Circuit Scene 2" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-circuit)">Circuit</span></div></div>
       <div class="gallery-item anim scale-up" data-world="circuit" data-index="11"><img src="assets/gallery/circuit_3.jpg" alt="Circuit Scene 3" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-circuit)">Circuit</span></div></div>
+      <div class="gallery-item anim scale-up" data-world="drift" data-index="12"><img src="assets/gallery/drift_1.jpg" alt="Drift Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-drift)">Drift</span></div></div>
+      <div class="gallery-item anim scale-up" data-world="drift" data-index="13"><img src="assets/gallery/drift_2.jpg" alt="Drift Scene 2" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-drift)">Drift</span></div></div>
+      <div class="gallery-item anim scale-up" data-world="drift" data-index="14"><img src="assets/gallery/drift_3.jpg" alt="Drift Scene 3" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-drift)">Drift</span></div></div>
     </div>
   </div>
 </section>
@@ -941,7 +995,7 @@ footer{
   <button class="lb-arrow lb-prev" aria-label="Previous">&#8249;</button>
   <img src="" alt="Gallery preview" id="lb-img">
   <button class="lb-arrow lb-next" aria-label="Next">&#8250;</button>
-  <div class="lb-counter"><span id="lb-current">1</span> / <span id="lb-total">12</span></div>
+  <div class="lb-counter"><span id="lb-current">1</span> / <span id="lb-total">15</span></div>
 </div>
 
 <!-- ===== LISTEN ===== -->
@@ -989,6 +1043,13 @@ footer{
         <p>Neon lofi electronica</p>
         <span class="listen-link">Coming Soon</span>
       </div>
+      <!-- Drift -->
+      <div class="listen-card disabled anim fade-up">
+        <img src="assets/logos/drift_full.png" alt="Echo Drift" loading="lazy">
+        <h4>Echo Drift</h4>
+        <p>Aggressive drift phonk</p>
+        <span class="listen-link">Coming Soon</span>
+      </div>
     </div>
   </div>
 </section>
@@ -1011,6 +1072,7 @@ footer{
     <img src="assets/logos/garden_full.png" alt="Garden" loading="lazy">
     <img src="assets/logos/abyss_full.png" alt="Abyss" loading="lazy">
     <img src="assets/logos/circuit_full.png" alt="Circuit" loading="lazy">
+    <img src="assets/logos/drift_full.png" alt="Drift" loading="lazy">
   </div>
   <p class="footer-copy">&copy; 2026 Echo Verse. All rights reserved.</p>
 </footer>
@@ -1057,7 +1119,8 @@ footer{
     sleep: { r: 127, g: 119, b: 221 },
     garden: { r: 107, g: 158, b: 107 },
     abyss: { r: 107, g: 63, b: 160 },
-    circuit: { r: 0, g: 201, b: 167 }
+    circuit: { r: 0, g: 201, b: 167 },
+    drift: { r: 255, g: 45, b: 155 }
   };
   const worldCSSColors = {
     default: 'var(--accent-verse)',
@@ -1065,7 +1128,8 @@ footer{
     sleep: 'var(--accent-sleep)',
     garden: 'var(--accent-garden)',
     abyss: 'var(--accent-abyss)',
-    circuit: 'var(--accent-circuit)'
+    circuit: 'var(--accent-circuit)',
+    drift: 'var(--accent-drift)'
   };
 
   let currentWorld = 'default';
