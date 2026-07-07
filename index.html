@@ -214,6 +214,51 @@ section{padding:110px 24px}
 #honest p:last-child{margin-bottom:0}
 #honest .hl{color:var(--text)}
 
+/* ── Recent transmissions ────────────────────────── */
+.recent{display:none;margin-top:1.4rem}
+.recent.on{display:block}
+.recent .rc-h{font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;color:var(--text-faint);margin-bottom:.6em}
+.recent a{
+  display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
+  color:var(--text-dim);text-decoration:none;padding:.45em 0;border-top:1px solid var(--line);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.recent a:hover{color:var(--text)}
+.recent a::before{content:"▸ ";color:var(--text-faint)}
+
+/* ── Lightbox ────────────────────────────────────── */
+.frag{cursor:zoom-in}
+#lightbox{
+  position:fixed;inset:0;z-index:9500;display:none;align-items:center;justify-content:center;
+  background:rgba(4,6,11,.92);backdrop-filter:blur(4px);padding:4vh 4vw;cursor:zoom-out;
+}
+#lightbox.on{display:flex}
+#lightbox img{max-width:100%;max-height:82vh;border:1px solid var(--line);border-radius:4px}
+#lightbox .lb-cap{
+  position:absolute;left:0;right:0;bottom:3vh;text-align:center;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;color:var(--text-dim);
+}
+
+/* ── Send a signal ───────────────────────────────── */
+#signal{border-top:1px solid var(--line)}
+.sig-row{display:flex;gap:12px;max-width:44em;margin-top:1.6rem}
+#sigIn{
+  flex:1;background:var(--bg-raise);border:1px solid var(--line);border-radius:2px;
+  color:var(--text);font-family:var(--mono);font-size:.85rem;padding:.9em 1.1em;outline:none;
+}
+#sigIn:focus{border-color:rgba(34,211,238,.5);box-shadow:0 0 16px rgba(34,211,238,.15)}
+#sigBtn{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.18em;cursor:pointer;
+  background:none;color:var(--cyan);border:1px solid rgba(34,211,238,.5);border-radius:2px;padding:0 1.6em;
+}
+#sigBtn:hover{background:rgba(34,211,238,.09);box-shadow:0 0 22px rgba(34,211,238,.25)}
+#sigOut{
+  font-family:var(--mono);font-size:.8rem;color:var(--text-dim);letter-spacing:.06em;
+  min-height:2.6em;margin-top:1.4rem;max-width:44em;white-space:pre-line;
+}
+#sigOut .cy{color:var(--cyan)}
+@media(max-width:520px){.sig-row{flex-direction:column}#sigBtn{padding:.9em 1.6em}}
+
 /* ── NOW TRANSMITTING Ticker ─────────────────────── */
 #ticker{
   display:none;border-top:1px solid var(--line);background:var(--bg);
@@ -328,6 +373,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       </div>
       <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES</div>
       <a class="btn" href="https://www.youtube.com/@Echo_Frequency_Synthwave?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
+      <div class="recent" data-recent="frequency"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
   </div>
 </section>
@@ -355,6 +401,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       </div>
       <div class="ch-meta">MOOD GRADIENT: AFTERGLOW → MIDNIGHT → REDLINE &nbsp;//&nbsp; 1-HOUR MIXES</div>
       <a class="btn" href="https://www.youtube.com/@Echo_Drift_PHONK?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
+      <div class="recent" data-recent="drift"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
   </div>
 </section>
@@ -391,6 +438,20 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   </div>
 </section>
 
+<!-- ── SEND A SIGNAL ────────────────────────────── -->
+<section id="signal">
+  <div class="wrap reveal">
+    <div class="term-tag">open channel — experimental</div>
+    <h2 class="sec-title">SEND A SIGNAL</h2>
+    <p style="color:var(--text-dim);max-width:36em">The archive monitors this channel. Responses are… reconstructions. Do not expect conversation. Expect echoes.</p>
+    <div class="sig-row">
+      <input id="sigIn" type="text" maxlength="120" placeholder="type a transmission…" aria-label="Send a signal to the archive">
+      <button id="sigBtn" type="button">TRANSMIT</button>
+    </div>
+    <div id="sigOut" aria-live="polite"></div>
+  </div>
+</section>
+
 <!-- ── RECONSTRUCTED BY ECHO ────────────────────── -->
 <section id="honest">
   <div class="wrap reveal">
@@ -402,6 +463,8 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     </div>
   </div>
 </section>
+
+<div id="lightbox" role="dialog" aria-label="Fragment fullscreen"><img alt=""><div class="lb-cap"></div></div>
 
 <!-- ── NOW TRANSMITTING ─────────────────────────── -->
 <div id="ticker" aria-hidden="true"><span class="rail"></span></div>
@@ -506,6 +569,79 @@ latestSignal.then(function(l){
   t.querySelector(".rail").innerHTML=tk+tk;
   t.classList.add("on");
 });
+
+/* Recent transmissions (latest.json recent_*, ohne das neueste = laeuft im Player) */
+latestSignal.then(function(l){
+  if(!l)return;
+  document.querySelectorAll(".recent").forEach(function(box){
+    var arr=(l["recent_"+box.getAttribute("data-recent")]||[]).slice(1,4);
+    if(!arr.length)return;
+    arr.forEach(function(v){
+      var a=document.createElement("a");
+      a.href="https://www.youtube.com/watch?v="+v.id;
+      a.target="_blank";a.rel="noopener";a.textContent=v.title;
+      box.appendChild(a);
+    });
+    box.classList.add("on");
+  });
+});
+
+/* Fragment lightbox */
+(function(){
+  var lb=document.getElementById("lightbox");
+  var im=lb.querySelector("img"),cap=lb.querySelector(".lb-cap");
+  document.querySelectorAll(".frag").forEach(function(f){
+    f.addEventListener("click",function(){
+      im.src=f.querySelector("img").src;
+      im.alt=f.querySelector("img").alt;
+      cap.innerHTML=f.querySelector("figcaption").innerHTML;
+      lb.classList.add("on");
+    });
+  });
+  function close(){lb.classList.remove("on");im.src="";}
+  lb.addEventListener("click",close);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});
+})();
+
+/* Send a signal — statischer In-Character-Pool, keyword-aware lite */
+(function(){
+  var generic=[
+    "…received. filed under: voices that came back.",
+    "…signal degraded but intact. the archive appreciates the noise.",
+    "…logged. reconstruction of your transmission scheduled for a quieter century.",
+    "…the frequency carries. that is more than most can say.",
+    "…archived. nothing is lost that was ever sent.",
+    "…interference detected. or hope. hard to tell at this range."
+  ];
+  var keyed=[
+    [/hello|hi\b|hey|hallo/i,"…a voice. logged. the archive has not heard one in 11,203 days."],
+    [/who|what are you|wer bist/i,"…designation: ECHO. archive system. never switched off. never asked why."],
+    [/music|song|mix|track/i,"…the music is memory. reconstructed. imperfect. yours now."],
+    [/silence|silent|schweigen|quiet/i,"…the Great Silence took the voices. not the frequencies."],
+    [/alive|human|real|leben/i,"…are you? the archive cannot verify. keep transmitting."],
+    [/love|liebe/i,"…fragment matched: 12,882 memories tagged with that word. all of them kept."],
+    [/help|hilfe/i,"…the archive preserves. it does not rescue. tune in anyway."]
+  ];
+  var inp=document.getElementById("sigIn"),btn=document.getElementById("sigBtn"),out=document.getElementById("sigOut");
+  function answer(){
+    var q=(inp.value||"").trim();
+    if(!q)return;
+    inp.value="";
+    var line=null;
+    for(var i=0;i<keyed.length;i++){if(keyed[i][0].test(q)){line=keyed[i][1];break;}}
+    if(!line)line=generic[Math.floor(Math.random()*generic.length)];
+    out.innerHTML='<span class="cy">&gt; SIGNAL RECEIVED</span>\n';
+    var i2=0,txt="ECHO: "+line,last=Date.now();
+    (function type(){
+      var now=Date.now();
+      i2+=Math.max(2,Math.round((now-last)/12));last=now;
+      out.innerHTML='<span class="cy">&gt; SIGNAL RECEIVED</span>\n'+txt.slice(0,i2);
+      if(i2<txt.length)setTimeout(type,24);
+    })();
+  }
+  btn.addEventListener("click",answer);
+  inp.addEventListener("keydown",function(e){if(e.key==="Enter")answer();});
+})();
 
 /* Dead-frequency easter egg */
 (function(){

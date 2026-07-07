@@ -18,27 +18,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Fetch latest published mixes from YouTube RSS
-        run: |
-          set -e
-          latest_entry() {
-            curl -s "https://www.youtube.com/feeds/videos.xml?channel_id=$1" \
-              | tr -d '\n' | sed 's/<entry>/\n<entry>/g' \
-              | grep '<entry>' | grep -vi '#shorts' | head -1 || true
-          }
-          get_id()    { grep -oP '(?<=<yt:videoId>)[^<]+' <<<"$1" | head -1 || true; }
-          get_title() { grep -oP '(?<=<title>)[^<]+' <<<"$1" | head -1 \
-                        | sed 's/&amp;/\&/g; s/&quot;/\\"/g; s/&#39;/'"'"'/g; s/\\/\\\\/g' || true; }
-          FE=$(latest_entry "UC-Paofpq5_SgnDIIVAWJupA")
-          DE=$(latest_entry "UCr4tKWsfu6-QZPAkYfrTZwg")
-          FREQ=$(get_id "$FE");  FREQ_T=$(get_title "$FE")
-          DRIFT=$(get_id "$DE"); DRIFT_T=$(get_title "$DE")
-          echo "frequency=$FREQ ($FREQ_T) drift=$DRIFT ($DRIFT_T)"
-          if [ -z "$FREQ" ] || [ -z "$DRIFT" ]; then
-            echo "Feed leer oder nicht erreichbar -- latest.json bleibt unveraendert."
-            exit 0
-          fi
-          printf '{\n  "frequency": "%s",\n  "frequency_title": "%s",\n  "drift": "%s",\n  "drift_title": "%s",\n  "updated": "%s"\n}\n' \
-            "$FREQ" "$FREQ_T" "$DRIFT" "$DRIFT_T" "$(date -u +%FT%TZ)" > assets/latest.json
+        run: python3 .github/scripts/latest_signal.py
 
       - name: Commit if changed
         run: |

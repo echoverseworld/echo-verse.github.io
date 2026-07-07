@@ -1,7 +1,19 @@
 {
   "frequency": "Q1p_2CgB2pw",
   "frequency_title": "ECHO 95.3 — MEMORY OF RAIN // Retrowave, Synthwave, Cyberpunk Mix",
+  "recent_frequency": [
+    {
+      "id": "Q1p_2CgB2pw",
+      "title": "ECHO 95.3 — MEMORY OF RAIN // Retrowave, Synthwave, Cyberpunk Mix"
+    }
+  ],
   "drift": "BZsUmEgARPA",
   "drift_title": "ECHO 97.1 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix",
-  "updated": "2026-07-07T00:00:00Z"
+  "recent_drift": [
+    {
+      "id": "BZsUmEgARPA",
+      "title": "ECHO 97.1 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix"
+    }
+  ],
+  "updated": "2026-07-07T17:58:07Z"
 }
