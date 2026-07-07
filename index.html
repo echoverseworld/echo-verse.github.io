@@ -281,7 +281,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
 <section id="frequency">
   <div class="wrap channel reveal">
     <div class="ch-media">
-      <div class="player" data-list="UU-Paofpq5_SgnDIIVAWJupA">
+      <div class="player" data-channel="frequency" data-list="UU-Paofpq5_SgnDIIVAWJupA">
         <button class="player-face" type="button" aria-label="Load latest ECHO Frequency transmission from YouTube">
           <img src="assets/gallery/wave_2.jpg" alt="ECHO Frequency artwork — retro anime night city" loading="lazy">
           <span class="play" aria-hidden="true"></span>
@@ -308,7 +308,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
 <section id="drift">
   <div class="wrap channel rev reveal">
     <div class="ch-media">
-      <div class="player" data-list="UUr4tKWsfu6-QZPAkYfrTZwg">
+      <div class="player" data-channel="drift" data-list="UUr4tKWsfu6-QZPAkYfrTZwg">
         <button class="player-face" type="button" aria-label="Load latest ECHO Drift transmission from YouTube">
           <img src="assets/gallery/drift_1.jpg" alt="ECHO Drift artwork — night street, tuned car behind a fence" loading="lazy">
           <span class="play" aria-hidden="true"></span>
@@ -421,20 +421,34 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   step();
 })();
 
-/* Click-to-load YouTube players (privacy: no request until click) */
+/* Click-to-load YouTube players (privacy: no request until click).
+   Video-ID kommt aus assets/latest.json (gepflegt von der GitHub Action
+   latest-signal via YouTube-RSS: enthaelt NUR veroeffentlichte Videos --
+   scheduled/private Uploads koennen also nie "Video unavailable" zeigen).
+   Fallback ohne latest.json: Uploads-Playlist (data-list). */
+var latestSignal=fetch("assets/latest.json").then(function(r){return r.ok?r.json():null}).catch(function(){return null});
 document.querySelectorAll(".player").forEach(function(p){
   var face=p.querySelector(".player-face");
   if(!face)return;
   face.addEventListener("click",function(){
-    var list=p.getAttribute("data-list");
-    var f=document.createElement("iframe");
-    f.src="https://www.youtube-nocookie.com/embed/videoseries?list="+list+"&autoplay=1";
-    f.title="ECHO transmission player";
-    f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-    f.setAttribute("allowfullscreen","");
-    f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
-    p.appendChild(f);
-    face.remove();
+    if(p.getAttribute("data-loading"))return;
+    p.setAttribute("data-loading","1");
+    var label=face.querySelector(".pf-label");
+    if(label)label.textContent="TUNING…";
+    latestSignal.then(function(latest){
+      var vid=latest&&latest[p.getAttribute("data-channel")];
+      var src=vid
+        ?"https://www.youtube-nocookie.com/embed/"+vid+"?autoplay=1&rel=0"
+        :"https://www.youtube-nocookie.com/embed/videoseries?list="+p.getAttribute("data-list")+"&autoplay=1";
+      var f=document.createElement("iframe");
+      f.src=src;
+      f.title="ECHO transmission player";
+      f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      f.setAttribute("allowfullscreen","");
+      f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
+      p.appendChild(f);
+      face.remove();
+    });
   });
 });
 

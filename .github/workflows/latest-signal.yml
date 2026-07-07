@@ -1,0 +1,49 @@
+# Holt alle 6h die neuesten VEROEFFENTLICHTEN Mixe (keine #shorts, keine
+# scheduled/privaten Videos -- die tauchen im RSS-Feed erst nach Publish auf)
+# und schreibt assets/latest.json. Die Website embeddet genau diese IDs.
+name: latest-signal
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest published mixes from YouTube RSS
+        run: |
+          set -e
+          fetch_latest() {
+            curl -s "https://www.youtube.com/feeds/videos.xml?channel_id=$1" \
+              | tr -d '\n' | sed 's/<entry>/\n<entry>/g' \
+              | grep '<entry>' | grep -vi '#shorts' \
+              | head -1 | grep -oP '(?<=<yt:videoId>)[^<]+' || true
+          }
+          FREQ=$(fetch_latest "UC-Paofpq5_SgnDIIVAWJupA")
+          DRIFT=$(fetch_latest "UCr4tKWsfu6-QZPAkYfrTZwg")
+          echo "frequency=$FREQ drift=$DRIFT"
+          if [ -z "$FREQ" ] || [ -z "$DRIFT" ]; then
+            echo "Feed leer oder nicht erreichbar -- latest.json bleibt unveraendert."
+            exit 0
+          fi
+          printf '{\n  "frequency": "%s",\n  "drift": "%s",\n  "updated": "%s"\n}\n' \
+            "$FREQ" "$DRIFT" "$(date -u +%FT%TZ)" > assets/latest.json
+
+      - name: Commit if changed
+        run: |
+          git config user.name "echo-archive-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/latest.json
+          if ! git diff --cached --quiet; then
+            git commit -m "latest signal update"
+            git push
+          else
+            echo "Keine Aenderung."
+          fi
