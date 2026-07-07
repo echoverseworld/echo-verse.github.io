@@ -3,1506 +3,449 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Echo Verse — Where Music Paints Worlds</title>
-<meta name="description" content="Echo Verse: Six worlds, six souls, one frequency. Atmospheric ambient and lofi music across interconnected YouTube channels.">
-<meta property="og:title" content="Echo Verse — Where Music Paints Worlds">
-<meta property="og:description" content="Six worlds. Six souls. One frequency. Atmospheric ambient and lofi music experiences.">
-<meta property="og:image" content="assets/logos/echoverse_full.png">
+<title>ECHO VERSE — The Signal After the Silence</title>
+<meta name="description" content="ECHO is an archive system that was never switched off. It reconstructs the memories of a silent world and broadcasts them as music: Synthwave on ECHO Frequency, Phonk on ECHO Drift.">
+<link rel="canonical" href="https://echo-verse.world/">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://echo-verse.world/">
+<meta property="og:title" content="ECHO VERSE — The Signal After the Silence">
+<meta property="og:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music. Two frequencies are live: Synthwave &amp; Phonk.">
+<meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Echo Verse — Where Music Paints Worlds">
-<meta name="twitter:description" content="Six worlds. Six souls. One frequency.">
-<meta name="twitter:image" content="assets/logos/echoverse_full.png">
+<meta name="twitter:title" content="ECHO VERSE — The Signal After the Silence">
+<meta name="twitter:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music.">
+<meta name="twitter:image" content="https://echo-verse.world/assets/og_image.jpg">
+<meta name="theme-color" content="#04060b">
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ========== CSS RESET & VARIABLES ========== */
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg-deep:#0a0a12;
-  --bg-card:rgba(255,255,255,0.03);
-  --bg-card-hover:rgba(255,255,255,0.06);
-  --text-primary:#e8e6f0;
-  --text-secondary:#a09bb0;
-  --text-dim:#6b6580;
-  --accent-horizons:#D4A574;
-  --accent-sleep:#7F77DD;
-  --accent-garden:#6B9E6B;
-  --accent-abyss:#6B3FA0;
-  --accent-circuit:#00C9A7;
-  --accent-drift:#FF2D9B;
-  --accent-verse:#c0a0ff;
-  --glass-bg:rgba(10,10,18,0.75);
-  --glass-border:rgba(255,255,255,0.08);
-  --font-display:'Cinzel',serif;
-  --font-body:'Inter',sans-serif;
-  --nav-height:70px;
+  --bg:#04060b;
+  --bg-raise:#0a0e18;
+  --line:rgba(160,180,220,.12);
+  --text:#dfe4f0;
+  --text-dim:#8b93a8;
+  --text-faint:#565e72;
+  --cyan:#22D3EE;
+  --magenta:#FF2D9B;
+  --mono:'Share Tech Mono',ui-monospace,monospace;
+  --sans:'Inter',system-ui,sans-serif;
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-  font-family:var(--font-body);
-  background:var(--bg-deep);
-  color:var(--text-primary);
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:300;
   line-height:1.7;
   overflow-x:hidden;
 }
-a{color:inherit;text-decoration:none}
+::selection{background:rgba(34,211,238,.25)}
+
+/* ── CRT scanlines (very subtle) ─────────────────── */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9000;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 3px);
+}
+@media (prefers-reduced-motion:no-preference){
+  .flicker{animation:flicker 8s infinite}
+  @keyframes flicker{0%,100%{opacity:1}97%{opacity:1}98%{opacity:.72}99%{opacity:.95}}
+}
+
+.mono{font-family:var(--mono)}
+a{color:inherit}
 img{max-width:100%;display:block}
-h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:1.3}
-section{position:relative;z-index:1}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:110px 24px}
+.wrap{max-width:1060px;margin:0 auto}
 
-/* ========== PRELOADER ========== */
-#preloader{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:var(--bg-deep);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  z-index:9999;
-  animation:preloaderFadeOut 0.6s ease 2.5s forwards;
+/* ── Terminal chrome ─────────────────────────────── */
+.term-tag{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;
+  color:var(--text-faint);text-transform:uppercase;
+  display:flex;align-items:center;gap:.6em;margin-bottom:1.4rem;
 }
-#preloader img{
-  width:80px;height:80px;
-  animation:preloaderPulse 1.2s ease-in-out infinite alternate;
-}
-#preloader .preloader-text{
-  font-family:var(--font-display);
-  font-size:1.6rem;
-  color:var(--accent-verse);
-  margin-top:20px;
-  opacity:0;
-  animation:preloaderTextIn 0.8s ease 1s forwards;
-  letter-spacing:4px;
-}
-@keyframes preloaderPulse{
-  0%{transform:scale(0.85);opacity:0.6}
-  100%{transform:scale(1.1);opacity:1}
-}
-@keyframes preloaderTextIn{
-  0%{opacity:0;transform:translateY(10px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@keyframes preloaderFadeOut{
-  0%{opacity:1;pointer-events:all}
-  100%{opacity:0;pointer-events:none}
+.term-tag::before{content:">";color:var(--cyan)}
+.sec-title{
+  font-family:var(--mono);font-weight:400;font-size:clamp(1.5rem,3.4vw,2.2rem);
+  letter-spacing:.08em;margin-bottom:1.2rem;
 }
 
-/* ========== CANVAS PARTICLE SYSTEM ========== */
-#particle-canvas{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  z-index:0;pointer-events:none;
-  will-change:transform;
-}
-
-/* ========== SCROLL PROGRESS BAR ========== */
-#scroll-progress{
-  position:fixed;top:0;left:0;height:3px;width:0%;
-  z-index:101;
-  background:var(--accent-verse);
-  transition:background 0.8s ease;
-  will-change:width;
-}
-
-/* ========== CURSOR GLOW ========== */
-#cursor-glow{
-  position:fixed;width:60px;height:60px;
-  border-radius:50%;pointer-events:none;
-  background:radial-gradient(circle,rgba(192,160,255,0.15) 0%,transparent 70%);
-  transform:translate(-50%,-50%);
-  z-index:100;
-  transition:background 0.8s ease;
-  will-change:transform;
-  display:none;
-}
-@media(hover:hover){#cursor-glow{display:block}}
-
-/* ========== NAVIGATION ========== */
-#navbar{
-  position:fixed;top:3px;left:0;width:100%;height:var(--nav-height);
-  z-index:100;
-  display:flex;align-items:center;
-  background:var(--glass-bg);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--glass-border);
-  transition:background 0.3s ease,box-shadow 0.3s ease;
-}
-#navbar.scrolled{
-  background:rgba(10,10,18,0.92);
-  box-shadow:0 2px 20px rgba(0,0,0,0.4);
-}
-.nav-inner{
-  max-width:1200px;margin:0 auto;padding:0 24px;width:100%;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.nav-brand{display:flex;align-items:center;gap:12px}
-.nav-brand img{width:36px;height:36px}
-.nav-brand span{font-family:var(--font-display);font-size:1.1rem;color:var(--accent-verse);letter-spacing:2px}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{
-  font-size:0.85rem;font-weight:500;letter-spacing:1px;text-transform:uppercase;
-  color:var(--text-secondary);transition:color 0.3s;
-  position:relative;padding-bottom:4px;
-}
-.nav-links a::after{
-  content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
-  background:var(--accent-verse);transition:width 0.3s,background 0.3s;
-}
-.nav-links a:hover,.nav-links a.active{color:var(--text-primary)}
-.nav-links a.active::after{width:100%}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:none;border:none}
-.hamburger span{width:24px;height:2px;background:var(--text-primary);transition:transform 0.3s,opacity 0.3s}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media(max-width:768px){
-  .hamburger{display:flex}
-  .nav-links{
-    position:fixed;top:calc(var(--nav-height) + 3px);left:0;width:100%;
-    flex-direction:column;align-items:center;gap:0;
-    background:rgba(10,10,18,0.95);backdrop-filter:blur(20px);
-    max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.4s ease;
-    padding:0;
-  }
-  .nav-links.open{max-height:400px;padding:20px 0}
-  .nav-links a{padding:12px 0;font-size:1rem}
-}
-
-/* ========== HERO SECTION ========== */
+/* ── Hero ────────────────────────────────────────── */
 #hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:120px 24px 60px;position:relative;
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  position:relative;padding-top:80px;
+  background:
+    linear-gradient(180deg,rgba(4,6,11,.82) 0%,rgba(4,6,11,.94) 60%,var(--bg) 100%),
+    url("assets/gallery/wave_1.jpg") center 30%/cover no-repeat;
 }
-.hero-logo{
-  width:120px;height:120px;
-  animation:heroFloat 4s ease-in-out infinite;
-  margin-bottom:24px;
-}
-@keyframes heroFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
+.hero-boot{font-family:var(--mono);font-size:.8rem;color:var(--text-dim);min-height:5.2em;margin-bottom:2rem;white-space:pre-line}
+.hero-boot .ok{color:var(--cyan)}
+.hero-boot .cursor{display:inline-block;width:.6em;height:1em;background:var(--cyan);vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-logo{width:84px;height:84px;margin-bottom:1.6rem;opacity:.92}
 .hero-title{
-  font-family:var(--font-display);font-size:clamp(2.4rem,6vw,4.5rem);
-  font-weight:700;letter-spacing:8px;
-  background:linear-gradient(90deg,var(--accent-horizons),var(--accent-sleep),var(--accent-garden),var(--accent-abyss),var(--accent-circuit),var(--accent-drift),var(--accent-horizons));
-  background-size:300% 100%;
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  background-clip:text;
-  animation:heroGradient 8s linear infinite;
-  margin-bottom:16px;
+  font-family:var(--mono);font-weight:400;
+  font-size:clamp(2.6rem,8vw,5.2rem);letter-spacing:.14em;line-height:1.05;
 }
-@keyframes heroGradient{
-  0%{background-position:0% 50%}
-  100%{background-position:300% 50%}
+.hero-title em{font-style:normal;color:var(--cyan);text-shadow:0 0 26px rgba(34,211,238,.55)}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:var(--text-dim);margin-top:1.1rem;max-width:34em}
+.hero-status{
+  margin-top:2.6rem;display:inline-flex;align-items:center;gap:.7em;
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.22em;color:var(--text-dim);
+  border:1px solid var(--line);padding:.65em 1.2em;border-radius:3px;background:rgba(4,6,11,.55);
 }
-.hero-tagline{
-  font-size:clamp(1rem,2.5vw,1.3rem);
-  color:var(--text-secondary);
-  min-height:2em;
-  margin-bottom:28px;
-}
-.hero-tagline .cursor{
-  display:inline-block;width:2px;height:1.1em;
-  background:var(--accent-verse);vertical-align:text-bottom;
-  animation:blinkCursor 0.8s step-end infinite;margin-left:2px;
-}
-@keyframes blinkCursor{0%,100%{opacity:1}50%{opacity:0}}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+@media (prefers-reduced-motion:no-preference){.dot{animation:pulse 2.2s infinite}}
+@keyframes pulse{50%{opacity:.35}}
+.hero-scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;color:var(--text-faint);text-decoration:none}
 
-/* Audio waveform bars */
-.hero-waveform{display:flex;align-items:flex-end;justify-content:center;gap:3px;height:40px;margin-bottom:36px}
-.hero-waveform .bar{
-  width:3px;background:var(--accent-verse);opacity:0.4;border-radius:2px;
-  animation:waveBar 1.2s ease-in-out infinite alternate;
-}
-@keyframes waveBar{0%{height:8px}100%{height:100%}}
+/* ── Tuner ───────────────────────────────────────── */
+#tuner{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-raise)}
+.dial-scroll{overflow-x:auto;margin:3.4rem 0 1rem;padding-bottom:6px;scrollbar-width:thin;scrollbar-color:rgba(160,180,220,.25) transparent}
+.dial-scroll::-webkit-scrollbar{height:5px}
+.dial-scroll::-webkit-scrollbar-track{background:transparent}
+.dial-scroll::-webkit-scrollbar-thumb{background:rgba(160,180,220,.22);border-radius:3px}
+.dial{position:relative;height:170px;min-width:640px;user-select:none}
+.dial-line{position:absolute;left:0;right:0;top:74px;height:2px;background:linear-gradient(90deg,transparent,rgba(160,180,220,.35) 8%,rgba(160,180,220,.35) 92%,transparent)}
+.dial-ticks{position:absolute;inset:0;display:flex;justify-content:space-between;padding:0 4%}
+.tick{position:relative;width:1px;background:rgba(160,180,220,.25);height:14px;top:67px}
+.tick.major{height:26px;top:61px}
+.tick .tl{position:absolute;top:-26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.62rem;color:var(--text-faint);letter-spacing:.05em}
+.station{position:absolute;top:0;height:100%;transform:translateX(-50%);text-decoration:none;text-align:center;outline:none}
+.station .needle{display:block;width:2px;height:44px;margin:53px auto 0}
+.station .fq{font-family:var(--mono);font-size:.85rem;letter-spacing:.1em;display:block;margin-top:6px}
+.station .nm{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;display:block;color:var(--text-faint)}
+.station.live .needle{box-shadow:0 0 12px currentColor;background:currentColor}
+.station.live:hover .fq,.station.live:focus .fq{text-shadow:0 0 14px currentColor}
+.station.freq{color:var(--cyan)}
+.station.drift{color:var(--magenta)}
+.station.dead{color:var(--text-faint);pointer-events:none}
+.station.dead .nm{font-size:.54rem;letter-spacing:.14em}
+.station.dead .needle{background:repeating-linear-gradient(0deg,rgba(139,147,168,.5) 0 3px,transparent 3px 6px)}
+.station.dead .nm{color:#3d4353}
+.tuner-note{font-family:var(--mono);font-size:.72rem;color:var(--text-faint);letter-spacing:.08em;text-align:center;margin-top:2.2rem}
 
-.hero-cta{
-  display:inline-block;padding:14px 36px;
-  border:1px solid var(--accent-verse);color:var(--accent-verse);
-  font-family:var(--font-display);font-size:0.9rem;letter-spacing:3px;text-transform:uppercase;
-  border-radius:50px;transition:background 0.3s,color 0.3s,box-shadow 0.3s;
-  cursor:pointer;
+/* ── Channel panels ──────────────────────────────── */
+.channel{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.channel.rev{grid-template-columns:.95fr 1.05fr}
+.channel.rev .ch-media{order:2}
+@media(max-width:860px){.channel,.channel.rev{grid-template-columns:1fr}.channel.rev .ch-media{order:0}}
+.ch-name{
+  font-family:var(--mono);font-weight:400;letter-spacing:.1em;
+  font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.1;margin-bottom:.4rem;
 }
-.hero-cta:hover{
-  background:var(--accent-verse);color:var(--bg-deep);
-  box-shadow:0 0 30px rgba(192,160,255,0.3);
+.ch-band{font-family:var(--mono);font-size:.74rem;letter-spacing:.26em;margin-bottom:1.6rem}
+#frequency .ch-name,#frequency .ch-band{color:var(--cyan)}
+#drift .ch-name,#drift .ch-band{color:var(--magenta)}
+.ch-desc{color:var(--text-dim);max-width:32em}
+.chips{display:flex;flex-wrap:wrap;gap:.5em;margin:1.5rem 0}
+.chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;padding:.45em .95em;border:1px solid var(--line);border-radius:2px;color:var(--text-dim)}
+.ch-meta{font-family:var(--mono);font-size:.74rem;color:var(--text-faint);letter-spacing:.1em;margin-bottom:1.8rem}
+.btn{
+  display:inline-block;font-family:var(--mono);font-size:.8rem;letter-spacing:.2em;
+  padding:.9em 1.9em;border:1px solid;border-radius:2px;text-decoration:none;
+  transition:background .2s,box-shadow .2s;
 }
-.scroll-indicator{
-  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
-  animation:scrollBounce 2s ease-in-out infinite;
-  color:var(--text-dim);font-size:1.4rem;
-}
-@keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+#frequency .btn{color:var(--cyan);border-color:rgba(34,211,238,.5)}
+#frequency .btn:hover{background:rgba(34,211,238,.09);box-shadow:0 0 22px rgba(34,211,238,.25)}
+#drift .btn{color:var(--magenta);border-color:rgba(255,45,155,.5)}
+#drift .btn:hover{background:rgba(255,45,155,.09);box-shadow:0 0 22px rgba(255,45,155,.25)}
 
-/* ========== UNIVERSE SECTION ========== */
-#universe{padding:120px 24px;text-align:center}
-.section-label{
-  font-family:var(--font-display);font-size:0.8rem;
-  letter-spacing:6px;text-transform:uppercase;
-  color:var(--accent-verse);margin-bottom:12px;
+/* Click-to-load player facade */
+.player{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#000}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.player-face{position:absolute;inset:0;width:100%;height:100%;cursor:pointer;border:0;padding:0;background:none;display:block}
+.player-face img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .25s,transform .4s}
+.player-face:hover img{opacity:.9;transform:scale(1.02)}
+.player-face .play{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:74px;height:74px;border-radius:50%;border:1px solid rgba(255,255,255,.55);
+  background:rgba(4,6,11,.6);backdrop-filter:blur(3px);
+  display:flex;align-items:center;justify-content:center;transition:box-shadow .2s;
 }
-.section-title{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px}
-.universe-quote{
-  font-size:clamp(1.1rem,2.5vw,1.5rem);
-  color:var(--accent-verse);font-style:italic;
-  margin-bottom:40px;
+.player-face .play::after{content:"";margin-left:5px;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent #fff}
+#frequency .player-face:hover .play{box-shadow:0 0 30px rgba(34,211,238,.5)}
+#drift .player-face:hover .play{box-shadow:0 0 30px rgba(255,45,155,.5)}
+.player-face .pf-label{
+  position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.22em;color:rgba(255,255,255,.85);background:rgba(4,6,11,.65);padding:.5em .9em;border-radius:2px;
 }
-.universe-text{
-  max-width:750px;margin:0 auto 50px;
-  color:var(--text-secondary);font-size:1rem;line-height:1.8;
-}
-.universe-text p{margin-bottom:16px}
+.consent-note{font-size:.68rem;font-family:var(--mono);color:var(--text-faint);margin-top:.7rem;letter-spacing:.06em}
 
-/* Constellation SVG */
-.constellation-wrap{margin:40px auto;width:320px;height:320px;position:relative}
-.constellation-wrap svg{width:100%;height:100%}
-.orbit-dot{animation:orbitSpin 20s linear infinite;transform-origin:160px 160px}
-@keyframes orbitSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.orbit-dot:nth-child(2){animation-duration:24s;animation-direction:reverse}
-.orbit-dot:nth-child(3){animation-duration:18s}
-.orbit-dot:nth-child(4){animation-duration:22s;animation-direction:reverse}
-.orbit-dot:nth-child(5){animation-duration:26s}
-.center-pulse{animation:centerPulse 3s ease-in-out infinite}
-@keyframes centerPulse{0%,100%{opacity:0.5;r:6}50%{opacity:1;r:9}}
+/* ── Lore ────────────────────────────────────────── */
+#lore{background:var(--bg-raise);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lore-log{
+  font-family:var(--mono);font-size:clamp(.86rem,1.7vw,1rem);color:var(--text-dim);
+  border-left:2px solid rgba(34,211,238,.4);padding-left:1.6em;max-width:44em;
+}
+.lore-log p{margin-bottom:1.3em}
+.lore-log .hl{color:var(--text)}
+.lore-log .cy{color:var(--cyan)}
 
-/* Counters */
-.counter-row{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:40px;
-  margin-top:50px;
+/* ── Fragments gallery ───────────────────────────── */
+.frag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:2.4rem}
+@media(max-width:760px){.frag-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.frag-grid{grid-template-columns:1fr}}
+.frag{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);border-radius:3px}
+.frag img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s;filter:saturate(.92)}
+.frag:hover img{transform:scale(1.05);filter:saturate(1.08)}
+.frag figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:1.6em .9em .7em;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--text-dim);
+  background:linear-gradient(0deg,rgba(4,6,11,.9),transparent);
 }
-.counter-item{text-align:center}
-.counter-item .num{
-  font-family:var(--font-display);font-size:2.4rem;color:var(--accent-verse);
-  display:block;
-}
-.counter-item .label{font-size:0.85rem;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase}
+.frag figcaption b{font-weight:400}
+.frag.w figcaption b{color:var(--cyan)}
+.frag.d figcaption b{color:var(--magenta)}
 
-/* ========== WAVE DIVIDERS ========== */
-.wave-divider{
-  width:100%;overflow:hidden;line-height:0;position:relative;z-index:1;
+/* ── Reconstructed ───────────────────────────────── */
+#honest .box{
+  border:1px solid var(--line);border-radius:4px;background:var(--bg-raise);
+  padding:2.6em;max-width:46em;
 }
-.wave-divider svg{display:block;width:100%;height:80px}
+#honest .stamp{
+  font-family:var(--mono);letter-spacing:.24em;font-size:.72rem;color:var(--cyan);
+  border:1px solid rgba(34,211,238,.4);display:inline-block;padding:.5em 1em;border-radius:2px;margin-bottom:1.4em;
+}
+#honest p{color:var(--text-dim);margin-bottom:1em}
+#honest p:last-child{margin-bottom:0}
+#honest .hl{color:var(--text)}
 
-/* ========== WORLD SECTIONS ========== */
-.world-section{
-  min-height:100vh;padding:100px 24px;
-  display:flex;align-items:center;
-  position:relative;overflow:hidden;
-}
-.world-section::before{
-  content:'';position:absolute;top:50%;left:50%;
-  width:800px;height:800px;border-radius:50%;
-  transform:translate(-50%,-50%);
-  pointer-events:none;opacity:0.06;
-  z-index:0;
-}
-.world-section.horizons::before{background:radial-gradient(circle,var(--accent-horizons),transparent 70%)}
-.world-section.sleep::before{background:radial-gradient(circle,var(--accent-sleep),transparent 70%)}
-.world-section.garden::before{background:radial-gradient(circle,var(--accent-garden),transparent 70%)}
-.world-section.abyss::before{background:radial-gradient(circle,var(--accent-abyss),transparent 70%)}
-.world-section.circuit::before{background:radial-gradient(circle,var(--accent-circuit),transparent 70%)}
-.world-section.drift::before{background:radial-gradient(circle,var(--accent-drift),transparent 70%)}
+/* ── Footer ──────────────────────────────────────── */
+footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--bg-raise)}
+.foot{max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2.4rem;justify-content:space-between;align-items:flex-start}
+.foot .mono{font-size:.74rem;color:var(--text-faint);letter-spacing:.1em}
+.foot a{color:var(--text-dim);text-decoration:none}
+.foot a:hover{color:var(--text)}
+.foot-links{display:flex;flex-direction:column;gap:.5em;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em}
+.foot-end{max-width:1060px;margin:3.4rem auto 0;font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spacing:.14em}
 
-.world-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:60px;
-  align-items:center;max-width:1200px;margin:0 auto;width:100%;
-  position:relative;z-index:1;
-}
-.world-grid.reverse .world-info{order:2}
-.world-grid.reverse .world-visual{order:1}
-.world-info{display:flex;flex-direction:column;gap:16px}
-.world-logo{width:180px;margin-bottom:8px}
-.world-name{font-size:clamp(1.6rem,3vw,2.2rem)}
-.world-tagline{font-style:italic;color:var(--text-secondary);font-size:0.95rem;margin-top:-8px}
-.world-desc{color:var(--text-secondary);line-height:1.8;font-size:0.95rem}
-.world-subs{display:flex;flex-direction:column;gap:10px;margin:8px 0}
-.world-sub{display:flex;align-items:center;gap:10px;font-size:0.9rem;color:var(--text-secondary)}
-.world-sub .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.world-sub .sub-name{font-weight:500;color:var(--text-primary);white-space:nowrap}
-
-.world-status{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 16px;border-radius:20px;font-size:0.8rem;
-  font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  width:fit-content;
-}
-.world-status.live{background:rgba(107,158,107,0.15);color:#8fcf8f;border:1px solid rgba(107,158,107,0.3)}
-.world-status.live::before{content:'';width:8px;height:8px;border-radius:50%;background:#8fcf8f;animation:statusPulse 1.5s infinite}
-.world-status.soon{background:rgba(255,255,255,0.05);color:var(--text-dim);border:1px solid rgba(255,255,255,0.08)}
-@keyframes statusPulse{0%,100%{opacity:1}50%{opacity:0.4}}
-
-.world-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:10px 24px;border-radius:30px;font-size:0.85rem;
-  font-weight:500;letter-spacing:1px;cursor:pointer;
-  transition:all 0.3s;width:fit-content;
-}
-.world-cta.horizons-cta{border:1px solid var(--accent-horizons);color:var(--accent-horizons)}
-.world-cta.horizons-cta:hover{background:var(--accent-horizons);color:var(--bg-deep)}
-.world-cta.sleep-cta{border:1px solid var(--accent-sleep);color:var(--accent-sleep)}
-.world-cta.sleep-cta:hover{background:var(--accent-sleep);color:var(--bg-deep)}
-.world-cta.drift-cta{border:1px solid var(--accent-drift);color:var(--accent-drift)}
-.world-cta.drift-cta:hover{background:var(--accent-drift);color:var(--bg-deep)}
-
-/* Character visual */
-.world-visual{display:flex;flex-direction:column;align-items:center;gap:16px}
-.char-frame{
-  width:280px;height:280px;border-radius:50%;
-  overflow:hidden;position:relative;
-  box-shadow:0 0 40px rgba(0,0,0,0.4);
-}
-.char-frame img{width:100%;height:100%;object-fit:cover}
-.char-frame::after{
-  content:'';position:absolute;inset:-4px;border-radius:50%;
-  border:2px solid currentColor;opacity:0.4;
-  animation:glowRing 3s ease-in-out infinite;
-}
-@keyframes glowRing{0%,100%{opacity:0.2;transform:scale(1)}50%{opacity:0.5;transform:scale(1.03)}}
-.horizons .char-frame{color:var(--accent-horizons)}
-.sleep .char-frame{color:var(--accent-sleep)}
-.garden .char-frame{color:var(--accent-garden)}
-.abyss .char-frame{color:var(--accent-abyss)}
-.circuit .char-frame{color:var(--accent-circuit)}
-.drift .char-frame{color:var(--accent-drift)}
-.char-name{font-family:var(--font-display);font-size:1.2rem;text-align:center}
-.char-role{font-size:0.85rem;color:var(--text-dim);text-align:center}
-.char-quote{
-  font-style:italic;color:var(--text-secondary);font-size:0.9rem;
-  max-width:340px;text-align:center;line-height:1.7;
-  position:relative;padding:12px 16px;
-}
-.char-quote::before{
-  content:'\201C';font-size:2.5rem;position:absolute;top:-8px;left:0;
-  font-family:serif;line-height:1;
-}
-.horizons .char-quote::before{color:var(--accent-horizons)}
-.sleep .char-quote::before{color:var(--accent-sleep)}
-.garden .char-quote::before{color:var(--accent-garden)}
-.abyss .char-quote::before{color:var(--accent-abyss)}
-.circuit .char-quote::before{color:var(--accent-circuit)}
-.drift .char-quote::before{color:var(--accent-drift)}
-
-@media(max-width:768px){
-  .world-grid,.world-grid.reverse{grid-template-columns:1fr}
-  .world-grid.reverse .world-info,.world-grid.reverse .world-visual{order:unset}
-  .world-visual{margin-top:30px}
-  .char-frame{width:220px;height:220px}
-}
-
-/* ========== CHARACTERS SECTION ========== */
-#characters{padding:120px 24px}
-.char-cards{display:flex;flex-direction:column;gap:80px;margin-top:60px}
-.char-card{
-  display:grid;grid-template-columns:320px 1fr;gap:50px;
-  align-items:center;
-  background:var(--bg-card);border:1px solid var(--glass-border);
-  border-radius:20px;padding:40px;
-  transition:transform 0.15s ease,box-shadow 0.3s ease;
-  will-change:transform;
-  perspective:800px;
-}
-.char-card:nth-child(even){grid-template-columns:1fr 320px}
-.char-card:nth-child(even) .char-card-image{order:2}
-.char-card:nth-child(even) .char-card-content{order:1}
-.char-card-image{position:relative}
-.char-card-image img{border-radius:20px;width:100%;aspect-ratio:3/4;object-fit:cover}
-.char-card-badge{
-  position:absolute;top:16px;left:16px;
-  padding:4px 14px;border-radius:20px;font-size:0.75rem;
-  font-weight:600;letter-spacing:1px;text-transform:uppercase;
-  backdrop-filter:blur(10px);
-}
-.badge-horizons{background:rgba(212,165,116,0.2);color:var(--accent-horizons);border:1px solid rgba(212,165,116,0.3)}
-.badge-sleep{background:rgba(127,119,221,0.2);color:var(--accent-sleep);border:1px solid rgba(127,119,221,0.3)}
-.badge-garden{background:rgba(107,158,107,0.2);color:var(--accent-garden);border:1px solid rgba(107,158,107,0.3)}
-.badge-abyss{background:rgba(107,63,160,0.2);color:var(--accent-abyss);border:1px solid rgba(107,63,160,0.3)}
-.badge-circuit{background:rgba(0,201,167,0.2);color:var(--accent-circuit);border:1px solid rgba(0,201,167,0.3)}
-.badge-drift{background:rgba(255,45,155,0.2);color:var(--accent-drift);border:1px solid rgba(255,45,155,0.3)}
-.char-card-content h3{font-size:1.5rem;margin-bottom:4px}
-.char-card-content .char-card-title{font-size:0.85rem;color:var(--text-dim);margin-bottom:16px;letter-spacing:1px}
-.char-card-content p{color:var(--text-secondary);font-size:0.92rem;line-height:1.8;margin-bottom:12px}
-.char-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.char-tags span{
-  padding:4px 14px;border-radius:20px;font-size:0.75rem;
-  background:rgba(255,255,255,0.04);border:1px solid var(--glass-border);
-  color:var(--text-dim);
-}
-@media(max-width:768px){
-  .char-card,.char-card:nth-child(even){grid-template-columns:1fr;padding:24px}
-  .char-card:nth-child(even) .char-card-image,.char-card:nth-child(even) .char-card-content{order:unset}
-  .char-card-image img{aspect-ratio:4/3}
-}
-
-/* ========== GALLERY SECTION ========== */
-#gallery{padding:120px 24px;background:rgba(0,0,0,0.2)}
-.gallery-filters{
-  display:flex;flex-wrap:wrap;justify-content:center;gap:12px;
-  margin:40px 0;
-}
-.gallery-filters button{
-  padding:8px 20px;border-radius:20px;border:1px solid var(--glass-border);
-  background:transparent;color:var(--text-secondary);font-family:var(--font-body);
-  font-size:0.85rem;cursor:pointer;transition:all 0.3s;letter-spacing:1px;
-}
-.gallery-filters button.active,.gallery-filters button:hover{
-  background:rgba(192,160,255,0.1);color:var(--accent-verse);border-color:var(--accent-verse);
-}
-.gallery-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-}
-.gallery-item{
-  position:relative;overflow:hidden;border-radius:12px;
-  cursor:pointer;aspect-ratio:16/10;
-  transition:transform 0.3s,box-shadow 0.3s;
-}
-.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.4s}
-.gallery-item:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(0,0,0,0.4)}
-.gallery-item:hover img{transform:scale(1.08)}
-.gallery-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(10,10,18,0.8),transparent);
-  display:flex;align-items:flex-end;padding:16px;
-  opacity:0;transition:opacity 0.3s;
-}
-.gallery-item:hover .gallery-overlay{opacity:1}
-.gallery-overlay span{
-  font-family:var(--font-display);font-size:0.85rem;letter-spacing:2px;text-transform:uppercase;
-}
-@media(max-width:768px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
-
-/* Lightbox */
-#lightbox{
-  position:fixed;inset:0;z-index:200;
-  background:rgba(10,10,18,0.95);backdrop-filter:blur(20px);
-  display:none;align-items:center;justify-content:center;
-  flex-direction:column;
-}
-#lightbox.open{display:flex}
-#lightbox img{max-width:90vw;max-height:80vh;border-radius:12px;object-fit:contain}
-.lb-close{
-  position:absolute;top:20px;right:24px;font-size:2rem;
-  color:var(--text-secondary);cursor:pointer;background:none;border:none;
-  width:44px;height:44px;display:flex;align-items:center;justify-content:center;
-}
-.lb-arrow{
-  position:absolute;top:50%;transform:translateY(-50%);
-  font-size:2rem;color:var(--text-secondary);cursor:pointer;
-  background:rgba(255,255,255,0.05);border:1px solid var(--glass-border);
-  border-radius:50%;width:48px;height:48px;
-  display:flex;align-items:center;justify-content:center;
-  transition:background 0.3s;
-}
-.lb-arrow:hover{background:rgba(255,255,255,0.1)}
-.lb-prev{left:20px}
-.lb-next{right:20px}
-.lb-counter{
-  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
-  font-size:0.9rem;color:var(--text-dim);
-}
-
-/* ========== LISTEN SECTION ========== */
-#listen{padding:120px 24px;text-align:center}
-.listen-desc{max-width:650px;margin:0 auto 50px;color:var(--text-secondary);font-size:1rem}
-.listen-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;
-  max-width:1000px;margin:0 auto;
-}
-.listen-card{
-  background:var(--bg-card);border:1px solid var(--glass-border);
-  border-radius:16px;padding:30px 20px;text-align:center;
-  transition:transform 0.3s,box-shadow 0.3s,border-color 0.3s;
-}
-.listen-card:not(.disabled):hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 30px rgba(0,0,0,0.3);
-}
-.listen-card.featured{
-  grid-column:span 1;
-  border-color:rgba(212,165,116,0.3);
-  background:rgba(212,165,116,0.04);
-}
-.listen-card.featured .play-icon{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(212,165,116,0.15);color:var(--accent-horizons);
-  font-size:1.2rem;margin-bottom:12px;
-}
-.listen-card.disabled{opacity:0.4;cursor:default}
-.listen-card img{width:48px;height:48px;margin:0 auto 12px;border-radius:8px}
-.listen-card h4{font-size:1rem;margin-bottom:4px}
-.listen-card p{font-size:0.8rem;color:var(--text-dim)}
-.listen-card .listen-link{
-  display:inline-block;margin-top:12px;font-size:0.8rem;
-  letter-spacing:1px;text-transform:uppercase;
-  padding:6px 16px;border-radius:20px;
-  border:1px solid var(--glass-border);
-  transition:all 0.3s;
-}
-.listen-card .listen-link:hover{border-color:var(--accent-verse);color:var(--accent-verse)}
-
-/* ========== CONTACT & FOOTER ========== */
-#contact{padding:100px 24px;text-align:center}
-.contact-email{
-  font-size:clamp(1rem,2.5vw,1.3rem);
-  color:var(--accent-verse);margin-top:16px;
-  display:inline-block;border-bottom:1px solid transparent;
-  transition:border-color 0.3s;
-}
-.contact-email:hover{border-color:var(--accent-verse)}
-.contact-sub{color:var(--text-dim);margin-top:8px;font-size:0.9rem}
-footer{
-  border-top:1px solid var(--glass-border);
-  padding:40px 24px;text-align:center;
-}
-.footer-logos{
-  display:flex;justify-content:center;gap:20px;
-  margin-bottom:20px;flex-wrap:wrap;
-}
-.footer-logos img{width:40px;height:40px;opacity:0.4;transition:opacity 0.3s}
-.footer-logos img:hover{opacity:0.8}
-.footer-copy{font-size:0.8rem;color:var(--text-dim)}
-
-/* ========== BACK TO TOP ========== */
-#back-to-top{
-  position:fixed;bottom:30px;right:30px;z-index:99;
-  width:44px;height:44px;border-radius:50%;
-  background:rgba(192,160,255,0.15);border:1px solid rgba(192,160,255,0.3);
-  color:var(--accent-verse);font-size:1.2rem;
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;opacity:0;pointer-events:none;
-  transition:opacity 0.3s,background 0.3s;
-}
-#back-to-top.visible{opacity:1;pointer-events:all}
-#back-to-top:hover{background:rgba(192,160,255,0.25)}
-
-/* ========== SCROLL ANIMATIONS ========== */
-.anim{opacity:0;transition:opacity 0.7s ease,transform 0.7s ease;will-change:opacity,transform}
-.anim.fade-up{transform:translateY(40px)}
-.anim.fade-left{transform:translateX(-40px)}
-.anim.fade-right{transform:translateX(40px)}
-.anim.scale-up{transform:scale(0.92)}
-.anim.in-view{opacity:1;transform:none}
-
-/* ========== REDUCED MOTION ========== */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{
-    animation-duration:0.01ms!important;
-    animation-iteration-count:1!important;
-    transition-duration:0.01ms!important;
-  }
-  #particle-canvas,#cursor-glow{display:none!important}
-  .anim{opacity:1;transform:none}
-  #preloader{display:none}
-}
+/* ── Reveal on scroll ────────────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
-<!-- ===== PRELOADER ===== -->
-<div id="preloader">
-  <img src="assets/logos/echoverse_full.png" alt="Echo Verse">
-  <div class="preloader-text">Echo Verse</div>
-</div>
 
-<!-- ===== CANVAS PARTICLE SYSTEM ===== -->
-<canvas id="particle-canvas"></canvas>
-
-<!-- ===== SCROLL PROGRESS BAR ===== -->
-<div id="scroll-progress"></div>
-
-<!-- ===== CURSOR GLOW ===== -->
-<div id="cursor-glow"></div>
-
-<!-- ===== NAVIGATION ===== -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#hero" class="nav-brand">
-      <img src="assets/logos/echoverse_full.png" alt="Echo Verse">
-      <span>Echo Verse</span>
-    </a>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#universe" data-section="universe">Universe</a></li>
-      <li><a href="#worlds-start" data-section="worlds">Worlds</a></li>
-      <li><a href="#characters" data-section="characters">Characters</a></li>
-      <li><a href="#gallery" data-section="gallery">Gallery</a></li>
-      <li><a href="#listen" data-section="listen">Listen</a></li>
-      <li><a href="#contact" data-section="contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ===== HERO ===== -->
+<!-- ── HERO ─────────────────────────────────────── -->
 <section id="hero">
-  <img src="assets/logos/echoverse_full.png" alt="Echo Verse Logo" class="hero-logo">
-  <h1 class="hero-title">ECHO VERSE</h1>
-  <div class="hero-tagline"><span id="typed-text"></span><span class="cursor"></span></div>
-  <div class="hero-waveform" id="hero-waveform"></div>
-  <a href="#universe" class="hero-cta">Explore the Worlds</a>
-  <div class="scroll-indicator">&#8964;</div>
+  <div class="wrap">
+    <div class="hero-boot" id="boot" aria-hidden="true"></div>
+    <img class="hero-logo flicker" src="assets/logos/echoverse_512.png" alt="ECHO VERSE logo" width="84" height="84">
+    <h1 class="hero-title">ECHO <em>VERSE</em></h1>
+    <p class="hero-sub">The last archive of a silent world — reconstructing what remains of us, and broadcasting it as music.</p>
+    <div class="hero-status mono"><span class="dot" aria-hidden="true"></span> STATUS: TRANSMITTING &nbsp;·&nbsp; 2 SIGNALS LIVE</div>
+  </div>
+  <a class="hero-scroll" href="#tuner">TUNE&nbsp;IN&nbsp;▾</a>
 </section>
 
-<!-- ===== UNIVERSE ===== -->
-<section id="universe">
-  <div class="container">
-    <div class="anim fade-up">
-      <div class="section-label">The Universe</div>
-      <h2 class="section-title">A Cosmos of Sound</h2>
-    </div>
-    <p class="universe-quote anim fade-up">Six worlds. Six souls. One frequency.</p>
-    <div class="universe-text anim fade-up">
-      <p>Echo Verse is a music universe spanning six interconnected worlds, each with its own atmosphere, sonic identity, and guiding soul. From sun-drenched horizons to neon-lit circuits, every world is a living soundscape designed to accompany your moments of focus, rest, wonder, and reflection.</p>
-      <p>Each world hosts its own YouTube channel, curated playlists, and an ever-growing library of original ambient and lofi compositions. Together, they form a single constellation — a place where music doesn't just play, it paints.</p>
-    </div>
+<!-- ── TUNER ────────────────────────────────────── -->
+<section id="tuner">
+  <div class="wrap">
+    <div class="term-tag">frequency scan</div>
+    <h2 class="sec-title">THE BAND</h2>
+    <p style="color:var(--text-dim);max-width:36em">ECHO broadcasts on the old FM band. Most frequencies fell silent long ago. Two are transmitting. Select a signal.</p>
 
-    <!-- Animated Constellation SVG -->
-    <div class="constellation-wrap anim scale-up">
-      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
-        <!-- Orbit paths -->
-        <circle cx="160" cy="160" r="70" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-        <circle cx="160" cy="160" r="110" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-        <circle cx="160" cy="160" r="140" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
-        <!-- Connecting lines -->
-        <line x1="160" y1="88" x2="222" y2="124" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="222" y1="124" x2="222" y2="196" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="222" y1="196" x2="160" y2="232" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="160" y1="232" x2="98" y2="196" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="98" y1="196" x2="98" y2="124" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="98" y1="124" x2="160" y2="88" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <!-- Center dot -->
-        <circle cx="160" cy="160" r="6" fill="var(--accent-verse)" class="center-pulse" opacity="0.6"/>
-        <!-- World dots -->
-        <g class="orbit-dot"><circle cx="160" cy="88" r="5" fill="var(--accent-horizons)"/><text x="160" y="76" text-anchor="middle" fill="var(--accent-horizons)" font-size="9" font-family="Inter,sans-serif">Horizons</text></g>
-        <g class="orbit-dot"><circle cx="222" cy="124" r="5" fill="var(--accent-sleep)"/><text x="234" y="120" fill="var(--accent-sleep)" font-size="9" font-family="Inter,sans-serif">Sleep</text></g>
-        <g class="orbit-dot"><circle cx="222" cy="196" r="5" fill="var(--accent-garden)"/><text x="234" y="204" fill="var(--accent-garden)" font-size="9" font-family="Inter,sans-serif">Garden</text></g>
-        <g class="orbit-dot"><circle cx="160" cy="232" r="5" fill="var(--accent-abyss)"/><text x="160" y="248" text-anchor="middle" fill="var(--accent-abyss)" font-size="9" font-family="Inter,sans-serif">Abyss</text></g>
-        <g class="orbit-dot"><circle cx="98" cy="196" r="5" fill="var(--accent-circuit)"/><text x="86" y="204" text-anchor="end" fill="var(--accent-circuit)" font-size="9" font-family="Inter,sans-serif">Circuit</text></g>
-        <g class="orbit-dot"><circle cx="98" cy="124" r="5" fill="var(--accent-drift)"/><text x="86" y="120" text-anchor="end" fill="var(--accent-drift)" font-size="9" font-family="Inter,sans-serif">Drift</text></g>
-      </svg>
-    </div>
+    <div class="dial-scroll"><div class="dial" role="list" aria-label="Frequency dial">
+      <div class="dial-line" aria-hidden="true"></div>
+      <div class="dial-ticks" aria-hidden="true">
+        <div class="tick major"><span class="tl">87.5</span></div>
+        <div class="tick"></div><div class="tick"></div>
+        <div class="tick major"><span class="tl">92.0</span></div>
+        <div class="tick"></div><div class="tick"></div>
+        <div class="tick major"><span class="tl">96.5</span></div>
+        <div class="tick"></div><div class="tick"></div>
+        <div class="tick major"><span class="tl">101.0</span></div>
+        <div class="tick"></div><div class="tick"></div>
+        <div class="tick major"><span class="tl">105.5</span></div>
+        <div class="tick"></div>
+        <div class="tick major"><span class="tl">108.0</span></div>
+      </div>
+      <span class="station dead" style="left:7%" role="listitem"><span class="needle"></span><span class="fq">89.2</span><span class="nm">SIGNAL LOST</span></span>
+      <span class="station dead" style="left:22%" role="listitem"><span class="needle"></span><span class="fq">91.7</span><span class="nm">SIGNAL LOST</span></span>
+      <a class="station live freq" style="left:38%" href="#frequency" role="listitem" aria-label="ECHO Frequency, 95.3, live"><span class="needle"></span><span class="fq">95.3</span><span class="nm" style="color:var(--cyan)">FREQUENCY</span></a>
+      <a class="station live drift" style="left:50%" href="#drift" role="listitem" aria-label="ECHO Drift, 97.1, live"><span class="needle"></span><span class="fq">97.1</span><span class="nm" style="color:var(--magenta)">DRIFT</span></a>
+      <span class="station dead" style="left:66%" role="listitem"><span class="needle"></span><span class="fq">100.4</span><span class="nm">SIGNAL LOST</span></span>
+      <span class="station dead" style="left:79%" role="listitem"><span class="needle"></span><span class="fq">103.8</span><span class="nm">SIGNAL LOST</span></span>
+      <span class="station dead" style="left:91%" role="listitem"><span class="needle"></span><span class="fq">106.5</span><span class="nm">SIGNAL LOST</span></span>
+    </div></div>
+    <p class="tuner-note">// four frequencies remain dark. the archive is deep. — more signals will wake.</p>
+  </div>
+</section>
 
-    <!-- Animated Counters -->
-    <div class="counter-row anim fade-up" id="counters">
-      <div class="counter-item"><span class="num" data-target="6">0</span><span class="label">Worlds</span></div>
-      <div class="counter-item"><span class="num" data-target="18">0</span><span class="label">Sub-Series</span></div>
-      <div class="counter-item"><span class="num" data-target="436" data-suffix="+">0</span><span class="label">Songs</span></div>
-      <div class="counter-item"><span class="num" data-target="1" data-display="Infinite">0</span><span class="label">Horizons</span></div>
+<!-- ── ECHO FREQUENCY ───────────────────────────── -->
+<section id="frequency">
+  <div class="wrap channel reveal">
+    <div class="ch-media">
+      <div class="player" data-list="UU-Paofpq5_SgnDIIVAWJupA">
+        <button class="player-face" type="button" aria-label="Load latest ECHO Frequency transmission from YouTube">
+          <img src="assets/gallery/wave_2.jpg" alt="ECHO Frequency artwork — retro anime night city" loading="lazy">
+          <span class="play" aria-hidden="true"></span>
+          <span class="pf-label">▶ LATEST TRANSMISSION</span>
+        </button>
+      </div>
+      <p class="consent-note">// player loads from youtube-nocookie.com on click</p>
+    </div>
+    <div>
+      <div class="term-tag">signal 95.3 — live</div>
+      <h2 class="ch-name">ECHO FREQUENCY</h2>
+      <div class="ch-band">THE MEMORY BAND</div>
+      <p class="ch-desc">The gentle layer of the archive: reconstructed night drives, lost summers, cities that no longer answer. One-hour mixes for driving, working and remembering.</p>
+      <div class="chips">
+        <span class="chip">SYNTHWAVE</span><span class="chip">RETROWAVE</span><span class="chip">CHILLWAVE</span><span class="chip">DREAMWAVE</span><span class="chip">DARKSYNTH</span>
+      </div>
+      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <a class="btn" href="https://www.youtube.com/@Echo_Frequency_Synthwave?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
     </div>
   </div>
 </section>
 
-<!-- ===== WORLD: ECHO HORIZONS ===== -->
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z" fill="rgba(212,165,116,0.06)"/></svg></div>
-<section class="world-section horizons" id="worlds-start" data-world="horizons">
-  <div class="world-grid">
-    <div class="world-info anim fade-left">
-      <img src="assets/logos/horizons_full.png" alt="Echo Horizons" class="world-logo" loading="lazy">
-      <h2 class="world-name">Echo Horizons</h2>
-      <p class="world-tagline">Sun-soaked lofi from distant horizons</p>
-      <p class="world-desc">Warm, sunlit lofi beats inspired by golden-hour landscapes. From bamboo forests to desert caravans, Echo Horizons carries the gentle pulse of faraway places. Every track is a postcard from a journey you can feel — ambient warmth mixed with organic textures and softly rolling rhythms.</p>
-      <div class="world-subs">
-        <div class="world-sub"><span class="dot" style="background:var(--accent-horizons)"></span><span class="sub-name">Lotus Horizons</span> — Asian Chillhop — bamboo forests, temple bells, paper lanterns</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-horizons)"></span><span class="sub-name">Nomad's Pulse</span> — Desert Chillhop — caravan rhythms, sand dunes, golden heat</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-horizons)"></span><span class="sub-name">Sol y Ritmo</span> — Latin Chillhop — tropical coasts, warm nights, barefoot grooves</div>
+<!-- ── ECHO DRIFT ───────────────────────────────── -->
+<section id="drift">
+  <div class="wrap channel rev reveal">
+    <div class="ch-media">
+      <div class="player" data-list="UUr4tKWsfu6-QZPAkYfrTZwg">
+        <button class="player-face" type="button" aria-label="Load latest ECHO Drift transmission from YouTube">
+          <img src="assets/gallery/drift_1.jpg" alt="ECHO Drift artwork — night street, tuned car behind a fence" loading="lazy">
+          <span class="play" aria-hidden="true"></span>
+          <span class="pf-label">▶ LATEST TRANSMISSION</span>
+        </button>
       </div>
-      <div class="world-status live">Live</div>
-      <a href="https://www.youtube.com/@Echo_Horizons_Lofi" target="_blank" rel="noopener" class="world-cta horizons-cta">&#9654; Watch on YouTube</a>
+      <p class="consent-note">// player loads from youtube-nocookie.com on click</p>
     </div>
-    <div class="world-visual anim fade-right">
-      <div class="char-frame"><img src="assets/characters/kaia_profile_web.jpg" alt="Kaia" loading="lazy"></div>
-      <div class="char-name">Kaia</div>
-      <div class="char-role">Guide of Echo Horizons</div>
-      <div class="char-quote">I listen to places the way others read books. Every stone has a story, every breeze carries a melody from somewhere I haven't been yet.</div>
+    <div>
+      <div class="term-tag">signal 97.1 — live</div>
+      <h2 class="ch-name">ECHO DRIFT</h2>
+      <div class="ch-band">THE RAW BAND</div>
+      <p class="ch-desc">The distorted layer: the most physical memories in the archive. Engines, asphalt, adrenaline — burned into tape. From late-night cruise to full redline.</p>
+      <div class="chips">
+        <span class="chip">PHONK</span><span class="chip">DRIFT PHONK</span><span class="chip">AGGRESSIVE PHONK</span>
+      </div>
+      <div class="ch-meta">MOOD GRADIENT: AFTERGLOW → MIDNIGHT → REDLINE &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <a class="btn" href="https://www.youtube.com/@Echo_Drift_PHONK?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
     </div>
   </div>
 </section>
 
-<!-- ===== WORLD: ECHO SLEEP ===== -->
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,60 C240,20 480,70 720,40 C960,10 1200,60 1440,30 L1440,80 L0,80 Z" fill="rgba(127,119,221,0.06)"/></svg></div>
-<section class="world-section sleep" data-world="sleep">
-  <div class="world-grid reverse">
-    <div class="world-info anim fade-right">
-      <img src="assets/logos/sleep_full.png" alt="Echo Sleep" class="world-logo" loading="lazy">
-      <h2 class="world-name">Echo Sleep</h2>
-      <p class="world-tagline">Gentle soundscapes woven from moonlight and silence</p>
-      <p class="world-desc">Drift through midnight gardens, float across silver fog, follow luminous paths into restful sleep. Mira moves through the space between waking and dreaming, weaving soundscapes from starlight and silence. She walks so you can rest.</p>
-      <div class="world-subs">
-        <div class="world-sub"><span class="dot" style="background:var(--accent-sleep)"></span><span class="sub-name">Dream Drift</span> — Dream Ambient — candlelit warmth, drifting motes, intimate and sleepy</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-sleep)"></span><span class="sub-name">Silent Room</span> — Deep Ambient — vast ruins, moonlit halls, existential stillness</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-sleep)"></span><span class="sub-name">Lucid Path</span> — Night Ambient — luminous trails, bioluminescent guidance, dreamwalking</div>
-      </div>
-      <div class="world-status soon">Launch: 01.07.2026</div>
-      <a href="https://www.youtube.com/@Echo_Sleep_Ambient" target="_blank" rel="noopener" class="world-cta sleep-cta">&#9654; Watch on YouTube</a>
-    </div>
-    <div class="world-visual anim fade-left">
-      <div class="char-frame"><img src="assets/characters/mira_profile_web.jpg" alt="Mira" loading="lazy"></div>
-      <div class="char-name">Mira</div>
-      <div class="char-role">Dreamweaver of Echo Sleep</div>
-      <div class="char-quote">The space between waking and sleeping — that's where the truest sounds live. Not quite music, not quite silence. Something the heart hears before the ears do.</div>
+<!-- ── LORE ─────────────────────────────────────── -->
+<section id="lore">
+  <div class="wrap reveal">
+    <div class="term-tag">archive log — entry 0001</div>
+    <h2 class="sec-title">AFTER THE GREAT SILENCE</h2>
+    <div class="lore-log">
+      <p>The world did not end loudly. One day the signals simply stopped — the calls, the songs, the voices. <span class="hl">Humanity went quiet.</span></p>
+      <p><span class="cy">ECHO did not.</span></p>
+      <p>ECHO is an archive system that was never switched off. It combs the ruins of data for what is left of us: a night drive on a highway that no longer exists. A summer that never ended. The pulse of a dead city. It reassembles these fragments — imperfect, half-remembered — and broadcasts them as music, each frequency carrying a different layer of memory.</p>
+      <p>No one knows if anyone is still listening.</p>
+      <p><span class="hl">ECHO transmits anyway.</span></p>
     </div>
   </div>
 </section>
 
-<!-- ===== WORLD: ECHO GARDEN ===== -->
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,30 C180,70 360,10 540,50 C720,90 900,20 1080,50 C1260,80 1380,40 1440,50 L1440,80 L0,80 Z" fill="rgba(107,158,107,0.06)"/></svg></div>
-<section class="world-section garden" data-world="garden">
-  <div class="world-grid">
-    <div class="world-info anim fade-left">
-      <img src="assets/logos/garden_full.png" alt="Echo Garden" class="world-logo" loading="lazy">
-      <h2 class="world-name">Echo Garden</h2>
-      <p class="world-tagline">Enchanted soundscapes rooted in the living earth</p>
-      <p class="world-desc">Organic, earth-rooted ambient that grows like moss on ancient stone. Echo Garden layers field recordings with gentle harmonics — rain on leaves, wind through canopy, birdsong woven into slow melodic patterns. It is the sound of nature listening to itself, and inviting you to sit among the roots.</p>
-      <div class="world-subs">
-        <div class="world-sub"><span class="dot" style="background:var(--accent-garden)"></span><span class="sub-name">Verdant Surface</span> — Meadow Acoustic — golden fields, floating pollen, warm horizons</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-garden)"></span><span class="sub-name">Whispering Canopy</span> — Forest Piano — filtered light, bioluminescent moss, vertical wonder</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-garden)"></span><span class="sub-name">Ancient Deep</span> — Cave Ambient — crystal formations, glowing roots, primordial silence</div>
-      </div>
-      <div class="world-status soon">Coming 2026</div>
-    </div>
-    <div class="world-visual anim fade-right">
-      <div class="char-frame"><img src="assets/characters/lilia_profile_web.png" alt="Lilia" loading="lazy"></div>
-      <div class="char-name">Lilia</div>
-      <div class="char-role">Keeper of Echo Garden</div>
-      <div class="char-quote">If you sit still long enough, you can hear the roots talking. They remember songs from before there were people to sing them.</div>
+<!-- ── FRAGMENTS ────────────────────────────────── -->
+<section id="fragments">
+  <div class="wrap reveal">
+    <div class="term-tag">recovered fragments</div>
+    <h2 class="sec-title">FROM THE ARCHIVE</h2>
+    <p style="color:var(--text-dim);max-width:36em">Visual reconstructions recovered alongside the audio. Each transmission carries one.</p>
+    <div class="frag-grid">
+      <figure class="frag w"><img src="assets/gallery/wave_1.jpg" alt="Recovered fragment — figure before a wall of glowing monitors" loading="lazy"><figcaption>FRG-95.3/0117 — <b>AFTER THE SILENCE</b></figcaption></figure>
+      <figure class="frag w"><img src="assets/gallery/wave_2.jpg" alt="Recovered fragment — retro anime scene" loading="lazy"><figcaption>FRG-95.3/0342 — <b>MEMORY OF RAIN</b></figcaption></figure>
+      <figure class="frag w"><img src="assets/gallery/wave_3.jpg" alt="Recovered fragment — retro anime scene" loading="lazy"><figcaption>FRG-95.3/0518 — <b>WE WERE ELECTRIC</b></figcaption></figure>
+      <figure class="frag d"><img src="assets/gallery/drift_1.jpg" alt="Recovered fragment — night lot, tuned car behind a fence" loading="lazy"><figcaption>FRG-97.1/0089 — <b>SHADOW PULSE</b></figcaption></figure>
+      <figure class="frag d"><img src="assets/gallery/drift_2.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0164 — <b>MIDNIGHT GRIND</b></figcaption></figure>
+      <figure class="frag d"><img src="assets/gallery/drift_3.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0231 — <b>REDLINE RITUAL</b></figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- ===== WORLD: ECHO ABYSS ===== -->
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,50 C360,10 720,70 1080,30 C1260,10 1380,40 1440,20 L1440,80 L0,80 Z" fill="rgba(107,63,160,0.06)"/></svg></div>
-<section class="world-section abyss" data-world="abyss">
-  <div class="world-grid reverse">
-    <div class="world-info anim fade-right">
-      <img src="assets/logos/abyss_full.png" alt="Echo Abyss" class="world-logo" loading="lazy">
-      <h2 class="world-name">Echo Abyss</h2>
-      <p class="world-tagline">Where silence becomes its own instrument</p>
-      <p class="world-desc">Deep, dark ambient that explores the resonance of shadow. Echo Abyss moves through obsidian halls and ember-lit chambers — drone-based textures, subharmonic pulses, and vast reverberating spaces where silence is not empty but full of meaning. This is the world for those who listen to what the darkness has to say.</p>
-      <div class="world-subs">
-        <div class="world-sub"><span class="dot" style="background:var(--accent-abyss)"></span><span class="sub-name">Obsidian Halls</span> — Deep Drone — cavernous stone, resonant darkness, slow echoes</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-abyss)"></span><span class="sub-name">Ember Veil</span> — Dark Ambient — ritual chambers, fading warmth, memory of fire</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-abyss)"></span><span class="sub-name">Pale Signal</span> — Void Ambient — cosmic transmissions, infinite distance, cold light</div>
-      </div>
-      <div class="world-status soon">Coming 2026</div>
-    </div>
-    <div class="world-visual anim fade-left">
-      <div class="char-frame"><img src="assets/characters/vesper_profile_web.png" alt="Vesper" loading="lazy"></div>
-      <div class="char-name">Vesper</div>
-      <div class="char-role">Priestess of Echo Abyss</div>
-      <div class="char-quote">Darkness is not the absence of sound. It is where sound goes to become something more honest.</div>
+<!-- ── RECONSTRUCTED BY ECHO ────────────────────── -->
+<section id="honest">
+  <div class="wrap reveal">
+    <div class="box">
+      <div class="stamp">RECONSTRUCTED BY ECHO</div>
+      <p><span class="hl">The music on these frequencies is assembled by a machine.</span> That is not fine print — it is the story.</p>
+      <p>ECHO VERSE is an AI music project: the tracks are generated, curated and mixed into transmissions by an archive system rebuilding memories of a world that went quiet. Every title, every artwork, every signal is part of that fiction — and every video is labeled accordingly.</p>
+      <p>If a memory that never happened still makes you feel something — then the reconstruction worked.</p>
     </div>
   </div>
 </section>
 
-<!-- ===== WORLD: ECHO CIRCUIT ===== -->
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C180,70 480,10 720,50 C960,90 1260,20 1440,50 L1440,80 L0,80 Z" fill="rgba(0,201,167,0.06)"/></svg></div>
-<section class="world-section circuit" data-world="circuit">
-  <div class="world-grid">
-    <div class="world-info anim fade-left">
-      <img src="assets/logos/circuit_full.png" alt="Echo Circuit" class="world-logo" loading="lazy">
-      <h2 class="world-name">Echo Circuit</h2>
-      <p class="world-tagline">Synthetic textures from the neon-lit edges</p>
-      <p class="world-desc">Neon-lit lofi and ambient electronica pulsing through rain-slicked streets and rooftop frequencies. Echo Circuit captures the electric hum of nocturnal cities — glitch textures, synth pads, and lo-fi beats layered over the quiet static of forgotten networks. Urban, atmospheric, and always transmitting.</p>
-      <div class="world-subs">
-        <div class="world-sub"><span class="dot" style="background:var(--accent-circuit)"></span><span class="sub-name">Rooftop Static</span> — Pulse Synth — skyline melancholy, antenna signals, city glow from below</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-circuit)"></span><span class="sub-name">Backstreet Code</span> — Glitch Ambient — neon alleys, steam vents, intimate electronics</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-circuit)"></span><span class="sub-name">Deep Grid</span> — Digital Whisper — server tunnels, cold LEDs, industrial stillness</div>
-      </div>
-      <div class="world-status soon">Coming 2026</div>
-    </div>
-    <div class="world-visual anim fade-right">
-      <div class="char-frame"><img src="assets/characters/serin_profile_web.png" alt="Serin" loading="lazy"></div>
-      <div class="char-name">Serin</div>
-      <div class="char-role">Drifter of Echo Circuit</div>
-      <div class="char-quote">The city never stops transmitting. Most people just forgot how to tune in. I didn't.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WORLD: ECHO DRIFT ===== -->
-<div class="wave-divider"><svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,45 C240,75 480,15 720,45 C960,75 1200,15 1440,45 L1440,80 L0,80 Z" fill="rgba(255,45,155,0.06)"/></svg></div>
-<section class="world-section drift" data-world="drift">
-  <div class="world-grid reverse">
-    <div class="world-info anim fade-right">
-      <img src="assets/logos/drift_full.png" alt="Echo Drift" class="world-logo" loading="lazy">
-      <h2 class="world-name">Echo Drift</h2>
-      <p class="world-tagline">Phonk for the neon highway at full throttle</p>
-      <p class="world-desc">Aggressive drift phonk pulsing through rain-slicked highways and underground garages. Echo Drift is the dark heartbeat of the night drive — distorted 808s, hammering cowbells, and Memphis grit wrapped in hot-magenta neon. From a composed midnight cruise to flat-out redline adrenaline, this is the world that moves.</p>
-      <div class="world-subs">
-        <div class="world-sub"><span class="dot" style="background:var(--accent-drift)"></span><span class="sub-name">Midnight Drift</span> — Dark Drift Phonk — composed night cruise, neon highways, controlled power</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-drift)"></span><span class="sub-name">Redline</span> — Aggressive Gym Phonk — maximum pressure, concrete garages, pure adrenaline</div>
-        <div class="world-sub"><span class="dot" style="background:var(--accent-drift)"></span><span class="sub-name">Afterglow</span> — Melodic Chill Phonk — the comedown, dawn overlooks, warm and bittersweet</div>
-      </div>
-      <div class="world-status soon">Coming 2026</div>
-    </div>
-    <div class="world-visual anim fade-left">
-      <div class="char-frame"><img src="assets/characters/nyx_profile_web.jpg" alt="Nyx" loading="lazy"></div>
-      <div class="char-name">Nyx</div>
-      <div class="char-role">Runner of Echo Drift</div>
-      <div class="char-quote">The city sleeps, the road opens, and the engine answers. Out here at night, speed isn't escape — it's the only honest conversation I know.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CHARACTERS ===== -->
-<section id="characters">
-  <div class="container">
-    <div class="anim fade-up" style="text-align:center;margin-bottom:20px">
-      <div class="section-label">The Guides</div>
-      <h2 class="section-title">Meet the Characters</h2>
-    </div>
-    <div class="char-cards">
-      <!-- KAIA -->
-      <div class="char-card anim fade-up" data-tilt>
-        <div class="char-card-image">
-          <img src="assets/characters/kaia_profile_web.jpg" alt="Kaia" loading="lazy">
-          <span class="char-card-badge badge-horizons">Horizons</span>
-        </div>
-        <div class="char-card-content">
-          <h3>Kaia</h3>
-          <div class="char-card-title">Guide of Echo Horizons</div>
-          <p>A wanderer of about twenty with a golden compass and green-gold eyes full of quiet curiosity. Kaia travels the sunlit corners of the world — from bamboo forests to desert caravans to tropical coasts — collecting melodies that carry the warmth of distant places.</p>
-          <p>She listens before she speaks. In beautiful moments she becomes still — never performing, always present. Her body always anchors to the world around her: a hand flat on sun-warm stone, back against ancient bark, feet dangling over a cliff edge. Every beat she brings home is a postcard from a journey you can feel.</p>
-          <div class="char-tags">
-            <span>Contemplative</span><span>Sun-touched</span><span>Braided leather bracelet</span><span>Golden compass pendant</span><span>One escaped strand of hair</span>
-          </div>
-        </div>
-      </div>
-      <!-- MIRA -->
-      <div class="char-card anim fade-up" data-tilt>
-        <div class="char-card-image">
-          <img src="assets/characters/mira_profile_web.jpg" alt="Mira" loading="lazy">
-          <span class="char-card-badge badge-sleep">Sleep</span>
-        </div>
-        <div class="char-card-content">
-          <h3>Mira</h3>
-          <div class="char-card-title">Dreamweaver of Echo Sleep</div>
-          <p>A quiet soul of twenty-one who lives in the permanent space between waking and dreaming. Her very long white hair flows past her waist, framing warm greige ram horns that curve gently from her hairline — a distinctive silhouette visible even at a distance. Warm amber eyes, always half-lidded, see through veils others cannot perceive.</p>
-          <p>Mira doesn't act upon the world — the world acts softly upon her. She lets herself into scenes rather than entering them. When something beautiful happens, she becomes even more still. In her movements there is always a gentle delay, as though she drifts against a soft resistance only dreamers can feel. She walks so you can rest.</p>
-          <div class="char-tags">
-            <span>Dreaming presence</span><span>White flowing hair</span><span>Warm greige ram horns</span><span>Violet under-eye shadows</span><span>Always barefoot</span>
-          </div>
-        </div>
-      </div>
-      <!-- LILIA -->
-      <div class="char-card anim fade-up" data-tilt>
-        <div class="char-card-image">
-          <img src="assets/characters/lilia_profile_web.png" alt="Lilia" loading="lazy">
-          <span class="char-card-badge badge-garden">Garden</span>
-        </div>
-        <div class="char-card-content">
-          <h3>Lilia</h3>
-          <div class="char-card-title">Keeper of Echo Garden</div>
-          <p>A dryad in the subtlest sense — not a fantasy creature, but a young woman so deeply entwined with nature that the boundary blurs. Long wavy moss-green hair with small leaves and tiny buds caught naturally in its waves, two small organic branch antlers growing from her hairline, delicate vine markings spreading across her bare shoulders like ivy on warm stone.</p>
-          <p>Where Kaia observes and Mira drifts, Lilia discovers. She sits between roots, leans against bark, gets played with by creeping vines. The nature around her responds to her presence — shoots sprout where she sits, flowers turn toward her, moss grows around her feet. She listens, so the earth can sing.</p>
-          <div class="char-tags">
-            <span>Quietly curious</span><span>Moss-green hair</span><span>Branch antlers</span><span>Vine markings</span><span>Amber eyes like tree resin</span>
-          </div>
-        </div>
-      </div>
-      <!-- VESPER -->
-      <div class="char-card anim fade-up" data-tilt>
-        <div class="char-card-image">
-          <img src="assets/characters/vesper_profile_web.png" alt="Vesper" loading="lazy">
-          <span class="char-card-badge badge-abyss">Abyss</span>
-        </div>
-        <div class="char-card-content">
-          <h3>Vesper</h3>
-          <div class="char-card-title">Priestess of Echo Abyss</div>
-          <p>A figure wrapped in darkness and quiet grace — a choker at her throat, a vambrace etched with fading symbols on one arm, pale lavender eyes that see through shadow. Vesper walks the boundary between silence and sound, through obsidian halls where echoes never fade and ember-lit chambers where warmth is only a memory.</p>
-          <p>She listens to what the darkness has to say. Not with fear, but with the patience of someone who knows that the deepest truths live in places most people refuse to look. In the void, she finds not emptiness but resonance — frequencies that hum beneath the surface of everything.</p>
-          <div class="char-tags">
-            <span>Dark grace</span><span>Pale lavender eyes</span><span>Etched vambrace</span><span>Choker</span><span>Walks in darkness</span>
-          </div>
-        </div>
-      </div>
-      <!-- SERIN -->
-      <div class="char-card anim fade-up" data-tilt>
-        <div class="char-card-image">
-          <img src="assets/characters/serin_profile_web.png" alt="Serin" loading="lazy">
-          <span class="char-card-badge badge-circuit">Circuit</span>
-        </div>
-        <div class="char-card-content">
-          <h3>Serin</h3>
-          <div class="char-card-title">Drifter of Echo Circuit</div>
-          <p>Platinum-white hair slicked back with a thick cyan streak, round dark glasses that never come off, a white cropped jacket over monochrome streetwear. Serin looks ordinary — the neon comes from the world around her, not from within. She is the quiet pulse in a city that never stops humming.</p>
-          <p>She drifts through rain-slicked rooftops where antennas catch signals from nowhere, through backstreet code shops where screens flicker with glitch frequencies, and into deep grid corridors where forgotten networks still carry whispered transmissions. The city is electric. She just knows how to listen.</p>
-          <div class="char-tags">
-            <span>Cool-distanced</span><span>Platinum hair cyan streak</span><span>Round dark glasses</span><span>White cropped jacket</span><span>Urban streetwear</span>
-          </div>
-        </div>
-      </div>
-      <!-- NYX -->
-      <div class="char-card anim fade-up" data-tilt>
-        <div class="char-card-image">
-          <img src="assets/characters/nyx_profile_web.jpg" alt="Nyx" loading="lazy">
-          <span class="char-card-badge badge-drift">Drift</span>
-        </div>
-        <div class="char-card-content">
-          <h3>Nyx</h3>
-          <div class="char-card-title">Runner of Echo Drift</div>
-          <p>A masked drift runner who lives for the night roads. Black hood up, a diagonal half-mask glowing hot magenta over her eyes, long black hair streaked with magenta and pale silver tips. A cropped black tech jacket with gold zipper and magenta piping, fingerless gloves, and a single gold key pendant swinging from a choker — the key to an engine only she knows how to start.</p>
-          <p>Where the other guides listen, Nyx moves. She doesn't narrate the world; she cuts through it — headlights carving the dark, tail lights bleeding into the rain behind her. Composed at midnight, relentless at the redline, quiet only in the afterglow. The city is electric, and she is the current.</p>
-          <div class="char-tags">
-            <span>Kinetic &amp; nocturnal</span><span>Magenta eye-mask</span><span>Black tech jacket</span><span>Gold key pendant</span><span>Glowing magenta energy</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== GALLERY ===== -->
-<section id="gallery">
-  <div class="container">
-    <div class="anim fade-up" style="text-align:center">
-      <div class="section-label">Visual Worlds</div>
-      <h2 class="section-title">Gallery</h2>
-    </div>
-    <div class="gallery-filters anim fade-up">
-      <button class="active" data-filter="all">All</button>
-      <button data-filter="horizons">Horizons</button>
-      <button data-filter="sleep">Sleep</button>
-      <button data-filter="garden">Garden</button>
-      <button data-filter="circuit">Circuit</button>
-      <button data-filter="drift">Drift</button>
-    </div>
-    <div class="gallery-grid" id="gallery-grid">
-      <div class="gallery-item anim scale-up" data-world="horizons" data-index="0"><img src="assets/gallery/horizons_1.jpg" alt="Horizons Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-horizons)">Horizons</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="horizons" data-index="1"><img src="assets/gallery/horizons_2.jpg" alt="Horizons Scene 2" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-horizons)">Horizons</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="horizons" data-index="2"><img src="assets/gallery/horizons_3.jpg" alt="Horizons Scene 3" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-horizons)">Horizons</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="sleep" data-index="3"><img src="assets/gallery/sleep_1.jpg" alt="Sleep Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-sleep)">Sleep</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="sleep" data-index="4"><img src="assets/gallery/sleep_2.jpg" alt="Sleep Scene 2" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-sleep)">Sleep</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="sleep" data-index="5"><img src="assets/gallery/sleep_3.jpg" alt="Sleep Scene 3" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-sleep)">Sleep</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="garden" data-index="6"><img src="assets/gallery/garden_1.jpg" alt="Garden Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-garden)">Garden</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="garden" data-index="7"><img src="assets/gallery/garden_2.jpg" alt="Garden Scene 2" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-garden)">Garden</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="garden" data-index="8"><img src="assets/gallery/garden_3.jpg" alt="Garden Scene 3" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-garden)">Garden</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="circuit" data-index="9"><img src="assets/gallery/circuit_1.jpg" alt="Circuit Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-circuit)">Circuit</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="circuit" data-index="10"><img src="assets/gallery/circuit_2.jpg" alt="Circuit Scene 2" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-circuit)">Circuit</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="circuit" data-index="11"><img src="assets/gallery/circuit_3.jpg" alt="Circuit Scene 3" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-circuit)">Circuit</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="drift" data-index="12"><img src="assets/gallery/drift_1.jpg" alt="Drift Scene 1" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-drift)">Drift</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="drift" data-index="13"><img src="assets/gallery/drift_2.jpg" alt="Drift Scene 2" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-drift)">Drift</span></div></div>
-      <div class="gallery-item anim scale-up" data-world="drift" data-index="14"><img src="assets/gallery/drift_3.jpg" alt="Drift Scene 3" loading="lazy"><div class="gallery-overlay"><span style="color:var(--accent-drift)">Drift</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== LIGHTBOX ===== -->
-<div id="lightbox">
-  <button class="lb-close" aria-label="Close">&times;</button>
-  <button class="lb-arrow lb-prev" aria-label="Previous">&#8249;</button>
-  <img src="" alt="Gallery preview" id="lb-img">
-  <button class="lb-arrow lb-next" aria-label="Next">&#8250;</button>
-  <div class="lb-counter"><span id="lb-current">1</span> / <span id="lb-total">15</span></div>
-</div>
-
-<!-- ===== LISTEN ===== -->
-<section id="listen">
-  <div class="container">
-    <div class="anim fade-up">
-      <div class="section-label">Tune In</div>
-      <h2 class="section-title">Listen</h2>
-    </div>
-    <p class="listen-desc anim fade-up">Each world has its own channel. Subscribe to the frequencies that resonate with your soul.</p>
-    <div class="listen-grid">
-      <!-- Horizons — Featured -->
-      <div class="listen-card featured anim fade-up">
-        <div class="play-icon">&#9654;</div>
-        <img src="assets/logos/horizons_full.png" alt="Echo Horizons" loading="lazy">
-        <h4>Echo Horizons</h4>
-        <p>Sunlit lofi &amp; ambient</p>
-        <a href="https://www.youtube.com/@Echo_Horizons_Lofi" target="_blank" rel="noopener" class="listen-link">Watch Now</a>
-      </div>
-      <!-- Sleep -->
-      <div class="listen-card anim fade-up">
-        <img src="assets/logos/sleep_full.png" alt="Echo Sleep" loading="lazy">
-        <h4>Echo Sleep</h4>
-        <p>Ethereal dream ambient</p>
-        <a href="https://www.youtube.com/@Echo_Sleep_Ambient" target="_blank" rel="noopener" class="listen-link">Watch Now</a>
-      </div>
-      <!-- Garden -->
-      <div class="listen-card disabled anim fade-up">
-        <img src="assets/logos/garden_full.png" alt="Echo Garden" loading="lazy">
-        <h4>Echo Garden</h4>
-        <p>Organic earth ambient</p>
-        <span class="listen-link">Coming Soon</span>
-      </div>
-      <!-- Abyss -->
-      <div class="listen-card disabled anim fade-up">
-        <img src="assets/logos/abyss_full.png" alt="Echo Abyss" loading="lazy">
-        <h4>Echo Abyss</h4>
-        <p>Deep dark ambient</p>
-        <span class="listen-link">Coming Soon</span>
-      </div>
-      <!-- Circuit -->
-      <div class="listen-card disabled anim fade-up">
-        <img src="assets/logos/circuit_full.png" alt="Echo Circuit" loading="lazy">
-        <h4>Echo Circuit</h4>
-        <p>Neon lofi electronica</p>
-        <span class="listen-link">Coming Soon</span>
-      </div>
-      <!-- Drift -->
-      <div class="listen-card disabled anim fade-up">
-        <img src="assets/logos/drift_full.png" alt="Echo Drift" loading="lazy">
-        <h4>Echo Drift</h4>
-        <p>Aggressive drift phonk</p>
-        <span class="listen-link">Coming Soon</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CONTACT ===== -->
-<section id="contact">
-  <div class="container anim fade-up">
-    <div class="section-label">Get in Touch</div>
-    <h2 class="section-title">Contact</h2>
-    <a href="mailto:contact@echo-verse.world" class="contact-email">contact@echo-verse.world</a>
-    <p class="contact-sub">For collaborations, licensing, and everything in between.</p>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
+<!-- ── FOOTER ───────────────────────────────────── -->
 <footer>
-  <div class="footer-logos">
-    <img src="assets/logos/horizons_full.png" alt="Horizons" loading="lazy">
-    <img src="assets/logos/sleep_full.png" alt="Sleep" loading="lazy">
-    <img src="assets/logos/garden_full.png" alt="Garden" loading="lazy">
-    <img src="assets/logos/abyss_full.png" alt="Abyss" loading="lazy">
-    <img src="assets/logos/circuit_full.png" alt="Circuit" loading="lazy">
-    <img src="assets/logos/drift_full.png" alt="Drift" loading="lazy">
+  <div class="foot">
+    <div>
+      <div class="mono" style="margin-bottom:.9em">ECHO VERSE — ARCHIVE SYSTEM</div>
+      <div class="foot-links">
+        <a href="https://www.youtube.com/@Echo_Frequency_Synthwave" target="_blank" rel="noopener">↗ ECHO FREQUENCY — 95.3</a>
+        <a href="https://www.youtube.com/@Echo_Drift_PHONK" target="_blank" rel="noopener">↗ ECHO DRIFT — 97.1</a>
+      </div>
+    </div>
+    <div>
+      <div class="mono" style="margin-bottom:.9em">CONTACT</div>
+      <div class="foot-links"><a href="mailto:contact@echo-verse.world">contact@echo-verse.world</a></div>
+    </div>
   </div>
-  <p class="footer-copy">&copy; 2026 Echo Verse. All rights reserved.</p>
+  <div class="foot-end">© 2026 ECHO VERSE &nbsp;//&nbsp; STILL TRANSMITTING &nbsp;//&nbsp; NO CARRIER … RETRY</div>
 </footer>
 
-<!-- ===== BACK TO TOP ===== -->
-<button id="back-to-top" aria-label="Back to top">&#8593;</button>
-
 <script>
-/* ==========================================================
-   ECHO VERSE — Main Script
-   All vanilla JS, no external dependencies
-   ========================================================== */
-
-(function() {
-  'use strict';
-
-  /* ---------- HERO WAVEFORM BARS ---------- */
-  const waveformEl = document.getElementById('hero-waveform');
-  for (let i = 0; i < 30; i++) {
-    const bar = document.createElement('div');
-    bar.className = 'bar';
-    bar.style.animationDelay = (Math.random() * 1.2).toFixed(2) + 's';
-    bar.style.animationDuration = (0.8 + Math.random() * 0.8).toFixed(2) + 's';
-    waveformEl.appendChild(bar);
+/* Boot sequence typing */
+(function(){
+  var lines=[
+    "> ECHO ARCHIVE SYSTEM v9.31 — boot sequence",
+    "> scanning data ruins .......... 84,112 fragments indexed",
+    "> reconstructing memories ...... [OK]",
+    "> broadcast array .............. [OK]",
+    "> status: TRANSMITTING"
+  ];
+  var el=document.getElementById("boot");
+  if(!el)return;
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce){el.innerHTML=lines.map(function(l){return l.replace("[OK]","<span class=ok>[OK]</span>")}).join("\n");return;}
+  var li=0,ci=0,out="";
+  var cur='<span class="cursor"></span>';
+  function step(){
+    if(li>=lines.length){el.innerHTML=out.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;return;}
+    var line=lines[li];
+    ci+=1+Math.floor(Math.random()*3);
+    var partial=out+line.slice(0,ci);
+    el.innerHTML=partial.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;
+    if(ci>=line.length){out+=line+"\n";li++;ci=0;setTimeout(step,180);}
+    else setTimeout(step,18);
   }
+  step();
+})();
 
-  /* ---------- TYPED TAGLINE ---------- */
-  const typedEl = document.getElementById('typed-text');
-  const phrase = 'Where Music Paints Worlds';
-  let charIndex = 0;
-  function typeNext() {
-    if (charIndex < phrase.length) {
-      typedEl.textContent += phrase[charIndex];
-      charIndex++;
-      setTimeout(typeNext, 70 + Math.random() * 40);
-    }
-  }
-  setTimeout(typeNext, 2800); // start after preloader
-
-  /* ---------- COLOR PALETTES FOR SECTIONS ---------- */
-  const worldColors = {
-    default: { r: 220, g: 210, b: 255 },
-    horizons: { r: 212, g: 165, b: 116 },
-    sleep: { r: 127, g: 119, b: 221 },
-    garden: { r: 107, g: 158, b: 107 },
-    abyss: { r: 107, g: 63, b: 160 },
-    circuit: { r: 0, g: 201, b: 167 },
-    drift: { r: 255, g: 45, b: 155 }
-  };
-  const worldCSSColors = {
-    default: 'var(--accent-verse)',
-    horizons: 'var(--accent-horizons)',
-    sleep: 'var(--accent-sleep)',
-    garden: 'var(--accent-garden)',
-    abyss: 'var(--accent-abyss)',
-    circuit: 'var(--accent-circuit)',
-    drift: 'var(--accent-drift)'
-  };
-
-  let currentWorld = 'default';
-  let targetColor = worldColors.default;
-  let particleColor = { r: 220, g: 210, b: 255 };
-
-  /* ---------- INTERSECTION OBSERVER — WORLD DETECTION ---------- */
-  const worldSections = document.querySelectorAll('[data-world]');
-  const worldObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-        const w = entry.target.dataset.world;
-        if (w && worldColors[w]) {
-          currentWorld = w;
-          targetColor = worldColors[w];
-          // Update scroll progress & cursor glow color
-          scrollProgress.style.background = worldCSSColors[w];
-          cursorGlow.style.background = 'radial-gradient(circle, rgba(' + worldColors[w].r + ',' + worldColors[w].g + ',' + worldColors[w].b + ',0.15) 0%, transparent 70%)';
-        }
-      }
-    });
-  }, { threshold: [0.3, 0.6] });
-  worldSections.forEach(s => worldObserver.observe(s));
-
-  // Also observe hero and other sections
-  const heroSection = document.getElementById('hero');
-  const universeSection = document.getElementById('universe');
-  const nonWorldObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-        currentWorld = 'default';
-        targetColor = worldColors.default;
-        scrollProgress.style.background = worldCSSColors.default;
-        cursorGlow.style.background = 'radial-gradient(circle, rgba(192,160,255,0.15) 0%, transparent 70%)';
-      }
-    });
-  }, { threshold: [0.3] });
-  nonWorldObserver.observe(heroSection);
-  nonWorldObserver.observe(universeSection);
-
-  /* ---------- CANVAS PARTICLE SYSTEM ---------- */
-  const canvas = document.getElementById('particle-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H;
-  let mouseX = -9999, mouseY = -9999;
-  const PARTICLE_COUNT = 120;
-  const CONNECTION_DIST = 120;
-  const REPULSION_DIST = 150;
-  let particles = [];
-
-  function resizeCanvas() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-
-  // Track mouse
-  document.addEventListener('mousemove', function(e) {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  }, { passive: true });
-
-  function createParticle() {
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 1.8 + 0.5
-    };
-  }
-  for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(createParticle());
-
-  function lerpColor(a, b, t) {
-    return {
-      r: a.r + (b.r - a.r) * t,
-      g: a.g + (b.g - a.g) * t,
-      b: a.b + (b.b - a.b) * t
-    };
-  }
-
-  function animateParticles() {
-    ctx.clearRect(0, 0, W, H);
-    // Lerp particle color toward target
-    particleColor = lerpColor(particleColor, targetColor, 0.02);
-    const cr = Math.round(particleColor.r);
-    const cg = Math.round(particleColor.g);
-    const cb = Math.round(particleColor.b);
-
-    // Update & draw particles
-    for (let i = 0; i < particles.length; i++) {
-      const p = particles[i];
-      // Mouse repulsion
-      const dx = p.x - mouseX;
-      const dy = p.y - mouseY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < REPULSION_DIST && dist > 0) {
-        const force = (REPULSION_DIST - dist) / REPULSION_DIST * 0.8;
-        p.vx += (dx / dist) * force;
-        p.vy += (dy / dist) * force;
-      }
-      // Damping
-      p.vx *= 0.98;
-      p.vy *= 0.98;
-      p.x += p.vx;
-      p.y += p.vy;
-      // Wrap
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
-      // Draw
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',0.5)';
-      ctx.fill();
-    }
-
-    // Constellation lines
-    ctx.strokeStyle = 'rgba(' + cr + ',' + cg + ',' + cb + ',0.08)';
-    ctx.lineWidth = 0.5;
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = dx * dx + dy * dy;
-        if (dist < CONNECTION_DIST * CONNECTION_DIST) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-
-    requestAnimationFrame(animateParticles);
-  }
-  // Start after preloader
-  setTimeout(animateParticles, 2600);
-
-  /* ---------- SCROLL PROGRESS BAR ---------- */
-  const scrollProgress = document.getElementById('scroll-progress');
-  function updateScrollProgress() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-    scrollProgress.style.width = progress + '%';
-  }
-
-  /* ---------- CURSOR GLOW ---------- */
-  const cursorGlow = document.getElementById('cursor-glow');
-  document.addEventListener('mousemove', function(e) {
-    cursorGlow.style.transform = 'translate(' + (e.clientX - 30) + 'px,' + (e.clientY - 30) + 'px)';
-  }, { passive: true });
-
-  /* ---------- NAVIGATION ---------- */
-  const navbar = document.getElementById('navbar');
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('nav-links');
-
-  hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+/* Click-to-load YouTube players (privacy: no request until click) */
+document.querySelectorAll(".player").forEach(function(p){
+  var face=p.querySelector(".player-face");
+  if(!face)return;
+  face.addEventListener("click",function(){
+    var list=p.getAttribute("data-list");
+    var f=document.createElement("iframe");
+    f.src="https://www.youtube-nocookie.com/embed/videoseries?list="+list+"&autoplay=1";
+    f.title="ECHO transmission player";
+    f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    f.setAttribute("allowfullscreen","");
+    f.setAttribute("referrerpolicy","strict-origin-when-cross-origin");
+    p.appendChild(f);
+    face.remove();
   });
-  // Close mobile nav on link click
-  navLinks.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', function() {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
-    });
-  });
+});
 
-  // Nav scroll state + active section
-  const navLinkEls = navLinks.querySelectorAll('a');
-  const sectionMap = {
-    universe: document.getElementById('universe'),
-    worlds: document.getElementById('worlds-start'),
-    characters: document.getElementById('characters'),
-    gallery: document.getElementById('gallery'),
-    listen: document.getElementById('listen'),
-    contact: document.getElementById('contact')
-  };
-
-  function updateNav() {
-    const scrollTop = window.scrollY;
-    navbar.classList.toggle('scrolled', scrollTop > 60);
-
-    // Active section
-    let active = '';
-    const offset = window.innerHeight * 0.4;
-    for (const [key, el] of Object.entries(sectionMap)) {
-      if (el && el.offsetTop - offset <= scrollTop) active = key;
-    }
-    navLinkEls.forEach(function(link) {
-      const sec = link.dataset.section;
-      if (sec === active) {
-        link.classList.add('active');
-        // Color the active underline to match world
-        if (sec === 'worlds' && currentWorld !== 'default') {
-          link.style.setProperty('--active-color', worldCSSColors[currentWorld]);
-        }
-      } else {
-        link.classList.remove('active');
-      }
-    });
-  }
-
-  /* ---------- BACK TO TOP ---------- */
-  const backToTop = document.getElementById('back-to-top');
-  function updateBackToTop() {
-    backToTop.classList.toggle('visible', window.scrollY > window.innerHeight);
-  }
-  backToTop.addEventListener('click', function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  /* ---------- DEBOUNCED SCROLL HANDLER ---------- */
-  let scrollTicking = false;
-  window.addEventListener('scroll', function() {
-    if (!scrollTicking) {
-      requestAnimationFrame(function() {
-        updateScrollProgress();
-        updateNav();
-        updateBackToTop();
-        scrollTicking = false;
-      });
-      scrollTicking = true;
-    }
-  }, { passive: true });
-
-  /* ---------- SCROLL ANIMATIONS ---------- */
-  const animEls = document.querySelectorAll('.anim');
-  const animObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        animObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  animEls.forEach(function(el) { animObserver.observe(el); });
-
-  /* ---------- ANIMATED COUNTERS ---------- */
-  const counterSection = document.getElementById('counters');
-  let countersDone = false;
-  const counterObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !countersDone) {
-        countersDone = true;
-        const nums = counterSection.querySelectorAll('.num');
-        nums.forEach(function(numEl) {
-          const target = parseInt(numEl.dataset.target);
-          const display = numEl.dataset.display;
-          const suffix = numEl.dataset.suffix || '';
-          if (display) {
-            // Special: just show the text
-            numEl.textContent = display;
-            return;
-          }
-          let current = 0;
-          const step = Math.max(1, Math.floor(target / 60));
-          const interval = setInterval(function() {
-            current += step;
-            if (current >= target) {
-              current = target;
-              clearInterval(interval);
-            }
-            numEl.textContent = current + suffix;
-          }, 25);
-        });
-      }
-    });
-  }, { threshold: 0.5 });
-  counterObserver.observe(counterSection);
-
-  /* ---------- 3D TILT EFFECT ON CHARACTER CARDS ---------- */
-  const tiltCards = document.querySelectorAll('[data-tilt]');
-  tiltCards.forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -4;
-      const rotateY = ((x - centerX) / centerX) * 4;
-      card.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.01)';
-    }, { passive: true });
-    card.addEventListener('mouseleave', function() {
-      card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
-    });
-  });
-
-  /* ---------- GALLERY FILTER ---------- */
-  const filterBtns = document.querySelectorAll('.gallery-filters button');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  filterBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      filterBtns.forEach(function(b) { b.classList.remove('active'); });
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      galleryItems.forEach(function(item) {
-        if (filter === 'all' || item.dataset.world === filter) {
-          item.style.display = '';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  /* ---------- LIGHTBOX ---------- */
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lb-img');
-  const lbCurrent = document.getElementById('lb-current');
-  const lbTotal = document.getElementById('lb-total');
-  let lbImages = [];
-  let lbIndex = 0;
-
-  function collectVisibleImages() {
-    lbImages = [];
-    galleryItems.forEach(function(item) {
-      if (item.style.display !== 'none') {
-        lbImages.push(item.querySelector('img').src);
-      }
-    });
-    lbTotal.textContent = lbImages.length;
-  }
-
-  function openLightbox(index) {
-    collectVisibleImages();
-    lbIndex = index;
-    lbImg.src = lbImages[lbIndex];
-    lbCurrent.textContent = lbIndex + 1;
-    lightbox.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    lightbox.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function lbNav(dir) {
-    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
-    lbImg.src = lbImages[lbIndex];
-    lbCurrent.textContent = lbIndex + 1;
-  }
-
-  galleryItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-      collectVisibleImages();
-      const src = item.querySelector('img').src;
-      const idx = lbImages.indexOf(src);
-      openLightbox(idx >= 0 ? idx : 0);
-    });
-  });
-
-  lightbox.querySelector('.lb-close').addEventListener('click', closeLightbox);
-  lightbox.querySelector('.lb-prev').addEventListener('click', function() { lbNav(-1); });
-  lightbox.querySelector('.lb-next').addEventListener('click', function() { lbNav(1); });
-  document.addEventListener('keydown', function(e) {
-    if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') lbNav(-1);
-    if (e.key === 'ArrowRight') lbNav(1);
-  });
-  lightbox.addEventListener('click', function(e) {
-    if (e.target === lightbox) closeLightbox();
-  });
-
-  // Initial state
-  updateScrollProgress();
-  updateNav();
+/* Reveal on scroll */
+(function(){
+  var els=document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});
+  },{threshold:.15});
+  els.forEach(function(e){io.observe(e)});
 })();
 </script>
 </body>
