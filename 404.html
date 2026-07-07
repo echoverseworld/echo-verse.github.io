@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIGNAL LOST — ECHO VERSE</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="/assets/logos/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:#04060b;color:#8b93a8;font-family:'Share Tech Mono',ui-monospace,monospace;
+  min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:24px;overflow:hidden;position:relative;
+}
+/* Static noise */
+body::before{
+  content:"";position:fixed;inset:-50%;pointer-events:none;opacity:.06;
+  background-image:repeating-radial-gradient(circle at 17% 32%,#fff 0 .0001%,transparent 0 .8%),repeating-radial-gradient(circle at 81% 64%,#fff 0 .0001%,transparent 0 .6%);
+  background-size:11px 11px,7px 7px;
+}
+@media (prefers-reduced-motion:no-preference){
+  body::before{animation:st .18s steps(2) infinite}
+  @keyframes st{50%{transform:translate(6px,-4px)}}
+  .fq{animation:fl 4s infinite}
+  @keyframes fl{0%,100%{opacity:1}93%{opacity:1}94%{opacity:.4}96%{opacity:.9}}
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px);
+}
+.fq{font-size:clamp(3rem,12vw,6rem);color:#dfe4f0;letter-spacing:.1em}
+.lost{font-size:clamp(1rem,3vw,1.4rem);letter-spacing:.4em;color:#FF2D9B;margin-top:.6rem}
+p{margin-top:2rem;font-size:.85rem;letter-spacing:.08em;color:#565e72;max-width:34em}
+a{display:inline-block;margin-top:2.6rem;color:#22D3EE;text-decoration:none;
+  border:1px solid rgba(34,211,238,.5);padding:.9em 1.9em;border-radius:2px;
+  font-size:.8rem;letter-spacing:.2em}
+a:hover{background:rgba(34,211,238,.09);box-shadow:0 0 22px rgba(34,211,238,.25)}
+</style>
+</head>
+<body>
+<div>
+  <div class="fq">4▓4.0 FM</div>
+  <div class="lost">SIGNAL LOST</div>
+  <p>this frequency returns only static.<br>whatever was archived here has not been reconstructed. yet.</p>
+  <a href="/">↩ BACK TO THE BAND</a>
+</div>
+</body>
+</html>

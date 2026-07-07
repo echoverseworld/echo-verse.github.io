@@ -214,6 +214,33 @@ section{padding:110px 24px}
 #honest p:last-child{margin-bottom:0}
 #honest .hl{color:var(--text)}
 
+/* ── NOW TRANSMITTING Ticker ─────────────────────── */
+#ticker{
+  display:none;border-top:1px solid var(--line);background:var(--bg);
+  overflow:hidden;white-space:nowrap;padding:.85em 0;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--text-dim);
+}
+#ticker.on{display:block}
+#ticker .tk{display:inline-block;padding-right:4em}
+#ticker .cy{color:var(--cyan)}
+#ticker .mg{color:var(--magenta)}
+@media (prefers-reduced-motion:no-preference){
+  #ticker .rail{display:inline-block;animation:tick 38s linear infinite}
+  @keyframes tick{to{transform:translateX(-50%)}}
+}
+@media (prefers-reduced-motion:reduce){
+  #ticker{text-overflow:ellipsis}
+}
+
+/* ── Dead-frequency easter egg ───────────────────── */
+.station.dead{pointer-events:auto;cursor:crosshair}
+.station.dead:hover .fq{text-shadow:0 0 10px rgba(139,147,168,.6)}
+#deadMsg{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-align:center;
+  color:var(--magenta);min-height:1.4em;margin-top:.8rem;opacity:0;transition:opacity .4s;
+}
+#deadMsg.show{opacity:.85}
+
 /* ── Footer ──────────────────────────────────────── */
 footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--bg-raise)}
 .foot{max-width:1060px;margin:0 auto;display:flex;flex-wrap:wrap;gap:2.4rem;justify-content:space-between;align-items:flex-start}
@@ -274,6 +301,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <span class="station dead" style="left:91%" role="listitem"><span class="needle"></span><span class="fq">106.5</span><span class="nm">SIGNAL LOST</span></span>
     </div></div>
     <p class="tuner-note">// four frequencies remain dark. the archive is deep. — more signals will wake.</p>
+    <p id="deadMsg" aria-live="polite"></p>
   </div>
 </section>
 
@@ -375,6 +403,9 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   </div>
 </section>
 
+<!-- ── NOW TRANSMITTING ─────────────────────────── -->
+<div id="ticker" aria-hidden="true"><span class="rail"></span></div>
+
 <!-- ── FOOTER ───────────────────────────────────── -->
 <footer>
   <div class="foot">
@@ -394,25 +425,36 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
 </footer>
 
 <script>
-/* Boot sequence typing */
+/* Boot sequence typing — Zeilen randomisiert, jeder Besuch bootet anders */
 (function(){
-  var lines=[
-    "> ECHO ARCHIVE SYSTEM v9.31 — boot sequence",
-    "> scanning data ruins .......... 84,112 fragments indexed",
+  function ri(a,b){return a+Math.floor(Math.random()*(b-a+1));}
+  var pool=[
+    "> scanning data ruins .......... "+ri(60,99)+","+String(ri(100,999))+" fragments indexed",
+    "> memory integrity ............. "+ri(38,71)+"% — acceptable",
+    "> recovering fragment 0x"+ri(256,4095).toString(16).toUpperCase()+" ..... [OK]",
     "> reconstructing memories ...... [OK]",
     "> broadcast array .............. [OK]",
-    "> status: TRANSMITTING"
+    "> antenna alignment ............ [OK]",
+    "> listener detection ........... none. transmitting anyway"
   ];
+  pool.sort(function(){return Math.random()-.5});
+  var lines=["> ECHO ARCHIVE SYSTEM v9.31 — boot sequence"]
+    .concat(pool.slice(0,3))
+    .concat(["> status: TRANSMITTING"]);
   var el=document.getElementById("boot");
   if(!el)return;
   var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(reduce){el.innerHTML=lines.map(function(l){return l.replace("[OK]","<span class=ok>[OK]</span>")}).join("\n");return;}
   var li=0,ci=0,out="";
   var cur='<span class="cursor"></span>';
+  var last=Date.now();
   function step(){
     if(li>=lines.length){el.innerHTML=out.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;return;}
     var line=lines[li];
-    ci+=1+Math.floor(Math.random()*3);
+    /* zeitbasiert: kompensiert Timer-Throttling in Hintergrund-Tabs */
+    var now=Date.now();
+    ci+=Math.max(1,Math.round((now-last)/9));
+    last=now;
     var partial=out+line.slice(0,ci);
     el.innerHTML=partial.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;
     if(ci>=line.length){out+=line+"\n";li++;ci=0;setTimeout(step,180);}
@@ -451,6 +493,41 @@ document.querySelectorAll(".player").forEach(function(p){
     });
   });
 });
+
+/* NOW TRANSMITTING ticker — Titel aus latest.json (gleiche Quelle wie Player) */
+latestSignal.then(function(l){
+  if(!l||(!l.frequency_title&&!l.drift_title))return;
+  var parts=[];
+  if(l.frequency_title)parts.push('<span class="cy">◉ 95.3</span> '+l.frequency_title);
+  if(l.drift_title)parts.push('<span class="mg">◉ 97.1</span> '+l.drift_title);
+  var tk='<span class="tk">NOW TRANSMITTING — '+parts.join(' &nbsp;·&nbsp; ')+'</span>';
+  var t=document.getElementById("ticker");
+  /* Rail doppelt befuellen fuer nahtlosen Loop (translateX(-50%)) */
+  t.querySelector(".rail").innerHTML=tk+tk;
+  t.classList.add("on");
+});
+
+/* Dead-frequency easter egg */
+(function(){
+  var lines=[
+    "…fragment corrupted. reconstruction impossible. for now.",
+    "…static. but something moved in the noise.",
+    "…this frequency remembers being alive.",
+    "…signal lost in 20▓▓. recovery queued.",
+    "…nothing here. and yet you keep tuning.",
+    "…archive sector sealed. clearance: ECHO only."
+  ];
+  var el=document.getElementById("deadMsg");
+  var hideTimer=null;
+  document.querySelectorAll(".station.dead").forEach(function(s){
+    s.addEventListener("click",function(){
+      el.textContent="["+s.querySelector(".fq").textContent+" FM] "+lines[Math.floor(Math.random()*lines.length)];
+      el.classList.add("show");
+      clearTimeout(hideTimer);
+      hideTimer=setTimeout(function(){el.classList.remove("show")},6000);
+    });
+  });
+})();
 
 /* Reveal on scroll */
 (function(){
