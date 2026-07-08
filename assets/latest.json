@@ -1,19 +1,27 @@
 {
-  "frequency": "Q1p_2CgB2pw",
-  "frequency_title": "ECHO 95.3 — MEMORY OF RAIN // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "cPAdv6N7InU",
+  "frequency_title": "ECHO 88.8 — PULSE BENEATH THE STATIC // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "cPAdv6N7InU",
+      "title": "ECHO 88.8 — PULSE BENEATH THE STATIC // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "Q1p_2CgB2pw",
       "title": "ECHO 95.3 — MEMORY OF RAIN // Retrowave, Synthwave, Cyberpunk Mix"
     }
   ],
-  "drift": "BZsUmEgARPA",
-  "drift_title": "ECHO 97.1 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "7Qc6RxdPSgw",
+  "drift_title": "ECHO 104.2 — DRIFT OR DIE // Drift Phonk, Night Drive Mix",
   "recent_drift": [
+    {
+      "id": "7Qc6RxdPSgw",
+      "title": "ECHO 104.2 — DRIFT OR DIE // Drift Phonk, Night Drive Mix"
+    },
     {
       "id": "BZsUmEgARPA",
       "title": "ECHO 97.1 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "updated": "2026-07-08T14:43:49Z"
+  "updated": "2026-07-08T19:58:21Z"
 }
