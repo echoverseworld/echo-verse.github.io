@@ -1,7 +1,11 @@
 {
-  "frequency": "PddSos-xkIM",
-  "frequency_title": "ECHO 102.2 — THE NIGHT REMEMBERS // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "k6l0Fgm2Gms",
+  "frequency_title": "ECHO 107.8 — CHROME HEARTS // Synthwave, Dreamwave, Chillwave Mix",
   "recent_frequency": [
+    {
+      "id": "k6l0Fgm2Gms",
+      "title": "ECHO 107.8 — CHROME HEARTS // Synthwave, Dreamwave, Chillwave Mix"
+    },
     {
       "id": "PddSos-xkIM",
       "title": "ECHO 102.2 — THE NIGHT REMEMBERS // Retrowave, Synthwave, Cyberpunk Mix"
@@ -15,9 +19,13 @@
       "title": "ECHO 95.3 — MEMORY OF RAIN // Retrowave, Synthwave, Cyberpunk Mix"
     }
   ],
-  "drift": "p_Ji0E1jvzw",
-  "drift_title": "ECHO 101.9 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "b9t_kL7NJYg",
+  "drift_title": "ECHO 105.4 — MIDNIGHT GRIND // Drift Phonk, Night Drive Mix",
   "recent_drift": [
+    {
+      "id": "b9t_kL7NJYg",
+      "title": "ECHO 105.4 — MIDNIGHT GRIND // Drift Phonk, Night Drive Mix"
+    },
     {
       "id": "p_Ji0E1jvzw",
       "title": "ECHO 101.9 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix"
@@ -31,5 +39,5 @@
       "title": "ECHO 97.1 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "updated": "2026-07-13T09:50:17Z"
+  "updated": "2026-07-13T15:15:33Z"
 }
