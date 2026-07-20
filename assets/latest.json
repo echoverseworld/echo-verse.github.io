@@ -1,7 +1,11 @@
 {
-  "frequency": "aC0Xy5KNCDE",
-  "frequency_title": "ECHO 91.5 — THE NIGHT REMEMBERS // Synthwave, Retrowave, Chillwave Mix",
+  "frequency": "UZ0p9J75cME",
+  "frequency_title": "ECHO 95.4 — AFTER THE SILENCE // Darksynth, Cyberpunk, Outrun Mix",
   "recent_frequency": [
+    {
+      "id": "UZ0p9J75cME",
+      "title": "ECHO 95.4 — AFTER THE SILENCE // Darksynth, Cyberpunk, Outrun Mix"
+    },
     {
       "id": "aC0Xy5KNCDE",
       "title": "ECHO 91.5 — THE NIGHT REMEMBERS // Synthwave, Retrowave, Chillwave Mix"
@@ -15,9 +19,13 @@
       "title": "ECHO 102.2 — THE NIGHT REMEMBERS // Retrowave, Synthwave, Cyberpunk Mix"
     }
   ],
-  "drift": "Soh778grCkA",
-  "drift_title": "ECHO 94.7 — 808 EXORCISM // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "PCjaMcVTQcs",
+  "drift_title": "ECHO 106.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "PCjaMcVTQcs",
+      "title": "ECHO 106.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "Soh778grCkA",
       "title": "ECHO 94.7 — 808 EXORCISM // Aggressive Phonk, Gym Phonk Mix"
@@ -29,11 +37,7 @@
     {
       "id": "b9t_kL7NJYg",
       "title": "ECHO 105.4 — MIDNIGHT GRIND // Drift Phonk, Night Drive Mix"
-    },
-    {
-      "id": "p_Ji0E1jvzw",
-      "title": "ECHO 101.9 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "updated": "2026-07-20T14:35:28Z"
+  "updated": "2026-07-20T19:59:49Z"
 }
