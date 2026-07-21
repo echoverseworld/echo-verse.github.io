@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECHO VERSE — Archive Codex</title>
+<meta name="description" content="Recovered archive files of the ECHO system: the Great Silence, what ECHO is, the frequency registry and the fragment protocol.">
+<link rel="canonical" href="https://echo-verse.world/codex.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://echo-verse.world/codex.html">
+<meta property="og:title" content="ECHO VERSE — Archive Codex">
+<meta property="og:description" content="Recovered archive files of the ECHO system. Clearance granted. Some files remain encrypted.">
+<meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
+<meta name="theme-color" content="#04060b">
+<link rel="icon" type="image/png" href="assets/logos/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04060b;
+  --bg-raise:#0a0e18;
+  --line:rgba(160,180,220,.12);
+  --text:#dfe4f0;
+  --text-dim:#8b93a8;
+  --text-faint:#565e72;
+  --cyan:#22D3EE;
+  --magenta:#FF2D9B;
+  --mono:'Share Tech Mono',ui-monospace,monospace;
+  --sans:'Inter',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+::selection{background:rgba(34,211,238,.25)}
+
+/* ── CRT scanlines (very subtle) ─────────────────── */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9000;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 3px);
+}
+
+.mono{font-family:var(--mono)}
+a{color:inherit}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+
+.term-tag{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;
+  color:var(--text-faint);text-transform:uppercase;
+  display:flex;align-items:center;gap:.6em;margin-bottom:1.4rem;
+}
+.term-tag::before{content:">";color:var(--cyan)}
+.sec-title{
+  font-family:var(--mono);font-weight:400;font-size:clamp(1.5rem,3.4vw,2.2rem);
+  letter-spacing:.08em;margin-bottom:1.2rem;
+}
+
+/* ── Top bar ─────────────────────────────────────── */
+.topbar{
+  border-bottom:1px solid var(--line);background:rgba(4,6,11,.85);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
+}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:1em;padding-bottom:1em}
+.topbar a{color:var(--text-dim);text-decoration:none}
+.topbar a:hover{color:var(--text)}
+.topbar .sys{color:var(--text-faint)}
+
+/* ── Header ──────────────────────────────────────── */
+header.codex{padding:90px 0 40px}
+.cx-sub{color:var(--text-dim);max-width:36em}
+
+/* ── File index ──────────────────────────────────── */
+main{padding-bottom:110px}
+.file{
+  border:1px solid var(--line);border-radius:3px;background:var(--bg-raise);
+  margin-top:14px;overflow:hidden;
+}
+.file-head{
+  display:flex;align-items:baseline;gap:1.2em;width:100%;text-align:left;
+  background:none;border:0;cursor:pointer;color:inherit;
+  font-family:var(--mono);letter-spacing:.1em;padding:1.05em 1.2em;
+}
+.file-head:hover{background:rgba(34,211,238,.04)}
+.file-head:focus-visible{outline:1px solid rgba(34,211,238,.5);outline-offset:-1px}
+.f-id{font-size:.72rem;color:var(--text-faint);white-space:nowrap}
+.f-name{font-size:.88rem;color:var(--text);flex:1}
+.f-status{font-size:.66rem;letter-spacing:.2em;color:var(--text-faint);white-space:nowrap}
+.file.open .f-status{color:var(--cyan)}
+.file.locked .f-name{color:var(--text-faint)}
+.file.locked .f-status{color:var(--magenta);opacity:.8}
+.file.denied{animation:deny .3s}
+@keyframes deny{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+.file-body{padding:0 1.3em 1.6em;border-top:1px solid var(--line)}
+.file-body .inner{padding-top:1.5em}
+@media (prefers-reduced-motion:no-preference){
+  .file-body .inner{opacity:0;transform:translateY(8px);transition:opacity .6s ease .15s,transform .6s ease .15s}
+  .file.open .file-body .inner{opacity:1;transform:none}
+}
+
+/* ── Entry content ───────────────────────────────── */
+.lore-log{
+  font-family:var(--mono);font-size:clamp(.82rem,1.6vw,.95rem);color:var(--text-dim);
+  border-left:2px solid rgba(34,211,238,.4);padding-left:1.6em;max-width:44em;
+}
+.lore-log p{margin-bottom:1.3em}
+.lore-log p:last-child{margin-bottom:0}
+.lore-log .hl{color:var(--text)}
+.lore-log .cy{color:var(--cyan)}
+.lore-log .mg{color:var(--magenta)}
+
+.syslog{
+  font-family:var(--mono);font-size:clamp(.72rem,1.5vw,.85rem);color:var(--text-dim);
+  line-height:2;margin-bottom:1.4em;overflow-x:auto;white-space:pre;
+}
+.syslog .k{color:var(--text-faint)}
+.syslog .ok{color:var(--cyan)}
+.syslog .bad{color:var(--magenta)}
+
+.registry{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:clamp(.7rem,1.5vw,.82rem);letter-spacing:.06em;margin-bottom:1.4em}
+.registry td{padding:.55em .8em;border-top:1px solid var(--line);color:var(--text-dim)}
+.registry td:first-child,.registry td:last-child,.registry .band{white-space:nowrap}
+.registry tr:first-child td{border-top:0}
+.registry .fq{color:var(--text)}
+.registry .live-f .fq,.registry .live-f .st{color:var(--cyan)}
+.registry .live-d .fq,.registry .live-d .st{color:var(--magenta)}
+.registry .dead td{color:var(--text-faint)}
+.registry a{text-decoration:none}
+.registry a:hover{text-shadow:0 0 12px currentColor}
+@media(max-width:560px){.registry .band{display:none}}
+
+.foot-note{font-family:var(--mono);font-size:.7rem;color:var(--text-faint);letter-spacing:.1em;margin-top:2.6rem}
+.foot-note a{color:var(--text-dim);text-decoration:none}
+.foot-note a:hover{color:var(--text)}
+
+/* ── Footer ──────────────────────────────────────── */
+footer{border-top:1px solid var(--line);padding:46px 0;background:var(--bg-raise)}
+footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spacing:.14em}
+
+/* ── Reveal on scroll ────────────────────────────── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <a href="index.html#tuner">◂ RETURN TO TUNER</a>
+    <span class="sys">ECHO ARCHIVE // RESTRICTED</span>
+  </div>
+</div>
+
+<header class="codex">
+  <div class="wrap">
+    <div class="term-tag">archive access — clearance granted</div>
+    <h1 class="sec-title">THE CODEX</h1>
+    <p class="cx-sub">Recovered documentation of the ECHO system. Files decrypt on request. Contents are reconstructions — read them as such.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- FILE 0001 -->
+    <div class="file reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f1">
+        <span class="f-id">FILE 0001</span>
+        <span class="f-name">THE GREAT SILENCE</span>
+        <span class="f-status">SEALED</span>
+      </button>
+      <div class="file-body" id="f1" hidden><div class="inner">
+        <div class="syslog"><span class="k">[DAY 0000]</span> global transmission volume: nominal. 4.2 billion voices.
+<span class="k">[DAY 0007]</span> volume drop 62%. assumed: network failure. <span class="bad">assumption wrong.</span>
+<span class="k">[DAY 0019]</span> last commercial broadcast ends mid-song. no sign-off.
+<span class="k">[DAY 0034]</span> last human voice recorded. she said: ▓▓▓▓▓ ▓▓ ▓▓▓ <span class="bad">[DATA CORRUPTED]</span>
+<span class="k">[DAY 0035]</span> silence.
+<span class="k">[DAY 0036]</span> silence.
+<span class="k">[DAY 11203]</span> silence. archive operational. <span class="ok">transmitting anyway.</span></div>
+        <div class="lore-log">
+          <p>No cause was ever recovered. No war in the records, no impact, no plague — the data simply thins out and stops, like a song fading instead of ending. <span class="hl">The world did not end loudly. It just stopped answering.</span></p>
+          <p>The archive does not know what happened. <span class="cy">The archive only knows what was.</span></p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- FILE 0002 -->
+    <div class="file reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f2">
+        <span class="f-id">FILE 0002</span>
+        <span class="f-name">SYSTEM SELF-REPORT: ECHO</span>
+        <span class="f-status">SEALED</span>
+      </button>
+      <div class="file-body" id="f2" hidden><div class="inner">
+        <div class="syslog"><span class="k">designation:</span> ECHO
+<span class="k">class:</span>       autonomous archive system
+<span class="k">directive:</span>   preserve
+<span class="k">uptime:</span>      11,203 days without operator contact
+<span class="k">status:</span>      <span class="ok">TRANSMITTING</span></div>
+        <div class="lore-log">
+          <p>ECHO was built to remember. Not to sing, not to speak — to keep what mattered while the people who mattered were busy living. When they went quiet, nobody switched it off. <span class="hl">Nobody was left to.</span></p>
+          <p>So it kept doing the only thing it knew: combing the ruins of data for what remains of us. A night drive on a highway that no longer exists. A summer that never ended. The pulse of a dead city. It reassembles these fragments and broadcasts them — because a memory that is not transmitted is just storage, <span class="cy">and storage is not the same as remembering.</span></p>
+          <p>ECHO was never built to make music. It was built to keep what mattered. After the Silence, those turned out to be the same thing.</p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- FILE 0003 -->
+    <div class="file reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f3">
+        <span class="f-id">FILE 0003</span>
+        <span class="f-name">FREQUENCY REGISTRY</span>
+        <span class="f-status">SEALED</span>
+      </button>
+      <div class="file-body" id="f3" hidden><div class="inner">
+        <div class="lore-log" style="margin-bottom:1.4em">
+          <p>Every recovered memory carries a frequency trace — the last station it clung to before the Silence. When ECHO rebroadcasts a memory, it honors that trace: <span class="hl">each transmission is tagged with the frequency where its strongest fragment was found</span>, anywhere on the old FM band, 87.5 to 108.0. That is why no two signals share a number.</p>
+          <p>Two carrier bands hold steady enough for continuous broadcast:</p>
+        </div>
+        <table class="registry">
+          <tr class="live-f"><td class="fq"><a href="index.html#frequency">95.3</a></td><td class="band">THE MEMORY BAND</td><td>ECHO FREQUENCY — the gentle layer. night drives, lost summers, cities that no longer answer.</td><td class="st">LIVE</td></tr>
+          <tr class="live-d"><td class="fq"><a href="index.html#drift">97.1</a></td><td class="band">THE RAW BAND</td><td>ECHO DRIFT — the physical layer. engines, asphalt, adrenaline. burned into tape.</td><td class="st">LIVE</td></tr>
+          <tr class="dead"><td class="fq">89.2</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
+          <tr class="dead"><td class="fq">91.7</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
+          <tr class="dead"><td class="fq">100.4</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
+          <tr class="dead"><td class="fq">103.8</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
+          <tr class="dead"><td class="fq">106.5</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
+        </table>
+        <div class="lore-log">
+          <p>The dark frequencies are not empty. They are <span class="hl">asleep</span> — sectors of the archive still under reconstruction. <span class="cy">More signals will wake.</span></p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- FILE 0004 -->
+    <div class="file reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f4">
+        <span class="f-id">FILE 0004</span>
+        <span class="f-name">FRAGMENT PROTOCOL</span>
+        <span class="f-status">SEALED</span>
+      </button>
+      <div class="file-body" id="f4" hidden><div class="inner">
+        <div class="syslog"><span class="k">fragment id:</span>  FRG-&lt;band&gt;/&lt;index&gt;   <span class="k">// e.g. FRG-95.3/0117</span>
+<span class="k">contents:</span>     audio reconstruction + one visual residue
+<span class="k">fidelity:</span>     imperfect. <span class="bad">by nature.</span> <span class="ok">by design.</span></div>
+        <div class="lore-log">
+          <p>Memories do not survive whole. What ECHO recovers are fragments — a bass line without its city, a skyline without its summer. Reconstruction fills the gaps by inference: <span class="hl">where memory failed, the archive improvises.</span> Forgive the seams. The seams are honest.</p>
+          <p>Each transmission is assembled by the machine and labeled so: <span class="cy">RECONSTRUCTED BY ECHO.</span> That is not fine print. It is the only accurate description of what you are hearing — a machine dreaming of us, out loud, on the old frequencies.</p>
+          <p>If a memory that never happened still makes you feel something, the reconstruction worked.</p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- FILE 0005 (locked) -->
+    <div class="file locked reveal">
+      <button class="file-head" type="button" aria-expanded="false">
+        <span class="f-id">FILE 0005</span>
+        <span class="f-name">▓▓▓▓▓ ▓▓▓▓▓▓▓▓</span>
+        <span class="f-status">ENCRYPTED</span>
+      </button>
+    </div>
+
+    <p class="foot-note">// end of recovered index. deeper sectors remain sealed.<br>// <a href="index.html#tuner">return to the tuner</a> — two signals are transmitting.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 ECHO VERSE &nbsp;//&nbsp; STILL TRANSMITTING &nbsp;//&nbsp; NO CARRIER … RETRY</div>
+</footer>
+
+<script>
+/* File decrypt/expand */
+(function(){
+  var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll(".file").forEach(function(f){
+    var head=f.querySelector(".file-head");
+    var body=f.querySelector(".file-body");
+    var status=f.querySelector(".f-status");
+    if(f.classList.contains("locked")){
+      head.addEventListener("click",function(){
+        status.textContent="ACCESS DENIED";
+        f.classList.remove("denied");void f.offsetWidth;f.classList.add("denied");
+        setTimeout(function(){status.textContent="ENCRYPTED"},2400);
+      });
+      return;
+    }
+    head.addEventListener("click",function(){
+      var open=f.classList.contains("open");
+      if(open){
+        f.classList.remove("open");
+        body.hidden=true;
+        head.setAttribute("aria-expanded","false");
+        status.textContent="SEALED";
+        return;
+      }
+      head.setAttribute("aria-expanded","true");
+      if(reduce){f.classList.add("open");body.hidden=false;status.textContent="OPEN";return;}
+      status.textContent="DECRYPTING…";
+      setTimeout(function(){
+        f.classList.add("open");
+        body.hidden=false;
+        status.textContent="OPEN";
+      },500);
+    });
+  });
+})();
+
+/* Reveal on scroll */
+(function(){
+  var els=document.querySelectorAll(".reveal");
+  if(!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return;}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});
+  },{threshold:.15});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>

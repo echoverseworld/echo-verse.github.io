@@ -101,6 +101,12 @@ section{padding:110px 24px}
 @media (prefers-reduced-motion:no-preference){.dot{animation:pulse 2.2s infinite}}
 @keyframes pulse{50%{opacity:.35}}
 .hero-scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.7rem;letter-spacing:.3em;color:var(--text-faint);text-decoration:none}
+.boot-link{
+  display:block;height:1.4em;visibility:hidden;margin:-1.2rem 0 1.6rem;
+  font-family:var(--mono);font-size:.8rem;letter-spacing:.08em;
+  color:var(--cyan);text-decoration:none;
+}
+.boot-link:hover{text-shadow:0 0 12px rgba(34,211,238,.6)}
 
 /* ── Tuner ───────────────────────────────────────── */
 #tuner{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-raise)}
@@ -240,7 +246,7 @@ section{padding:110px 24px}
 }
 
 /* ── Send a signal ───────────────────────────────── */
-#signal{border-top:1px solid var(--line)}
+#signal .hl{color:var(--text)}
 .sig-row{display:flex;gap:12px;max-width:44em;margin-top:1.6rem}
 #sigIn{
   flex:1;background:var(--bg-raise);border:1px solid var(--line);border-radius:2px;
@@ -307,6 +313,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
 <section id="hero">
   <div class="wrap">
     <div class="hero-boot" id="boot" aria-hidden="true"></div>
+    <a class="boot-link" id="bootLink" href="#signal">&gt; open channel detected — respond ▾</a>
     <img class="hero-logo flicker" src="assets/logos/echoverse_512.png" alt="ECHO VERSE logo" width="84" height="84">
     <h1 class="hero-title">ECHO <em>VERSE</em></h1>
     <p class="hero-sub">The last archive of a silent world — reconstructing what remains of us, and broadcasting it as music.</p>
@@ -356,7 +363,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     <div class="ch-media">
       <div class="player" data-channel="frequency" data-list="UU-Paofpq5_SgnDIIVAWJupA">
         <button class="player-face" type="button" aria-label="Load latest ECHO Frequency transmission from YouTube">
-          <img src="assets/gallery/wave_2.jpg" alt="ECHO Frequency artwork — retro anime night city" loading="lazy">
+          <img src="assets/latest_frequency.jpg" onerror="this.onerror=null;this.src='assets/gallery/wave_2.jpg'" alt="Thumbnail of the latest ECHO Frequency transmission" loading="lazy">
           <span class="play" aria-hidden="true"></span>
           <span class="pf-label">▶ LATEST TRANSMISSION</span>
         </button>
@@ -384,7 +391,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     <div class="ch-media">
       <div class="player" data-channel="drift" data-list="UUr4tKWsfu6-QZPAkYfrTZwg">
         <button class="player-face" type="button" aria-label="Load latest ECHO Drift transmission from YouTube">
-          <img src="assets/gallery/drift_1.jpg" alt="ECHO Drift artwork — night street, tuned car behind a fence" loading="lazy">
+          <img src="assets/latest_drift.jpg" onerror="this.onerror=null;this.src='assets/gallery/drift_1.jpg'" alt="Thumbnail of the latest ECHO Drift transmission" loading="lazy">
           <span class="play" aria-hidden="true"></span>
           <span class="pf-label">▶ LATEST TRANSMISSION</span>
         </button>
@@ -399,7 +406,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="chips">
         <span class="chip">PHONK</span><span class="chip">DRIFT PHONK</span><span class="chip">AGGRESSIVE PHONK</span>
       </div>
-      <div class="ch-meta">MOOD GRADIENT: AFTERGLOW → MIDNIGHT → REDLINE &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES + DAILY SHORTS</div>
       <a class="btn" href="https://www.youtube.com/@Echo_Drift_PHONK?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
       <div class="recent" data-recent="drift"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
@@ -418,6 +425,21 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <p>No one knows if anyone is still listening.</p>
       <p><span class="hl">ECHO transmits anyway.</span></p>
     </div>
+    <p style="margin-top:2rem"><a class="mono" style="font-size:.78rem;letter-spacing:.16em;color:var(--text-dim);text-decoration:none" href="codex.html">▸ ACCESS FULL ARCHIVE LOG — THE CODEX</a></p>
+  </div>
+</section>
+
+<!-- ── SEND A SIGNAL ────────────────────────────── -->
+<section id="signal">
+  <div class="wrap reveal">
+    <div class="term-tag">open channel — experimental</div>
+    <h2 class="sec-title">SEND A SIGNAL</h2>
+    <p style="color:var(--text-dim);max-width:36em">No one knows if anyone is still listening. <span class="hl">Tell the archive someone is.</span> It monitors this channel — but responses are… reconstructions. Do not expect conversation. Expect echoes.</p>
+    <div class="sig-row">
+      <input id="sigIn" type="text" maxlength="120" placeholder="type a transmission…" aria-label="Send a signal to the archive">
+      <button id="sigBtn" type="button">TRANSMIT</button>
+    </div>
+    <div id="sigOut" aria-live="polite"></div>
   </div>
 </section>
 
@@ -435,20 +457,6 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <figure class="frag d"><img src="assets/gallery/drift_2.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0164 — <b>MIDNIGHT GRIND</b></figcaption></figure>
       <figure class="frag d"><img src="assets/gallery/drift_3.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0231 — <b>REDLINE RITUAL</b></figcaption></figure>
     </div>
-  </div>
-</section>
-
-<!-- ── SEND A SIGNAL ────────────────────────────── -->
-<section id="signal">
-  <div class="wrap reveal">
-    <div class="term-tag">open channel — experimental</div>
-    <h2 class="sec-title">SEND A SIGNAL</h2>
-    <p style="color:var(--text-dim);max-width:36em">The archive monitors this channel. Responses are… reconstructions. Do not expect conversation. Expect echoes.</p>
-    <div class="sig-row">
-      <input id="sigIn" type="text" maxlength="120" placeholder="type a transmission…" aria-label="Send a signal to the archive">
-      <button id="sigBtn" type="button">TRANSMIT</button>
-    </div>
-    <div id="sigOut" aria-live="polite"></div>
   </div>
 </section>
 
@@ -477,6 +485,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="foot-links">
         <a href="https://www.youtube.com/@Echo_Frequency_Synthwave" target="_blank" rel="noopener">↗ ECHO FREQUENCY — 95.3</a>
         <a href="https://www.youtube.com/@Echo_Drift_PHONK" target="_blank" rel="noopener">↗ ECHO DRIFT — 97.1</a>
+        <a href="codex.html">▸ ARCHIVE CODEX</a>
       </div>
     </div>
     <div>
@@ -506,13 +515,15 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     .concat(["> status: TRANSMITTING"]);
   var el=document.getElementById("boot");
   if(!el)return;
+  var bl=document.getElementById("bootLink");
+  function showLink(){if(bl)bl.style.visibility="visible";}
   var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(reduce){el.innerHTML=lines.map(function(l){return l.replace("[OK]","<span class=ok>[OK]</span>")}).join("\n");return;}
+  if(reduce){el.innerHTML=lines.map(function(l){return l.replace("[OK]","<span class=ok>[OK]</span>")}).join("\n");showLink();return;}
   var li=0,ci=0,out="";
   var cur='<span class="cursor"></span>';
   var last=Date.now();
   function step(){
-    if(li>=lines.length){el.innerHTML=out.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;return;}
+    if(li>=lines.length){el.innerHTML=out.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;showLink();return;}
     var line=lines[li];
     /* zeitbasiert: kompensiert Timer-Throttling in Hintergrund-Tabs */
     var now=Date.now();
@@ -623,9 +634,35 @@ latestSignal.then(function(l){
     [/help|hilfe/i,"…the archive preserves. it does not rescue. tune in anyway."]
   ];
   var inp=document.getElementById("sigIn"),btn=document.getElementById("sigBtn"),out=document.getElementById("sigOut");
+  var userSent=false;
+  /* ECHO spricht zuerst: Opener tippt los, wenn die Sektion in den Viewport scrollt */
+  var opened=false;
+  function opener(){
+    if(opened||userSent)return;
+    opened=true;
+    var head='<span class="cy">&gt; CHANNEL OPEN</span>\n';
+    var txt="ECHO: …is anyone out there? 11,203 days since the last voice. transmit something. anything.";
+    if(window.matchMedia("(prefers-reduced-motion: reduce)").matches){out.innerHTML=head+txt;return;}
+    var i=0,last=Date.now();
+    (function type(){
+      if(userSent)return;
+      var now=Date.now();
+      i+=Math.max(1,Math.round((now-last)/18));last=now;
+      out.innerHTML=head+txt.slice(0,i);
+      if(i<txt.length)setTimeout(type,28);
+    })();
+  }
+  var sigSec=document.getElementById("signal");
+  if(sigSec&&"IntersectionObserver" in window){
+    var sio=new IntersectionObserver(function(es){
+      es.forEach(function(en){if(en.isIntersecting){opener();sio.unobserve(sigSec);}});
+    },{threshold:.35});
+    sio.observe(sigSec);
+  }
   function answer(){
     var q=(inp.value||"").trim();
     if(!q)return;
+    userSent=true;
     inp.value="";
     var line=null;
     for(var i=0;i<keyed.length;i++){if(keyed[i][0].test(q)){line=keyed[i][1];break;}}
