@@ -1,7 +1,11 @@
 {
-  "frequency": "UZ0p9J75cME",
-  "frequency_title": "ECHO 95.4 — AFTER THE SILENCE // Darksynth, Cyberpunk, Outrun Mix",
+  "frequency": "0MwL5XmwkQw",
+  "frequency_title": "ECHO 101.8 — ANALOG HEART // Synthwave, Retrowave, Chillwave Mix",
   "recent_frequency": [
+    {
+      "id": "0MwL5XmwkQw",
+      "title": "ECHO 101.8 — ANALOG HEART // Synthwave, Retrowave, Chillwave Mix"
+    },
     {
       "id": "UZ0p9J75cME",
       "title": "ECHO 95.4 — AFTER THE SILENCE // Darksynth, Cyberpunk, Outrun Mix"
@@ -15,9 +19,13 @@
       "title": "ECHO 107.8 — CHROME HEARTS // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "PCjaMcVTQcs",
-  "drift_title": "ECHO 106.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "IEXJAVv1ZKc",
+  "drift_title": "ECHO 95.0 — BLACKTOP REQUIEM // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "IEXJAVv1ZKc",
+      "title": "ECHO 95.0 — BLACKTOP REQUIEM // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "PCjaMcVTQcs",
       "title": "ECHO 106.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix"
@@ -29,11 +37,7 @@
     {
       "id": "8STn3aY6UVU",
       "title": "ECHO 101.9 — SMOKE SIGNAL // Aggressive Phonk, Gym Phonk Mix"
-    },
-    {
-      "id": "b9t_kL7NJYg",
-      "title": "ECHO 105.4 — MIDNIGHT GRIND // Drift Phonk, Night Drive Mix"
     }
   ],
-  "updated": "2026-07-22T14:29:00Z"
+  "updated": "2026-07-22T19:48:34Z"
 }
