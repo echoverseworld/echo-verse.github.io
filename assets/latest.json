@@ -1,7 +1,11 @@
 {
-  "frequency": "0MwL5XmwkQw",
-  "frequency_title": "ECHO 101.8 — ANALOG HEART // Synthwave, Retrowave, Chillwave Mix",
+  "frequency": "AkagwAARyYQ",
+  "frequency_title": "ECHO 107.3 — PULSE BENEATH THE STATIC // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "AkagwAARyYQ",
+      "title": "ECHO 107.3 — PULSE BENEATH THE STATIC // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "0MwL5XmwkQw",
       "title": "ECHO 101.8 — ANALOG HEART // Synthwave, Retrowave, Chillwave Mix"
@@ -13,15 +17,15 @@
     {
       "id": "aC0Xy5KNCDE",
       "title": "ECHO 91.5 — THE NIGHT REMEMBERS // Synthwave, Retrowave, Chillwave Mix"
-    },
-    {
-      "id": "k6l0Fgm2Gms",
-      "title": "ECHO 107.8 — CHROME HEARTS // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "IEXJAVv1ZKc",
-  "drift_title": "ECHO 95.0 — BLACKTOP REQUIEM // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "H5k_WOds2b4",
+  "drift_title": "ECHO 100.1 — FUEL AND FURY // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "H5k_WOds2b4",
+      "title": "ECHO 100.1 — FUEL AND FURY // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "IEXJAVv1ZKc",
       "title": "ECHO 95.0 — BLACKTOP REQUIEM // Aggressive Phonk, Gym Phonk Mix"
@@ -33,11 +37,7 @@
     {
       "id": "Soh778grCkA",
       "title": "ECHO 94.7 — 808 EXORCISM // Aggressive Phonk, Gym Phonk Mix"
-    },
-    {
-      "id": "8STn3aY6UVU",
-      "title": "ECHO 101.9 — SMOKE SIGNAL // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "updated": "2026-07-24T14:16:41Z"
+  "updated": "2026-07-24T19:50:40Z"
 }
