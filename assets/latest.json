@@ -1,7 +1,11 @@
 {
-  "frequency": "klZKc9tVmck",
-  "frequency_title": "ECHO 106.1 — WAVES FROM NOWHERE // Synthwave, Retrowave, Chillwave Mix",
+  "frequency": "0YsPR51RXDo",
+  "frequency_title": "ECHO 105.9 — DREAMS ON TAPE // Retrowave, Synthwave, Cyberpunk Mix",
   "recent_frequency": [
+    {
+      "id": "0YsPR51RXDo",
+      "title": "ECHO 105.9 — DREAMS ON TAPE // Retrowave, Synthwave, Cyberpunk Mix"
+    },
     {
       "id": "klZKc9tVmck",
       "title": "ECHO 106.1 — WAVES FROM NOWHERE // Synthwave, Retrowave, Chillwave Mix"
@@ -13,15 +17,15 @@
     {
       "id": "0MwL5XmwkQw",
       "title": "ECHO 101.8 — ANALOG HEART // Synthwave, Retrowave, Chillwave Mix"
-    },
-    {
-      "id": "UZ0p9J75cME",
-      "title": "ECHO 95.4 — AFTER THE SILENCE // Darksynth, Cyberpunk, Outrun Mix"
     }
   ],
-  "drift": "q0u3px7QA8w",
-  "drift_title": "ECHO 103.5 — GRAVEL THRONE // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "pQLM3mSrnQ8",
+  "drift_title": "ECHO 102.4 — CHROME APOSTLE // Drift Phonk, Night Drive Mix",
   "recent_drift": [
+    {
+      "id": "pQLM3mSrnQ8",
+      "title": "ECHO 102.4 — CHROME APOSTLE // Drift Phonk, Night Drive Mix"
+    },
     {
       "id": "q0u3px7QA8w",
       "title": "ECHO 103.5 — GRAVEL THRONE // Aggressive Phonk, Gym Phonk Mix"
@@ -33,11 +37,7 @@
     {
       "id": "IEXJAVv1ZKc",
       "title": "ECHO 95.0 — BLACKTOP REQUIEM // Aggressive Phonk, Gym Phonk Mix"
-    },
-    {
-      "id": "PCjaMcVTQcs",
-      "title": "ECHO 106.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "updated": "2026-07-29T14:34:26Z"
+  "updated": "2026-07-29T19:48:24Z"
 }
