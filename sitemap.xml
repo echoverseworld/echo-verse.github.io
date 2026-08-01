@@ -8,4 +8,8 @@
     <loc>https://echo-verse.world/codex.html</loc>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://echo-verse.world/archive.html</loc>
+    <changefreq>weekly</changefreq>
+  </url>
 </urlset>

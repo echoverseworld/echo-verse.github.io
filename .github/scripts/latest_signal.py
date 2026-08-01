@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""Holt die neuesten VEROEFFENTLICHTEN Videos beider Kanaele aus den
+"""Holt die neuesten VEROEFFENTLICHTEN Videos aller Kanaele aus den
 YouTube-RSS-Feeds (scheduled/private tauchen dort nicht auf), filtert
-#shorts und schreibt assets/latest.json (Player + Ticker + Recent-Grid)."""
+#shorts und schreibt assets/latest.json (Player + Ticker + Recent-Grid).
+Robust gegen einzelne leere/unerreichbare Feeds: dann werden die
+bisherigen Daten des Kanals aus der alten latest.json uebernommen;
+hatte der Kanal noch nie Daten (z.B. Pulse vor dem Launch), werden
+seine Keys weggelassen -- die Website wertet das als "noch nicht live"."""
 import json, re, sys, time, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -9,6 +13,7 @@ from pathlib import Path
 CHANNELS = {
     "frequency": "UC-Paofpq5_SgnDIIVAWJupA",
     "drift": "UCr4tKWsfu6-QZPAkYfrTZwg",
+    "pulse": "UC5H9FLYzF8728U16hEy5dpA",
 }
 ASSETS = Path(__file__).resolve().parents[2] / "assets"
 OUT = ASSETS / "latest.json"
@@ -63,18 +68,43 @@ def entries(channel_id):
     return out
 
 def main():
+    # Alte latest.json als Fallback einlesen -- Kanaele mit leerem Feed
+    # behalten so ihre bisherigen Daten (statt den ganzen Run zu blocken).
+    old = {}
+    if OUT.exists():
+        try:
+            old = json.loads(OUT.read_text(encoding="utf-8"))
+        except Exception as e:
+            print(f"[WARN] Alte latest.json unlesbar ({e}) -- kein Fallback verfuegbar.")
+
     data = {}
+    fresh = 0  # Kanaele mit frischen Feed-Daten in diesem Lauf
     for key, cid in CHANNELS.items():
         vids = entries(cid)
-        if not vids:
-            # Transient (Feed leer/unerreichbar): alte latest.json behalten,
-            # Run GRUEN lassen -- naechster Cron versucht es erneut.
-            print(f"[WARN] Feed {key} leer/unerreichbar -- latest.json bleibt unveraendert.")
-            return 0
-        data[key] = vids[0]["id"]
-        data[f"{key}_title"] = vids[0]["title"]
-        data[f"recent_{key}"] = vids
-        fetch_thumbnail(key, vids[0]["id"])
+        if vids:
+            data[key] = vids[0]["id"]
+            data[f"{key}_title"] = vids[0]["title"]
+            data[f"recent_{key}"] = vids
+            fetch_thumbnail(key, vids[0]["id"])
+            fresh += 1
+        elif key in old:
+            # Transient (Feed leer/unerreichbar): bisherige Daten dieses
+            # Kanals aus der alten latest.json uebernehmen.
+            print(f"[WARN] Feed {key} leer/unerreichbar -- behalte bisherige Daten.")
+            for k in (key, f"{key}_title", f"recent_{key}"):
+                if k in old:
+                    data[k] = old[k]
+        else:
+            # Kanal hatte noch nie Daten (z.B. Pulse vor dem Launch):
+            # Keys weglassen -- die Website wertet das als "noch nicht live".
+            print(f"[WARN] Feed {key} leer/unerreichbar, keine Altdaten -- Kanal ausgelassen.")
+
+    if fresh == 0:
+        # Transienter Totalausfall (alle Feeds leer/unerreichbar):
+        # nichts schreiben, Run GRUEN lassen -- naechster Cron probiert es erneut.
+        print("[WARN] Kein Feed lieferte Daten -- latest.json bleibt unveraendert.")
+        return 0
+
     data["updated"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     OUT.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"[OK] {OUT}: " + ", ".join(f"{k}={len(v) if isinstance(v,list) else v}" for k, v in data.items()))

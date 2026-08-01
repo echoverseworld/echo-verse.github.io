@@ -1,0 +1,295 @@
+{
+  "generated": "2026-08-01T18:24:37",
+  "channels": {
+    "frequency": {
+      "name": "ECHO Frequency",
+      "fm": "95.3"
+    },
+    "drift": {
+      "name": "ECHO Drift",
+      "fm": "97.1"
+    },
+    "pulse": {
+      "name": "ECHO Pulse",
+      "fm": "100.4"
+    }
+  },
+  "items": [
+    {
+      "channel": "drift",
+      "volume": 12,
+      "title": "ECHO 102.4 — TUNNEL VISION MASS // Drift Phonk, Night Drive Mix",
+      "fm": "102.4",
+      "fragment": "TUNNEL VISION MASS",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "61:37",
+      "published": "2026-07-31",
+      "youtube_id": "lGO5VooXkQo",
+      "thumb": "assets/archive/drift_012.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 11,
+      "title": "ECHO 92.1 — STEEL AND STARLIGHT // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "92.1",
+      "fragment": "STEEL AND STARLIGHT",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "61:08",
+      "published": "2026-07-31",
+      "youtube_id": "DohKYiI8bdg",
+      "thumb": "assets/archive/wave_011.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 11,
+      "title": "ECHO 102.4 — CHROME APOSTLE // Drift Phonk, Night Drive Mix",
+      "fm": "102.4",
+      "fragment": "CHROME APOSTLE",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "62:36",
+      "published": "2026-07-29",
+      "youtube_id": "pQLM3mSrnQ8",
+      "thumb": "assets/archive/drift_011.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 10,
+      "title": "ECHO 105.9 — DREAMS ON TAPE // Retrowave, Synthwave, Cyberpunk Mix",
+      "fm": "105.9",
+      "fragment": "DREAMS ON TAPE",
+      "genres": "Retrowave, Synthwave, Cyberpunk",
+      "duration": "61:10",
+      "published": "2026-07-29",
+      "youtube_id": "0YsPR51RXDo",
+      "thumb": "assets/archive/wave_010.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 9,
+      "title": "ECHO 106.1 — WAVES FROM NOWHERE // Synthwave, Retrowave, Chillwave Mix",
+      "fm": "106.1",
+      "fragment": "WAVES FROM NOWHERE",
+      "genres": "Synthwave, Retrowave, Chillwave",
+      "duration": "62:23",
+      "published": "2026-07-27",
+      "youtube_id": "klZKc9tVmck",
+      "thumb": "assets/archive/wave_009.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 10,
+      "title": "ECHO 103.5 — GRAVEL THRONE // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "103.5",
+      "fragment": "GRAVEL THRONE",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "63:32",
+      "published": "2026-07-27",
+      "youtube_id": "q0u3px7QA8w",
+      "thumb": "assets/archive/drift_010.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 9,
+      "title": "ECHO 100.1 — FUEL AND FURY // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "100.1",
+      "fragment": "FUEL AND FURY",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "64:38",
+      "published": "2026-07-24",
+      "youtube_id": "H5k_WOds2b4",
+      "thumb": "assets/archive/drift_009.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 8,
+      "title": "ECHO 107.3 — PULSE BENEATH THE STATIC // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "107.3",
+      "fragment": "PULSE BENEATH THE STATIC",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "62:58",
+      "published": "2026-07-24",
+      "youtube_id": "AkagwAARyYQ",
+      "thumb": "assets/archive/wave_008.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 8,
+      "title": "ECHO 95.0 — BLACKTOP REQUIEM // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "95.0",
+      "fragment": "BLACKTOP REQUIEM",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "62:12",
+      "published": "2026-07-22",
+      "youtube_id": "IEXJAVv1ZKc",
+      "thumb": "assets/archive/drift_008.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 7,
+      "title": "ECHO 101.8 — ANALOG HEART // Synthwave, Retrowave, Chillwave Mix",
+      "fm": "101.8",
+      "fragment": "ANALOG HEART",
+      "genres": "Synthwave, Retrowave, Chillwave",
+      "duration": "64:03",
+      "published": "2026-07-22",
+      "youtube_id": "0MwL5XmwkQw",
+      "thumb": "assets/archive/wave_007.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 7,
+      "title": "ECHO 106.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "106.7",
+      "fragment": "ASPHALT SERMON",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "63:05",
+      "published": "2026-07-20",
+      "youtube_id": "PCjaMcVTQcs",
+      "thumb": "assets/archive/drift_007.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 6,
+      "title": "ECHO 95.4 — AFTER THE SILENCE // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "95.4",
+      "fragment": "AFTER THE SILENCE",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "62:15",
+      "published": "2026-07-20",
+      "youtube_id": "UZ0p9J75cME",
+      "thumb": "assets/archive/wave_006.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 6,
+      "title": "ECHO 94.7 — 808 EXORCISM // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "94.7",
+      "fragment": "808 EXORCISM",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "62:06",
+      "published": "2026-07-17",
+      "youtube_id": "Soh778grCkA",
+      "thumb": "assets/archive/drift_006.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 5,
+      "title": "ECHO 91.5 — THE NIGHT REMEMBERS // Synthwave, Retrowave, Chillwave Mix",
+      "fm": "91.5",
+      "fragment": "THE NIGHT REMEMBERS",
+      "genres": "Synthwave, Retrowave, Chillwave",
+      "duration": "63:28",
+      "published": "2026-07-15",
+      "youtube_id": "aC0Xy5KNCDE",
+      "thumb": "assets/archive/wave_005.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 5,
+      "title": "ECHO 101.9 — SMOKE SIGNAL // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "101.9",
+      "fragment": "SMOKE SIGNAL",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "63:25",
+      "published": "2026-07-15",
+      "youtube_id": "8STn3aY6UVU",
+      "thumb": "assets/archive/drift_005.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 4,
+      "title": "ECHO 107.8 — CHROME HEARTS // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "107.8",
+      "fragment": "CHROME HEARTS",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "62:47",
+      "published": "2026-07-13",
+      "youtube_id": "k6l0Fgm2Gms",
+      "thumb": "assets/archive/wave_004.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 4,
+      "title": "ECHO 105.4 — MIDNIGHT GRIND // Drift Phonk, Night Drive Mix",
+      "fm": "105.4",
+      "fragment": "MIDNIGHT GRIND",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "63:31",
+      "published": "2026-07-13",
+      "youtube_id": "b9t_kL7NJYg",
+      "thumb": "assets/archive/drift_004.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 3,
+      "title": "ECHO 102.2 — THE NIGHT REMEMBERS // Retrowave, Synthwave, Cyberpunk Mix",
+      "fm": "102.2",
+      "fragment": "THE NIGHT REMEMBERS",
+      "genres": "Retrowave, Synthwave, Cyberpunk",
+      "duration": "61:35",
+      "published": "2026-07-10",
+      "youtube_id": "PddSos-xkIM",
+      "thumb": "assets/archive/wave_003.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 3,
+      "title": "ECHO 101.9 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "101.9",
+      "fragment": "CHROME APOSTLE",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "61:37",
+      "published": "2026-07-10",
+      "youtube_id": "p_Ji0E1jvzw",
+      "thumb": "assets/archive/drift_003.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 2,
+      "title": "ECHO 88.8 — PULSE BENEATH THE STATIC // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "88.8",
+      "fragment": "PULSE BENEATH THE STATIC",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "63:14",
+      "published": "2026-07-08",
+      "youtube_id": "cPAdv6N7InU",
+      "thumb": "assets/archive/wave_002.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 2,
+      "title": "ECHO 104.2 — DRIFT OR DIE // Drift Phonk, Night Drive Mix",
+      "fm": "104.2",
+      "fragment": "DRIFT OR DIE",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "62:38",
+      "published": "2026-07-08",
+      "youtube_id": "7Qc6RxdPSgw",
+      "thumb": "assets/archive/drift_002.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 1,
+      "title": "ECHO 95.3 — MEMORY OF RAIN // Retrowave, Synthwave, Cyberpunk Mix",
+      "fm": "95.3",
+      "fragment": "MEMORY OF RAIN",
+      "genres": "Retrowave, Synthwave, Cyberpunk",
+      "duration": "63:49",
+      "published": "2026-07-06",
+      "youtube_id": "Q1p_2CgB2pw",
+      "thumb": "assets/archive/wave_001.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 1,
+      "title": "ECHO 97.1 — CHROME APOSTLE // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "97.1",
+      "fragment": "CHROME APOSTLE",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "62:56",
+      "published": "2026-07-06",
+      "youtube_id": "BZsUmEgARPA",
+      "thumb": "assets/archive/drift_001.jpg"
+    }
+  ]
+}

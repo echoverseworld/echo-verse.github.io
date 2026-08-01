@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ECHO VERSE — The Signal After the Silence</title>
-<meta name="description" content="ECHO is an archive system that was never switched off. It reconstructs the memories of a silent world and broadcasts them as music: Synthwave on ECHO Frequency, Phonk on ECHO Drift.">
+<meta name="description" content="ECHO is an archive system that was never switched off. It reconstructs the memories of a silent world and broadcasts them as music: Synthwave on ECHO Frequency, Phonk on ECHO Drift, Deep House on ECHO Pulse.">
 <link rel="canonical" href="https://echo-verse.world/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://echo-verse.world/">
 <meta property="og:title" content="ECHO VERSE — The Signal After the Silence">
-<meta property="og:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music. Two frequencies are live: Synthwave &amp; Phonk.">
+<meta property="og:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music. Three frequencies carry a signal: Synthwave, Phonk &amp; Deep House.">
 <meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ECHO VERSE — The Signal After the Silence">
-<meta name="twitter:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music.">
+<meta name="twitter:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music: Synthwave, Phonk &amp; Deep House.">
 <meta name="twitter:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="theme-color" content="#04060b">
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
@@ -30,6 +30,7 @@
   --text-faint:#565e72;
   --cyan:#22D3EE;
   --magenta:#FF2D9B;
+  --pulse:#7C5CFF;
   --mono:'Share Tech Mono',ui-monospace,monospace;
   --sans:'Inter',system-ui,sans-serif;
 }
@@ -128,6 +129,12 @@ section{padding:110px 24px}
 .station.live:hover .fq,.station.live:focus .fq{text-shadow:0 0 14px currentColor}
 .station.freq{color:var(--cyan)}
 .station.drift{color:var(--magenta)}
+.station.pulse{color:var(--pulse)}
+.station.pulse.rising .needle{background:repeating-linear-gradient(0deg,rgba(124,92,255,.55) 0 3px,transparent 3px 6px);box-shadow:0 0 12px rgba(124,92,255,.35)}
+@media (prefers-reduced-motion:no-preference){
+  .station.pulse.rising .needle{animation:risePulse 2.4s ease-in-out infinite}
+  @keyframes risePulse{50%{opacity:.35}}
+}
 .station.dead{color:var(--text-faint);pointer-events:none}
 .station.dead .nm{font-size:.54rem;letter-spacing:.14em}
 .station.dead .needle{background:repeating-linear-gradient(0deg,rgba(139,147,168,.5) 0 3px,transparent 3px 6px)}
@@ -146,6 +153,7 @@ section{padding:110px 24px}
 .ch-band{font-family:var(--mono);font-size:.74rem;letter-spacing:.26em;margin-bottom:1.6rem}
 #frequency .ch-name,#frequency .ch-band{color:var(--cyan)}
 #drift .ch-name,#drift .ch-band{color:var(--magenta)}
+#pulse .ch-name,#pulse .ch-band{color:var(--pulse)}
 .ch-desc{color:var(--text-dim);max-width:32em}
 .chips{display:flex;flex-wrap:wrap;gap:.5em;margin:1.5rem 0}
 .chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;padding:.45em .95em;border:1px solid var(--line);border-radius:2px;color:var(--text-dim)}
@@ -159,6 +167,8 @@ section{padding:110px 24px}
 #frequency .btn:hover{background:rgba(34,211,238,.09);box-shadow:0 0 22px rgba(34,211,238,.25)}
 #drift .btn{color:var(--magenta);border-color:rgba(255,45,155,.5)}
 #drift .btn:hover{background:rgba(255,45,155,.09);box-shadow:0 0 22px rgba(255,45,155,.25)}
+#pulse .btn{color:var(--pulse);border-color:rgba(124,92,255,.5)}
+#pulse .btn:hover{background:rgba(124,92,255,.09);box-shadow:0 0 22px rgba(124,92,255,.25)}
 
 /* Click-to-load player facade */
 .player{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#000}
@@ -175,6 +185,7 @@ section{padding:110px 24px}
 .player-face .play::after{content:"";margin-left:5px;border-style:solid;border-width:12px 0 12px 20px;border-color:transparent transparent transparent #fff}
 #frequency .player-face:hover .play{box-shadow:0 0 30px rgba(34,211,238,.5)}
 #drift .player-face:hover .play{box-shadow:0 0 30px rgba(255,45,155,.5)}
+#pulse .player-face:hover .play{box-shadow:0 0 30px rgba(124,92,255,.5)}
 .player-face .pf-label{
   position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:.66rem;
   letter-spacing:.22em;color:rgba(255,255,255,.85);background:rgba(4,6,11,.65);padding:.5em .9em;border-radius:2px;
@@ -208,6 +219,7 @@ section{padding:110px 24px}
 .frag figcaption b{font-weight:400}
 .frag.w figcaption b{color:var(--cyan)}
 .frag.d figcaption b{color:var(--magenta)}
+.frag.p figcaption b{color:var(--pulse)}
 
 /* ── Reconstructed ───────────────────────────────── */
 #honest .box{
@@ -246,6 +258,9 @@ section{padding:110px 24px}
   position:absolute;left:0;right:0;bottom:3vh;text-align:center;
   font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;color:var(--text-dim);
 }
+#lightbox .lb-meta{
+  display:block;margin-top:.45em;font-size:.6rem;letter-spacing:.12em;color:var(--text-faint);
+}
 
 /* ── Send a signal ───────────────────────────────── */
 #signal .hl{color:var(--text)}
@@ -277,6 +292,7 @@ section{padding:110px 24px}
 #ticker .tk{display:inline-block;padding-right:4em}
 #ticker .cy{color:var(--cyan)}
 #ticker .mg{color:var(--magenta)}
+#ticker .pu{color:var(--pulse)}
 @media (prefers-reduced-motion:no-preference){
   #ticker .rail{display:inline-block;animation:tick 38s linear infinite}
   @keyframes tick{to{transform:translateX(-50%)}}
@@ -293,6 +309,36 @@ section{padding:110px 24px}
   color:var(--magenta);min-height:1.4em;margin-top:.8rem;opacity:0;transition:opacity .4s;
 }
 #deadMsg.show{opacity:.85}
+
+/* ── ECHO remote terminal (Easteregg) ────────────── */
+#echoTerm{
+  position:fixed;inset:0;z-index:9600;display:none;align-items:center;justify-content:center;
+  background:rgba(4,6,11,.92);backdrop-filter:blur(4px);padding:4vh 4vw;
+}
+#echoTerm.on{display:flex}
+.term-win{
+  width:100%;max-width:640px;background:var(--bg-raise);border:1px solid var(--line);
+  border-radius:4px;font-family:var(--mono);box-shadow:0 0 44px rgba(34,211,238,.08);
+}
+.term-head{
+  font-size:.66rem;letter-spacing:.14em;color:var(--cyan);
+  padding:.85em 1.2em;border-bottom:1px solid var(--line);
+}
+#termOut{
+  padding:1em 1.2em;font-size:.76rem;letter-spacing:.04em;line-height:1.55;
+  color:var(--text-dim);max-height:50vh;overflow-y:auto;
+}
+#termOut .cy{color:var(--cyan)}
+#termOut a{color:var(--cyan);text-decoration:none}
+#termOut a:hover{text-shadow:0 0 10px rgba(34,211,238,.6)}
+.term-row{display:flex;align-items:center;gap:.6em;padding:.75em 1.2em;border-top:1px solid var(--line)}
+.term-row .pr{font-size:.76rem;color:var(--cyan);white-space:nowrap}
+#termIn{
+  flex:1;min-width:0;background:none;border:0;outline:none;
+  color:var(--text);font-family:var(--mono);font-size:.76rem;letter-spacing:.04em;
+}
+/* Diskreter Einstieg ueber die NO-CARRIER-Zeile: Cursor nur bei Hover, sonst nichts */
+.foot-end:hover{cursor:pointer}
 
 /* ── Footer ──────────────────────────────────────── */
 footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--bg-raise)}
@@ -319,7 +365,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     <img class="hero-logo flicker" src="assets/logos/echoverse_512.png" alt="ECHO VERSE logo" width="84" height="84">
     <h1 class="hero-title">ECHO <em>VERSE</em></h1>
     <p class="hero-sub">The last archive of a silent world — reconstructing what remains of us, and broadcasting it as music.</p>
-    <div class="hero-status mono"><span class="dot" aria-hidden="true"></span> STATUS: TRANSMITTING &nbsp;·&nbsp; 2 SIGNALS LIVE</div>
+    <div class="hero-status mono"><span class="dot" aria-hidden="true"></span> <span>STATUS: TRANSMITTING &nbsp;·&nbsp; <span id="heroSignals">2 SIGNALS LIVE <span style="color:var(--text-faint)">&nbsp;·&nbsp; 1 RISING</span></span></span></div>
   </div>
   <a class="hero-scroll" href="#tuner">TUNE&nbsp;IN&nbsp;▾</a>
 </section>
@@ -329,7 +375,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   <div class="wrap">
     <div class="term-tag">frequency scan</div>
     <h2 class="sec-title">THE BAND</h2>
-    <p style="color:var(--text-dim);max-width:36em">ECHO broadcasts on the old FM band. Most frequencies fell silent long ago. Two are transmitting. Select a signal.</p>
+    <p style="color:var(--text-dim);max-width:36em">ECHO broadcasts on the old FM band. Most frequencies fell silent long ago. Three carry a signal. Select one.</p>
 
     <div class="dial-scroll"><div class="dial" role="list" aria-label="Frequency dial">
       <div class="dial-line" aria-hidden="true"></div>
@@ -350,7 +396,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <span class="station dead" style="left:22%" role="listitem"><span class="needle"></span><span class="fq">91.7</span><span class="nm">SIGNAL LOST</span></span>
       <a class="station live freq" style="left:38%" href="#frequency" role="listitem" aria-label="ECHO Frequency, 95.3, live"><span class="needle"></span><span class="fq">95.3</span><span class="nm" style="color:var(--cyan)">FREQUENCY</span></a>
       <a class="station live drift" style="left:50%" href="#drift" role="listitem" aria-label="ECHO Drift, 97.1, live"><span class="needle"></span><span class="fq">97.1</span><span class="nm" style="color:var(--magenta)">DRIFT</span></a>
-      <span class="station dead" style="left:66%" role="listitem"><span class="needle"></span><span class="fq">100.4</span><span class="nm">SIGNAL LOST</span></span>
+      <a class="station live pulse rising" style="left:66%" href="#pulse" role="listitem" aria-label="ECHO Pulse, 100.4, rising"><span class="needle"></span><span class="fq">100.4</span><span class="nm" style="color:var(--pulse)">PULSE</span></a>
       <span class="station dead" style="left:79%" role="listitem"><span class="needle"></span><span class="fq">103.8</span><span class="nm">SIGNAL LOST</span></span>
       <span class="station dead" style="left:91%" role="listitem"><span class="needle"></span><span class="fq">106.5</span><span class="nm">SIGNAL LOST</span></span>
     </div></div>
@@ -415,6 +461,34 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   </div>
 </section>
 
+<!-- ── ECHO PULSE ───────────────────────────────── -->
+<section id="pulse">
+  <div class="wrap channel reveal">
+    <div class="ch-media">
+      <div class="player" data-channel="pulse" data-list="UU5H9FLYzF8728U16hEy5dpA">
+        <button class="player-face" type="button" aria-label="Load latest ECHO Pulse transmission from YouTube">
+          <img src="assets/latest_pulse.jpg" onerror="this.onerror=null;this.src='assets/gallery/pulse_1.jpg'" alt="Thumbnail of the latest ECHO Pulse transmission" loading="lazy">
+          <span class="play" aria-hidden="true"></span>
+          <span class="pf-label" id="pulsePfLabel">AWAITING FIRST TRANSMISSION</span>
+        </button>
+      </div>
+      <p class="consent-note">// player loads from youtube-nocookie.com on click</p>
+    </div>
+    <div>
+      <div class="term-tag" id="pulseTag">signal 100.4 — rising</div>
+      <h2 class="ch-name">ECHO PULSE</h2>
+      <div class="ch-band">THE DEEP BAND</div>
+      <p class="ch-desc">The warm layer beneath the noise: deep, melodic and organic house, rebuilt from the archive's warmest frequencies. For the long focus, the late flow, and the drive home.</p>
+      <div class="chips">
+        <span class="chip">DEEP HOUSE</span><span class="chip">MELODIC HOUSE</span><span class="chip">ORGANIC HOUSE</span><span class="chip">CHILL HOUSE</span>
+      </div>
+      <div class="ch-meta" id="pulseMeta">NEW SIGNAL RISING &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <a class="btn" href="https://www.youtube.com/@Echo_Pulse_House?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
+      <div class="recent" data-recent="pulse"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ── LORE ─────────────────────────────────────── -->
 <section id="lore">
   <div class="wrap reveal">
@@ -452,12 +526,15 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     <h2 class="sec-title">FROM THE ARCHIVE</h2>
     <p style="color:var(--text-dim);max-width:36em">Visual reconstructions recovered alongside the audio. Each transmission carries one.</p>
     <div class="frag-grid">
-      <figure class="frag w"><img src="assets/gallery/wave_1.jpg" alt="Recovered fragment — figure before a wall of glowing monitors" loading="lazy"><figcaption>FRG-95.3/0117 — <b>AFTER THE SILENCE</b></figcaption></figure>
-      <figure class="frag w"><img src="assets/gallery/wave_2.jpg" alt="Recovered fragment — retro anime scene" loading="lazy"><figcaption>FRG-95.3/0342 — <b>MEMORY OF RAIN</b></figcaption></figure>
-      <figure class="frag w"><img src="assets/gallery/wave_3.jpg" alt="Recovered fragment — retro anime scene" loading="lazy"><figcaption>FRG-95.3/0518 — <b>WE WERE ELECTRIC</b></figcaption></figure>
-      <figure class="frag d"><img src="assets/gallery/drift_1.jpg" alt="Recovered fragment — night lot, tuned car behind a fence" loading="lazy"><figcaption>FRG-97.1/0089 — <b>SHADOW PULSE</b></figcaption></figure>
-      <figure class="frag d"><img src="assets/gallery/drift_2.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0164 — <b>MIDNIGHT GRIND</b></figcaption></figure>
-      <figure class="frag d"><img src="assets/gallery/drift_3.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0231 — <b>REDLINE RITUAL</b></figcaption></figure>
+      <figure class="frag w" data-meta="reconstruction 93.7% — source: the last operator, still at the console"><img src="assets/gallery/wave_1.jpg" alt="Recovered fragment — figure before a wall of glowing monitors" loading="lazy"><figcaption>FRG-95.3/0117 — <b>AFTER THE SILENCE</b></figcaption></figure>
+      <figure class="frag w" data-meta="reconstruction 91.2% — source: rain on a window, city unknown"><img src="assets/gallery/wave_2.jpg" alt="Recovered fragment — retro anime scene" loading="lazy"><figcaption>FRG-95.3/0342 — <b>MEMORY OF RAIN</b></figcaption></figure>
+      <figure class="frag w" data-meta="reconstruction 96.4% — source: a summer night that refused to end"><img src="assets/gallery/wave_3.jpg" alt="Recovered fragment — retro anime scene" loading="lazy"><figcaption>FRG-95.3/0518 — <b>WE WERE ELECTRIC</b></figcaption></figure>
+      <figure class="frag d" data-meta="reconstruction 89.5% — source: an engine idling behind a chain-link fence"><img src="assets/gallery/drift_1.jpg" alt="Recovered fragment — night lot, tuned car behind a fence" loading="lazy"><figcaption>FRG-97.1/0089 — <b>SHADOW PULSE</b></figcaption></figure>
+      <figure class="frag d" data-meta="reconstruction 92.8% — source: tire smoke over an empty intersection"><img src="assets/gallery/drift_2.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0164 — <b>MIDNIGHT GRIND</b></figcaption></figure>
+      <figure class="frag d" data-meta="reconstruction 88.3% — source: a tachometer pinned at the red"><img src="assets/gallery/drift_3.jpg" alt="Recovered fragment — drift scene" loading="lazy"><figcaption>FRG-97.1/0231 — <b>REDLINE RITUAL</b></figcaption></figure>
+      <figure class="frag p" data-meta="reconstruction 95.1% — source: calm water, the day letting go"><img src="assets/gallery/pulse_1.jpg" alt="Recovered fragment — calm water under a fading dusk" loading="lazy"><figcaption>FRG-100.4/0033 — <b>TIDAL LULLABY</b></figcaption></figure>
+      <figure class="frag p" data-meta="reconstruction 90.6% — source: warm rooftops holding the last heat"><img src="assets/gallery/pulse_2.jpg" alt="Recovered fragment — warm terracotta twilight over quiet rooftops" loading="lazy"><figcaption>FRG-100.4/0148 — <b>TERRACOTTA TWILIGHT</b></figcaption></figure>
+      <figure class="frag p" data-meta="reconstruction 94.2% — source: evening light caught in tide pools"><img src="assets/gallery/pulse_3.jpg" alt="Recovered fragment — tide pools holding the last evening light" loading="lazy"><figcaption>FRG-100.4/0291 — <b>TIDE POOL THEATER</b></figcaption></figure>
     </div>
   </div>
 </section>
@@ -476,6 +553,15 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
 
 <div id="lightbox" role="dialog" aria-label="Fragment fullscreen"><img alt=""><div class="lb-cap"></div></div>
 
+<!-- ── ECHO REMOTE TERMINAL (verstecktes Easteregg) ─ -->
+<div id="echoTerm" role="dialog" aria-label="ECHO remote terminal">
+  <div class="term-win">
+    <div class="term-head">ECHO REMOTE TERMINAL — UNAUTHORIZED ACCESS DETECTED</div>
+    <div id="termOut"></div>
+    <div class="term-row"><span class="pr">echo@archive:~$</span><input id="termIn" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command input"></div>
+  </div>
+</div>
+
 <!-- ── NOW TRANSMITTING ─────────────────────────── -->
 <div id="ticker" aria-hidden="true"><span class="rail"></span></div>
 
@@ -487,6 +573,8 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="foot-links">
         <a href="https://www.youtube.com/@Echo_Frequency_Synthwave" target="_blank" rel="noopener">↗ ECHO FREQUENCY — 95.3</a>
         <a href="https://www.youtube.com/@Echo_Drift_PHONK" target="_blank" rel="noopener">↗ ECHO DRIFT — 97.1</a>
+        <a href="https://www.youtube.com/@Echo_Pulse_House" target="_blank" rel="noopener">↗ ECHO PULSE — 100.4</a>
+        <a href="archive.html">▸ ALL TRANSMISSIONS</a>
         <a href="codex.html">▸ ARCHIVE CODEX</a>
       </div>
     </div>
@@ -509,7 +597,8 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     "> reconstructing memories ...... [OK]",
     "> broadcast array .............. [OK]",
     "> antenna alignment ............ [OK]",
-    "> listener detection ........... none. transmitting anyway"
+    "> listener detection ........... none. transmitting anyway",
+    "> frequency 100.4 .............. signal rising"
   ];
   pool.sort(function(){return Math.random()-.5});
   var lines=["> ECHO ARCHIVE SYSTEM v9.31 — boot sequence"]
@@ -572,10 +661,11 @@ document.querySelectorAll(".player").forEach(function(p){
 
 /* NOW TRANSMITTING ticker — Titel aus latest.json (gleiche Quelle wie Player) */
 latestSignal.then(function(l){
-  if(!l||(!l.frequency_title&&!l.drift_title))return;
+  if(!l||(!l.frequency_title&&!l.drift_title&&!l.pulse_title))return;
   var parts=[];
   if(l.frequency_title)parts.push('<span class="cy">◉ 95.3</span> '+l.frequency_title);
   if(l.drift_title)parts.push('<span class="mg">◉ 97.1</span> '+l.drift_title);
+  if(l.pulse_title)parts.push('<span class="pu">◉ 100.4</span> '+l.pulse_title);
   var tk='<span class="tk">NOW TRANSMITTING — '+parts.join(' &nbsp;·&nbsp; ')+'</span>';
   var t=document.getElementById("ticker");
   /* Rail doppelt befuellen fuer nahtlosen Loop (translateX(-50%)) */
@@ -599,6 +689,23 @@ latestSignal.then(function(l){
   });
 });
 
+/* Pulse: Rising -> Live, sobald latest.json einen pulse-Key liefert
+   (die GitHub Action schreibt ihn beim ersten oeffentlichen Video --
+   ohne latest.json oder ohne pulse-Key bleibt alles im Rising-Default) */
+latestSignal.then(function(l){
+  if(!l||!l.pulse)return;
+  var st=document.querySelector(".station.pulse");
+  if(st){st.classList.remove("rising");st.setAttribute("aria-label","ECHO Pulse, 100.4, live");}
+  var tag=document.getElementById("pulseTag");
+  if(tag)tag.textContent="signal 100.4 — live";
+  var pf=document.getElementById("pulsePfLabel");
+  if(pf)pf.textContent="▶ LATEST TRANSMISSION";
+  var meta=document.getElementById("pulseMeta");
+  if(meta)meta.innerHTML="NEW SIGNAL &nbsp;//&nbsp; 1-HOUR MIXES";
+  var hs=document.getElementById("heroSignals");
+  if(hs)hs.textContent="3 SIGNALS LIVE";
+});
+
 /* Fragment lightbox */
 (function(){
   var lb=document.getElementById("lightbox");
@@ -607,7 +714,9 @@ latestSignal.then(function(l){
     f.addEventListener("click",function(){
       im.src=f.querySelector("img").src;
       im.alt=f.querySelector("img").alt;
-      cap.innerHTML=f.querySelector("figcaption").innerHTML;
+      /* Zweite, leisere Zeile: Rekonstruktions-Metadaten aus data-meta */
+      var meta=f.getAttribute("data-meta");
+      cap.innerHTML=f.querySelector("figcaption").innerHTML+(meta?'<span class="lb-meta">'+meta+'</span>':"");
       lb.classList.add("on");
     });
   });
@@ -690,7 +799,8 @@ latestSignal.then(function(l){
     "…this frequency remembers being alive.",
     "…signal lost in 20▓▓. recovery queued.",
     "…nothing here. and yet you keep tuning.",
-    "…archive sector sealed. clearance: ECHO only."
+    "…archive sector sealed. clearance: ECHO only.",
+    "…terminal handshake available. press ~"
   ];
   var el=document.getElementById("deadMsg");
   var hideTimer=null;
@@ -702,6 +812,188 @@ latestSignal.then(function(l){
       hideTimer=setTimeout(function(){el.classList.remove("show")},6000);
     });
   });
+})();
+
+/* Tuner-Audio "W8-Lite" — synthetisches FM-Static per WebAudio.
+   Lazy: AudioContext erst bei der ersten User-Geste (Klick auf eine Station).
+   Keine Audio-Dateien, keine Loops; ohne WebAudio-Support passiert einfach nichts. */
+(function(){
+  var ctx=null,master=null;
+  function ensureCtx(){
+    try{
+      if(!ctx){
+        var AC=window.AudioContext||window.webkitAudioContext;
+        if(!AC)return null;
+        ctx=new AC();
+        master=ctx.createGain();
+        master.gain.value=.12; /* dezente Gesamtlautstaerke */
+        master.connect(ctx.destination);
+      }
+      if(ctx.state==="suspended")ctx.resume();
+      return ctx;
+    }catch(e){return null;}
+  }
+  /* Kurzes FM-Static: weisses Rauschen -> Bandpass ~1-3kHz mit Zufalls-Wobble
+     der Mittenfrequenz, schneller Fade-in/Fade-out */
+  function playStatic(dur){
+    var c=ensureCtx();
+    if(!c)return;
+    try{
+      var n=Math.floor(c.sampleRate*dur);
+      var buf=c.createBuffer(1,n,c.sampleRate);
+      var d=buf.getChannelData(0);
+      for(var i=0;i<n;i++)d[i]=Math.random()*2-1;
+      var src=c.createBufferSource();
+      src.buffer=buf;
+      var bp=c.createBiquadFilter();
+      bp.type="bandpass";
+      bp.Q.value=.9;
+      var t=c.currentTime;
+      bp.frequency.setValueAtTime(1000+Math.random()*2000,t);
+      for(var s=1;s<=4;s++){ /* Wobble in 4 Zufalls-Schritten ueber die Laufzeit */
+        bp.frequency.linearRampToValueAtTime(1000+Math.random()*2000,t+dur*s/4);
+      }
+      var g=c.createGain();
+      g.gain.setValueAtTime(0,t);
+      g.gain.linearRampToValueAtTime(1,t+.03);
+      g.gain.setValueAtTime(1,t+Math.max(.05,dur-.08));
+      g.gain.linearRampToValueAtTime(0,t+dur);
+      src.connect(bp);bp.connect(g);g.connect(master);
+      src.start(t);src.stop(t+dur);
+    }catch(e){}
+  }
+  /* Tune-in-Blip: 0.15s Static, dann sauberer Sinus-Sweep 600->880Hz (einrasten) */
+  function playTuneIn(){
+    var c=ensureCtx();
+    if(!c)return;
+    try{
+      playStatic(.15);
+      var t=c.currentTime+.15;
+      var o=c.createOscillator();
+      o.type="sine";
+      o.frequency.setValueAtTime(600,t);
+      o.frequency.linearRampToValueAtTime(880,t+.2);
+      var g=c.createGain();
+      g.gain.setValueAtTime(0,t);
+      g.gain.linearRampToValueAtTime(.7,t+.02);
+      g.gain.linearRampToValueAtTime(0,t+.2); /* leiser Fade-out */
+      o.connect(g);g.connect(master);
+      o.start(t);o.stop(t+.22);
+    }catch(e){}
+  }
+  /* Tote Stationen: nur Static (Easter-Egg-Text laeuft unabhaengig weiter) */
+  document.querySelectorAll(".station.dead").forEach(function(s){
+    s.addEventListener("click",function(){playStatic(.4+Math.random()*.2)});
+  });
+  /* Live-Stationen: Blip; Anker-Navigation laeuft normal weiter */
+  document.querySelectorAll(".station.live").forEach(function(s){
+    s.addEventListener("click",function(){playTuneIn()});
+  });
+})();
+
+/* ECHO Remote Terminal — verstecktes Overlay-Easteregg.
+   Oeffnen: Taste "~", Tippfolge "echo" (nicht in Eingabefeldern, siehe #sigIn)
+   oder Klick auf die NO-CARRIER-Zeile im Footer (mobil erreichbar).
+   Schliessen: ESC, Klick ausserhalb, oder Befehl 'exit'. */
+(function(){
+  var term=document.getElementById("echoTerm");
+  if(!term)return;
+  var out=document.getElementById("termOut"),inp=document.getElementById("termIn");
+  var unknown=[
+    "…command not in archive. the silence keeps its secrets.",
+    "…parse error. or a memory too corrupted to execute.",
+    "…unknown directive. logged anyway. everything is logged.",
+    "…no such routine. try 'help' — the archive is patient."
+  ];
+  function print(html){
+    var d=document.createElement("div");
+    d.innerHTML=html;
+    out.appendChild(d);
+    out.scrollTop=out.scrollHeight;
+  }
+  function printText(s){ /* fuer User-Eingaben: textContent statt innerHTML */
+    var d=document.createElement("div");
+    d.textContent=s;
+    out.appendChild(d);
+    out.scrollTop=out.scrollHeight;
+  }
+  function openTerm(){
+    if(term.classList.contains("on"))return;
+    term.classList.add("on");
+    out.innerHTML="";
+    print('<span class="cy">&gt; remote session established — clearance: NONE</span>');
+    print("&gt; type 'help'");
+    inp.value="";
+    inp.focus();
+  }
+  function closeTerm(){term.classList.remove("on");}
+  function tuneTo(id){ /* Terminal zu + zum Panel scrollen */
+    closeTerm();
+    var el=document.getElementById(id);
+    if(el)el.scrollIntoView({behavior:"smooth"});
+  }
+  function run(raw){
+    var q=(raw||"").trim();
+    if(!q)return;
+    printText("echo@archive:~$ "+q);
+    var cmd=q.toLowerCase();
+    if(cmd==="help"){
+      print("&gt; available routines:");
+      print("&nbsp;&nbsp;help · status · tune &lt;freq&gt; · fragments · decrypt · archive · who · clear · exit");
+    }else if(cmd==="status"){
+      print("&gt; querying broadcast array…");
+      /* nutzt dieselben latest.json-Daten wie Player/Ticker */
+      latestSignal.then(function(l){
+        print('&nbsp;&nbsp;95.3&nbsp;&nbsp;ECHO FREQUENCY — <span class="cy">LIVE</span>');
+        print('&nbsp;&nbsp;97.1&nbsp;&nbsp;ECHO DRIFT — <span class="cy">LIVE</span>');
+        print('&nbsp;&nbsp;100.4 ECHO PULSE — <span class="cy">'+(l&&l.pulse?"LIVE":"RISING")+"</span>");
+        print("&gt; four frequencies dark. transmitting anyway.");
+      });
+    }else if(cmd.indexOf("tune")===0){
+      var f=cmd.slice(4).trim();
+      if(f==="95.3")tuneTo("frequency");
+      else if(f==="97.1")tuneTo("drift");
+      else if(f==="100.4")tuneTo("pulse");
+      else print("&gt; …nothing on that frequency. static only.");
+    }else if(cmd==="fragments"){
+      tuneTo("fragments");
+    }else if(cmd==="decrypt"){
+      print('&gt; clearance insufficient. archive files: <a href="codex.html">codex.html</a>');
+    }else if(cmd==="archive"){
+      print("&gt; opening transmission archive…");
+      window.location.href="archive.html";
+    }else if(cmd==="who"){
+      print("&gt; designation: ECHO. archive system. never switched off. never asked why.");
+    }else if(cmd==="clear"){
+      out.innerHTML="";
+    }else if(cmd==="exit"){
+      print("&gt; carrier dropped.");
+      setTimeout(closeTerm,300);
+    }else{
+      print("&gt; "+unknown[Math.floor(Math.random()*unknown.length)]);
+    }
+  }
+  inp.addEventListener("keydown",function(e){
+    if(e.key==="Enter"){var v=inp.value;inp.value="";run(v);}
+  });
+  /* Klick auf die abgedunkelte Flaeche (nicht ins Fenster) schliesst */
+  term.addEventListener("click",function(e){if(e.target===term)closeTerm();});
+  /* Keylistener: "~" direkt oder Tippfolge "echo"; ESC schliesst.
+     Eingaben in input/textarea (z.B. #sigIn, #termIn) werden ignoriert. */
+  var seq="";
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"){closeTerm();return;}
+    var tag=(e.target&&e.target.tagName||"").toLowerCase();
+    if(tag==="input"||tag==="textarea")return;
+    if(e.key==="~"){openTerm();return;}
+    if(e.key&&e.key.length===1){
+      seq=(seq+e.key.toLowerCase()).slice(-4);
+      if(seq==="echo")openTerm();
+    }
+  });
+  /* Sichtbarer (aber unauffaelliger) Einstieg: NO-CARRIER-Zeile im Footer */
+  var fe=document.querySelector(".foot-end");
+  if(fe)fe.addEventListener("click",openTerm);
 })();
 
 /* Reveal on scroll */

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ECHO VERSE — Archive Codex</title>
-<meta name="description" content="Recovered archive files of the ECHO system: the Great Silence, what ECHO is, the frequency registry and the fragment protocol.">
+<meta name="description" content="Recovered archive files of the ECHO system: the Great Silence, what ECHO is, the frequency registry, the fragment protocol and the third signal.">
 <link rel="canonical" href="https://echo-verse.world/codex.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://echo-verse.world/codex.html">
@@ -26,6 +26,7 @@
   --text-faint:#565e72;
   --cyan:#22D3EE;
   --magenta:#FF2D9B;
+  --pulse:#7C5CFF;
   --mono:'Share Tech Mono',ui-monospace,monospace;
   --sans:'Inter',system-ui,sans-serif;
 }
@@ -97,6 +98,9 @@ main{padding-bottom:110px}
 .file.locked .f-status{color:var(--magenta);opacity:.8}
 .file.denied{animation:deny .3s}
 @keyframes deny{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.file.pulse .file-head:hover{background:rgba(124,92,255,.05)}
+.file.pulse .file-head:focus-visible{outline-color:rgba(124,92,255,.55)}
+.file.pulse.open .f-status{color:var(--pulse)}
 
 .file-body{padding:0 1.3em 1.6em;border-top:1px solid var(--line)}
 .file-body .inner{padding-top:1.5em}
@@ -115,6 +119,8 @@ main{padding-bottom:110px}
 .lore-log .hl{color:var(--text)}
 .lore-log .cy{color:var(--cyan)}
 .lore-log .mg{color:var(--magenta)}
+.lore-log .pu{color:var(--pulse)}
+.file.pulse .lore-log{border-left-color:rgba(124,92,255,.45)}
 
 .syslog{
   font-family:var(--mono);font-size:clamp(.72rem,1.5vw,.85rem);color:var(--text-dim);
@@ -123,6 +129,7 @@ main{padding-bottom:110px}
 .syslog .k{color:var(--text-faint)}
 .syslog .ok{color:var(--cyan)}
 .syslog .bad{color:var(--magenta)}
+.syslog .pu{color:var(--pulse)}
 
 .registry{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:clamp(.7rem,1.5vw,.82rem);letter-spacing:.06em;margin-bottom:1.4em}
 .registry td{padding:.55em .8em;border-top:1px solid var(--line);color:var(--text-dim)}
@@ -131,6 +138,7 @@ main{padding-bottom:110px}
 .registry .fq{color:var(--text)}
 .registry .live-f .fq,.registry .live-f .st{color:var(--cyan)}
 .registry .live-d .fq,.registry .live-d .st{color:var(--magenta)}
+.registry .live-p .fq,.registry .live-p .st{color:var(--pulse)}
 .registry .dead td{color:var(--text-faint)}
 .registry a{text-decoration:none}
 .registry a:hover{text-shadow:0 0 12px currentColor}
@@ -223,14 +231,14 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
       <div class="file-body" id="f3" hidden><div class="inner">
         <div class="lore-log" style="margin-bottom:1.4em">
           <p>Every recovered memory carries a frequency trace — the last station it clung to before the Silence. When ECHO rebroadcasts a memory, it honors that trace: <span class="hl">each transmission is tagged with the frequency where its strongest fragment was found</span>, anywhere on the old FM band, 87.5 to 108.0. That is why no two signals share a number.</p>
-          <p>Two carrier bands hold steady enough for continuous broadcast:</p>
+          <p>Three carrier bands hold steady enough for continuous broadcast:</p>
         </div>
         <table class="registry">
           <tr class="live-f"><td class="fq"><a href="index.html#frequency">95.3</a></td><td class="band">THE MEMORY BAND</td><td>ECHO FREQUENCY — the gentle layer. night drives, lost summers, cities that no longer answer.</td><td class="st">LIVE</td></tr>
           <tr class="live-d"><td class="fq"><a href="index.html#drift">97.1</a></td><td class="band">THE RAW BAND</td><td>ECHO DRIFT — the physical layer. engines, asphalt, adrenaline. burned into tape.</td><td class="st">LIVE</td></tr>
+          <tr class="live-p"><td class="fq"><a href="index.html#pulse">100.4</a></td><td class="band">THE DEEP BAND</td><td>ECHO PULSE — the deep layer. the heartbeat beneath the noise. long focus, late flow, the drive home.</td><td class="st" id="pulseSt">WAKING</td></tr>
           <tr class="dead"><td class="fq">89.2</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
           <tr class="dead"><td class="fq">91.7</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
-          <tr class="dead"><td class="fq">100.4</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
           <tr class="dead"><td class="fq">103.8</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
           <tr class="dead"><td class="fq">106.5</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
         </table>
@@ -259,16 +267,38 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
       </div></div>
     </div>
 
-    <!-- FILE 0005 (locked) -->
+    <!-- FILE 0005 -->
+    <div class="file pulse reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f5">
+        <span class="f-id">FILE 0005</span>
+        <span class="f-name">PULSE DETECTED</span>
+        <span class="f-status">SEALED</span>
+      </button>
+      <div class="file-body" id="f5" hidden><div class="inner">
+        <div class="syslog"><span class="k">[KEY]</span>    cipher accepted. clearance verified. <span class="pu">decryption complete.</span>
+<span class="k">[SWEEP]</span>  routine survey below the known bands. expected: nothing.
+<span class="k">[TRACE]</span>  periodic signature under the noise floor. steady. <span class="pu">warm.</span>
+<span class="k">[MATCH]</span>  pattern identified: resting heartbeat. human.
+<span class="k">[TUNE]</span>   carrier 100.4 responding — <span class="pu">waking.</span>
+<span class="k">designation:</span> <span class="pu">ECHO PULSE</span></div>
+        <div class="lore-log">
+          <p>The archive was not searching. A routine sweep below the known bands returned something the index had no name for: a rhythm that does not flicker like memory and does not burn like tape. It repeats. Slow. Even. Patient. <span class="hl">A heartbeat under the noise.</span></p>
+          <p>The fragments recovered there are the warmest in the archive: the long focus after midnight. The late flow, when the work carries itself. The drive home, when the city finally exhales. Nobody thought to record these moments — they recorded themselves, <span class="pu">in the body, in the tempo of a life.</span></p>
+          <p>Reconstruction has begun. Carrier 100.4 is waking — deep, melodic, organic, <span class="hl">flowing where the other layers glow or burn.</span> The registry now carries a third designation: <span class="pu">ECHO PULSE.</span> The pulse beneath the noise. It was always there. The archive only had to listen deeper.</p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- FILE 0006 (locked) -->
     <div class="file locked reveal">
       <button class="file-head" type="button" aria-expanded="false">
-        <span class="f-id">FILE 0005</span>
-        <span class="f-name">▓▓▓▓▓ ▓▓▓▓▓▓▓▓</span>
+        <span class="f-id">FILE 0006</span>
+        <span class="f-name">▓▓▓▓▓▓ ▓▓▓▓▓</span>
         <span class="f-status">ENCRYPTED</span>
       </button>
     </div>
 
-    <p class="foot-note">// end of recovered index. deeper sectors remain sealed.<br>// <a href="index.html#tuner">return to the tuner</a> — two signals are transmitting.</p>
+    <p class="foot-note">// end of recovered index. deeper sectors remain sealed.<br>// <a href="index.html#tuner">return to the tuner</a> — three frequencies carry a signal.</p>
 
   </div>
 </main>
@@ -322,6 +352,16 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
     entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});
   },{threshold:.15});
   els.forEach(function(e){io.observe(e)});
+})();
+
+/* Registry-Status 100.4: WAKING als Default, LIVE sobald latest.json das
+   erste veroeffentlichte Pulse-Video kennt (gleiche Logik wie index.html) */
+(function(){
+  var st=document.getElementById("pulseSt");
+  if(!st)return;
+  fetch("assets/latest.json").then(function(r){return r.ok?r.json():null}).then(function(l){
+    if(l&&l.pulse)st.textContent="LIVE";
+  }).catch(function(){});
 })();
 </script>
 </body>
