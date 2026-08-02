@@ -14,6 +14,7 @@ CHANNELS = {
     "frequency": "UC-Paofpq5_SgnDIIVAWJupA",
     "drift": "UCr4tKWsfu6-QZPAkYfrTZwg",
     "pulse": "UC5H9FLYzF8728U16hEy5dpA",
+    "vigil": "UCVCq3d4bwMeDLR3v84-5l4w",
 }
 ASSETS = Path(__file__).resolve().parents[2] / "assets"
 OUT = ASSETS / "latest.json"

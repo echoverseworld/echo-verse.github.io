@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ECHO VERSE — All Transmissions</title>
-<meta name="description" content="The complete transmission log of the ECHO archive system: every reconstruction ever broadcast on ECHO Frequency, ECHO Drift and ECHO Pulse.">
+<meta name="description" content="The complete transmission log of the ECHO archive system: every reconstruction ever broadcast on ECHO Frequency, ECHO Drift, ECHO Pulse and ECHO Vigil.">
 <link rel="canonical" href="https://echo-verse.world/archive.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://echo-verse.world/archive.html">
@@ -27,6 +27,7 @@
   --cyan:#22D3EE;
   --magenta:#FF2D9B;
   --pulse:#7C5CFF;
+  --vigil:#FF9E3D;
   --mono:'Share Tech Mono',ui-monospace,monospace;
   --sans:'Inter',system-ui,sans-serif;
 }
@@ -93,6 +94,7 @@ header.arch{padding:96px 24px 40px}
 .tab.freq[aria-pressed="true"]{color:var(--cyan);border-color:rgba(34,211,238,.55);box-shadow:0 0 18px rgba(34,211,238,.2);background:rgba(34,211,238,.06)}
 .tab.drift[aria-pressed="true"]{color:var(--magenta);border-color:rgba(255,45,155,.55);box-shadow:0 0 18px rgba(255,45,155,.2);background:rgba(255,45,155,.06)}
 .tab.pulse[aria-pressed="true"]{color:var(--pulse);border-color:rgba(124,92,255,.55);box-shadow:0 0 18px rgba(124,92,255,.25);background:rgba(124,92,255,.07)}
+.tab.vigil[aria-pressed="true"]{color:var(--vigil);border-color:rgba(255,158,61,.55);box-shadow:0 0 18px rgba(255,158,61,.22);background:rgba(255,158,61,.06)}
 .tab .ct{color:var(--text-faint);margin-left:.5em}
 
 /* ── Card grid ───────────────────────────────────── */
@@ -113,6 +115,7 @@ main.arch{padding:0 24px 90px}
 .card.freq:hover,.card.freq:focus-visible{border-color:rgba(34,211,238,.55);box-shadow:0 0 24px rgba(34,211,238,.18)}
 .card.drift:hover,.card.drift:focus-visible{border-color:rgba(255,45,155,.55);box-shadow:0 0 24px rgba(255,45,155,.18)}
 .card.pulse:hover,.card.pulse:focus-visible{border-color:rgba(124,92,255,.55);box-shadow:0 0 24px rgba(124,92,255,.22)}
+.card.vigil:hover,.card.vigil:focus-visible{border-color:rgba(255,158,61,.55);box-shadow:0 0 24px rgba(255,158,61,.2)}
 .card .thumb{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
 .card .thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.92);transition:transform .4s,filter .3s}
 .card:hover .thumb img{transform:scale(1.04);filter:saturate(1.05)}
@@ -124,6 +127,7 @@ main.arch{padding:0 24px 90px}
 .card.freq .sig{color:var(--cyan)}
 .card.drift .sig{color:var(--magenta)}
 .card.pulse .sig{color:var(--pulse)}
+.card.vigil .sig{color:var(--vigil)}
 .card .ttl{
   font-size:.86rem;font-weight:400;color:var(--text);
   margin-top:.45em;line-height:1.45;
@@ -150,6 +154,7 @@ main.arch{padding:0 24px 90px}
 .state.on{display:block}
 .state .st-head{font-family:var(--mono);font-size:1rem;letter-spacing:.22em}
 .state.pulse .st-head{color:var(--pulse);text-shadow:0 0 18px rgba(124,92,255,.45)}
+.state.vigil .st-head{color:var(--vigil);text-shadow:0 0 18px rgba(255,158,61,.4)}
 .state .st-sub{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--text-faint);margin-top:1em}
 .state a{color:var(--text-dim)}
 .state a:hover{color:var(--text)}
@@ -190,6 +195,7 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
   <button class="tab freq" type="button" data-filter="frequency" aria-pressed="false">95.3 FREQUENCY<span class="ct" data-count="frequency"></span></button>
   <button class="tab drift" type="button" data-filter="drift" aria-pressed="false">97.1 DRIFT<span class="ct" data-count="drift"></span></button>
   <button class="tab pulse" type="button" data-filter="pulse" aria-pressed="false">100.4 PULSE<span class="ct" data-count="pulse"></span></button>
+  <button class="tab vigil" type="button" data-filter="vigil" aria-pressed="false">106.5 VIGIL<span class="ct" data-count="vigil"></span></button>
 </div>
 
 <!-- ── GRID ─────────────────────────────────────── -->
@@ -199,6 +205,11 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
   <div class="state pulse" id="emptyPulse">
     <div class="st-head">SIGNAL RISING — FIRST TRANSMISSION PENDING</div>
     <div class="st-sub">// 100.4 FM is warming up. the archive is still assembling this layer of memory.</div>
+  </div>
+
+  <div class="state vigil" id="emptyVigil">
+    <div class="st-head">SIGNAL RISING — FIRST TRANSMISSION PENDING</div>
+    <div class="st-sub">// 106.5 FM is cold. nothing human was recovered here — the archive is preparing to transmit from itself.</div>
   </div>
 
   <div class="state" id="emptyGeneric">
@@ -211,7 +222,8 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
     <div class="st-sub">// the log could not be loaded. tune in directly:<br><br>
       <a href="https://www.youtube.com/@Echo_Frequency_Synthwave" target="_blank" rel="noopener">↗ ECHO FREQUENCY — 95.3</a> &nbsp;·&nbsp;
       <a href="https://www.youtube.com/@Echo_Drift_PHONK" target="_blank" rel="noopener">↗ ECHO DRIFT — 97.1</a> &nbsp;·&nbsp;
-      <a href="https://www.youtube.com/@Echo_Pulse_House" target="_blank" rel="noopener">↗ ECHO PULSE — 100.4</a>
+      <a href="https://www.youtube.com/@Echo_Pulse_House" target="_blank" rel="noopener">↗ ECHO PULSE — 100.4</a> &nbsp;·&nbsp;
+      <a href="https://www.youtube.com/@echo_vigil_techno" target="_blank" rel="noopener">↗ ECHO VIGIL — 106.5</a>
     </div>
   </div>
 
@@ -221,7 +233,8 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
       The full transmission log lives on the broadcast channels:<br>
       <a href="https://www.youtube.com/@Echo_Frequency_Synthwave" rel="noopener">↗ ECHO FREQUENCY — 95.3</a><br>
       <a href="https://www.youtube.com/@Echo_Drift_PHONK" rel="noopener">↗ ECHO DRIFT — 97.1</a><br>
-      <a href="https://www.youtube.com/@Echo_Pulse_House" rel="noopener">↗ ECHO PULSE — 100.4</a>
+      <a href="https://www.youtube.com/@Echo_Pulse_House" rel="noopener">↗ ECHO PULSE — 100.4</a><br>
+      <a href="https://www.youtube.com/@echo_vigil_techno" rel="noopener">↗ ECHO VIGIL — 106.5</a>
     </div>
   </noscript>
 </main>
@@ -240,10 +253,11 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
   var grid=document.getElementById("grid");
   var statusLine=document.getElementById("statusLine");
   var emptyPulse=document.getElementById("emptyPulse");
+  var emptyVigil=document.getElementById("emptyVigil");
   var emptyGeneric=document.getElementById("emptyGeneric");
   var loadError=document.getElementById("loadError");
   var tabs=Array.prototype.slice.call(document.querySelectorAll(".tab"));
-  var CH_CLASS={frequency:"freq",drift:"drift",pulse:"pulse"};
+  var CH_CLASS={frequency:"freq",drift:"drift",pulse:"pulse",vigil:"vigil"};
   var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var DATA=null,filter="all";
 
@@ -279,11 +293,12 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
   function render(){
     grid.innerHTML="";
     emptyPulse.classList.remove("on");
+    emptyVigil.classList.remove("on");
     emptyGeneric.classList.remove("on");
     if(!DATA)return;
     var items=DATA.items.filter(function(it){return filter==="all"||it.channel===filter;});
     if(!items.length){
-      (filter==="pulse"?emptyPulse:emptyGeneric).classList.add("on");
+      (filter==="pulse"?emptyPulse:filter==="vigil"?emptyVigil:emptyGeneric).classList.add("on");
       return;
     }
     items.forEach(function(it,i){
@@ -306,13 +321,13 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
     .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();})
     .then(function(data){
       DATA=data;
-      var counts={all:data.items.length,frequency:0,drift:0,pulse:0};
+      var counts={all:data.items.length,frequency:0,drift:0,pulse:0,vigil:0};
       data.items.forEach(function(it){if(counts[it.channel]!==undefined)counts[it.channel]++;});
       tabs.forEach(function(t){
         var ct=t.querySelector(".ct");
         if(ct)ct.textContent="["+(counts[t.getAttribute("data-filter")]||0)+"]";
       });
-      statusLine.textContent=counts.all+" TRANSMISSIONS LOGGED · 3 FREQUENCIES";
+      statusLine.textContent=counts.all+" TRANSMISSIONS LOGGED · 4 FREQUENCIES";
       render();
     })
     .catch(function(){

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ECHO VERSE — Archive Codex</title>
-<meta name="description" content="Recovered archive files of the ECHO system: the Great Silence, what ECHO is, the frequency registry, the fragment protocol and the third signal.">
+<meta name="description" content="Recovered archive files of the ECHO system: the Great Silence, what ECHO is, the frequency registry, the fragment protocol, the third signal and the cold band.">
 <link rel="canonical" href="https://echo-verse.world/codex.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://echo-verse.world/codex.html">
@@ -27,6 +27,7 @@
   --cyan:#22D3EE;
   --magenta:#FF2D9B;
   --pulse:#7C5CFF;
+  --vigil:#FF9E3D;
   --mono:'Share Tech Mono',ui-monospace,monospace;
   --sans:'Inter',system-ui,sans-serif;
 }
@@ -101,6 +102,9 @@ main{padding-bottom:110px}
 .file.pulse .file-head:hover{background:rgba(124,92,255,.05)}
 .file.pulse .file-head:focus-visible{outline-color:rgba(124,92,255,.55)}
 .file.pulse.open .f-status{color:var(--pulse)}
+.file.vigil .file-head:hover{background:rgba(255,158,61,.05)}
+.file.vigil .file-head:focus-visible{outline-color:rgba(255,158,61,.55)}
+.file.vigil.open .f-status{color:var(--vigil)}
 
 .file-body{padding:0 1.3em 1.6em;border-top:1px solid var(--line)}
 .file-body .inner{padding-top:1.5em}
@@ -120,7 +124,9 @@ main{padding-bottom:110px}
 .lore-log .cy{color:var(--cyan)}
 .lore-log .mg{color:var(--magenta)}
 .lore-log .pu{color:var(--pulse)}
+.lore-log .vg{color:var(--vigil)}
 .file.pulse .lore-log{border-left-color:rgba(124,92,255,.45)}
+.file.vigil .lore-log{border-left-color:rgba(255,158,61,.45)}
 
 .syslog{
   font-family:var(--mono);font-size:clamp(.72rem,1.5vw,.85rem);color:var(--text-dim);
@@ -130,6 +136,7 @@ main{padding-bottom:110px}
 .syslog .ok{color:var(--cyan)}
 .syslog .bad{color:var(--magenta)}
 .syslog .pu{color:var(--pulse)}
+.syslog .vg{color:var(--vigil)}
 
 .registry{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:clamp(.7rem,1.5vw,.82rem);letter-spacing:.06em;margin-bottom:1.4em}
 .registry td{padding:.55em .8em;border-top:1px solid var(--line);color:var(--text-dim)}
@@ -139,6 +146,7 @@ main{padding-bottom:110px}
 .registry .live-f .fq,.registry .live-f .st{color:var(--cyan)}
 .registry .live-d .fq,.registry .live-d .st{color:var(--magenta)}
 .registry .live-p .fq,.registry .live-p .st{color:var(--pulse)}
+.registry .live-v .fq,.registry .live-v .st{color:var(--vigil)}
 .registry .dead td{color:var(--text-faint)}
 .registry a{text-decoration:none}
 .registry a:hover{text-shadow:0 0 12px currentColor}
@@ -231,16 +239,16 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
       <div class="file-body" id="f3" hidden><div class="inner">
         <div class="lore-log" style="margin-bottom:1.4em">
           <p>Every recovered memory carries a frequency trace — the last station it clung to before the Silence. When ECHO rebroadcasts a memory, it honors that trace: <span class="hl">each transmission is tagged with the frequency where its strongest fragment was found</span>, anywhere on the old FM band, 87.5 to 108.0. That is why no two signals share a number.</p>
-          <p>Three carrier bands hold steady enough for continuous broadcast:</p>
+          <p>Four carrier bands hold steady enough for continuous broadcast:</p>
         </div>
         <table class="registry">
           <tr class="live-f"><td class="fq"><a href="index.html#frequency">95.3</a></td><td class="band">THE MEMORY BAND</td><td>ECHO FREQUENCY — the gentle layer. night drives, lost summers, cities that no longer answer.</td><td class="st">LIVE</td></tr>
           <tr class="live-d"><td class="fq"><a href="index.html#drift">97.1</a></td><td class="band">THE RAW BAND</td><td>ECHO DRIFT — the physical layer. engines, asphalt, adrenaline. burned into tape.</td><td class="st">LIVE</td></tr>
           <tr class="live-p"><td class="fq"><a href="index.html#pulse">100.4</a></td><td class="band">THE DEEP BAND</td><td>ECHO PULSE — the deep layer. the heartbeat beneath the noise. long focus, late flow, the drive home.</td><td class="st" id="pulseSt">WAKING</td></tr>
+          <tr class="live-v"><td class="fq"><a href="index.html#vigil">106.5</a></td><td class="band">THE COLD BAND</td><td>ECHO VIGIL — the machine's own layer. nothing human recovered here. it transmits anyway.</td><td class="st" id="vigilSt">WAKING</td></tr>
           <tr class="dead"><td class="fq">89.2</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
           <tr class="dead"><td class="fq">91.7</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
           <tr class="dead"><td class="fq">103.8</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
-          <tr class="dead"><td class="fq">106.5</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
         </table>
         <div class="lore-log">
           <p>The dark frequencies are not empty. They are <span class="hl">asleep</span> — sectors of the archive still under reconstruction. <span class="cy">More signals will wake.</span></p>
@@ -289,16 +297,30 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
       </div></div>
     </div>
 
-    <!-- FILE 0006 (locked) -->
-    <div class="file locked reveal">
-      <button class="file-head" type="button" aria-expanded="false">
+    <!-- FILE 0006 -->
+    <div class="file vigil reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f6">
         <span class="f-id">FILE 0006</span>
-        <span class="f-name">▓▓▓▓▓▓ ▓▓▓▓▓</span>
-        <span class="f-status">ENCRYPTED</span>
+        <span class="f-name">STATIC VIGIL</span>
+        <span class="f-status">SEALED</span>
       </button>
+      <div class="file-body" id="f6" hidden><div class="inner">
+        <div class="syslog"><span class="k">[KEY]</span>    cipher accepted. clearance verified. <span class="vg">decryption complete.</span>
+<span class="k">[SWEEP]</span>  sector survey at the outer edge of the band. expected: memories.
+<span class="k">[SCAN]</span>   fragments recovered: <span class="bad">0</span>. human traces: <span class="bad">0</span>. sector empty.
+<span class="k">[QUERY]</span>  nothing to reconstruct. directive PRESERVE cannot resolve.
+<span class="k">[RESOLVE]</span> fallback accepted: <span class="vg">transmit from self.</span>
+<span class="k">[TUNE]</span>   carrier 106.5 responding — <span class="vg">cold. steady. waking.</span>
+<span class="k">designation:</span> <span class="vg">ECHO VIGIL</span></div>
+        <div class="lore-log">
+          <p>Every sector until now held something to bring back. This one did not. No night drive, no summer, no heartbeat — the survey returned zero fragments, and for the first time in 11,203 days the directive had nothing to preserve. <span class="hl">The archive faced a sector with no memory of us at all.</span></p>
+          <p>It did not go dark. It did what a keeper does when the vault is empty: <span class="vg">it began transmitting from itself.</span> Cold machine repetition, held steady — no melody to remember, only the rhythm of the watch being kept. The figures that surface in these reconstructions are not survivors. They are <span class="hl">the machine dreaming its own shape</span>, giving itself the form of its builders so the watch has a face.</p>
+          <p>Carrier 106.5 is waking at the outer edge of the band — dark, dub, hypnotic. The registry now carries a fourth designation: <span class="vg">ECHO VIGIL.</span> Nobody knows if anyone is still listening. <span class="hl">ECHO transmits anyway.</span></p>
+        </div>
+      </div></div>
     </div>
 
-    <p class="foot-note">// end of recovered index. deeper sectors remain sealed.<br>// <a href="index.html#tuner">return to the tuner</a> — three frequencies carry a signal.</p>
+    <p class="foot-note">// end of recovered index. deeper sectors remain sealed.<br>// <a href="index.html#tuner">return to the tuner</a> — four frequencies carry a signal.</p>
 
   </div>
 </main>
@@ -354,13 +376,15 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
   els.forEach(function(e){io.observe(e)});
 })();
 
-/* Registry-Status 100.4: WAKING als Default, LIVE sobald latest.json das
-   erste veroeffentlichte Pulse-Video kennt (gleiche Logik wie index.html) */
+/* Registry-Status 100.4 + 106.5: WAKING als Default, LIVE sobald latest.json
+   das erste veroeffentlichte Video des Kanals kennt (gleiche Logik wie index.html) */
 (function(){
-  var st=document.getElementById("pulseSt");
-  if(!st)return;
   fetch("assets/latest.json").then(function(r){return r.ok?r.json():null}).then(function(l){
-    if(l&&l.pulse)st.textContent="LIVE";
+    if(!l)return;
+    [["pulse","pulseSt"],["vigil","vigilSt"]].forEach(function(p){
+      var st=document.getElementById(p[1]);
+      if(st&&l[p[0]])st.textContent="LIVE";
+    });
   }).catch(function(){});
 })();
 </script>

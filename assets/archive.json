@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-01T18:24:37",
+  "generated": "2026-08-02T23:00:39",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -12,6 +12,10 @@
     "pulse": {
       "name": "ECHO Pulse",
       "fm": "100.4"
+    },
+    "vigil": {
+      "name": "ECHO Vigil",
+      "fm": "106.5"
     }
   },
   "items": [

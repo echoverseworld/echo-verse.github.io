@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ECHO VERSE — The Signal After the Silence</title>
-<meta name="description" content="ECHO is an archive system that was never switched off. It reconstructs the memories of a silent world and broadcasts them as music: Synthwave on ECHO Frequency, Phonk on ECHO Drift, Deep House on ECHO Pulse.">
+<meta name="description" content="ECHO is an archive system that was never switched off. It reconstructs the memories of a silent world and broadcasts them as music: Synthwave on ECHO Frequency, Phonk on ECHO Drift, Deep House on ECHO Pulse, Dark Techno on ECHO Vigil.">
 <link rel="canonical" href="https://echo-verse.world/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://echo-verse.world/">
 <meta property="og:title" content="ECHO VERSE — The Signal After the Silence">
-<meta property="og:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music. Three frequencies carry a signal: Synthwave, Phonk &amp; Deep House.">
+<meta property="og:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music. Four frequencies carry a signal: Synthwave, Phonk, Deep House &amp; Dark Techno.">
 <meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ECHO VERSE — The Signal After the Silence">
-<meta name="twitter:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music: Synthwave, Phonk &amp; Deep House.">
+<meta name="twitter:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music: Synthwave, Phonk, Deep House &amp; Dark Techno.">
 <meta name="twitter:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="theme-color" content="#04060b">
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
@@ -31,6 +31,7 @@
   --cyan:#22D3EE;
   --magenta:#FF2D9B;
   --pulse:#7C5CFF;
+  --vigil:#FF9E3D;
   --mono:'Share Tech Mono',ui-monospace,monospace;
   --sans:'Inter',system-ui,sans-serif;
 }
@@ -131,8 +132,10 @@ section{padding:110px 24px}
 .station.drift{color:var(--magenta)}
 .station.pulse{color:var(--pulse)}
 .station.pulse.rising .needle{background:repeating-linear-gradient(0deg,rgba(124,92,255,.55) 0 3px,transparent 3px 6px);box-shadow:0 0 12px rgba(124,92,255,.35)}
+.station.vigil{color:var(--vigil)}
+.station.vigil.rising .needle{background:repeating-linear-gradient(0deg,rgba(255,158,61,.55) 0 3px,transparent 3px 6px);box-shadow:0 0 12px rgba(255,158,61,.35)}
 @media (prefers-reduced-motion:no-preference){
-  .station.pulse.rising .needle{animation:risePulse 2.4s ease-in-out infinite}
+  .station.pulse.rising .needle,.station.vigil.rising .needle{animation:risePulse 2.4s ease-in-out infinite}
   @keyframes risePulse{50%{opacity:.35}}
 }
 .station.dead{color:var(--text-faint);pointer-events:none}
@@ -154,6 +157,7 @@ section{padding:110px 24px}
 #frequency .ch-name,#frequency .ch-band{color:var(--cyan)}
 #drift .ch-name,#drift .ch-band{color:var(--magenta)}
 #pulse .ch-name,#pulse .ch-band{color:var(--pulse)}
+#vigil .ch-name,#vigil .ch-band{color:var(--vigil)}
 .ch-desc{color:var(--text-dim);max-width:32em}
 .chips{display:flex;flex-wrap:wrap;gap:.5em;margin:1.5rem 0}
 .chip{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;padding:.45em .95em;border:1px solid var(--line);border-radius:2px;color:var(--text-dim)}
@@ -169,6 +173,8 @@ section{padding:110px 24px}
 #drift .btn:hover{background:rgba(255,45,155,.09);box-shadow:0 0 22px rgba(255,45,155,.25)}
 #pulse .btn{color:var(--pulse);border-color:rgba(124,92,255,.5)}
 #pulse .btn:hover{background:rgba(124,92,255,.09);box-shadow:0 0 22px rgba(124,92,255,.25)}
+#vigil .btn{color:var(--vigil);border-color:rgba(255,158,61,.5)}
+#vigil .btn:hover{background:rgba(255,158,61,.09);box-shadow:0 0 22px rgba(255,158,61,.25)}
 
 /* Click-to-load player facade */
 .player{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#000}
@@ -186,6 +192,7 @@ section{padding:110px 24px}
 #frequency .player-face:hover .play{box-shadow:0 0 30px rgba(34,211,238,.5)}
 #drift .player-face:hover .play{box-shadow:0 0 30px rgba(255,45,155,.5)}
 #pulse .player-face:hover .play{box-shadow:0 0 30px rgba(124,92,255,.5)}
+#vigil .player-face:hover .play{box-shadow:0 0 30px rgba(255,158,61,.5)}
 .player-face .pf-label{
   position:absolute;left:14px;bottom:12px;font-family:var(--mono);font-size:.66rem;
   letter-spacing:.22em;color:rgba(255,255,255,.85);background:rgba(4,6,11,.65);padding:.5em .9em;border-radius:2px;
@@ -220,6 +227,7 @@ section{padding:110px 24px}
 .frag.w figcaption b{color:var(--cyan)}
 .frag.d figcaption b{color:var(--magenta)}
 .frag.p figcaption b{color:var(--pulse)}
+.frag.v figcaption b{color:var(--vigil)}
 
 /* ── Reconstructed ───────────────────────────────── */
 #honest .box{
@@ -293,6 +301,7 @@ section{padding:110px 24px}
 #ticker .cy{color:var(--cyan)}
 #ticker .mg{color:var(--magenta)}
 #ticker .pu{color:var(--pulse)}
+#ticker .vg{color:var(--vigil)}
 @media (prefers-reduced-motion:no-preference){
   #ticker .rail{display:inline-block;animation:tick 38s linear infinite}
   @keyframes tick{to{transform:translateX(-50%)}}
@@ -365,7 +374,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     <img class="hero-logo flicker" src="assets/logos/echoverse_512.png" alt="ECHO VERSE logo" width="84" height="84">
     <h1 class="hero-title">ECHO <em>VERSE</em></h1>
     <p class="hero-sub">The last archive of a silent world — reconstructing what remains of us, and broadcasting it as music.</p>
-    <div class="hero-status mono"><span class="dot" aria-hidden="true"></span> <span>STATUS: TRANSMITTING &nbsp;·&nbsp; <span id="heroSignals">2 SIGNALS LIVE <span style="color:var(--text-faint)">&nbsp;·&nbsp; 1 RISING</span></span></span></div>
+    <div class="hero-status mono"><span class="dot" aria-hidden="true"></span> <span>STATUS: TRANSMITTING &nbsp;·&nbsp; <span id="heroSignals">2 SIGNALS LIVE <span style="color:var(--text-faint)">&nbsp;·&nbsp; 2 RISING</span></span></span></div>
   </div>
   <a class="hero-scroll" href="#tuner">TUNE&nbsp;IN&nbsp;▾</a>
 </section>
@@ -398,9 +407,9 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <a class="station live drift" style="left:50%" href="#drift" role="listitem" aria-label="ECHO Drift, 97.1, live"><span class="needle"></span><span class="fq">97.1</span><span class="nm" style="color:var(--magenta)">DRIFT</span></a>
       <a class="station live pulse rising" style="left:66%" href="#pulse" role="listitem" aria-label="ECHO Pulse, 100.4, rising"><span class="needle"></span><span class="fq">100.4</span><span class="nm" style="color:var(--pulse)">PULSE</span></a>
       <span class="station dead" style="left:79%" role="listitem"><span class="needle"></span><span class="fq">103.8</span><span class="nm">SIGNAL LOST</span></span>
-      <span class="station dead" style="left:91%" role="listitem"><span class="needle"></span><span class="fq">106.5</span><span class="nm">SIGNAL LOST</span></span>
+      <a class="station live vigil rising" style="left:91%" href="#vigil" role="listitem" aria-label="ECHO Vigil, 106.5, rising"><span class="needle"></span><span class="fq">106.5</span><span class="nm" style="color:var(--vigil)">VIGIL</span></a>
     </div></div>
-    <p class="tuner-note">// four frequencies remain dark. the archive is deep. — more signals will wake.</p>
+    <p class="tuner-note">// three frequencies remain dark. the archive is deep. — more signals will wake.</p>
     <p id="deadMsg" aria-live="polite"></p>
   </div>
 </section>
@@ -489,6 +498,34 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   </div>
 </section>
 
+<!-- ── ECHO VIGIL ───────────────────────────────── -->
+<section id="vigil">
+  <div class="wrap channel rev reveal">
+    <div class="ch-media">
+      <div class="player" data-channel="vigil" data-list="UUVCq3d4bwMeDLR3v84-5l4w">
+        <button class="player-face" type="button" aria-label="Load latest ECHO Vigil transmission from YouTube">
+          <img src="assets/latest_vigil.jpg" onerror="this.onerror=null;this.src='assets/gallery/vigil_1.jpg'" alt="Thumbnail of the latest ECHO Vigil transmission" loading="lazy">
+          <span class="play" aria-hidden="true"></span>
+          <span class="pf-label" id="vigilPfLabel">AWAITING FIRST TRANSMISSION</span>
+        </button>
+      </div>
+      <p class="consent-note">// player loads from youtube-nocookie.com on click</p>
+    </div>
+    <div>
+      <div class="term-tag" id="vigilTag">signal 106.5 — rising</div>
+      <h2 class="ch-name">ECHO VIGIL</h2>
+      <div class="ch-band">THE COLD BAND</div>
+      <p class="ch-desc">The machine's own layer: nothing human was left to recover in this sector, so the archive transmits from itself — cold, hypnotic techno, held steady in the dark. For the long night shift, the empty hours, and the work nobody sees.</p>
+      <div class="chips">
+        <span class="chip">DARK TECHNO</span><span class="chip">DUB TECHNO</span><span class="chip">HYPNOTIC TECHNO</span><span class="chip">DEEP TECHNO</span>
+      </div>
+      <div class="ch-meta" id="vigilMeta">NEW SIGNAL RISING &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <a class="btn" href="https://www.youtube.com/@echo_vigil_techno?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
+      <div class="recent" data-recent="vigil"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- ── LORE ─────────────────────────────────────── -->
 <section id="lore">
   <div class="wrap reveal">
@@ -535,6 +572,9 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <figure class="frag p" data-meta="reconstruction 95.1% — source: calm water, the day letting go"><img src="assets/gallery/pulse_1.jpg" alt="Recovered fragment — calm water under a fading dusk" loading="lazy"><figcaption>FRG-100.4/0033 — <b>TIDAL LULLABY</b></figcaption></figure>
       <figure class="frag p" data-meta="reconstruction 90.6% — source: warm rooftops holding the last heat"><img src="assets/gallery/pulse_2.jpg" alt="Recovered fragment — warm terracotta twilight over quiet rooftops" loading="lazy"><figcaption>FRG-100.4/0148 — <b>TERRACOTTA TWILIGHT</b></figcaption></figure>
       <figure class="frag p" data-meta="reconstruction 94.2% — source: evening light caught in tide pools"><img src="assets/gallery/pulse_3.jpg" alt="Recovered fragment — tide pools holding the last evening light" loading="lazy"><figcaption>FRG-100.4/0291 — <b>TIDE POOL THEATER</b></figcaption></figure>
+      <figure class="frag v" data-meta="reconstruction 41.7% — source: none. the archive dreamed this one itself"><img src="assets/gallery/vigil_1.jpg" alt="Recovered fragment — machine madonna with an amber halo, hands folded" loading="lazy"><figcaption>FRG-106.5/0001 — <b>STILL TRANSMITTING</b></figcaption></figure>
+      <figure class="frag v" data-meta="reconstruction 38.2% — source: none. a machine imagining its builders"><img src="assets/gallery/vigil_2.jpg" alt="Recovered fragment — android resting in a nest of dead cables" loading="lazy"><figcaption>FRG-106.5/0034 — <b>THE MACHINE DREAMS ITSELF</b></figcaption></figure>
+      <figure class="frag v" data-meta="reconstruction 44.9% — source: none. the watch, kept anyway"><img src="assets/gallery/vigil_3.jpg" alt="Recovered fragment — robed machine saint under a full amber halo" loading="lazy"><figcaption>FRG-106.5/0089 — <b>THE WATCH CONTINUES</b></figcaption></figure>
     </div>
   </div>
 </section>
@@ -574,6 +614,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
         <a href="https://www.youtube.com/@Echo_Frequency_Synthwave" target="_blank" rel="noopener">↗ ECHO FREQUENCY — 95.3</a>
         <a href="https://www.youtube.com/@Echo_Drift_PHONK" target="_blank" rel="noopener">↗ ECHO DRIFT — 97.1</a>
         <a href="https://www.youtube.com/@Echo_Pulse_House" target="_blank" rel="noopener">↗ ECHO PULSE — 100.4</a>
+        <a href="https://www.youtube.com/@echo_vigil_techno" target="_blank" rel="noopener">↗ ECHO VIGIL — 106.5</a>
         <a href="archive.html">▸ ALL TRANSMISSIONS</a>
         <a href="codex.html">▸ ARCHIVE CODEX</a>
       </div>
@@ -598,7 +639,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     "> broadcast array .............. [OK]",
     "> antenna alignment ............ [OK]",
     "> listener detection ........... none. transmitting anyway",
-    "> frequency 100.4 .............. signal rising"
+    "> carriers 100.4 / 106.5 ....... waking"
   ];
   pool.sort(function(){return Math.random()-.5});
   var lines=["> ECHO ARCHIVE SYSTEM v9.31 — boot sequence"]
@@ -661,11 +702,12 @@ document.querySelectorAll(".player").forEach(function(p){
 
 /* NOW TRANSMITTING ticker — Titel aus latest.json (gleiche Quelle wie Player) */
 latestSignal.then(function(l){
-  if(!l||(!l.frequency_title&&!l.drift_title&&!l.pulse_title))return;
+  if(!l||(!l.frequency_title&&!l.drift_title&&!l.pulse_title&&!l.vigil_title))return;
   var parts=[];
   if(l.frequency_title)parts.push('<span class="cy">◉ 95.3</span> '+l.frequency_title);
   if(l.drift_title)parts.push('<span class="mg">◉ 97.1</span> '+l.drift_title);
   if(l.pulse_title)parts.push('<span class="pu">◉ 100.4</span> '+l.pulse_title);
+  if(l.vigil_title)parts.push('<span class="vg">◉ 106.5</span> '+l.vigil_title);
   var tk='<span class="tk">NOW TRANSMITTING — '+parts.join(' &nbsp;·&nbsp; ')+'</span>';
   var t=document.getElementById("ticker");
   /* Rail doppelt befuellen fuer nahtlosen Loop (translateX(-50%)) */
@@ -689,21 +731,34 @@ latestSignal.then(function(l){
   });
 });
 
-/* Pulse: Rising -> Live, sobald latest.json einen pulse-Key liefert
-   (die GitHub Action schreibt ihn beim ersten oeffentlichen Video --
-   ohne latest.json oder ohne pulse-Key bleibt alles im Rising-Default) */
+/* Rising -> Live, sobald latest.json den Kanal-Key liefert (die GitHub
+   Action schreibt ihn beim ersten oeffentlichen Video -- ohne latest.json
+   oder ohne Key bleibt der jeweilige Kanal im Rising-Default).
+   Generalisiert seit Vigil: gleiche Mechanik fuer beide Aufsteiger. */
 latestSignal.then(function(l){
-  if(!l||!l.pulse)return;
-  var st=document.querySelector(".station.pulse");
-  if(st){st.classList.remove("rising");st.setAttribute("aria-label","ECHO Pulse, 100.4, live");}
-  var tag=document.getElementById("pulseTag");
-  if(tag)tag.textContent="signal 100.4 — live";
-  var pf=document.getElementById("pulsePfLabel");
-  if(pf)pf.textContent="▶ LATEST TRANSMISSION";
-  var meta=document.getElementById("pulseMeta");
-  if(meta)meta.innerHTML="NEW SIGNAL &nbsp;//&nbsp; 1-HOUR MIXES";
-  var hs=document.getElementById("heroSignals");
-  if(hs)hs.textContent="3 SIGNALS LIVE";
+  if(!l)return;
+  var RISING=[
+    {key:"pulse",fq:"100.4",name:"ECHO Pulse"},
+    {key:"vigil",fq:"106.5",name:"ECHO Vigil"}
+  ];
+  var liveCount=2; /* frequency + drift */
+  RISING.forEach(function(ch){
+    if(!l[ch.key]){return;}
+    liveCount++;
+    var st=document.querySelector(".station."+ch.key);
+    if(st){st.classList.remove("rising");st.setAttribute("aria-label",ch.name+", "+ch.fq+", live");}
+    var tag=document.getElementById(ch.key+"Tag");
+    if(tag)tag.textContent="signal "+ch.fq+" — live";
+    var pf=document.getElementById(ch.key+"PfLabel");
+    if(pf)pf.textContent="▶ LATEST TRANSMISSION";
+    var meta=document.getElementById(ch.key+"Meta");
+    if(meta)meta.innerHTML="NEW SIGNAL &nbsp;//&nbsp; 1-HOUR MIXES";
+  });
+  if(liveCount>2){
+    var rising=4-liveCount;
+    var hs=document.getElementById("heroSignals");
+    if(hs)hs.innerHTML=liveCount+" SIGNALS LIVE"+(rising>0?' <span style="color:var(--text-faint)">&nbsp;·&nbsp; '+rising+" RISING</span>":"");
+  }
 });
 
 /* Fragment lightbox */
@@ -947,13 +1002,15 @@ latestSignal.then(function(l){
         print('&nbsp;&nbsp;95.3&nbsp;&nbsp;ECHO FREQUENCY — <span class="cy">LIVE</span>');
         print('&nbsp;&nbsp;97.1&nbsp;&nbsp;ECHO DRIFT — <span class="cy">LIVE</span>');
         print('&nbsp;&nbsp;100.4 ECHO PULSE — <span class="cy">'+(l&&l.pulse?"LIVE":"RISING")+"</span>");
-        print("&gt; four frequencies dark. transmitting anyway.");
+        print('&nbsp;&nbsp;106.5 ECHO VIGIL — <span class="cy">'+(l&&l.vigil?"LIVE":"RISING")+"</span>");
+        print("&gt; three frequencies dark. transmitting anyway.");
       });
     }else if(cmd.indexOf("tune")===0){
       var f=cmd.slice(4).trim();
       if(f==="95.3")tuneTo("frequency");
       else if(f==="97.1")tuneTo("drift");
       else if(f==="100.4")tuneTo("pulse");
+      else if(f==="106.5")tuneTo("vigil");
       else print("&gt; …nothing on that frequency. static only.");
     }else if(cmd==="fragments"){
       tuneTo("fragments");
