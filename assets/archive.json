@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-02T23:00:39",
+  "generated": "2026-08-03T18:30:09",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "drift",
+      "volume": 13,
+      "title": "ECHO 96.9 — SMOKE SIGNAL // Phonk, Drift Phonk Mix",
+      "fm": "96.9",
+      "fragment": "SMOKE SIGNAL",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:27",
+      "published": "2026-08-03",
+      "youtube_id": "vd4KSXJ8H5k",
+      "thumb": "assets/archive/drift_013.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 12,
+      "title": "ECHO 101.8 — CIRCUIT NOSTALGIA // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "101.8",
+      "fragment": "CIRCUIT NOSTALGIA",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "62:17",
+      "published": "2026-08-03",
+      "youtube_id": "jw3iakmIDRU",
+      "thumb": "assets/archive/wave_012.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 1,
+      "title": "ECHO 103.7 — STILL TRANSMITTING // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "fm": "103.7",
+      "fragment": "STILL TRANSMITTING",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "62:35",
+      "published": "2026-08-03",
+      "youtube_id": "lOwfbXDPC9Y",
+      "thumb": "assets/archive/vigil_001.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 1,
+      "title": "ECHO 89.5 — TIDAL LULLABY // Deep House, Melodic House, Organic House Mix",
+      "fm": "89.5",
+      "fragment": "TIDAL LULLABY",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "61:57",
+      "published": "2026-08-03",
+      "youtube_id": "UQDUZa1s868",
+      "thumb": "assets/archive/pulse_001.jpg"
+    },
     {
       "channel": "drift",
       "volume": 12,
