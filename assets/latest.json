@@ -1,7 +1,11 @@
 {
-  "frequency": "jw3iakmIDRU",
-  "frequency_title": "ECHO 101.8 — CIRCUIT NOSTALGIA // Chillwave, Dreamwave, Downtempo Mix",
+  "frequency": "tR5Psj0MpRA",
+  "frequency_title": "ECHO 102.5 — GHOSTS IN THE NEON // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "tR5Psj0MpRA",
+      "title": "ECHO 102.5 — GHOSTS IN THE NEON // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "jw3iakmIDRU",
       "title": "ECHO 101.8 — CIRCUIT NOSTALGIA // Chillwave, Dreamwave, Downtempo Mix"
@@ -13,15 +17,15 @@
     {
       "id": "0YsPR51RXDo",
       "title": "ECHO 105.9 — DREAMS ON TAPE // Retrowave, Synthwave, Cyberpunk Mix"
-    },
-    {
-      "id": "klZKc9tVmck",
-      "title": "ECHO 106.1 — WAVES FROM NOWHERE // Synthwave, Retrowave, Chillwave Mix"
     }
   ],
-  "drift": "vd4KSXJ8H5k",
-  "drift_title": "ECHO 96.9 — SMOKE SIGNAL // Phonk, Drift Phonk Mix",
+  "drift": "vxZZZGWOSu4",
+  "drift_title": "ECHO 96.7 — DOWNSHIFT KINGDOM // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "vxZZZGWOSu4",
+      "title": "ECHO 96.7 — DOWNSHIFT KINGDOM // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "vd4KSXJ8H5k",
       "title": "ECHO 96.9 — SMOKE SIGNAL // Phonk, Drift Phonk Mix"
@@ -33,27 +37,31 @@
     {
       "id": "pQLM3mSrnQ8",
       "title": "ECHO 102.4 — CHROME APOSTLE // Drift Phonk, Night Drive Mix"
-    },
-    {
-      "id": "q0u3px7QA8w",
-      "title": "ECHO 103.5 — GRAVEL THRONE // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "pulse": "UQDUZa1s868",
-  "pulse_title": "ECHO 89.5 — TIDAL LULLABY // Deep House, Melodic House, Organic House Mix",
+  "pulse": "zqItnGKCkgQ",
+  "pulse_title": "ECHO 93.4 — TERRACOTTA TWILIGHT // Melodic House, Organic House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "zqItnGKCkgQ",
+      "title": "ECHO 93.4 — TERRACOTTA TWILIGHT // Melodic House, Organic House, Chill House Mix"
+    },
     {
       "id": "UQDUZa1s868",
       "title": "ECHO 89.5 — TIDAL LULLABY // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "lOwfbXDPC9Y",
-  "vigil_title": "ECHO 103.7 — STILL TRANSMITTING // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "AeoA95TfEhg",
+  "vigil_title": "ECHO 107.3 — CARRIER WITHOUT END // Dark Techno, Hypnotic Techno, Deep Techno Mix",
   "recent_vigil": [
+    {
+      "id": "AeoA95TfEhg",
+      "title": "ECHO 107.3 — CARRIER WITHOUT END // Dark Techno, Hypnotic Techno, Deep Techno Mix"
+    },
     {
       "id": "lOwfbXDPC9Y",
       "title": "ECHO 103.7 — STILL TRANSMITTING // Hypnotic Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "updated": "2026-08-05T14:38:29Z"
+  "updated": "2026-08-05T19:59:09Z"
 }
