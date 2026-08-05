@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-03T18:30:09",
+  "generated": "2026-08-05T18:30:09",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "vigil",
+      "volume": 2,
+      "title": "ECHO 107.3 — CARRIER WITHOUT END // Dark Techno, Hypnotic Techno, Deep Techno Mix",
+      "fm": "107.3",
+      "fragment": "CARRIER WITHOUT END",
+      "genres": "Dark Techno, Hypnotic Techno, Deep Techno",
+      "duration": "64:40",
+      "published": "2026-08-05",
+      "youtube_id": "AeoA95TfEhg",
+      "thumb": "assets/archive/vigil_002.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 2,
+      "title": "ECHO 93.4 — TERRACOTTA TWILIGHT // Melodic House, Organic House, Chill House Mix",
+      "fm": "93.4",
+      "fragment": "TERRACOTTA TWILIGHT",
+      "genres": "Melodic House, Organic House, Chill House",
+      "duration": "62:39",
+      "published": "2026-08-05",
+      "youtube_id": "zqItnGKCkgQ",
+      "thumb": "assets/archive/pulse_002.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 14,
+      "title": "ECHO 96.7 — DOWNSHIFT KINGDOM // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "96.7",
+      "fragment": "DOWNSHIFT KINGDOM",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "61:37",
+      "published": "2026-08-05",
+      "youtube_id": "vxZZZGWOSu4",
+      "thumb": "assets/archive/drift_014.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 13,
+      "title": "ECHO 102.5 — GHOSTS IN THE NEON // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "102.5",
+      "fragment": "GHOSTS IN THE NEON",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "63:50",
+      "published": "2026-08-05",
+      "youtube_id": "tR5Psj0MpRA",
+      "thumb": "assets/archive/wave_013.jpg"
+    },
     {
       "channel": "drift",
       "volume": 13,
