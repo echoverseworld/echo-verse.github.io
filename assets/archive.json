@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-05T18:30:09",
+  "generated": "2026-08-07T18:30:10",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "vigil",
+      "volume": 3,
+      "title": "ECHO 104.4 — LAST OPERATOR // Dub Techno, Deep Techno, Dark Techno Mix",
+      "fm": "104.4",
+      "fragment": "LAST OPERATOR",
+      "genres": "Dub Techno, Deep Techno, Dark Techno",
+      "duration": "61:13",
+      "published": "2026-08-07",
+      "youtube_id": "yW1OZIkFUF8",
+      "thumb": "assets/archive/vigil_003.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 3,
+      "title": "ECHO 99.4 — TIDE POOL THEATER // Organic House, Chill House, Deep House Mix",
+      "fm": "99.4",
+      "fragment": "TIDE POOL THEATER",
+      "genres": "Organic House, Chill House, Deep House",
+      "duration": "63:48",
+      "published": "2026-08-07",
+      "youtube_id": "0yS3MG-GX3s",
+      "thumb": "assets/archive/pulse_003.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 15,
+      "title": "ECHO 97.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "97.7",
+      "fragment": "ASPHALT SERMON",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "61:35",
+      "published": "2026-08-07",
+      "youtube_id": "RpqoA7B8QhU",
+      "thumb": "assets/archive/drift_015.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 14,
+      "title": "ECHO 97.7 — FADING CITY LIGHTS // Retrowave, Synthwave, Cyberpunk Mix",
+      "fm": "97.7",
+      "fragment": "FADING CITY LIGHTS",
+      "genres": "Retrowave, Synthwave, Cyberpunk",
+      "duration": "63:23",
+      "published": "2026-08-07",
+      "youtube_id": "5DL3douyceA",
+      "thumb": "assets/archive/wave_014.jpg"
+    },
     {
       "channel": "vigil",
       "volume": 2,
