@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-07T18:30:10",
+  "generated": "2026-08-10T18:30:10",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "vigil",
+      "volume": 4,
+      "title": "ECHO 93.7 — COOLING TOWERS AT DAWN // Dark Techno, Dub Techno, Hypnotic Techno Mix",
+      "fm": "93.7",
+      "fragment": "COOLING TOWERS AT DAWN",
+      "genres": "Dark Techno, Dub Techno, Hypnotic Techno",
+      "duration": "62:33",
+      "published": "2026-08-10",
+      "youtube_id": "qGQSpd8e4zU",
+      "thumb": "assets/archive/vigil_004.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 4,
+      "title": "ECHO 105.7 — MOONLIT MERIDIAN // Melodic House, Deep House, Chill House Mix",
+      "fm": "105.7",
+      "fragment": "MOONLIT MERIDIAN",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "61:17",
+      "published": "2026-08-10",
+      "youtube_id": "oWz4JBuPNeQ",
+      "thumb": "assets/archive/pulse_004.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 16,
+      "title": "ECHO 100.4 — REARVIEW RELIQUARY // Phonk, Drift Phonk Mix",
+      "fm": "100.4",
+      "fragment": "REARVIEW RELIQUARY",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:30",
+      "published": "2026-08-10",
+      "youtube_id": "H3hWQzUL5G4",
+      "thumb": "assets/archive/drift_016.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 15,
+      "title": "ECHO 103.7 — RUST AND REVERB // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "103.7",
+      "fragment": "RUST AND REVERB",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "61:16",
+      "published": "2026-08-10",
+      "youtube_id": "kP1MmTQdykY",
+      "thumb": "assets/archive/wave_015.jpg"
+    },
     {
       "channel": "vigil",
       "volume": 3,
