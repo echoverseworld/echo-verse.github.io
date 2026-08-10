@@ -1,7 +1,11 @@
 {
-  "frequency": "5DL3douyceA",
-  "frequency_title": "ECHO 97.7 — FADING CITY LIGHTS // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "kP1MmTQdykY",
+  "frequency_title": "ECHO 103.7 — RUST AND REVERB // Synthwave, Dreamwave, Chillwave Mix",
   "recent_frequency": [
+    {
+      "id": "kP1MmTQdykY",
+      "title": "ECHO 103.7 — RUST AND REVERB // Synthwave, Dreamwave, Chillwave Mix"
+    },
     {
       "id": "5DL3douyceA",
       "title": "ECHO 97.7 — FADING CITY LIGHTS // Retrowave, Synthwave, Cyberpunk Mix"
@@ -13,15 +17,15 @@
     {
       "id": "jw3iakmIDRU",
       "title": "ECHO 101.8 — CIRCUIT NOSTALGIA // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "DohKYiI8bdg",
-      "title": "ECHO 92.1 — STEEL AND STARLIGHT // Chillwave, Dreamwave, Downtempo Mix"
     }
   ],
-  "drift": "RpqoA7B8QhU",
-  "drift_title": "ECHO 97.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "H3hWQzUL5G4",
+  "drift_title": "ECHO 100.4 — REARVIEW RELIQUARY // Phonk, Drift Phonk Mix",
   "recent_drift": [
+    {
+      "id": "H3hWQzUL5G4",
+      "title": "ECHO 100.4 — REARVIEW RELIQUARY // Phonk, Drift Phonk Mix"
+    },
     {
       "id": "RpqoA7B8QhU",
       "title": "ECHO 97.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "vd4KSXJ8H5k",
       "title": "ECHO 96.9 — SMOKE SIGNAL // Phonk, Drift Phonk Mix"
-    },
-    {
-      "id": "lGO5VooXkQo",
-      "title": "ECHO 102.4 — TUNNEL VISION MASS // Drift Phonk, Night Drive Mix"
     }
   ],
-  "pulse": "0yS3MG-GX3s",
-  "pulse_title": "ECHO 99.4 — TIDE POOL THEATER // Organic House, Chill House, Deep House Mix",
+  "pulse": "oWz4JBuPNeQ",
+  "pulse_title": "ECHO 105.7 — MOONLIT MERIDIAN // Melodic House, Deep House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "oWz4JBuPNeQ",
+      "title": "ECHO 105.7 — MOONLIT MERIDIAN // Melodic House, Deep House, Chill House Mix"
+    },
     {
       "id": "0yS3MG-GX3s",
       "title": "ECHO 99.4 — TIDE POOL THEATER // Organic House, Chill House, Deep House Mix"
@@ -55,9 +59,13 @@
       "title": "ECHO 89.5 — TIDAL LULLABY // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "yW1OZIkFUF8",
-  "vigil_title": "ECHO 104.4 — LAST OPERATOR // Dub Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "qGQSpd8e4zU",
+  "vigil_title": "ECHO 93.7 — COOLING TOWERS AT DAWN // Dark Techno, Dub Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "qGQSpd8e4zU",
+      "title": "ECHO 93.7 — COOLING TOWERS AT DAWN // Dark Techno, Dub Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "yW1OZIkFUF8",
       "title": "ECHO 104.4 — LAST OPERATOR // Dub Techno, Deep Techno, Dark Techno Mix"
@@ -71,5 +79,5 @@
       "title": "ECHO 103.7 — STILL TRANSMITTING // Hypnotic Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "updated": "2026-08-10T13:49:02Z"
+  "updated": "2026-08-10T19:25:03Z"
 }
