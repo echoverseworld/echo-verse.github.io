@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-12T18:30:11",
+  "generated": "2026-08-13T18:30:13",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,18 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 31,
+      "title": "ECHO 88.7 — BEFORE THE SILENCE // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "88.7",
+      "fragment": "BEFORE THE SILENCE",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "62:51",
+      "published": "2026-08-13",
+      "youtube_id": "ZUReAgdzNCA",
+      "thumb": "assets/archive/wave_031.jpg"
+    },
     {
       "channel": "vigil",
       "volume": 5,
