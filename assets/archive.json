@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-13T18:30:13",
+  "generated": "2026-08-14T18:30:12",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,18 @@
     }
   },
   "items": [
+    {
+      "channel": "pulse",
+      "volume": 6,
+      "title": "ECHO 106.4 — CHURCH OF THE GROOVE // Melodic House, Organic House, Chill House Mix",
+      "fm": "106.4",
+      "fragment": "CHURCH OF THE GROOVE",
+      "genres": "Melodic House, Organic House, Chill House",
+      "duration": "60:59",
+      "published": "2026-08-14",
+      "youtube_id": "8cuY_y3L1J0",
+      "thumb": "assets/archive/pulse_006.jpg"
+    },
     {
       "channel": "frequency",
       "volume": 31,
