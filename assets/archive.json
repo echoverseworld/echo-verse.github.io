@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-14T18:30:12",
+  "generated": "2026-08-15T18:30:13",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,18 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 32,
+      "title": "ECHO 100.4 — VAPOR AND VIOLET // Synthwave, Retrowave, Chillwave Mix",
+      "fm": "100.4",
+      "fragment": "VAPOR AND VIOLET",
+      "genres": "Synthwave, Retrowave, Chillwave",
+      "duration": "64:52",
+      "published": "2026-08-15",
+      "youtube_id": "X5NytlgeohY",
+      "thumb": "assets/archive/wave_032.jpg"
+    },
     {
       "channel": "pulse",
       "volume": 6,
