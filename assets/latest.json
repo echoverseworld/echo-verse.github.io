@@ -1,7 +1,11 @@
 {
-  "frequency": "ZUReAgdzNCA",
-  "frequency_title": "ECHO 88.7 — BEFORE THE SILENCE // Chillwave, Dreamwave, Downtempo Mix",
+  "frequency": "X5NytlgeohY",
+  "frequency_title": "ECHO 100.4 — VAPOR AND VIOLET // Synthwave, Retrowave, Chillwave Mix",
   "recent_frequency": [
+    {
+      "id": "X5NytlgeohY",
+      "title": "ECHO 100.4 — VAPOR AND VIOLET // Synthwave, Retrowave, Chillwave Mix"
+    },
     {
       "id": "ZUReAgdzNCA",
       "title": "ECHO 88.7 — BEFORE THE SILENCE // Chillwave, Dreamwave, Downtempo Mix"
@@ -13,10 +17,6 @@
     {
       "id": "5DL3douyceA",
       "title": "ECHO 97.7 — FADING CITY LIGHTS // Retrowave, Synthwave, Cyberpunk Mix"
-    },
-    {
-      "id": "tR5Psj0MpRA",
-      "title": "ECHO 102.5 — GHOSTS IN THE NEON // Chillwave, Dreamwave, Downtempo Mix"
     }
   ],
   "drift": "FpYgnHO4SDc",
@@ -79,5 +79,5 @@
       "title": "ECHO 107.3 — CARRIER WITHOUT END // Dark Techno, Hypnotic Techno, Deep Techno Mix"
     }
   ],
-  "updated": "2026-08-15T13:02:13Z"
+  "updated": "2026-08-15T18:50:29Z"
 }
