@@ -1,7 +1,11 @@
 {
-  "frequency": "X5NytlgeohY",
-  "frequency_title": "ECHO 100.4 — VAPOR AND VIOLET // Synthwave, Retrowave, Chillwave Mix",
+  "frequency": "18VucgZa54o",
+  "frequency_title": "ECHO 92.7 — WHERE GIANTS RUST // Darksynth, Cyberpunk, Outrun Mix",
   "recent_frequency": [
+    {
+      "id": "18VucgZa54o",
+      "title": "ECHO 92.7 — WHERE GIANTS RUST // Darksynth, Cyberpunk, Outrun Mix"
+    },
     {
       "id": "X5NytlgeohY",
       "title": "ECHO 100.4 — VAPOR AND VIOLET // Synthwave, Retrowave, Chillwave Mix"
@@ -13,15 +17,15 @@
     {
       "id": "kP1MmTQdykY",
       "title": "ECHO 103.7 — RUST AND REVERB // Synthwave, Dreamwave, Chillwave Mix"
-    },
-    {
-      "id": "5DL3douyceA",
-      "title": "ECHO 97.7 — FADING CITY LIGHTS // Retrowave, Synthwave, Cyberpunk Mix"
     }
   ],
-  "drift": "FpYgnHO4SDc",
-  "drift_title": "ECHO 93.8 — HIGH BEAM HAUNTING // Drift Phonk, Night Drive Mix",
+  "drift": "Z6ARG0kNtAs",
+  "drift_title": "ECHO 100.2 — PHANTOM LANE // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "Z6ARG0kNtAs",
+      "title": "ECHO 100.2 — PHANTOM LANE // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "FpYgnHO4SDc",
       "title": "ECHO 93.8 — HIGH BEAM HAUNTING // Drift Phonk, Night Drive Mix"
@@ -35,9 +39,13 @@
       "title": "ECHO 97.7 — ASPHALT SERMON // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "pulse": "8cuY_y3L1J0",
-  "pulse_title": "ECHO 106.4 — CHURCH OF THE GROOVE // Melodic House, Organic House, Chill House Mix",
+  "pulse": "p7n4QjyS23M",
+  "pulse_title": "ECHO 93.9 — CANYON OF CALM // Deep House, Melodic House, Organic House Mix",
   "recent_pulse": [
+    {
+      "id": "p7n4QjyS23M",
+      "title": "ECHO 93.9 — CANYON OF CALM // Deep House, Melodic House, Organic House Mix"
+    },
     {
       "id": "8cuY_y3L1J0",
       "title": "ECHO 106.4 — CHURCH OF THE GROOVE // Melodic House, Organic House, Chill House Mix"
@@ -49,15 +57,15 @@
     {
       "id": "oWz4JBuPNeQ",
       "title": "ECHO 105.7 — MOONLIT MERIDIAN // Melodic House, Deep House, Chill House Mix"
-    },
-    {
-      "id": "0yS3MG-GX3s",
-      "title": "ECHO 99.4 — TIDE POOL THEATER // Organic House, Chill House, Deep House Mix"
     }
   ],
-  "vigil": "JIOvguZYh2w",
-  "vigil_title": "ECHO 106.2 — NO ONE IS COMING // Dub Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "WQzdvSWLJ8A",
+  "vigil_title": "ECHO 105.0 — NO ACKNOWLEDGMENT // Hypnotic Techno, Deep Techno, Dark Techno Mix",
   "recent_vigil": [
+    {
+      "id": "WQzdvSWLJ8A",
+      "title": "ECHO 105.0 — NO ACKNOWLEDGMENT // Hypnotic Techno, Deep Techno, Dark Techno Mix"
+    },
     {
       "id": "JIOvguZYh2w",
       "title": "ECHO 106.2 — NO ONE IS COMING // Dub Techno, Deep Techno, Dark Techno Mix"
@@ -71,5 +79,5 @@
       "title": "ECHO 104.4 — LAST OPERATOR // Dub Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "updated": "2026-08-17T13:10:08Z"
+  "updated": "2026-08-17T19:01:44Z"
 }
