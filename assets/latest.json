@@ -1,7 +1,11 @@
 {
-  "frequency": "18VucgZa54o",
-  "frequency_title": "ECHO 92.7 — WHERE GIANTS RUST // Darksynth, Cyberpunk, Outrun Mix",
+  "frequency": "_MiTRQj9XhA",
+  "frequency_title": "ECHO 94.3 — TAPE HISS HEAVEN // Retrowave, Synthwave, Cyberpunk Mix",
   "recent_frequency": [
+    {
+      "id": "_MiTRQj9XhA",
+      "title": "ECHO 94.3 — TAPE HISS HEAVEN // Retrowave, Synthwave, Cyberpunk Mix"
+    },
     {
       "id": "18VucgZa54o",
       "title": "ECHO 92.7 — WHERE GIANTS RUST // Darksynth, Cyberpunk, Outrun Mix"
@@ -13,15 +17,15 @@
     {
       "id": "ZUReAgdzNCA",
       "title": "ECHO 88.7 — BEFORE THE SILENCE // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "kP1MmTQdykY",
-      "title": "ECHO 103.7 — RUST AND REVERB // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "Z6ARG0kNtAs",
-  "drift_title": "ECHO 100.2 — PHANTOM LANE // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "r-TIH-oTs9w",
+  "drift_title": "ECHO 97.0 — BOOST PRESSURE BLESSING // Phonk, Drift Phonk Mix",
   "recent_drift": [
+    {
+      "id": "r-TIH-oTs9w",
+      "title": "ECHO 97.0 — BOOST PRESSURE BLESSING // Phonk, Drift Phonk Mix"
+    },
     {
       "id": "Z6ARG0kNtAs",
       "title": "ECHO 100.2 — PHANTOM LANE // Aggressive Phonk, Gym Phonk Mix"
@@ -35,9 +39,13 @@
       "title": "ECHO 100.4 — REARVIEW RELIQUARY // Phonk, Drift Phonk Mix"
     }
   ],
-  "pulse": "p7n4QjyS23M",
-  "pulse_title": "ECHO 93.9 — CANYON OF CALM // Deep House, Melodic House, Organic House Mix",
+  "pulse": "j_tdTAHyHNc",
+  "pulse_title": "ECHO 101.9 — LATE SUMMER LARGO // Melodic House, Organic House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "j_tdTAHyHNc",
+      "title": "ECHO 101.9 — LATE SUMMER LARGO // Melodic House, Organic House, Chill House Mix"
+    },
     {
       "id": "p7n4QjyS23M",
       "title": "ECHO 93.9 — CANYON OF CALM // Deep House, Melodic House, Organic House Mix"
@@ -49,15 +57,15 @@
     {
       "id": "QCvrnESSdBg",
       "title": "ECHO 95.0 — WARMTH IN THE WIRES // Deep House, Melodic House, Organic House Mix"
-    },
-    {
-      "id": "oWz4JBuPNeQ",
-      "title": "ECHO 105.7 — MOONLIT MERIDIAN // Melodic House, Deep House, Chill House Mix"
     }
   ],
-  "vigil": "WQzdvSWLJ8A",
-  "vigil_title": "ECHO 105.0 — NO ACKNOWLEDGMENT // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "Th_Gm6u6Q7w",
+  "vigil_title": "ECHO 89.5 — NOTHING ANSWERED // Dark Techno, Dub Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "Th_Gm6u6Q7w",
+      "title": "ECHO 89.5 — NOTHING ANSWERED // Dark Techno, Dub Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "WQzdvSWLJ8A",
       "title": "ECHO 105.0 — NO ACKNOWLEDGMENT // Hypnotic Techno, Deep Techno, Dark Techno Mix"
@@ -71,5 +79,5 @@
       "title": "ECHO 93.7 — COOLING TOWERS AT DAWN // Dark Techno, Dub Techno, Hypnotic Techno Mix"
     }
   ],
-  "updated": "2026-08-19T13:13:39Z"
+  "updated": "2026-08-19T18:56:42Z"
 }
