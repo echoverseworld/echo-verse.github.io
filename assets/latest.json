@@ -1,7 +1,11 @@
 {
-  "frequency": "_MiTRQj9XhA",
-  "frequency_title": "ECHO 94.3 — TAPE HISS HEAVEN // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "5-tUBjINeNU",
+  "frequency_title": "ECHO 107.1 — PERPETUAL DUSK // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "5-tUBjINeNU",
+      "title": "ECHO 107.1 — PERPETUAL DUSK // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "_MiTRQj9XhA",
       "title": "ECHO 94.3 — TAPE HISS HEAVEN // Retrowave, Synthwave, Cyberpunk Mix"
@@ -13,15 +17,15 @@
     {
       "id": "X5NytlgeohY",
       "title": "ECHO 100.4 — VAPOR AND VIOLET // Synthwave, Retrowave, Chillwave Mix"
-    },
-    {
-      "id": "ZUReAgdzNCA",
-      "title": "ECHO 88.7 — BEFORE THE SILENCE // Chillwave, Dreamwave, Downtempo Mix"
     }
   ],
-  "drift": "r-TIH-oTs9w",
-  "drift_title": "ECHO 97.0 — BOOST PRESSURE BLESSING // Phonk, Drift Phonk Mix",
+  "drift": "jnAkzcN_yvU",
+  "drift_title": "ECHO 106.4 — EXHAUST ECLIPSE // Phonk, Drift Phonk Mix",
   "recent_drift": [
+    {
+      "id": "jnAkzcN_yvU",
+      "title": "ECHO 106.4 — EXHAUST ECLIPSE // Phonk, Drift Phonk Mix"
+    },
     {
       "id": "r-TIH-oTs9w",
       "title": "ECHO 97.0 — BOOST PRESSURE BLESSING // Phonk, Drift Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "FpYgnHO4SDc",
       "title": "ECHO 93.8 — HIGH BEAM HAUNTING // Drift Phonk, Night Drive Mix"
-    },
-    {
-      "id": "H3hWQzUL5G4",
-      "title": "ECHO 100.4 — REARVIEW RELIQUARY // Phonk, Drift Phonk Mix"
     }
   ],
-  "pulse": "j_tdTAHyHNc",
-  "pulse_title": "ECHO 101.9 — LATE SUMMER LARGO // Melodic House, Organic House, Chill House Mix",
+  "pulse": "rCG6HkgquxQ",
+  "pulse_title": "ECHO 90.7 — MARROW OF THE NIGHT // Melodic House, Organic House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "rCG6HkgquxQ",
+      "title": "ECHO 90.7 — MARROW OF THE NIGHT // Melodic House, Organic House, Chill House Mix"
+    },
     {
       "id": "j_tdTAHyHNc",
       "title": "ECHO 101.9 — LATE SUMMER LARGO // Melodic House, Organic House, Chill House Mix"
@@ -53,10 +57,6 @@
     {
       "id": "8cuY_y3L1J0",
       "title": "ECHO 106.4 — CHURCH OF THE GROOVE // Melodic House, Organic House, Chill House Mix"
-    },
-    {
-      "id": "QCvrnESSdBg",
-      "title": "ECHO 95.0 — WARMTH IN THE WIRES // Deep House, Melodic House, Organic House Mix"
     }
   ],
   "vigil": "Th_Gm6u6Q7w",
@@ -79,5 +79,5 @@
       "title": "ECHO 93.7 — COOLING TOWERS AT DAWN // Dark Techno, Dub Techno, Hypnotic Techno Mix"
     }
   ],
-  "updated": "2026-08-21T13:15:08Z"
+  "updated": "2026-08-21T19:01:06Z"
 }
