@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-19T18:30:15",
+  "generated": "2026-08-21T18:30:15",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,42 @@
     }
   },
   "items": [
+    {
+      "channel": "pulse",
+      "volume": 9,
+      "title": "ECHO 90.7 — MARROW OF THE NIGHT // Melodic House, Organic House, Chill House Mix",
+      "fm": "90.7",
+      "fragment": "MARROW OF THE NIGHT",
+      "genres": "Melodic House, Organic House, Chill House",
+      "duration": "64:35",
+      "published": "2026-08-21",
+      "youtube_id": "rCG6HkgquxQ",
+      "thumb": "assets/archive/pulse_009.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 20,
+      "title": "ECHO 106.4 — EXHAUST ECLIPSE // Phonk, Drift Phonk Mix",
+      "fm": "106.4",
+      "fragment": "EXHAUST ECLIPSE",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "61:39",
+      "published": "2026-08-21",
+      "youtube_id": "jnAkzcN_yvU",
+      "thumb": "assets/archive/drift_020.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 18,
+      "title": "ECHO 107.1 — PERPETUAL DUSK // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "107.1",
+      "fragment": "PERPETUAL DUSK",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "63:40",
+      "published": "2026-08-21",
+      "youtube_id": "5-tUBjINeNU",
+      "thumb": "assets/archive/wave_018.jpg"
+    },
     {
       "channel": "pulse",
       "volume": 8,
