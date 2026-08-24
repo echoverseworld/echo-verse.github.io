@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-21T18:30:15",
+  "generated": "2026-08-24T18:30:17",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "vigil",
+      "volume": 8,
+      "title": "ECHO 98.8 â€” A LIGHT LEFT ON // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "98.8",
+      "fragment": "A LIGHT LEFT ON",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "66:30",
+      "published": "2026-08-24",
+      "youtube_id": "pja1YI-5tgU",
+      "thumb": "assets/archive/vigil_008.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 21,
+      "title": "ECHO 93.1 — BURNT RUBBER GOSPEL // Drift Phonk, Night Drive Mix",
+      "fm": "93.1",
+      "fragment": "BURNT RUBBER GOSPEL",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "61:52",
+      "published": "2026-08-24",
+      "youtube_id": "RlTjqxr_Gas",
+      "thumb": "assets/archive/drift_021.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 19,
+      "title": "ECHO 92.4 — THE SKY TUNED OUT // Synthwave, Retrowave, Chillwave Mix",
+      "fm": "92.4",
+      "fragment": "THE SKY TUNED OUT",
+      "genres": "Synthwave, Retrowave, Chillwave",
+      "duration": "63:42",
+      "published": "2026-08-24",
+      "youtube_id": "ee2aP_Lb6cc",
+      "thumb": "assets/archive/wave_019.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 10,
+      "title": "ECHO 88.4 — GOLDEN HOUR GHOST // Melodic House, Deep House, Chill House Mix",
+      "fm": "88.4",
+      "fragment": "GOLDEN HOUR GHOST",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "62:36",
+      "published": "2026-08-24",
+      "youtube_id": "q46x6WZr7Wo",
+      "thumb": "assets/archive/pulse_010.jpg"
+    },
     {
       "channel": "pulse",
       "volume": 9,
