@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-05T18:30:07",
+  "generated": "2026-09-07T18:30:20",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "drift",
+      "volume": 27,
+      "title": "ECHO 103.3 — BRAKE DUST HALO // Phonk, Drift Phonk Mix",
+      "fm": "103.3",
+      "fragment": "BRAKE DUST HALO",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "61:34",
+      "published": "2026-09-07",
+      "youtube_id": "zGINvSBOCk0",
+      "thumb": "assets/archive/drift_027.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 25,
+      "title": "ECHO 93.2 — RUINS IN THE RAIN // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "93.2",
+      "fragment": "RUINS IN THE RAIN",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "63:12",
+      "published": "2026-09-07",
+      "youtube_id": "ilmMJGFdBsk",
+      "thumb": "assets/archive/wave_025.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 16,
+      "title": "ECHO 102.9 — ROLLING DUNES // Melodic House, Organic House, Chill House Mix",
+      "fm": "102.9",
+      "fragment": "ROLLING DUNES",
+      "genres": "Melodic House, Organic House, Chill House",
+      "duration": "61:23",
+      "published": "2026-09-07",
+      "youtube_id": "PK3300tQj80",
+      "thumb": "assets/archive/pulse_016.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 14,
+      "title": "ECHO 88.2 â€” BENEATH THE NOISE FLOOR // Dub Techno, Deep Techno, Dark Techno Mix",
+      "fm": "88.2",
+      "fragment": "BENEATH THE NOISE FLOOR",
+      "genres": "Dub Techno, Deep Techno, Dark Techno",
+      "duration": "62:18",
+      "published": "2026-09-07",
+      "youtube_id": "z30OBmVvTuI",
+      "thumb": "assets/archive/vigil_014.jpg"
+    },
     {
       "channel": "drift",
       "volume": 26,
