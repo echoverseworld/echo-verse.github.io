@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-09T18:30:21",
+  "generated": "2026-09-11T18:30:21",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "drift",
+      "volume": 29,
+      "title": "ECHO 98.9 â€” PARKING LOT PROPHECY // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "98.9",
+      "fragment": "PARKING LOT PROPHECY",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "63:01",
+      "published": "2026-09-11",
+      "youtube_id": "2XUuz00-O3M",
+      "thumb": "assets/archive/drift_029.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 27,
+      "title": "ECHO 95.0 â€” SUMMER THAT NEVER ENDED // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "95.0",
+      "fragment": "SUMMER THAT NEVER ENDED",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "64:34",
+      "published": "2026-09-11",
+      "youtube_id": "mh89lyffG8M",
+      "thumb": "assets/archive/wave_027.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 18,
+      "title": "ECHO 90.6 — UNHURRIED UNIVERSE // Organic House, Chill House, Deep House Mix",
+      "fm": "90.6",
+      "fragment": "UNHURRIED UNIVERSE",
+      "genres": "Organic House, Chill House, Deep House",
+      "duration": "62:54",
+      "published": "2026-09-11",
+      "youtube_id": "8H63zQazhjw",
+      "thumb": "assets/archive/pulse_018.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 16,
+      "title": "ECHO 89.7 â€” SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "89.7",
+      "fragment": "SLOW MACHINERY",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "65:08",
+      "published": "2026-09-11",
+      "youtube_id": "yobBnBZ2skw",
+      "thumb": "assets/archive/vigil_016.jpg"
+    },
     {
       "channel": "drift",
       "volume": 28,
