@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14T18:30:21",
+  "generated": "2026-09-16T18:30:24",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "drift",
+      "volume": 31,
+      "title": "ECHO 106.1 — VELOCITY VOWS // Phonk, Drift Phonk Mix",
+      "fm": "106.1",
+      "fragment": "VELOCITY VOWS",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:07",
+      "published": "2026-09-16",
+      "youtube_id": "mu8YrlDYJmI",
+      "thumb": "assets/archive/drift_031.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 29,
+      "title": "ECHO 97.4 â€” REWIND THE STARS // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "97.4",
+      "fragment": "REWIND THE STARS",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "62:50",
+      "published": "2026-09-16",
+      "youtube_id": "GYZ82EcSTFE",
+      "thumb": "assets/archive/wave_029.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 20,
+      "title": "ECHO 96.7 — TEMPLE OF DUST // Deep House, Melodic House, Organic House Mix",
+      "fm": "96.7",
+      "fragment": "TEMPLE OF DUST",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "61:02",
+      "published": "2026-09-16",
+      "youtube_id": "HOD4APrnCn4",
+      "thumb": "assets/archive/pulse_020.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 18,
+      "title": "ECHO 90.9 â€” THE WATCH CONTINUES // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "fm": "90.9",
+      "fragment": "THE WATCH CONTINUES",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "65:29",
+      "published": "2026-09-16",
+      "youtube_id": "36cYDgIZHk4",
+      "thumb": "assets/archive/vigil_018.jpg"
+    },
     {
       "channel": "drift",
       "volume": 30,
