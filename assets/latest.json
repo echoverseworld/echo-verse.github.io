@@ -1,7 +1,11 @@
 {
-  "frequency": "GYZ82EcSTFE",
-  "frequency_title": "ECHO 97.4 — REWIND THE STARS // Synthwave, Dreamwave, Chillwave Mix",
+  "frequency": "RT05r3KkjGo",
+  "frequency_title": "ECHO 103.5 — PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "RT05r3KkjGo",
+      "title": "ECHO 103.5 — PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "GYZ82EcSTFE",
       "title": "ECHO 97.4 — REWIND THE STARS // Synthwave, Dreamwave, Chillwave Mix"
@@ -13,15 +17,15 @@
     {
       "id": "mh89lyffG8M",
       "title": "ECHO 95.0 — SUMMER THAT NEVER ENDED // Synthwave, Dreamwave, Chillwave Mix"
-    },
-    {
-      "id": "6ZgX3LOeB9E",
-      "title": "ECHO 104.4 — UNTIL THE SIGNAL FADES // Chillwave, Dreamwave, Downtempo Mix"
     }
   ],
-  "drift": "mu8YrlDYJmI",
-  "drift_title": "ECHO 106.1 — VELOCITY VOWS // Phonk, Drift Phonk Mix",
+  "drift": "W5z7o2_eSq4",
+  "drift_title": "ECHO 106.6 — GASOLINE GENESIS // Phonk, Drift Phonk Mix",
   "recent_drift": [
+    {
+      "id": "W5z7o2_eSq4",
+      "title": "ECHO 106.6 — GASOLINE GENESIS // Phonk, Drift Phonk Mix"
+    },
     {
       "id": "mu8YrlDYJmI",
       "title": "ECHO 106.1 — VELOCITY VOWS // Phonk, Drift Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "2XUuz00-O3M",
       "title": "ECHO 98.9 — PARKING LOT PROPHECY // Aggressive Phonk, Gym Phonk Mix"
-    },
-    {
-      "id": "laqmDZibcxs",
-      "title": "ECHO 107.9 — TOLLBOOTH TRIBUNAL // Drift Phonk, Night Drive Mix"
     }
   ],
-  "pulse": "HOD4APrnCn4",
-  "pulse_title": "ECHO 96.7 — TEMPLE OF DUST // Deep House, Melodic House, Organic House Mix",
+  "pulse": "jHyU71nr6dU",
+  "pulse_title": "ECHO 92.8 — SMOKE ON STILL WATER // Melodic House, Deep House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "jHyU71nr6dU",
+      "title": "ECHO 92.8 — SMOKE ON STILL WATER // Melodic House, Deep House, Chill House Mix"
+    },
     {
       "id": "HOD4APrnCn4",
       "title": "ECHO 96.7 — TEMPLE OF DUST // Deep House, Melodic House, Organic House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "8H63zQazhjw",
       "title": "ECHO 90.6 — UNHURRIED UNIVERSE // Organic House, Chill House, Deep House Mix"
-    },
-    {
-      "id": "6TWSPLI9nLU",
-      "title": "ECHO 93.0 — INTO THE WARM DARK // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "36cYDgIZHk4",
-  "vigil_title": "ECHO 90.9 — THE WATCH CONTINUES // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "GEBrQTpx_cY",
+  "vigil_title": "ECHO 106.5 — MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix",
   "recent_vigil": [
+    {
+      "id": "GEBrQTpx_cY",
+      "title": "ECHO 106.5 — MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix"
+    },
     {
       "id": "36cYDgIZHk4",
       "title": "ECHO 90.9 — THE WATCH CONTINUES // Hypnotic Techno, Deep Techno, Dark Techno Mix"
@@ -73,11 +77,7 @@
     {
       "id": "yobBnBZ2skw",
       "title": "ECHO 89.7 — SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
-    },
-    {
-      "id": "q6fudv4uYD4",
-      "title": "ECHO 104.7 — THE LONG NORTH // Dub Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "updated": "2026-09-18T11:26:31Z"
+  "updated": "2026-09-18T16:31:57Z"
 }
