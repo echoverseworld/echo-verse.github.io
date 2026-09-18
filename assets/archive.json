@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-16T18:30:24",
+  "generated": "2026-09-18T18:30:21",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "drift",
+      "volume": 32,
+      "title": "ECHO 106.6 — GASOLINE GENESIS // Phonk, Drift Phonk Mix",
+      "fm": "106.6",
+      "fragment": "GASOLINE GENESIS",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:53",
+      "published": "2026-09-18",
+      "youtube_id": "W5z7o2_eSq4",
+      "thumb": "assets/archive/drift_032.jpg"
+    },
+    {
+      "channel": "frequency",
+      "volume": 30,
+      "title": "ECHO 103.5 â€” PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "103.5",
+      "fragment": "PARADISE ON STANDBY",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "62:27",
+      "published": "2026-09-18",
+      "youtube_id": "RT05r3KkjGo",
+      "thumb": "assets/archive/wave_030.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 21,
+      "title": "ECHO 92.8 — SMOKE ON STILL WATER // Melodic House, Deep House, Chill House Mix",
+      "fm": "92.8",
+      "fragment": "SMOKE ON STILL WATER",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "61:06",
+      "published": "2026-09-18",
+      "youtube_id": "jHyU71nr6dU",
+      "thumb": "assets/archive/pulse_021.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 19,
+      "title": "ECHO 106.5 â€” MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix",
+      "fm": "106.5",
+      "fragment": "MEMORY WITHOUT OWNER",
+      "genres": "Dark Techno, Hypnotic Techno, Deep Techno",
+      "duration": "64:43",
+      "published": "2026-09-18",
+      "youtube_id": "GEBrQTpx_cY",
+      "thumb": "assets/archive/vigil_019.jpg"
+    },
     {
       "channel": "drift",
       "volume": 31,
