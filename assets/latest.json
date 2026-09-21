@@ -1,7 +1,11 @@
 {
-  "frequency": "RT05r3KkjGo",
-  "frequency_title": "ECHO 103.5 — PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix",
+  "frequency": "JkU1wWXE4Dc",
+  "frequency_title": "ECHO 90.8 — DAWN OVER SLEEPING TOWERS // Retrowave, Synthwave, Cyberpunk Mix",
   "recent_frequency": [
+    {
+      "id": "JkU1wWXE4Dc",
+      "title": "ECHO 90.8 — DAWN OVER SLEEPING TOWERS // Retrowave, Synthwave, Cyberpunk Mix"
+    },
     {
       "id": "RT05r3KkjGo",
       "title": "ECHO 103.5 — PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix"
@@ -13,15 +17,15 @@
     {
       "id": "EXmia6zRDi0",
       "title": "ECHO 99.0 — THE COLOR OF 2AM // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "mh89lyffG8M",
-      "title": "ECHO 95.0 — SUMMER THAT NEVER ENDED // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "W5z7o2_eSq4",
-  "drift_title": "ECHO 106.6 — GASOLINE GENESIS // Phonk, Drift Phonk Mix",
+  "drift": "8u5ahPAAXmI",
+  "drift_title": "ECHO 98.5 — WIDEBODY WRAITH // Drift Phonk, Night Drive Mix",
   "recent_drift": [
+    {
+      "id": "8u5ahPAAXmI",
+      "title": "ECHO 98.5 — WIDEBODY WRAITH // Drift Phonk, Night Drive Mix"
+    },
     {
       "id": "W5z7o2_eSq4",
       "title": "ECHO 106.6 — GASOLINE GENESIS // Phonk, Drift Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "-syGHOHju5g",
       "title": "ECHO 93.7 — DRIFT ANGEL // Phonk, Drift Phonk Mix"
-    },
-    {
-      "id": "2XUuz00-O3M",
-      "title": "ECHO 98.9 — PARKING LOT PROPHECY // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "pulse": "jHyU71nr6dU",
-  "pulse_title": "ECHO 92.8 — SMOKE ON STILL WATER // Melodic House, Deep House, Chill House Mix",
+  "pulse": "fx7ogWYIz-w",
+  "pulse_title": "ECHO 91.8 — BONFIRE BALLET // Melodic House, Deep House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "fx7ogWYIz-w",
+      "title": "ECHO 91.8 — BONFIRE BALLET // Melodic House, Deep House, Chill House Mix"
+    },
     {
       "id": "jHyU71nr6dU",
       "title": "ECHO 92.8 — SMOKE ON STILL WATER // Melodic House, Deep House, Chill House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "07spWA6sHpk",
       "title": "ECHO 96.4 — MOVEMENT IN THE MIST // Deep House, Melodic House, Organic House Mix"
-    },
-    {
-      "id": "8H63zQazhjw",
-      "title": "ECHO 90.6 — UNHURRIED UNIVERSE // Organic House, Chill House, Deep House Mix"
     }
   ],
-  "vigil": "GEBrQTpx_cY",
-  "vigil_title": "ECHO 106.5 — MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix",
+  "vigil": "05giu5pDxvQ",
+  "vigil_title": "ECHO 91.1 — IRON WEATHER // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "05giu5pDxvQ",
+      "title": "ECHO 91.1 — IRON WEATHER // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "GEBrQTpx_cY",
       "title": "ECHO 106.5 — MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix"
@@ -73,11 +77,7 @@
     {
       "id": "tRj7kw0lvaw",
       "title": "ECHO 107.2 — GREY ORBIT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
-    },
-    {
-      "id": "yobBnBZ2skw",
-      "title": "ECHO 89.7 — SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
     }
   ],
-  "updated": "2026-09-21T12:59:16Z"
+  "updated": "2026-09-21T22:03:36Z"
 }
