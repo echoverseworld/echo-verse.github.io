@@ -1,7 +1,11 @@
 {
-  "frequency": "JkU1wWXE4Dc",
-  "frequency_title": "ECHO 90.8 — DAWN OVER SLEEPING TOWERS // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "Dr-QdEqJLok",
+  "frequency_title": "ECHO 88.9 — DEAD CHANNEL SKY // Darksynth, Cyberpunk, Outrun Mix",
   "recent_frequency": [
+    {
+      "id": "Dr-QdEqJLok",
+      "title": "ECHO 88.9 — DEAD CHANNEL SKY // Darksynth, Cyberpunk, Outrun Mix"
+    },
     {
       "id": "JkU1wWXE4Dc",
       "title": "ECHO 90.8 — DAWN OVER SLEEPING TOWERS // Retrowave, Synthwave, Cyberpunk Mix"
@@ -13,15 +17,15 @@
     {
       "id": "GYZ82EcSTFE",
       "title": "ECHO 97.4 — REWIND THE STARS // Synthwave, Dreamwave, Chillwave Mix"
-    },
-    {
-      "id": "EXmia6zRDi0",
-      "title": "ECHO 99.0 — THE COLOR OF 2AM // Chillwave, Dreamwave, Downtempo Mix"
     }
   ],
-  "drift": "8u5ahPAAXmI",
-  "drift_title": "ECHO 98.5 — WIDEBODY WRAITH // Drift Phonk, Night Drive Mix",
+  "drift": "uH92jQeNz3w",
+  "drift_title": "ECHO 107.5 — EIGHT CYLINDER EULOGY // Phonk, Drift Phonk Mix",
   "recent_drift": [
+    {
+      "id": "uH92jQeNz3w",
+      "title": "ECHO 107.5 — EIGHT CYLINDER EULOGY // Phonk, Drift Phonk Mix"
+    },
     {
       "id": "8u5ahPAAXmI",
       "title": "ECHO 98.5 — WIDEBODY WRAITH // Drift Phonk, Night Drive Mix"
@@ -33,15 +37,15 @@
     {
       "id": "mu8YrlDYJmI",
       "title": "ECHO 106.1 — VELOCITY VOWS // Phonk, Drift Phonk Mix"
-    },
-    {
-      "id": "-syGHOHju5g",
-      "title": "ECHO 93.7 — DRIFT ANGEL // Phonk, Drift Phonk Mix"
     }
   ],
-  "pulse": "fx7ogWYIz-w",
-  "pulse_title": "ECHO 91.8 — BONFIRE BALLET // Melodic House, Deep House, Chill House Mix",
+  "pulse": "Tve1DR9yaYk",
+  "pulse_title": "ECHO 88.0 — PULSE BENEATH THE CITY // Organic House, Chill House, Deep House Mix",
   "recent_pulse": [
+    {
+      "id": "Tve1DR9yaYk",
+      "title": "ECHO 88.0 — PULSE BENEATH THE CITY // Organic House, Chill House, Deep House Mix"
+    },
     {
       "id": "fx7ogWYIz-w",
       "title": "ECHO 91.8 — BONFIRE BALLET // Melodic House, Deep House, Chill House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "HOD4APrnCn4",
       "title": "ECHO 96.7 — TEMPLE OF DUST // Deep House, Melodic House, Organic House Mix"
-    },
-    {
-      "id": "07spWA6sHpk",
-      "title": "ECHO 96.4 — MOVEMENT IN THE MIST // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "05giu5pDxvQ",
-  "vigil_title": "ECHO 91.1 — IRON WEATHER // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+  "vigil": "44efQQNHN-4",
+  "vigil_title": "ECHO 103.9 — THE MACHINE DREAMS ITSELF // Dark Techno, Dub Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "44efQQNHN-4",
+      "title": "ECHO 103.9 — THE MACHINE DREAMS ITSELF // Dark Techno, Dub Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "05giu5pDxvQ",
       "title": "ECHO 91.1 — IRON WEATHER // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
@@ -73,11 +77,7 @@
     {
       "id": "36cYDgIZHk4",
       "title": "ECHO 90.9 — THE WATCH CONTINUES // Hypnotic Techno, Deep Techno, Dark Techno Mix"
-    },
-    {
-      "id": "tRj7kw0lvaw",
-      "title": "ECHO 107.2 — GREY ORBIT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
     }
   ],
-  "updated": "2026-09-23T11:48:49Z"
+  "updated": "2026-09-23T17:12:39Z"
 }
