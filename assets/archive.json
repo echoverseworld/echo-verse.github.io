@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-21T18:30:22",
+  "generated": "2026-09-23T18:30:25",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 34,
+      "title": "ECHO 88.9 — DEAD CHANNEL SKY // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "88.9",
+      "fragment": "DEAD CHANNEL SKY",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "62:22",
+      "published": "2026-09-23",
+      "youtube_id": "Dr-QdEqJLok",
+      "thumb": "assets/archive/wave_034.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 34,
+      "title": "ECHO 107.5 — EIGHT CYLINDER EULOGY // Phonk, Drift Phonk Mix",
+      "fm": "107.5",
+      "fragment": "EIGHT CYLINDER EULOGY",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:39",
+      "published": "2026-09-23",
+      "youtube_id": "uH92jQeNz3w",
+      "thumb": "assets/archive/drift_034.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 23,
+      "title": "ECHO 88.0 — PULSE BENEATH THE CITY // Organic House, Chill House, Deep House Mix",
+      "fm": "88.0",
+      "fragment": "PULSE BENEATH THE CITY",
+      "genres": "Organic House, Chill House, Deep House",
+      "duration": "64:28",
+      "published": "2026-09-23",
+      "youtube_id": "Tve1DR9yaYk",
+      "thumb": "assets/archive/pulse_023.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 21,
+      "title": "ECHO 103.9 — THE MACHINE DREAMS ITSELF // Dark Techno, Dub Techno, Hypnotic Techno Mix",
+      "fm": "103.9",
+      "fragment": "THE MACHINE DREAMS ITSELF",
+      "genres": "Dark Techno, Dub Techno, Hypnotic Techno",
+      "duration": "62:27",
+      "published": "2026-09-23",
+      "youtube_id": "44efQQNHN-4",
+      "thumb": "assets/archive/vigil_021.jpg"
+    },
     {
       "channel": "frequency",
       "volume": 33,
