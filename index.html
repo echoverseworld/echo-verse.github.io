@@ -150,6 +150,10 @@ section{padding:110px 24px}
 .channel{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .channel.rev{grid-template-columns:.95fr 1.05fr}
 .channel.rev .ch-media{order:2}
+/* Grid-Spalten duerfen schmaler als ihr Inhalt werden -- sonst schiebt ein langer
+   (nowrap) Titel in "Earlier transmissions" die Spalte ueber den Bildschirmrand,
+   statt per text-overflow:ellipsis gekuerzt zu werden */
+.channel>*{min-width:0}
 @media(max-width:860px){.channel,.channel.rev{grid-template-columns:1fr}.channel.rev .ch-media{order:0}}
 .ch-name{
   font-family:var(--mono);font-weight:400;letter-spacing:.1em;
@@ -706,11 +710,13 @@ document.querySelectorAll(".player").forEach(function(p){
 /* NOW TRANSMITTING ticker — Titel aus latest.json (gleiche Quelle wie Player) */
 latestSignal.then(function(l){
   if(!l||(!l.frequency_title&&!l.drift_title&&!l.pulse_title&&!l.vigil_title))return;
+  /* Titel sind Klartext (latest_signal.py dekodiert alle Entities) -> vor innerHTML escapen */
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
   var parts=[];
-  if(l.frequency_title)parts.push('<span class="cy">◉ 95.3</span> '+l.frequency_title);
-  if(l.drift_title)parts.push('<span class="mg">◉ 97.1</span> '+l.drift_title);
-  if(l.pulse_title)parts.push('<span class="pu">◉ 100.4</span> '+l.pulse_title);
-  if(l.vigil_title)parts.push('<span class="vg">◉ 106.5</span> '+l.vigil_title);
+  if(l.frequency_title)parts.push('<span class="cy">◉ 95.3</span> '+esc(l.frequency_title));
+  if(l.drift_title)parts.push('<span class="mg">◉ 97.1</span> '+esc(l.drift_title));
+  if(l.pulse_title)parts.push('<span class="pu">◉ 100.4</span> '+esc(l.pulse_title));
+  if(l.vigil_title)parts.push('<span class="vg">◉ 106.5</span> '+esc(l.vigil_title));
   var tk='<span class="tk">NOW TRANSMITTING — '+parts.join(' &nbsp;·&nbsp; ')+'</span>';
   var t=document.getElementById("ticker");
   /* Rail doppelt befuellen fuer nahtlosen Loop (translateX(-50%)) */
@@ -728,6 +734,7 @@ latestSignal.then(function(l){
       var a=document.createElement("a");
       a.href="https://www.youtube.com/watch?v="+v.id;
       a.target="_blank";a.rel="noopener";a.textContent=v.title;
+      a.title=v.title; /* voller Titel als Tooltip, falls per ellipsis gekuerzt */
       box.appendChild(a);
     });
     box.classList.add("on");
