@@ -33,3 +33,22 @@ jobs:
           else
             echo "Keine Aenderung."
           fi
+
+      # Feed-Ausfaelle laesst latest_signal.py bewusst gruen durchlaufen (die
+      # Seite zeigt dann die alten Videos). Haelt das laenger an, soll der Run
+      # ROT werden -- GitHub mailt bei fehlgeschlagenen Workflows.
+      - name: Alarm bei veralteter latest.json
+        env:
+          MAX_AGE_HOURS: "48"
+        run: |
+          python3 - <<'PY'
+          import json, os, sys
+          from datetime import datetime, timezone
+          updated = json.load(open("assets/latest.json", encoding="utf-8"))["updated"]
+          age_h = (datetime.now(timezone.utc) - datetime.strptime(updated, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)).total_seconds() / 3600
+          limit = float(os.environ["MAX_AGE_HOURS"])
+          print(f"latest.json updated={updated}, Alter {age_h:.1f} h (Grenze {limit:.0f} h)")
+          if age_h > limit:
+              print(f"::error::latest.json seit {age_h:.0f} h nicht aktualisiert -- YouTube-Feeds pruefen.")
+              sys.exit(1)
+          PY
