@@ -17,9 +17,7 @@
 <meta name="twitter:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="theme-color" content="#04060b">
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 :root{
   --bg:#04060b;
@@ -374,7 +372,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     <img class="hero-logo flicker" src="assets/logos/echoverse_512.png" alt="ECHO VERSE logo" width="84" height="84">
     <h1 class="hero-title">ECHO <em>VERSE</em></h1>
     <p class="hero-sub">The last archive of a silent world — reconstructing what remains of us, and broadcasting it as music.</p>
-    <div class="hero-status mono"><span class="dot" aria-hidden="true"></span> <span>STATUS: TRANSMITTING &nbsp;·&nbsp; <span id="heroSignals">2 SIGNALS LIVE <span style="color:var(--text-faint)">&nbsp;·&nbsp; 2 RISING</span></span></span></div>
+    <div class="hero-status mono"><span class="dot" aria-hidden="true"></span> <span>STATUS: TRANSMITTING &nbsp;·&nbsp; 4 SIGNALS LIVE</span></div>
   </div>
   <a class="hero-scroll" href="#tuner">TUNE&nbsp;IN&nbsp;▾</a>
 </section>
@@ -384,7 +382,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   <div class="wrap">
     <div class="term-tag">frequency scan</div>
     <h2 class="sec-title">THE BAND</h2>
-    <p style="color:var(--text-dim);max-width:36em">ECHO broadcasts on the old FM band. Most frequencies fell silent long ago. Three carry a signal. Select one.</p>
+    <p style="color:var(--text-dim);max-width:36em">ECHO broadcasts on the old FM band. Most frequencies fell silent long ago. Four carry a signal. Select one.</p>
 
     <div class="dial-scroll"><div class="dial" role="list" aria-label="Frequency dial">
       <div class="dial-line" aria-hidden="true"></div>
@@ -405,9 +403,9 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <span class="station dead" style="left:22%" role="listitem"><span class="needle"></span><span class="fq">91.7</span><span class="nm">SIGNAL LOST</span></span>
       <a class="station live freq" style="left:38%" href="#frequency" role="listitem" aria-label="ECHO Frequency, 95.3, live"><span class="needle"></span><span class="fq">95.3</span><span class="nm" style="color:var(--cyan)">FREQUENCY</span></a>
       <a class="station live drift" style="left:50%" href="#drift" role="listitem" aria-label="ECHO Drift, 97.1, live"><span class="needle"></span><span class="fq">97.1</span><span class="nm" style="color:var(--magenta)">DRIFT</span></a>
-      <a class="station live pulse rising" style="left:66%" href="#pulse" role="listitem" aria-label="ECHO Pulse, 100.4, rising"><span class="needle"></span><span class="fq">100.4</span><span class="nm" style="color:var(--pulse)">PULSE</span></a>
+      <a class="station live pulse" style="left:66%" href="#pulse" role="listitem" aria-label="ECHO Pulse, 100.4, live"><span class="needle"></span><span class="fq">100.4</span><span class="nm" style="color:var(--pulse)">PULSE</span></a>
       <span class="station dead" style="left:79%" role="listitem"><span class="needle"></span><span class="fq">103.8</span><span class="nm">SIGNAL LOST</span></span>
-      <a class="station live vigil rising" style="left:91%" href="#vigil" role="listitem" aria-label="ECHO Vigil, 106.5, rising"><span class="needle"></span><span class="fq">106.5</span><span class="nm" style="color:var(--vigil)">VIGIL</span></a>
+      <a class="station live vigil" style="left:91%" href="#vigil" role="listitem" aria-label="ECHO Vigil, 106.5, live"><span class="needle"></span><span class="fq">106.5</span><span class="nm" style="color:var(--vigil)">VIGIL</span></a>
     </div></div>
     <p class="tuner-note">// three frequencies remain dark. the archive is deep. — more signals will wake.</p>
     <p id="deadMsg" aria-live="polite"></p>
@@ -478,20 +476,20 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
         <button class="player-face" type="button" aria-label="Load latest ECHO Pulse transmission from YouTube">
           <img src="assets/latest_pulse.jpg" onerror="this.onerror=null;this.src='assets/gallery/pulse_1.jpg'" alt="Thumbnail of the latest ECHO Pulse transmission" loading="lazy">
           <span class="play" aria-hidden="true"></span>
-          <span class="pf-label" id="pulsePfLabel">AWAITING FIRST TRANSMISSION</span>
+          <span class="pf-label">▶ LATEST TRANSMISSION</span>
         </button>
       </div>
       <p class="consent-note">// player loads from youtube-nocookie.com on click</p>
     </div>
     <div>
-      <div class="term-tag" id="pulseTag">signal 100.4 — rising</div>
+      <div class="term-tag">signal 100.4 — live</div>
       <h2 class="ch-name">ECHO PULSE</h2>
       <div class="ch-band">THE DEEP BAND</div>
       <p class="ch-desc">The warm layer beneath the noise: deep, melodic and organic house, rebuilt from the archive's warmest frequencies. For the long focus, the late flow, and the drive home.</p>
       <div class="chips">
         <span class="chip">DEEP HOUSE</span><span class="chip">MELODIC HOUSE</span><span class="chip">ORGANIC HOUSE</span><span class="chip">CHILL HOUSE</span>
       </div>
-      <div class="ch-meta" id="pulseMeta">NEW SIGNAL RISING &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <div class="ch-meta">NEW SIGNAL &nbsp;//&nbsp; 1-HOUR MIXES</div>
       <a class="btn" href="https://www.youtube.com/@Echo_Pulse_House?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
       <div class="recent" data-recent="pulse"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
@@ -506,20 +504,20 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
         <button class="player-face" type="button" aria-label="Load latest ECHO Vigil transmission from YouTube">
           <img src="assets/latest_vigil.jpg" onerror="this.onerror=null;this.src='assets/gallery/vigil_1.jpg'" alt="Thumbnail of the latest ECHO Vigil transmission" loading="lazy">
           <span class="play" aria-hidden="true"></span>
-          <span class="pf-label" id="vigilPfLabel">AWAITING FIRST TRANSMISSION</span>
+          <span class="pf-label">▶ LATEST TRANSMISSION</span>
         </button>
       </div>
       <p class="consent-note">// player loads from youtube-nocookie.com on click</p>
     </div>
     <div>
-      <div class="term-tag" id="vigilTag">signal 106.5 — rising</div>
+      <div class="term-tag">signal 106.5 — live</div>
       <h2 class="ch-name">ECHO VIGIL</h2>
       <div class="ch-band">THE COLD BAND</div>
       <p class="ch-desc">The machine's own layer: nothing human was left to recover in this sector, so the archive transmits from itself — cold, hypnotic techno, held steady in the dark. For the long night shift, the empty hours, and the work nobody sees.</p>
       <div class="chips">
         <span class="chip">DARK TECHNO</span><span class="chip">DUB TECHNO</span><span class="chip">HYPNOTIC TECHNO</span><span class="chip">DEEP TECHNO</span>
       </div>
-      <div class="ch-meta" id="vigilMeta">NEW SIGNAL RISING &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <div class="ch-meta">NEW SIGNAL &nbsp;//&nbsp; 1-HOUR MIXES</div>
       <a class="btn" href="https://www.youtube.com/@echo_vigil_techno?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
       <div class="recent" data-recent="vigil"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
@@ -639,7 +637,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     "> broadcast array .............. [OK]",
     "> antenna alignment ............ [OK]",
     "> listener detection ........... none. transmitting anyway",
-    "> carriers 100.4 / 106.5 ....... waking"
+    "> carriers 100.4 / 106.5 ....... locked"
   ];
   pool.sort(function(){return Math.random()-.5});
   var lines=["> ECHO ARCHIVE SYSTEM v9.31 — boot sequence"]
@@ -729,36 +727,6 @@ latestSignal.then(function(l){
     });
     box.classList.add("on");
   });
-});
-
-/* Rising -> Live, sobald latest.json den Kanal-Key liefert (die GitHub
-   Action schreibt ihn beim ersten oeffentlichen Video -- ohne latest.json
-   oder ohne Key bleibt der jeweilige Kanal im Rising-Default).
-   Generalisiert seit Vigil: gleiche Mechanik fuer beide Aufsteiger. */
-latestSignal.then(function(l){
-  if(!l)return;
-  var RISING=[
-    {key:"pulse",fq:"100.4",name:"ECHO Pulse"},
-    {key:"vigil",fq:"106.5",name:"ECHO Vigil"}
-  ];
-  var liveCount=2; /* frequency + drift */
-  RISING.forEach(function(ch){
-    if(!l[ch.key]){return;}
-    liveCount++;
-    var st=document.querySelector(".station."+ch.key);
-    if(st){st.classList.remove("rising");st.setAttribute("aria-label",ch.name+", "+ch.fq+", live");}
-    var tag=document.getElementById(ch.key+"Tag");
-    if(tag)tag.textContent="signal "+ch.fq+" — live";
-    var pf=document.getElementById(ch.key+"PfLabel");
-    if(pf)pf.textContent="▶ LATEST TRANSMISSION";
-    var meta=document.getElementById(ch.key+"Meta");
-    if(meta)meta.innerHTML="NEW SIGNAL &nbsp;//&nbsp; 1-HOUR MIXES";
-  });
-  if(liveCount>2){
-    var rising=4-liveCount;
-    var hs=document.getElementById("heroSignals");
-    if(hs)hs.innerHTML=liveCount+" SIGNALS LIVE"+(rising>0?' <span style="color:var(--text-faint)">&nbsp;·&nbsp; '+rising+" RISING</span>":"");
-  }
 });
 
 /* Fragment lightbox */
@@ -997,12 +965,12 @@ latestSignal.then(function(l){
       print("&nbsp;&nbsp;help · status · tune &lt;freq&gt; · fragments · decrypt · archive · who · clear · exit");
     }else if(cmd==="status"){
       print("&gt; querying broadcast array…");
-      /* nutzt dieselben latest.json-Daten wie Player/Ticker */
+      /* wartet auf latest.json wie Player/Ticker (wirkt wie eine echte Abfrage); alle vier Kanaele sind live */
       latestSignal.then(function(l){
         print('&nbsp;&nbsp;95.3&nbsp;&nbsp;ECHO FREQUENCY — <span class="cy">LIVE</span>');
         print('&nbsp;&nbsp;97.1&nbsp;&nbsp;ECHO DRIFT — <span class="cy">LIVE</span>');
-        print('&nbsp;&nbsp;100.4 ECHO PULSE — <span class="cy">'+(l&&l.pulse?"LIVE":"RISING")+"</span>");
-        print('&nbsp;&nbsp;106.5 ECHO VIGIL — <span class="cy">'+(l&&l.vigil?"LIVE":"RISING")+"</span>");
+        print('&nbsp;&nbsp;100.4 ECHO PULSE — <span class="cy">LIVE</span>');
+        print('&nbsp;&nbsp;106.5 ECHO VIGIL — <span class="cy">LIVE</span>');
         print("&gt; three frequencies dark. transmitting anyway.");
       });
     }else if(cmd.indexOf("tune")===0){
