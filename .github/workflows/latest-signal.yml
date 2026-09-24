@@ -1,5 +1,5 @@
-# Holt alle 6h die neuesten VEROEFFENTLICHTEN Mixe (keine #shorts, keine
-# scheduled/privaten Videos -- die tauchen im RSS-Feed erst nach Publish auf)
+# Holt alle 6h die neuesten VEROEFFENTLICHTEN Mixe (keine Shorts, keine
+# scheduled/privaten Videos) ueber die YouTube Data API (Secret YT_API_KEY)
 # und schreibt assets/latest.json. Die Website embeddet genau diese IDs.
 name: latest-signal
 
@@ -17,7 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - name: Fetch latest published mixes from YouTube RSS
+      - name: Fetch latest published mixes (YouTube Data API)
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
         run: python3 .github/scripts/latest_signal.py
 
       - name: Commit if changed

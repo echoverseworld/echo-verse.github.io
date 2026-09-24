@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Holt die neuesten VEROEFFENTLICHTEN Videos aller Kanaele aus den
-YouTube-RSS-Feeds (scheduled/private tauchen dort nicht auf), filtert
-#shorts und schreibt assets/latest.json (Player + Ticker + Recent-Grid).
+"""Holt die neuesten VEROEFFENTLICHTEN Videos aller Kanaele ueber die
+YouTube Data API (Secret YT_API_KEY; ohne Key Rueckfall auf die RSS-Feeds,
+die seit 23.09.2026 YouTube-weit 404 liefern), filtert Shorts und
+private/geplante Videos und schreibt assets/latest.json (Player + Ticker + Recent-Grid).
 Robust gegen einzelne leere/unerreichbare Feeds: dann werden die
 bisherigen Daten des Kanals aus der alten latest.json uebernommen;
 hatte der Kanal noch nie Daten (z.B. Pulse vor dem Launch), werden
 seine Keys weggelassen -- die Website wertet das als "noch nicht live"."""
-import html, json, re, sys, time, urllib.request
+import html, json, os, re, sys, time, urllib.error, urllib.parse, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -48,7 +49,65 @@ def fetch_thumbnail(key, video_id):
             return
     print(f"[WARN] Kein Thumbnail fuer {key}/{video_id} -- Facade nutzt Fallback-Artwork.")
 
+API = "https://www.googleapis.com/youtube/v3/"
+API_KEY = os.environ.get("YT_API_KEY", "").strip()
+API_HEADERS = {}  # nur fuer lokale Tests (Bearer-Token statt Key)
+SHORT_MAX_S = 180  # YouTube-Shorts sind hoechstens 3 min, unsere Mixe weit laenger
+
+def api(endpoint, **params):
+    """YouTube Data API v3. Die URL enthaelt den Key -- nie ausgeben."""
+    if API_KEY:
+        params["key"] = API_KEY
+    req = urllib.request.Request(API + endpoint + "?" + urllib.parse.urlencode(params),
+                                 headers=API_HEADERS)
+    for i in range(3):
+        try:
+            return json.loads(urllib.request.urlopen(req, timeout=20).read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            print(f"[WARN] API {endpoint} Versuch {i+1}/3: HTTP {e.code}")
+        except Exception as e:
+            print(f"[WARN] API {endpoint} Versuch {i+1}/3: {type(e).__name__}")
+        time.sleep(10 * (i + 1))
+    return None
+
+def seconds(iso):
+    """ISO-8601-Dauer (PT1H2M3S) in Sekunden."""
+    m = re.fullmatch(r"P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso or "")
+    if not m:
+        return 0
+    d, h, mi, s = (int(x or 0) for x in m.groups())
+    return ((d * 24 + h) * 60 + mi) * 60 + s
+
+def entries_api(channel_id):
+    """Neueste VEROEFFENTLICHTE Videos ueber die Data API (seit 24.09.2026,
+    die RSS-Feeds liefern YouTube-weit 404). Uploads-Playlist = "UU" + Rest
+    der Channel-ID; videos.list liefert Status, Dauer und Publish-Zeitpunkt."""
+    pl = api("playlistItems", part="contentDetails", maxResults=50,  # 1 Unit, Shorts ueberwiegen
+             playlistId="UU" + channel_id[2:])
+    if not pl:
+        return []
+    ids = [it["contentDetails"]["videoId"] for it in pl.get("items", [])]
+    if not ids:
+        return []
+    vs = api("videos", part="snippet,status,contentDetails", id=",".join(ids))
+    if not vs:
+        return []
+    out = []
+    for v in vs.get("items", []):
+        sn, st = v["snippet"], v["status"]
+        if st.get("privacyStatus") != "public" or sn.get("liveBroadcastContent", "none") != "none":
+            continue  # privat/geplant/nicht gelistet bzw. Live/Premiere-Ankuendigung
+        t = sn["title"]  # API liefert Klartext, keine Entities
+        if "#shorts" in t.lower() or seconds(v["contentDetails"].get("duration")) <= SHORT_MAX_S:
+            continue
+        out.append((sn["publishedAt"], {"id": v["id"], "title": t}))
+    out.sort(key=lambda x: x[0], reverse=True)
+    return [e for _, e in out[:MAX_RECENT]]
+
 def entries(channel_id):
+    if API_KEY or API_HEADERS:
+        return entries_api(channel_id)
+    # Ohne Key (lokaler Lauf): alter RSS-Weg
     xml = fetch(f"https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}")
     if xml is None:
         return []
