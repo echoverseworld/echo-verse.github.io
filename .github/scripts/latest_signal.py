@@ -6,7 +6,7 @@ Robust gegen einzelne leere/unerreichbare Feeds: dann werden die
 bisherigen Daten des Kanals aus der alten latest.json uebernommen;
 hatte der Kanal noch nie Daten (z.B. Pulse vor dem Launch), werden
 seine Keys weggelassen -- die Website wertet das als "noch nicht live"."""
-import json, re, sys, time, urllib.request
+import html, json, re, sys, time, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -59,8 +59,10 @@ def entries(channel_id):
         title = re.search(r"<title>([^<]+)", e)
         if not vid or not title:
             continue
-        t = title.group(1)
-        t = t.replace("&amp;", "&").replace("&quot;", '"').replace("&#39;", "'")
+        # Alle XML/HTML-Entities zuruecksetzen (&amp; &lt; &gt; &quot; &#39; &#x2F; ...),
+        # nicht nur drei -- sonst stuende z.B. "&lt;3" woertlich auf der Seite.
+        # index.html setzt Titel daher nur escaped (Ticker) bzw. per textContent ein.
+        t = html.unescape(title.group(1))
         if "#shorts" in t.lower():
             continue
         out.append({"id": vid.group(1), "title": t})
