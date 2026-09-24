@@ -13,9 +13,7 @@
 <meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="theme-color" content="#04060b">
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 :root{
   --bg:#04060b;
@@ -244,8 +242,8 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
         <table class="registry">
           <tr class="live-f"><td class="fq"><a href="index.html#frequency">95.3</a></td><td class="band">THE MEMORY BAND</td><td>ECHO FREQUENCY — the gentle layer. night drives, lost summers, cities that no longer answer.</td><td class="st">LIVE</td></tr>
           <tr class="live-d"><td class="fq"><a href="index.html#drift">97.1</a></td><td class="band">THE RAW BAND</td><td>ECHO DRIFT — the physical layer. engines, asphalt, adrenaline. burned into tape.</td><td class="st">LIVE</td></tr>
-          <tr class="live-p"><td class="fq"><a href="index.html#pulse">100.4</a></td><td class="band">THE DEEP BAND</td><td>ECHO PULSE — the deep layer. the heartbeat beneath the noise. long focus, late flow, the drive home.</td><td class="st" id="pulseSt">WAKING</td></tr>
-          <tr class="live-v"><td class="fq"><a href="index.html#vigil">106.5</a></td><td class="band">THE COLD BAND</td><td>ECHO VIGIL — the machine's own layer. nothing human recovered here. it transmits anyway.</td><td class="st" id="vigilSt">WAKING</td></tr>
+          <tr class="live-p"><td class="fq"><a href="index.html#pulse">100.4</a></td><td class="band">THE DEEP BAND</td><td>ECHO PULSE — the deep layer. the heartbeat beneath the noise. long focus, late flow, the drive home.</td><td class="st">LIVE</td></tr>
+          <tr class="live-v"><td class="fq"><a href="index.html#vigil">106.5</a></td><td class="band">THE COLD BAND</td><td>ECHO VIGIL — the machine's own layer. nothing human recovered here. it transmits anyway.</td><td class="st">LIVE</td></tr>
           <tr class="dead"><td class="fq">89.2</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
           <tr class="dead"><td class="fq">91.7</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
           <tr class="dead"><td class="fq">103.8</td><td class="band">—</td><td>carrier dark.</td><td>NO CARRIER</td></tr>
@@ -374,18 +372,6 @@ footer .wrap{font-family:var(--mono);font-size:.66rem;color:#3d4353;letter-spaci
     entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add("in");io.unobserve(en.target);}});
   },{threshold:.15});
   els.forEach(function(e){io.observe(e)});
-})();
-
-/* Registry-Status 100.4 + 106.5: WAKING als Default, LIVE sobald latest.json
-   das erste veroeffentlichte Video des Kanals kennt (gleiche Logik wie index.html) */
-(function(){
-  fetch("assets/latest.json").then(function(r){return r.ok?r.json():null}).then(function(l){
-    if(!l)return;
-    [["pulse","pulseSt"],["vigil","vigilSt"]].forEach(function(p){
-      var st=document.getElementById(p[1]);
-      if(st&&l[p[0]])st.textContent="LIVE";
-    });
-  }).catch(function(){});
 })();
 </script>
 </body>
