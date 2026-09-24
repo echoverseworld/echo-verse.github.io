@@ -120,12 +120,15 @@ section{padding:110px 24px}
 .tick{position:relative;width:1px;background:rgba(160,180,220,.25);height:14px;top:67px}
 .tick.major{height:26px;top:61px}
 .tick .tl{position:absolute;top:-26px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:.62rem;color:var(--text-faint);letter-spacing:.05em}
-.station{position:absolute;top:0;height:100%;transform:translateX(-50%);text-decoration:none;text-align:center;outline:none}
+.station{position:absolute;top:0;height:100%;transform:translateX(-50%);text-decoration:none;text-align:center}
+/* Tastatur-Fokus sichtbar (nur :focus-visible, Mausklicks bleiben ohne Rahmen); Offset nach innen, weil .dial-scroll oben/unten clippt */
+.station:focus{outline:none}
+.station:focus-visible{outline:1px solid currentColor;outline-offset:-1px;border-radius:2px}
 .station .needle{display:block;width:2px;height:44px;margin:53px auto 0}
 .station .fq{font-family:var(--mono);font-size:.85rem;letter-spacing:.1em;display:block;margin-top:6px}
 .station .nm{font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;display:block;color:var(--text-faint)}
 .station.live .needle{box-shadow:0 0 12px currentColor;background:currentColor}
-.station.live:hover .fq,.station.live:focus .fq{text-shadow:0 0 14px currentColor}
+.station.live:hover .fq,.station.live:focus-visible .fq{text-shadow:0 0 14px currentColor}
 .station.freq{color:var(--cyan)}
 .station.drift{color:var(--magenta)}
 .station.pulse{color:var(--pulse)}
@@ -136,7 +139,8 @@ section{padding:110px 24px}
   .station.pulse.rising .needle,.station.vigil.rising .needle{animation:risePulse 2.4s ease-in-out infinite}
   @keyframes risePulse{50%{opacity:.35}}
 }
-.station.dead{color:var(--text-faint);pointer-events:none}
+.station.dead{color:var(--text-faint);pointer-events:none;background:none;border:0;padding:0;font:inherit;
+  display:flex;flex-direction:column} /* <button> zentriert Inhalt sonst vertikal -> Nadel wie bei den Links oben ausrichten */
 .station.dead .nm{font-size:.54rem;letter-spacing:.14em}
 .station.dead .needle{background:repeating-linear-gradient(0deg,rgba(139,147,168,.5) 0 3px,transparent 3px 6px)}
 .station.dead .nm{color:#3d4353}
@@ -310,7 +314,8 @@ section{padding:110px 24px}
 
 /* ── Dead-frequency easter egg ───────────────────── */
 .station.dead{pointer-events:auto;cursor:crosshair}
-.station.dead:hover .fq{text-shadow:0 0 10px rgba(139,147,168,.6)}
+.station.dead:hover .fq,.station.dead:focus-visible .fq{text-shadow:0 0 10px rgba(139,147,168,.6)}
+.station.dead:focus-visible{outline-color:var(--text-dim)}
 #deadMsg{
   font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-align:center;
   color:var(--magenta);min-height:1.4em;margin-top:.8rem;opacity:0;transition:opacity .4s;
@@ -384,7 +389,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     <h2 class="sec-title">THE BAND</h2>
     <p style="color:var(--text-dim);max-width:36em">ECHO broadcasts on the old FM band. Most frequencies fell silent long ago. Four carry a signal. Select one.</p>
 
-    <div class="dial-scroll"><div class="dial" role="list" aria-label="Frequency dial">
+    <div class="dial-scroll"><div class="dial" role="group" aria-label="Frequency dial">
       <div class="dial-line" aria-hidden="true"></div>
       <div class="dial-ticks" aria-hidden="true">
         <div class="tick major"><span class="tl">87.5</span></div>
@@ -399,13 +404,13 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
         <div class="tick"></div>
         <div class="tick major"><span class="tl">108.0</span></div>
       </div>
-      <span class="station dead" style="left:7%" role="listitem"><span class="needle"></span><span class="fq">89.2</span><span class="nm">SIGNAL LOST</span></span>
-      <span class="station dead" style="left:22%" role="listitem"><span class="needle"></span><span class="fq">91.7</span><span class="nm">SIGNAL LOST</span></span>
-      <a class="station live freq" style="left:38%" href="#frequency" role="listitem" aria-label="ECHO Frequency, 95.3, live"><span class="needle"></span><span class="fq">95.3</span><span class="nm" style="color:var(--cyan)">FREQUENCY</span></a>
-      <a class="station live drift" style="left:50%" href="#drift" role="listitem" aria-label="ECHO Drift, 97.1, live"><span class="needle"></span><span class="fq">97.1</span><span class="nm" style="color:var(--magenta)">DRIFT</span></a>
-      <a class="station live pulse" style="left:66%" href="#pulse" role="listitem" aria-label="ECHO Pulse, 100.4, live"><span class="needle"></span><span class="fq">100.4</span><span class="nm" style="color:var(--pulse)">PULSE</span></a>
-      <span class="station dead" style="left:79%" role="listitem"><span class="needle"></span><span class="fq">103.8</span><span class="nm">SIGNAL LOST</span></span>
-      <a class="station live vigil" style="left:91%" href="#vigil" role="listitem" aria-label="ECHO Vigil, 106.5, live"><span class="needle"></span><span class="fq">106.5</span><span class="nm" style="color:var(--vigil)">VIGIL</span></a>
+      <button class="station dead" type="button" style="left:7%" aria-label="89.2, signal lost"><span class="needle"></span><span class="fq">89.2</span><span class="nm">SIGNAL LOST</span></button>
+      <button class="station dead" type="button" style="left:22%" aria-label="91.7, signal lost"><span class="needle"></span><span class="fq">91.7</span><span class="nm">SIGNAL LOST</span></button>
+      <a class="station live freq" style="left:38%" href="#frequency" aria-label="ECHO Frequency, 95.3, live"><span class="needle"></span><span class="fq">95.3</span><span class="nm" style="color:var(--cyan)">FREQUENCY</span></a>
+      <a class="station live drift" style="left:50%" href="#drift" aria-label="ECHO Drift, 97.1, live"><span class="needle"></span><span class="fq">97.1</span><span class="nm" style="color:var(--magenta)">DRIFT</span></a>
+      <a class="station live pulse" style="left:66%" href="#pulse" aria-label="ECHO Pulse, 100.4, live"><span class="needle"></span><span class="fq">100.4</span><span class="nm" style="color:var(--pulse)">PULSE</span></a>
+      <button class="station dead" type="button" style="left:79%" aria-label="103.8, signal lost"><span class="needle"></span><span class="fq">103.8</span><span class="nm">SIGNAL LOST</span></button>
+      <a class="station live vigil" style="left:91%" href="#vigil" aria-label="ECHO Vigil, 106.5, live"><span class="needle"></span><span class="fq">106.5</span><span class="nm" style="color:var(--vigil)">VIGIL</span></a>
     </div></div>
     <p class="tuner-note">// three frequencies remain dark. the archive is deep. — more signals will wake.</p>
     <p id="deadMsg" aria-live="polite"></p>
