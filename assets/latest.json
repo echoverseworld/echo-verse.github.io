@@ -1,7 +1,11 @@
 {
-  "frequency": "Dr-QdEqJLok",
-  "frequency_title": "ECHO 88.9 — DEAD CHANNEL SKY // Darksynth, Cyberpunk, Outrun Mix",
+  "frequency": "XiSwzZ8xULw",
+  "frequency_title": "ECHO 88.2 — HIBERNATION DREAMS // Synthwave, Retrowave, Chillwave Mix",
   "recent_frequency": [
+    {
+      "id": "XiSwzZ8xULw",
+      "title": "ECHO 88.2 — HIBERNATION DREAMS // Synthwave, Retrowave, Chillwave Mix"
+    },
     {
       "id": "Dr-QdEqJLok",
       "title": "ECHO 88.9 — DEAD CHANNEL SKY // Darksynth, Cyberpunk, Outrun Mix"
@@ -13,15 +17,15 @@
     {
       "id": "RT05r3KkjGo",
       "title": "ECHO 103.5 — PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "GYZ82EcSTFE",
-      "title": "ECHO 97.4 — REWIND THE STARS // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "uH92jQeNz3w",
-  "drift_title": "ECHO 107.5 — EIGHT CYLINDER EULOGY // Phonk, Drift Phonk Mix",
+  "drift": "NI27SUJ6Cms",
+  "drift_title": "ECHO 91.5 — STREET RACE STIGMATA // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "NI27SUJ6Cms",
+      "title": "ECHO 91.5 — STREET RACE STIGMATA // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "uH92jQeNz3w",
       "title": "ECHO 107.5 — EIGHT CYLINDER EULOGY // Phonk, Drift Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "W5z7o2_eSq4",
       "title": "ECHO 106.6 — GASOLINE GENESIS // Phonk, Drift Phonk Mix"
-    },
-    {
-      "id": "mu8YrlDYJmI",
-      "title": "ECHO 106.1 — VELOCITY VOWS // Phonk, Drift Phonk Mix"
     }
   ],
-  "pulse": "Tve1DR9yaYk",
-  "pulse_title": "ECHO 88.0 — PULSE BENEATH THE CITY // Organic House, Chill House, Deep House Mix",
+  "pulse": "dobj3PKI8b4",
+  "pulse_title": "ECHO 104.0 — QUIET THUNDER // Deep House, Melodic House, Organic House Mix",
   "recent_pulse": [
+    {
+      "id": "dobj3PKI8b4",
+      "title": "ECHO 104.0 — QUIET THUNDER // Deep House, Melodic House, Organic House Mix"
+    },
     {
       "id": "Tve1DR9yaYk",
       "title": "ECHO 88.0 — PULSE BENEATH THE CITY // Organic House, Chill House, Deep House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "jHyU71nr6dU",
       "title": "ECHO 92.8 — SMOKE ON STILL WATER // Melodic House, Deep House, Chill House Mix"
-    },
-    {
-      "id": "HOD4APrnCn4",
-      "title": "ECHO 96.7 — TEMPLE OF DUST // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "44efQQNHN-4",
-  "vigil_title": "ECHO 103.9 — THE MACHINE DREAMS ITSELF // Dark Techno, Dub Techno, Hypnotic Techno Mix",
+  "vigil": "bY6_nSc82-E",
+  "vigil_title": "ECHO 90.5 — THE PATIENT DARK // Dark Techno, Hypnotic Techno, Deep Techno Mix",
   "recent_vigil": [
+    {
+      "id": "bY6_nSc82-E",
+      "title": "ECHO 90.5 — THE PATIENT DARK // Dark Techno, Hypnotic Techno, Deep Techno Mix"
+    },
     {
       "id": "44efQQNHN-4",
       "title": "ECHO 103.9 — THE MACHINE DREAMS ITSELF // Dark Techno, Dub Techno, Hypnotic Techno Mix"
@@ -73,11 +77,7 @@
     {
       "id": "GEBrQTpx_cY",
       "title": "ECHO 106.5 — MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix"
-    },
-    {
-      "id": "36cYDgIZHk4",
-      "title": "ECHO 90.9 — THE WATCH CONTINUES // Hypnotic Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "updated": "2026-09-25T11:58:25Z"
+  "updated": "2026-09-25T17:18:30Z"
 }
