@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-23T18:30:25",
+  "generated": "2026-09-25T18:30:31",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 35,
+      "title": "ECHO 88.2 — HIBERNATION DREAMS // Synthwave, Retrowave, Chillwave Mix",
+      "fm": "88.2",
+      "fragment": "HIBERNATION DREAMS",
+      "genres": "Synthwave, Retrowave, Chillwave",
+      "duration": "61:43",
+      "published": "2026-09-25",
+      "youtube_id": "XiSwzZ8xULw",
+      "thumb": "assets/archive/wave_035.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 35,
+      "title": "ECHO 91.5 — STREET RACE STIGMATA // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "91.5",
+      "fragment": "STREET RACE STIGMATA",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "63:32",
+      "published": "2026-09-25",
+      "youtube_id": "NI27SUJ6Cms",
+      "thumb": "assets/archive/drift_035.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 24,
+      "title": "ECHO 104.0 — QUIET THUNDER // Deep House, Melodic House, Organic House Mix",
+      "fm": "104.0",
+      "fragment": "QUIET THUNDER",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "62:43",
+      "published": "2026-09-25",
+      "youtube_id": "dobj3PKI8b4",
+      "thumb": "assets/archive/pulse_024.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 22,
+      "title": "ECHO 90.5 — THE PATIENT DARK // Dark Techno, Hypnotic Techno, Deep Techno Mix",
+      "fm": "90.5",
+      "fragment": "THE PATIENT DARK",
+      "genres": "Dark Techno, Hypnotic Techno, Deep Techno",
+      "duration": "63:09",
+      "published": "2026-09-25",
+      "youtube_id": "bY6_nSc82-E",
+      "thumb": "assets/archive/vigil_022.jpg"
+    },
     {
       "channel": "frequency",
       "volume": 34,
