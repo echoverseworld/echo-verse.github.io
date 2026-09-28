@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-25T18:30:31",
+  "generated": "2026-09-28T18:30:33",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 36,
+      "title": "ECHO 106.9 — LOW ORBIT LONGING // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "106.9",
+      "fragment": "LOW ORBIT LONGING",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "61:30",
+      "published": "2026-09-28",
+      "youtube_id": "D1qgaYDiP3g",
+      "thumb": "assets/archive/wave_036.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 36,
+      "title": "ECHO 88.5 — NEON NECROPOLIS // Phonk, Drift Phonk Mix",
+      "fm": "88.5",
+      "fragment": "NEON NECROPOLIS",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "61:46",
+      "published": "2026-09-28",
+      "youtube_id": "TLMXv6x11So",
+      "thumb": "assets/archive/drift_036.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 25,
+      "title": "ECHO 88.5 — OPAL UNDERGLOW // Deep House, Melodic House, Organic House Mix",
+      "fm": "88.5",
+      "fragment": "OPAL UNDERGLOW",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "63:01",
+      "published": "2026-09-28",
+      "youtube_id": "GuFFt2jSp30",
+      "thumb": "assets/archive/pulse_025.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 23,
+      "title": "ECHO 106.7 — EMPTY RELAY // Dark Techno, Dub Techno, Hypnotic Techno Mix",
+      "fm": "106.7",
+      "fragment": "EMPTY RELAY",
+      "genres": "Dark Techno, Dub Techno, Hypnotic Techno",
+      "duration": "62:20",
+      "published": "2026-09-28",
+      "youtube_id": "zMmRoR8nvtY",
+      "thumb": "assets/archive/vigil_023.jpg"
+    },
     {
       "channel": "frequency",
       "volume": 35,
