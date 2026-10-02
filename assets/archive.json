@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-30T18:30:36",
+  "generated": "2026-10-02T18:30:39",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 38,
+      "title": "ECHO 107.5 — THE FREQUENCY DIES // Retrowave, Synthwave, Cyberpunk Mix",
+      "fm": "107.5",
+      "fragment": "THE FREQUENCY DIES",
+      "genres": "Retrowave, Synthwave, Cyberpunk",
+      "duration": "63:36",
+      "published": "2026-10-02",
+      "youtube_id": "FRoCvrI6_R8",
+      "thumb": "assets/archive/wave_038.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 38,
+      "title": "ECHO 100.9 — BLACK ICE BAPTISM // Drift Phonk, Night Drive Mix",
+      "fm": "100.9",
+      "fragment": "BLACK ICE BAPTISM",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "62:18",
+      "published": "2026-10-02",
+      "youtube_id": "yogndhSOIm4",
+      "thumb": "assets/archive/drift_038.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 27,
+      "title": "ECHO 94.1 — HOLLOW SUN // Deep House, Melodic House, Organic House Mix",
+      "fm": "94.1",
+      "fragment": "HOLLOW SUN",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "63:00",
+      "published": "2026-10-02",
+      "youtube_id": "nYqrRskjzjc",
+      "thumb": "assets/archive/pulse_027.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 25,
+      "title": "ECHO 90.6 — UNDER THE ICE SHELF // Dark Techno, Hypnotic Techno, Deep Techno Mix",
+      "fm": "90.6",
+      "fragment": "UNDER THE ICE SHELF",
+      "genres": "Dark Techno, Hypnotic Techno, Deep Techno",
+      "duration": "63:08",
+      "published": "2026-10-02",
+      "youtube_id": "dN_eW_duzk8",
+      "thumb": "assets/archive/vigil_025.jpg"
+    },
     {
       "channel": "frequency",
       "volume": 37,
