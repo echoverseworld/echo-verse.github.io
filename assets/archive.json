@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-02T18:30:39",
+  "generated": "2026-10-03T10:11:47",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -298,7 +298,7 @@
     {
       "channel": "vigil",
       "volume": 20,
-      "title": "ECHO 91.1 â€” IRON WEATHER // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "title": "ECHO 91.1 — IRON WEATHER // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
       "fm": "91.1",
       "fragment": "IRON WEATHER",
       "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
@@ -322,7 +322,7 @@
     {
       "channel": "frequency",
       "volume": 30,
-      "title": "ECHO 103.5 â€” PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix",
+      "title": "ECHO 103.5 — PARADISE ON STANDBY // Chillwave, Dreamwave, Downtempo Mix",
       "fm": "103.5",
       "fragment": "PARADISE ON STANDBY",
       "genres": "Chillwave, Dreamwave, Downtempo",
@@ -346,7 +346,7 @@
     {
       "channel": "vigil",
       "volume": 19,
-      "title": "ECHO 106.5 â€” MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix",
+      "title": "ECHO 106.5 — MEMORY WITHOUT OWNER // Dark Techno, Hypnotic Techno, Deep Techno Mix",
       "fm": "106.5",
       "fragment": "MEMORY WITHOUT OWNER",
       "genres": "Dark Techno, Hypnotic Techno, Deep Techno",
@@ -370,7 +370,7 @@
     {
       "channel": "frequency",
       "volume": 29,
-      "title": "ECHO 97.4 â€” REWIND THE STARS // Synthwave, Dreamwave, Chillwave Mix",
+      "title": "ECHO 97.4 — REWIND THE STARS // Synthwave, Dreamwave, Chillwave Mix",
       "fm": "97.4",
       "fragment": "REWIND THE STARS",
       "genres": "Synthwave, Dreamwave, Chillwave",
@@ -394,7 +394,7 @@
     {
       "channel": "vigil",
       "volume": 18,
-      "title": "ECHO 90.9 â€” THE WATCH CONTINUES // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "title": "ECHO 90.9 — THE WATCH CONTINUES // Hypnotic Techno, Deep Techno, Dark Techno Mix",
       "fm": "90.9",
       "fragment": "THE WATCH CONTINUES",
       "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
@@ -406,7 +406,7 @@
     {
       "channel": "drift",
       "volume": 30,
-      "title": "ECHO 93.7 â€” DRIFT ANGEL // Phonk, Drift Phonk Mix",
+      "title": "ECHO 93.7 — DRIFT ANGEL // Phonk, Drift Phonk Mix",
       "fm": "93.7",
       "fragment": "DRIFT ANGEL",
       "genres": "Phonk, Drift Phonk",
@@ -418,7 +418,7 @@
     {
       "channel": "frequency",
       "volume": 28,
-      "title": "ECHO 99.0 â€” THE COLOR OF 2AM // Chillwave, Dreamwave, Downtempo Mix",
+      "title": "ECHO 99.0 — THE COLOR OF 2AM // Chillwave, Dreamwave, Downtempo Mix",
       "fm": "99.0",
       "fragment": "THE COLOR OF 2AM",
       "genres": "Chillwave, Dreamwave, Downtempo",
@@ -442,7 +442,7 @@
     {
       "channel": "vigil",
       "volume": 17,
-      "title": "ECHO 107.2 â€” GREY ORBIT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "title": "ECHO 107.2 — GREY ORBIT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
       "fm": "107.2",
       "fragment": "GREY ORBIT",
       "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
@@ -454,7 +454,7 @@
     {
       "channel": "drift",
       "volume": 29,
-      "title": "ECHO 98.9 â€” PARKING LOT PROPHECY // Aggressive Phonk, Gym Phonk Mix",
+      "title": "ECHO 98.9 — PARKING LOT PROPHECY // Aggressive Phonk, Gym Phonk Mix",
       "fm": "98.9",
       "fragment": "PARKING LOT PROPHECY",
       "genres": "Aggressive Phonk, Gym Phonk",
@@ -466,7 +466,7 @@
     {
       "channel": "frequency",
       "volume": 27,
-      "title": "ECHO 95.0 â€” SUMMER THAT NEVER ENDED // Synthwave, Dreamwave, Chillwave Mix",
+      "title": "ECHO 95.0 — SUMMER THAT NEVER ENDED // Synthwave, Dreamwave, Chillwave Mix",
       "fm": "95.0",
       "fragment": "SUMMER THAT NEVER ENDED",
       "genres": "Synthwave, Dreamwave, Chillwave",
@@ -490,7 +490,7 @@
     {
       "channel": "vigil",
       "volume": 16,
-      "title": "ECHO 89.7 â€” SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "title": "ECHO 89.7 — SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
       "fm": "89.7",
       "fragment": "SLOW MACHINERY",
       "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
@@ -502,7 +502,7 @@
     {
       "channel": "drift",
       "volume": 28,
-      "title": "ECHO 107.9 â€” TOLLBOOTH TRIBUNAL // Drift Phonk, Night Drive Mix",
+      "title": "ECHO 107.9 — TOLLBOOTH TRIBUNAL // Drift Phonk, Night Drive Mix",
       "fm": "107.9",
       "fragment": "TOLLBOOTH TRIBUNAL",
       "genres": "Drift Phonk, Night Drive",
@@ -514,7 +514,7 @@
     {
       "channel": "frequency",
       "volume": 26,
-      "title": "ECHO 104.4 â€” UNTIL THE SIGNAL FADES // Chillwave, Dreamwave, Downtempo Mix",
+      "title": "ECHO 104.4 — UNTIL THE SIGNAL FADES // Chillwave, Dreamwave, Downtempo Mix",
       "fm": "104.4",
       "fragment": "UNTIL THE SIGNAL FADES",
       "genres": "Chillwave, Dreamwave, Downtempo",
@@ -538,7 +538,7 @@
     {
       "channel": "vigil",
       "volume": 15,
-      "title": "ECHO 104.7 â€” THE LONG NORTH // Dub Techno, Deep Techno, Dark Techno Mix",
+      "title": "ECHO 104.7 — THE LONG NORTH // Dub Techno, Deep Techno, Dark Techno Mix",
       "fm": "104.7",
       "fragment": "THE LONG NORTH",
       "genres": "Dub Techno, Deep Techno, Dark Techno",
@@ -586,7 +586,7 @@
     {
       "channel": "vigil",
       "volume": 14,
-      "title": "ECHO 88.2 â€” BENEATH THE NOISE FLOOR // Dub Techno, Deep Techno, Dark Techno Mix",
+      "title": "ECHO 88.2 — BENEATH THE NOISE FLOOR // Dub Techno, Deep Techno, Dark Techno Mix",
       "fm": "88.2",
       "fragment": "BENEATH THE NOISE FLOOR",
       "genres": "Dub Techno, Deep Techno, Dark Techno",
@@ -634,7 +634,7 @@
     {
       "channel": "vigil",
       "volume": 13,
-      "title": "ECHO 99.5 â€” TRANSMITTING INTO NOTHING // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "title": "ECHO 99.5 — TRANSMITTING INTO NOTHING // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
       "fm": "99.5",
       "fragment": "TRANSMITTING INTO NOTHING",
       "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
@@ -682,7 +682,7 @@
     {
       "channel": "vigil",
       "volume": 12,
-      "title": "ECHO 93.2 â€” DUST IN THE RELAYS // Dub Techno, Deep Techno, Dark Techno Mix",
+      "title": "ECHO 93.2 — DUST IN THE RELAYS // Dub Techno, Deep Techno, Dark Techno Mix",
       "fm": "93.2",
       "fragment": "DUST IN THE RELAYS",
       "genres": "Dub Techno, Deep Techno, Dark Techno",
@@ -730,7 +730,7 @@
     {
       "channel": "vigil",
       "volume": 11,
-      "title": "ECHO 107.9 â€” LOW ORBIT DECAY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "title": "ECHO 107.9 — LOW ORBIT DECAY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
       "fm": "107.9",
       "fragment": "LOW ORBIT DECAY",
       "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
@@ -778,7 +778,7 @@
     {
       "channel": "vigil",
       "volume": 10,
-      "title": "ECHO 95.0 â€” THE DARK KEEPS TIME // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "title": "ECHO 95.0 — THE DARK KEEPS TIME // Hypnotic Techno, Deep Techno, Dark Techno Mix",
       "fm": "95.0",
       "fragment": "THE DARK KEEPS TIME",
       "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
@@ -790,7 +790,7 @@
     {
       "channel": "vigil",
       "volume": 9,
-      "title": "ECHO 91.9 â€” WINTER IN THE ARCHIVE // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "title": "ECHO 91.9 — WINTER IN THE ARCHIVE // Hypnotic Techno, Deep Techno, Dark Techno Mix",
       "fm": "91.9",
       "fragment": "WINTER IN THE ARCHIVE",
       "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
@@ -838,7 +838,7 @@
     {
       "channel": "vigil",
       "volume": 8,
-      "title": "ECHO 98.8 â€” A LIGHT LEFT ON // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "title": "ECHO 98.8 — A LIGHT LEFT ON // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
       "fm": "98.8",
       "fragment": "A LIGHT LEFT ON",
       "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
