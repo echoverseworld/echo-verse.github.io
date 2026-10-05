@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-03T10:11:47",
+  "generated": "2026-10-05T18:30:50",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,54 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 39,
+      "title": "ECHO 98.6 — FREQUENCY GHOST // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "98.6",
+      "fragment": "FREQUENCY GHOST",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "63:41",
+      "published": "2026-10-05",
+      "youtube_id": "h5J_zdaCnyA",
+      "thumb": "assets/archive/wave_039.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 39,
+      "title": "ECHO 92.5 — CLUTCH KICK CATHEDRAL // Phonk, Drift Phonk Mix",
+      "fm": "92.5",
+      "fragment": "CLUTCH KICK CATHEDRAL",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:44",
+      "published": "2026-10-05",
+      "youtube_id": "UFggvj6fuYo",
+      "thumb": "assets/archive/drift_039.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 28,
+      "title": "ECHO 90.2 — SAND AND SILENCE // Deep House, Melodic House, Organic House Mix",
+      "fm": "90.2",
+      "fragment": "SAND AND SILENCE",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "63:00",
+      "published": "2026-10-05",
+      "youtube_id": "UpsEknnP2lA",
+      "thumb": "assets/archive/pulse_028.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 26,
+      "title": "ECHO 98.4 — SIGNAL TO NO ONE // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "98.4",
+      "fragment": "SIGNAL TO NO ONE",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "65:46",
+      "published": "2026-10-05",
+      "youtube_id": "GTq1EKVUfeI",
+      "thumb": "assets/archive/vigil_026.jpg"
+    },
     {
       "channel": "frequency",
       "volume": 38,
