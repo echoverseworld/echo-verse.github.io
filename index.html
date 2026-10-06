@@ -83,6 +83,19 @@ section{padding:110px 24px}
 }
 .hero-boot{font-family:var(--mono);font-size:.8rem;color:var(--text-dim);min-height:5.2em;margin-bottom:2rem;white-space:pre-line}
 .hero-boot .ok{color:var(--cyan)}
+/* Boot-Anomalie: rote Zeilen bleiben stehen, das Zucken laeuft einmal */
+.hero-boot .err{color:#ff4d5e;text-shadow:0 0 10px rgba(255,77,94,.45)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-boot.corrupt{animation:bootrot 1.1s steps(1) 1}
+  @keyframes bootrot{
+    0%,100%{transform:none;opacity:1;color:var(--text-dim)}
+    10%{transform:translateX(-3px);opacity:.5;color:#ff4d5e}
+    22%{transform:translateX(2px);opacity:1;color:#ff4d5e}
+    34%{transform:none;opacity:.3;color:var(--text-dim)}
+    46%{transform:translateX(-1px);opacity:1;color:#ff4d5e}
+    60%{transform:none;color:var(--text-dim)}
+  }
+}
 .hero-boot .cursor{display:inline-block;width:.6em;height:1em;background:var(--cyan);vertical-align:-.15em;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .hero-logo{width:84px;height:84px;margin-bottom:1.6rem;opacity:.92}
@@ -234,6 +247,9 @@ section{padding:110px 24px}
 .frag.d figcaption b{color:var(--magenta)}
 .frag.p figcaption b{color:var(--pulse)}
 .frag.v figcaption b{color:var(--vigil)}
+.frag-more{margin-top:1.6rem;font-family:var(--mono);font-size:.78rem;letter-spacing:.1em}
+.frag-more a{color:var(--text-dim);text-decoration:none}
+.frag-more a:hover{color:var(--text)}
 
 /* ── Reconstructed ───────────────────────────────── */
 #honest .box{
@@ -583,6 +599,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <figure class="frag v" data-meta="reconstruction 38.2% — source: none. a machine imagining its builders"><img src="assets/gallery/vigil_2.jpg" alt="Recovered fragment — android resting in a nest of dead cables" loading="lazy"><figcaption>FRG-106.5/0034 — <b>THE MACHINE DREAMS ITSELF</b></figcaption></figure>
       <figure class="frag v" data-meta="reconstruction 44.9% — source: none. the watch, kept anyway"><img src="assets/gallery/vigil_3.jpg" alt="Recovered fragment — robed machine saint under a full amber halo" loading="lazy"><figcaption>FRG-106.5/0089 — <b>THE WATCH CONTINUES</b></figcaption></figure>
     </div>
+    <p class="frag-more"><a href="archive.html#fragments">▸ ALL RECOVERED FRAGMENTS</a></p>
   </div>
 </section>
 
@@ -631,10 +648,19 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="foot-links"><a href="mailto:contact@echo-verse.world">contact@echo-verse.world</a></div>
     </div>
   </div>
-  <div class="foot-end">© 2026 ECHO VERSE &nbsp;//&nbsp; STILL TRANSMITTING &nbsp;//&nbsp; NO CARRIER … RETRY</div>
+  <div class="foot-end">© 2026 ECHO VERSE &nbsp;//&nbsp; <span id="txSince">STILL TRANSMITTING</span> &nbsp;//&nbsp; NO CARRIER … RETRY</div>
 </footer>
 
 <script>
+/* Sendezaehler im Footer: Tage seit dem ersten Signal (06.07.2026, ECHO Frequency 95.3 und ECHO Drift 97.1).
+   Rein gerechnet -- hier wird nichts gezaehlt und nichts gespeichert. Ohne JS bleibt "STILL TRANSMITTING" stehen. */
+(function(){
+  var el=document.getElementById("txSince");
+  if(!el)return;
+  var d=Math.floor((Date.now()-Date.UTC(2026,6,6))/864e5);
+  if(d>0){el.textContent="STILL TRANSMITTING — "+d+" DAYS SINCE FIRST SIGNAL";el.title="first signal: 2026-07-06";}
+})();
+
 /* Boot sequence typing — Zeilen randomisiert, jeder Besuch bootet anders */
 (function(){
   function ri(a,b){return a+Math.floor(Math.random()*(b-a+1));}
@@ -649,27 +675,48 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     "> carriers 100.4 / 106.5 ....... locked"
   ];
   pool.sort(function(){return Math.random()-.5});
+  /* Boot-Anomalie: etwa 1 von 100 Aufrufen bootet "korrupt" -- zwei Zeilen, die nicht in dieses Log gehoeren
+     (alle drei aus dem Codex: FILE 0001, "is anyone out there?", FILE 0006). "!" am Zeilenanfang = ganze Zeile rot.
+     Erzwingen geht nur in der lokalen Vorschau: ?anomaly, ?anomaly=2, ?anomaly=3 -- auf der echten Seite wirkungslos. */
+  function row(k,v){var s="> "+k+" ";while(s.length<32)s+=".";return s+" "+v;}
+  var odd=[
+    ["> recovering fragment 0x022 ..... [ERR] out of sequence","!> [DAY 0034] she said: ▓▓▓▓▓ ▓▓ ▓▓▓"],
+    ["!"+row("listener detection","1"),row("recount","none. transmitting anyway")],
+    [row("directive PRESERVE","[ERR] cannot resolve"),"!"+row("fallback","transmit. transmit. transm")]
+  ];
+  var force=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?/[?&]anomaly(?:=(\d))?/.exec(location.search):null;
+  var anomaly=force?odd[((+force[1]||1)-1)%odd.length]:(Math.random()<.01?odd[Math.floor(Math.random()*odd.length)]:null);
+  var calm=pool.filter(function(l){return !/listener|recovering/.test(l)});
+  var red={};
   var lines=["> ECHO ARCHIVE SYSTEM v9.31 — boot sequence"]
-    .concat(pool.slice(0,3))
-    .concat(["> status: TRANSMITTING"]);
+    .concat(anomaly?[calm[0]].concat(anomaly):pool.slice(0,3))
+    .concat(["> status: TRANSMITTING"])
+    .map(function(l,i){if(l.charAt(0)==="!"){red[i]=1;return l.slice(1);}return l;});
+  function mark(t){
+    return t.split("\n").map(function(l,i){
+      l=l.replace(/\[OK\]/g,'<span class="ok">[OK]</span>').replace(/\[ERR\]/g,'<span class="err">[ERR]</span>');
+      return red[i]?'<span class="err">'+l+'</span>':l;
+    }).join("\n");
+  }
   var el=document.getElementById("boot");
   if(!el)return;
   var bl=document.getElementById("bootLink");
   function showLink(){if(bl)bl.style.visibility="visible";}
   var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(reduce){el.innerHTML=lines.map(function(l){return l.replace("[OK]","<span class=ok>[OK]</span>")}).join("\n");showLink();return;}
+  if(reduce){el.innerHTML=mark(lines.join("\n"));showLink();return;}
   var li=0,ci=0,out="";
   var cur='<span class="cursor"></span>';
   var last=Date.now();
   function step(){
-    if(li>=lines.length){el.innerHTML=out.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;showLink();return;}
+    if(li>=lines.length){el.innerHTML=mark(out)+cur;showLink();return;}
     var line=lines[li];
+    if(anomaly&&li===2)el.classList.add("corrupt");
     /* zeitbasiert: kompensiert Timer-Throttling in Hintergrund-Tabs */
     var now=Date.now();
     ci+=Math.max(1,Math.round((now-last)/9));
     last=now;
     var partial=out+line.slice(0,ci);
-    el.innerHTML=partial.replace(/\[OK\]/g,'<span class="ok">[OK]</span>')+cur;
+    el.innerHTML=mark(partial)+cur;
     if(ci>=line.length){out+=line+"\n";li++;ci=0;setTimeout(step,180);}
     else setTimeout(step,18);
   }
@@ -952,11 +999,34 @@ latestSignal.then(function(l){
     out.appendChild(d);
     out.scrollTop=out.scrollHeight;
   }
+  /* Terminal mit Gedaechtnis: zaehlt, wie oft dieser Browser das Terminal geoeffnet hat (localStorage "echo.contact").
+     Geschrieben wird erst beim Oeffnen des Terminals, je Seitenaufruf hoechstens einmal; nichts verlaesst den Browser.
+     Der Befehl 'forget' loescht den Eintrag. Ohne Speicher (privater Modus) laeuft das Terminal wie bisher. */
+  var MEM="echo.contact",memDone=false,memLine=null;
+  var ORD=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth"];
+  function contact(){
+    if(memDone)return memLine;
+    memDone=true;
+    try{
+      var m={};
+      try{m=JSON.parse(localStorage.getItem(MEM)||"null")||{};}catch(e){} /* kaputter Eintrag: neu anfangen */
+      var n=parseInt(m.n,10),t=parseInt(m.t,10),now=Date.now();
+      n=(n>0&&n<1e6?n:0)+1;
+      var gap=t>0&&t<now?Math.floor((now-t)/864e5):0;
+      localStorage.setItem(MEM,JSON.stringify({n:n,t:now}));
+      memLine=n===1
+        ?"&gt; …first contact. logged."
+        :"&gt; …you again. "+(ORD[n]?ORD[n]+" contact":"contact "+n)+"."+(gap>=2?" "+gap+" days since the last one.":"")+" the archive keeps count.";
+    }catch(e){memLine=null;}
+    return memLine;
+  }
   function openTerm(){
     if(term.classList.contains("on"))return;
     term.classList.add("on");
     out.innerHTML="";
     print('<span class="cy">&gt; remote session established — clearance: NONE</span>');
+    var ml=contact();
+    if(ml)print(ml);
     print("&gt; type 'help'");
     inp.value="";
     inp.focus();
@@ -974,7 +1044,7 @@ latestSignal.then(function(l){
     var cmd=q.toLowerCase();
     if(cmd==="help"){
       print("&gt; available routines:");
-      print("&nbsp;&nbsp;help · status · tune &lt;freq&gt; · fragments · decrypt · archive · who · clear · exit");
+      print("&nbsp;&nbsp;help · status · tune &lt;freq&gt; · fragments · decrypt · archive · who · forget · clear · exit");
     }else if(cmd==="status"){
       print("&gt; querying broadcast array…");
       /* wartet auf latest.json wie Player/Ticker (wirkt wie eine echte Abfrage); alle vier Kanaele sind live */
@@ -1001,6 +1071,10 @@ latestSignal.then(function(l){
       window.location.href="archive.html";
     }else if(cmd==="who"){
       print("&gt; designation: ECHO. archive system. never switched off. never asked why.");
+    }else if(cmd==="forget"){
+      try{localStorage.removeItem(MEM);}catch(e){}
+      memLine=null;
+      print("&gt; …contact log erased. the archive forgets you. nothing else.");
     }else if(cmd==="clear"){
       out.innerHTML="";
     }else if(cmd==="exit"){

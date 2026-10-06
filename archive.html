@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ECHO VERSE — All Transmissions</title>
-<meta name="description" content="The complete transmission log of the ECHO archive system: every reconstruction ever broadcast on ECHO Frequency, ECHO Drift, ECHO Pulse and ECHO Vigil.">
+<meta name="description" content="The complete transmission log of the ECHO archive system: every reconstruction ever broadcast on ECHO Frequency, ECHO Drift, ECHO Pulse and ECHO Vigil — and the artwork recovered with each one.">
 <link rel="canonical" href="https://echo-verse.world/archive.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://echo-verse.world/archive.html">
@@ -143,6 +143,58 @@ main.arch{padding:0 24px 90px}
   .card.in:hover,.card.in:focus-visible{transform:translateY(-2px)}
 }
 
+/* ── View switch: transmissions | fragments (W6) ─── */
+.views{display:flex;padding:0 24px;max-width:1060px;margin:0 auto 1.4rem}
+.views[hidden]{display:none}
+.view{
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.2em;cursor:pointer;
+  background:none;color:var(--text-faint);border:0;border-bottom:1px solid var(--line);
+  padding:.5em 1.5em .9em;transition:color .2s,border-color .2s;
+}
+.view:hover{color:var(--text-dim)}
+.view[aria-pressed="true"]{color:var(--text);border-bottom-color:var(--cyan)}
+
+/* ── Fragment tiles + lightbox (same look as the tuner page) ── */
+.fragt{
+  position:relative;display:block;width:100%;padding:0;aspect-ratio:16/9;overflow:hidden;
+  border:1px solid var(--line);border-radius:3px;background:#000;cursor:zoom-in;
+  transition:border-color .25s,box-shadow .25s;
+}
+.fragt img{width:100%;height:100%;object-fit:cover;filter:saturate(.92);transition:transform .5s,filter .4s}
+.fragt:hover img,.fragt:focus-visible img{transform:scale(1.05);filter:saturate(1.08)}
+.fragt .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:1.6em .9em .7em;text-align:left;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;color:var(--text-dim);
+  background:linear-gradient(0deg,rgba(4,6,11,.9),transparent);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.fragt .cap b,#lightbox .lb-cap b{font-weight:400}
+.fragt.freq .cap b,#lightbox.freq .lb-cap b{color:var(--cyan)}
+.fragt.drift .cap b,#lightbox.drift .lb-cap b{color:var(--magenta)}
+.fragt.pulse .cap b,#lightbox.pulse .lb-cap b{color:var(--pulse)}
+.fragt.vigil .cap b,#lightbox.vigil .lb-cap b{color:var(--vigil)}
+.fragt.freq:hover,.fragt.freq:focus-visible{border-color:rgba(34,211,238,.55);box-shadow:0 0 24px rgba(34,211,238,.18)}
+.fragt.drift:hover,.fragt.drift:focus-visible{border-color:rgba(255,45,155,.55);box-shadow:0 0 24px rgba(255,45,155,.18)}
+.fragt.pulse:hover,.fragt.pulse:focus-visible{border-color:rgba(124,92,255,.55);box-shadow:0 0 24px rgba(124,92,255,.22)}
+.fragt.vigil:hover,.fragt.vigil:focus-visible{border-color:rgba(255,158,61,.55);box-shadow:0 0 24px rgba(255,158,61,.2)}
+@media (prefers-reduced-motion:no-preference){
+  .fragt{opacity:0;transform:translateY(14px)}
+  .fragt.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,border-color .25s,box-shadow .25s}
+}
+#lightbox{
+  position:fixed;inset:0;z-index:9500;display:none;flex-direction:column;align-items:center;justify-content:center;
+  gap:1.1rem;background:rgba(4,6,11,.92);backdrop-filter:blur(4px);padding:4vh 4vw;cursor:zoom-out;
+}
+#lightbox.on{display:flex}
+#lightbox img{max-width:100%;max-height:76vh;border:1px solid var(--line);border-radius:4px}
+#lightbox .lb-cap{text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;color:var(--text-dim)}
+#lightbox .lb-meta{display:block;margin-top:.45em;font-size:.6rem;letter-spacing:.12em;color:var(--text-faint)}
+#lightbox .lb-play{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--text-dim);text-decoration:none;
+  border:1px solid var(--line);border-radius:2px;padding:.6em 1.3em;cursor:pointer;
+}
+#lightbox .lb-play:hover{color:var(--text);border-color:rgba(223,228,240,.55)}
+
 /* ── Empty / error states ────────────────────────── */
 .state{
   max-width:1060px;margin:0 auto;display:none;
@@ -186,6 +238,12 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
     <div class="arch-status"><span class="dot" aria-hidden="true"></span><span id="statusLine">READING ARCHIVE INDEX…</span></div>
   </div>
 </header>
+
+<!-- ── VIEW SWITCH (W6): the same log, as signals or as recovered artwork ── -->
+<div class="views" id="views" role="group" aria-label="Archive view" hidden>
+  <button class="view" type="button" data-view="signals" aria-pressed="true">TRANSMISSIONS</button>
+  <button class="view" type="button" data-view="fragments" aria-pressed="false">FRAGMENTS</button>
+</div>
 
 <!-- ── FILTER TABS ──────────────────────────────── -->
 <div class="tabs" role="group" aria-label="Filter transmissions by frequency">
@@ -243,8 +301,14 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
     <a href="index.html">◂ BACK TO THE TUNER</a>
     <a href="codex.html">▸ ARCHIVE CODEX</a>
   </div>
-  <div class="foot-end">© 2026 ECHO VERSE &nbsp;//&nbsp; STILL TRANSMITTING &nbsp;//&nbsp; NO CARRIER … RETRY</div>
+  <div class="foot-end">© 2026 ECHO VERSE &nbsp;//&nbsp; <span id="txSince">STILL TRANSMITTING</span> &nbsp;//&nbsp; NO CARRIER … RETRY</div>
 </footer>
+
+<div id="lightbox" role="dialog" aria-label="Fragment fullscreen">
+  <img alt="">
+  <div class="lb-cap"></div>
+  <a class="lb-play" target="_blank" rel="noopener">▸ PLAY THIS TRANSMISSION</a>
+</div>
 
 <script>
 (function(){
@@ -288,24 +352,92 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
     return a;
   }
 
+  /* W6: fragment view -- the artwork of each transmission, without the title graphics */
+  var views=document.getElementById("views");
+  var viewBtns=Array.prototype.slice.call(document.querySelectorAll(".view"));
+  var lb=document.getElementById("lightbox");
+  var lbImg=lb.querySelector("img"),lbCap=lb.querySelector(".lb-cap"),lbPlay=lb.querySelector(".lb-play");
+  var view="signals";
+
+  function pad4(v){return ("000"+v).slice(-4);}
+  function station(it){return (DATA.channels[it.channel]||{}).fm||it.fm;}
+  function capInto(el,it){
+    el.textContent="FRG-"+station(it)+"/"+pad4(it.volume)+" — ";
+    var b=document.createElement("b");b.textContent=it.fragment||"UNTITLED";
+    el.appendChild(b);
+  }
+  function pool(){
+    return DATA.items.filter(function(it){return view==="signals"||it.art;});
+  }
+
+  function frag(it){
+    var t=document.createElement("button");
+    t.type="button";t.className="fragt "+(CH_CLASS[it.channel]||"freq");
+    t.setAttribute("aria-label","Recovered fragment — "+(it.fragment||"untitled")+" — enlarge");
+    var img=document.createElement("img");
+    img.src=it.art;img.loading="lazy";img.decoding="async";
+    img.width=1280;img.height=720;
+    img.alt="Recovered fragment — "+(it.fragment||"untitled");
+    var cap=document.createElement("span");cap.className="cap";
+    capInto(cap,it);
+    t.appendChild(img);t.appendChild(cap);
+    t.addEventListener("click",function(){
+      lb.className=CH_CLASS[it.channel]||"freq";
+      lbImg.src=it.art;lbImg.alt=img.alt;
+      lbCap.textContent="";
+      capInto(lbCap,it);
+      var meta=document.createElement("span");meta.className="lb-meta";
+      meta.textContent="recovered with SIG "+it.fm+" — TX "+it.published;
+      lbCap.appendChild(meta);
+      lbPlay.href="https://www.youtube.com/watch?v="+encodeURIComponent(it.youtube_id);
+      lb.classList.add("on");
+    });
+    return t;
+  }
+  function closeLb(){lb.classList.remove("on");lbImg.src="";}
+  lb.addEventListener("click",function(e){if(e.target!==lbPlay)closeLb();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb();});
+
+  function counts(){
+    var c={all:0,frequency:0,drift:0,pulse:0,vigil:0};
+    pool().forEach(function(it){c.all++;if(c[it.channel]!==undefined)c[it.channel]++;});
+    tabs.forEach(function(t){
+      var ct=t.querySelector(".ct");
+      if(ct)ct.textContent="["+(c[t.getAttribute("data-filter")]||0)+"]";
+    });
+    statusLine.textContent=c.all+(view==="signals"?" TRANSMISSIONS LOGGED":" FRAGMENTS RECOVERED")+" · 4 FREQUENCIES";
+  }
+
   function render(){
     grid.innerHTML="";
     emptyPulse.classList.remove("on");
     emptyVigil.classList.remove("on");
     emptyGeneric.classList.remove("on");
     if(!DATA)return;
-    var items=DATA.items.filter(function(it){return filter==="all"||it.channel===filter;});
+    var items=pool().filter(function(it){return filter==="all"||it.channel===filter;});
     if(!items.length){
-      (filter==="pulse"?emptyPulse:filter==="vigil"?emptyVigil:emptyGeneric).classList.add("on");
+      (view==="signals"&&filter==="pulse"?emptyPulse:view==="signals"&&filter==="vigil"?emptyVigil:emptyGeneric).classList.add("on");
       return;
     }
     items.forEach(function(it,i){
-      var c=card(it);
+      var c=view==="signals"?card(it):frag(it);
       grid.appendChild(c);
       if(reduce){c.classList.add("in");}
       else{setTimeout(function(){c.classList.add("in");},Math.min(i*45,540));}
     });
   }
+
+  function setView(v,fromUser){
+    view=v;
+    viewBtns.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-view")===v?"true":"false");});
+    if(fromUser&&window.history&&history.replaceState){
+      history.replaceState(null,"",v==="fragments"?"#fragments":window.location.pathname+window.location.search);
+    }
+    counts();render();
+  }
+  viewBtns.forEach(function(b){
+    b.addEventListener("click",function(){setView(b.getAttribute("data-view"),true);});
+  });
 
   tabs.forEach(function(t){
     t.addEventListener("click",function(){
@@ -319,19 +451,23 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
     .then(function(r){if(!r.ok)throw new Error("HTTP "+r.status);return r.json();})
     .then(function(data){
       DATA=data;
-      var counts={all:data.items.length,frequency:0,drift:0,pulse:0,vigil:0};
-      data.items.forEach(function(it){if(counts[it.channel]!==undefined)counts[it.channel]++;});
-      tabs.forEach(function(t){
-        var ct=t.querySelector(".ct");
-        if(ct)ct.textContent="["+(counts[t.getAttribute("data-filter")]||0)+"]";
-      });
-      statusLine.textContent=counts.all+" TRANSMISSIONS LOGGED · 4 FREQUENCIES";
-      render();
+      /* the switch only appears once the index carries artwork (older index files have none) */
+      var hasArt=data.items.some(function(it){return it.art;});
+      views.hidden=!hasArt;
+      setView(hasArt&&window.location.hash==="#fragments"?"fragments":"signals",false);
     })
     .catch(function(){
       statusLine.textContent="INDEX OFFLINE";
       loadError.classList.add("on");
     });
+})();
+
+/* Sendezaehler im Footer wie auf der Startseite: Tage seit dem ersten Signal (06.07.2026), rein gerechnet */
+(function(){
+  var el=document.getElementById("txSince");
+  if(!el)return;
+  var d=Math.floor((Date.now()-Date.UTC(2026,6,6))/864e5);
+  if(d>0){el.textContent="STILL TRANSMITTING — "+d+" DAYS SINCE FIRST SIGNAL";el.title="first signal: 2026-07-06";}
 })();
 </script>
 </body>
