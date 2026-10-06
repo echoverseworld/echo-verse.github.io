@@ -1,7 +1,11 @@
 {
-  "frequency": "FRoCvrI6_R8",
-  "frequency_title": "ECHO 107.5 — THE FREQUENCY DIES // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "h5J_zdaCnyA",
+  "frequency_title": "ECHO 98.6 — FREQUENCY GHOST // Darksynth, Cyberpunk, Outrun Mix",
   "recent_frequency": [
+    {
+      "id": "h5J_zdaCnyA",
+      "title": "ECHO 98.6 — FREQUENCY GHOST // Darksynth, Cyberpunk, Outrun Mix"
+    },
     {
       "id": "FRoCvrI6_R8",
       "title": "ECHO 107.5 — THE FREQUENCY DIES // Retrowave, Synthwave, Cyberpunk Mix"
@@ -13,15 +17,15 @@
     {
       "id": "D1qgaYDiP3g",
       "title": "ECHO 106.9 — LOW ORBIT LONGING // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "XiSwzZ8xULw",
-      "title": "ECHO 88.2 — HIBERNATION DREAMS // Synthwave, Retrowave, Chillwave Mix"
     }
   ],
-  "drift": "yogndhSOIm4",
-  "drift_title": "ECHO 100.9 — BLACK ICE BAPTISM // Drift Phonk, Night Drive Mix",
+  "drift": "UFggvj6fuYo",
+  "drift_title": "ECHO 92.5 — CLUTCH KICK CATHEDRAL // Phonk, Drift Phonk Mix",
   "recent_drift": [
+    {
+      "id": "UFggvj6fuYo",
+      "title": "ECHO 92.5 — CLUTCH KICK CATHEDRAL // Phonk, Drift Phonk Mix"
+    },
     {
       "id": "yogndhSOIm4",
       "title": "ECHO 100.9 — BLACK ICE BAPTISM // Drift Phonk, Night Drive Mix"
@@ -33,15 +37,15 @@
     {
       "id": "TLMXv6x11So",
       "title": "ECHO 88.5 — NEON NECROPOLIS // Phonk, Drift Phonk Mix"
-    },
-    {
-      "id": "NI27SUJ6Cms",
-      "title": "ECHO 91.5 — STREET RACE STIGMATA // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "pulse": "nYqrRskjzjc",
-  "pulse_title": "ECHO 94.1 — HOLLOW SUN // Deep House, Melodic House, Organic House Mix",
+  "pulse": "UpsEknnP2lA",
+  "pulse_title": "ECHO 90.2 — SAND AND SILENCE // Deep House, Melodic House, Organic House Mix",
   "recent_pulse": [
+    {
+      "id": "UpsEknnP2lA",
+      "title": "ECHO 90.2 — SAND AND SILENCE // Deep House, Melodic House, Organic House Mix"
+    },
     {
       "id": "nYqrRskjzjc",
       "title": "ECHO 94.1 — HOLLOW SUN // Deep House, Melodic House, Organic House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "GuFFt2jSp30",
       "title": "ECHO 88.5 — OPAL UNDERGLOW // Deep House, Melodic House, Organic House Mix"
-    },
-    {
-      "id": "dobj3PKI8b4",
-      "title": "ECHO 104.0 — QUIET THUNDER // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "dN_eW_duzk8",
-  "vigil_title": "ECHO 90.6 — UNDER THE ICE SHELF // Dark Techno, Hypnotic Techno, Deep Techno Mix",
+  "vigil": "GTq1EKVUfeI",
+  "vigil_title": "ECHO 98.4 — SIGNAL TO NO ONE // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "GTq1EKVUfeI",
+      "title": "ECHO 98.4 — SIGNAL TO NO ONE // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "dN_eW_duzk8",
       "title": "ECHO 90.6 — UNDER THE ICE SHELF // Dark Techno, Hypnotic Techno, Deep Techno Mix"
@@ -73,11 +77,7 @@
     {
       "id": "zMmRoR8nvtY",
       "title": "ECHO 106.7 — EMPTY RELAY // Dark Techno, Dub Techno, Hypnotic Techno Mix"
-    },
-    {
-      "id": "bY6_nSc82-E",
-      "title": "ECHO 90.5 — THE PATIENT DARK // Dark Techno, Hypnotic Techno, Deep Techno Mix"
     }
   ],
-  "updated": "2026-10-05T14:55:49Z"
+  "updated": "2026-10-06T00:08:41Z"
 }
