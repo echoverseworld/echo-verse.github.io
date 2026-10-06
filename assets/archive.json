@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-05T18:30:50",
+  "generated": "2026-10-06T18:48:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -29,7 +29,8 @@
       "duration": "63:41",
       "published": "2026-10-05",
       "youtube_id": "h5J_zdaCnyA",
-      "thumb": "assets/archive/wave_039.jpg"
+      "thumb": "assets/archive/wave_039.jpg",
+      "art": "assets/fragments/wave_039.jpg"
     },
     {
       "channel": "drift",
@@ -41,7 +42,8 @@
       "duration": "62:44",
       "published": "2026-10-05",
       "youtube_id": "UFggvj6fuYo",
-      "thumb": "assets/archive/drift_039.jpg"
+      "thumb": "assets/archive/drift_039.jpg",
+      "art": "assets/fragments/drift_039.jpg"
     },
     {
       "channel": "pulse",
@@ -53,7 +55,8 @@
       "duration": "63:00",
       "published": "2026-10-05",
       "youtube_id": "UpsEknnP2lA",
-      "thumb": "assets/archive/pulse_028.jpg"
+      "thumb": "assets/archive/pulse_028.jpg",
+      "art": "assets/fragments/pulse_028.jpg"
     },
     {
       "channel": "vigil",
@@ -65,7 +68,8 @@
       "duration": "65:46",
       "published": "2026-10-05",
       "youtube_id": "GTq1EKVUfeI",
-      "thumb": "assets/archive/vigil_026.jpg"
+      "thumb": "assets/archive/vigil_026.jpg",
+      "art": "assets/fragments/vigil_026.jpg"
     },
     {
       "channel": "frequency",
@@ -77,7 +81,8 @@
       "duration": "63:36",
       "published": "2026-10-02",
       "youtube_id": "FRoCvrI6_R8",
-      "thumb": "assets/archive/wave_038.jpg"
+      "thumb": "assets/archive/wave_038.jpg",
+      "art": "assets/fragments/wave_038.jpg"
     },
     {
       "channel": "drift",
@@ -89,7 +94,8 @@
       "duration": "62:18",
       "published": "2026-10-02",
       "youtube_id": "yogndhSOIm4",
-      "thumb": "assets/archive/drift_038.jpg"
+      "thumb": "assets/archive/drift_038.jpg",
+      "art": "assets/fragments/drift_038.jpg"
     },
     {
       "channel": "pulse",
@@ -101,7 +107,8 @@
       "duration": "63:00",
       "published": "2026-10-02",
       "youtube_id": "nYqrRskjzjc",
-      "thumb": "assets/archive/pulse_027.jpg"
+      "thumb": "assets/archive/pulse_027.jpg",
+      "art": "assets/fragments/pulse_027.jpg"
     },
     {
       "channel": "vigil",
@@ -113,7 +120,8 @@
       "duration": "63:08",
       "published": "2026-10-02",
       "youtube_id": "dN_eW_duzk8",
-      "thumb": "assets/archive/vigil_025.jpg"
+      "thumb": "assets/archive/vigil_025.jpg",
+      "art": "assets/fragments/vigil_025.jpg"
     },
     {
       "channel": "frequency",
@@ -125,7 +133,8 @@
       "duration": "63:55",
       "published": "2026-09-30",
       "youtube_id": "znVnnBWwk30",
-      "thumb": "assets/archive/wave_037.jpg"
+      "thumb": "assets/archive/wave_037.jpg",
+      "art": "assets/fragments/wave_037.jpg"
     },
     {
       "channel": "drift",
@@ -137,7 +146,8 @@
       "duration": "61:37",
       "published": "2026-09-30",
       "youtube_id": "T-Mys2Ulu0s",
-      "thumb": "assets/archive/drift_037.jpg"
+      "thumb": "assets/archive/drift_037.jpg",
+      "art": "assets/fragments/drift_037.jpg"
     },
     {
       "channel": "pulse",
@@ -149,7 +159,8 @@
       "duration": "62:40",
       "published": "2026-09-30",
       "youtube_id": "ub-CGwg1EHQ",
-      "thumb": "assets/archive/pulse_026.jpg"
+      "thumb": "assets/archive/pulse_026.jpg",
+      "art": "assets/fragments/pulse_026.jpg"
     },
     {
       "channel": "vigil",
@@ -161,7 +172,8 @@
       "duration": "65:38",
       "published": "2026-09-30",
       "youtube_id": "E0CHyQcopyI",
-      "thumb": "assets/archive/vigil_024.jpg"
+      "thumb": "assets/archive/vigil_024.jpg",
+      "art": "assets/fragments/vigil_024.jpg"
     },
     {
       "channel": "frequency",
@@ -173,7 +185,8 @@
       "duration": "61:30",
       "published": "2026-09-28",
       "youtube_id": "D1qgaYDiP3g",
-      "thumb": "assets/archive/wave_036.jpg"
+      "thumb": "assets/archive/wave_036.jpg",
+      "art": "assets/fragments/wave_036.jpg"
     },
     {
       "channel": "drift",
@@ -185,7 +198,8 @@
       "duration": "61:46",
       "published": "2026-09-28",
       "youtube_id": "TLMXv6x11So",
-      "thumb": "assets/archive/drift_036.jpg"
+      "thumb": "assets/archive/drift_036.jpg",
+      "art": "assets/fragments/drift_036.jpg"
     },
     {
       "channel": "pulse",
@@ -197,7 +211,8 @@
       "duration": "63:01",
       "published": "2026-09-28",
       "youtube_id": "GuFFt2jSp30",
-      "thumb": "assets/archive/pulse_025.jpg"
+      "thumb": "assets/archive/pulse_025.jpg",
+      "art": "assets/fragments/pulse_025.jpg"
     },
     {
       "channel": "vigil",
@@ -209,7 +224,8 @@
       "duration": "62:20",
       "published": "2026-09-28",
       "youtube_id": "zMmRoR8nvtY",
-      "thumb": "assets/archive/vigil_023.jpg"
+      "thumb": "assets/archive/vigil_023.jpg",
+      "art": "assets/fragments/vigil_023.jpg"
     },
     {
       "channel": "frequency",
@@ -221,7 +237,8 @@
       "duration": "61:43",
       "published": "2026-09-25",
       "youtube_id": "XiSwzZ8xULw",
-      "thumb": "assets/archive/wave_035.jpg"
+      "thumb": "assets/archive/wave_035.jpg",
+      "art": "assets/fragments/wave_035.jpg"
     },
     {
       "channel": "drift",
@@ -233,7 +250,8 @@
       "duration": "63:32",
       "published": "2026-09-25",
       "youtube_id": "NI27SUJ6Cms",
-      "thumb": "assets/archive/drift_035.jpg"
+      "thumb": "assets/archive/drift_035.jpg",
+      "art": "assets/fragments/drift_035.jpg"
     },
     {
       "channel": "pulse",
@@ -245,7 +263,8 @@
       "duration": "62:43",
       "published": "2026-09-25",
       "youtube_id": "dobj3PKI8b4",
-      "thumb": "assets/archive/pulse_024.jpg"
+      "thumb": "assets/archive/pulse_024.jpg",
+      "art": "assets/fragments/pulse_024.jpg"
     },
     {
       "channel": "vigil",
@@ -257,7 +276,8 @@
       "duration": "63:09",
       "published": "2026-09-25",
       "youtube_id": "bY6_nSc82-E",
-      "thumb": "assets/archive/vigil_022.jpg"
+      "thumb": "assets/archive/vigil_022.jpg",
+      "art": "assets/fragments/vigil_022.jpg"
     },
     {
       "channel": "frequency",
@@ -269,7 +289,8 @@
       "duration": "62:22",
       "published": "2026-09-23",
       "youtube_id": "Dr-QdEqJLok",
-      "thumb": "assets/archive/wave_034.jpg"
+      "thumb": "assets/archive/wave_034.jpg",
+      "art": "assets/fragments/wave_034.jpg"
     },
     {
       "channel": "drift",
@@ -281,7 +302,8 @@
       "duration": "62:39",
       "published": "2026-09-23",
       "youtube_id": "uH92jQeNz3w",
-      "thumb": "assets/archive/drift_034.jpg"
+      "thumb": "assets/archive/drift_034.jpg",
+      "art": "assets/fragments/drift_034.jpg"
     },
     {
       "channel": "pulse",
@@ -293,7 +315,8 @@
       "duration": "64:28",
       "published": "2026-09-23",
       "youtube_id": "Tve1DR9yaYk",
-      "thumb": "assets/archive/pulse_023.jpg"
+      "thumb": "assets/archive/pulse_023.jpg",
+      "art": "assets/fragments/pulse_023.jpg"
     },
     {
       "channel": "vigil",
@@ -305,7 +328,8 @@
       "duration": "62:27",
       "published": "2026-09-23",
       "youtube_id": "44efQQNHN-4",
-      "thumb": "assets/archive/vigil_021.jpg"
+      "thumb": "assets/archive/vigil_021.jpg",
+      "art": "assets/fragments/vigil_021.jpg"
     },
     {
       "channel": "frequency",
@@ -317,7 +341,8 @@
       "duration": "63:39",
       "published": "2026-09-21",
       "youtube_id": "JkU1wWXE4Dc",
-      "thumb": "assets/archive/wave_033.jpg"
+      "thumb": "assets/archive/wave_033.jpg",
+      "art": "assets/fragments/wave_033.jpg"
     },
     {
       "channel": "drift",
@@ -329,7 +354,8 @@
       "duration": "62:06",
       "published": "2026-09-21",
       "youtube_id": "8u5ahPAAXmI",
-      "thumb": "assets/archive/drift_033.jpg"
+      "thumb": "assets/archive/drift_033.jpg",
+      "art": "assets/fragments/drift_033.jpg"
     },
     {
       "channel": "pulse",
@@ -341,7 +367,8 @@
       "duration": "62:21",
       "published": "2026-09-21",
       "youtube_id": "fx7ogWYIz-w",
-      "thumb": "assets/archive/pulse_022.jpg"
+      "thumb": "assets/archive/pulse_022.jpg",
+      "art": "assets/fragments/pulse_022.jpg"
     },
     {
       "channel": "vigil",
@@ -353,7 +380,8 @@
       "duration": "64:47",
       "published": "2026-09-21",
       "youtube_id": "05giu5pDxvQ",
-      "thumb": "assets/archive/vigil_020.jpg"
+      "thumb": "assets/archive/vigil_020.jpg",
+      "art": "assets/fragments/vigil_020.jpg"
     },
     {
       "channel": "drift",
@@ -365,7 +393,8 @@
       "duration": "62:53",
       "published": "2026-09-18",
       "youtube_id": "W5z7o2_eSq4",
-      "thumb": "assets/archive/drift_032.jpg"
+      "thumb": "assets/archive/drift_032.jpg",
+      "art": "assets/fragments/drift_032.jpg"
     },
     {
       "channel": "frequency",
@@ -377,7 +406,8 @@
       "duration": "62:27",
       "published": "2026-09-18",
       "youtube_id": "RT05r3KkjGo",
-      "thumb": "assets/archive/wave_030.jpg"
+      "thumb": "assets/archive/wave_030.jpg",
+      "art": "assets/fragments/wave_030.jpg"
     },
     {
       "channel": "pulse",
@@ -389,7 +419,8 @@
       "duration": "61:06",
       "published": "2026-09-18",
       "youtube_id": "jHyU71nr6dU",
-      "thumb": "assets/archive/pulse_021.jpg"
+      "thumb": "assets/archive/pulse_021.jpg",
+      "art": "assets/fragments/pulse_021.jpg"
     },
     {
       "channel": "vigil",
@@ -401,7 +432,8 @@
       "duration": "64:43",
       "published": "2026-09-18",
       "youtube_id": "GEBrQTpx_cY",
-      "thumb": "assets/archive/vigil_019.jpg"
+      "thumb": "assets/archive/vigil_019.jpg",
+      "art": "assets/fragments/vigil_019.jpg"
     },
     {
       "channel": "drift",
@@ -413,7 +445,8 @@
       "duration": "62:07",
       "published": "2026-09-16",
       "youtube_id": "mu8YrlDYJmI",
-      "thumb": "assets/archive/drift_031.jpg"
+      "thumb": "assets/archive/drift_031.jpg",
+      "art": "assets/fragments/drift_031.jpg"
     },
     {
       "channel": "frequency",
@@ -425,7 +458,8 @@
       "duration": "62:50",
       "published": "2026-09-16",
       "youtube_id": "GYZ82EcSTFE",
-      "thumb": "assets/archive/wave_029.jpg"
+      "thumb": "assets/archive/wave_029.jpg",
+      "art": "assets/fragments/wave_029.jpg"
     },
     {
       "channel": "pulse",
@@ -437,7 +471,8 @@
       "duration": "61:02",
       "published": "2026-09-16",
       "youtube_id": "HOD4APrnCn4",
-      "thumb": "assets/archive/pulse_020.jpg"
+      "thumb": "assets/archive/pulse_020.jpg",
+      "art": "assets/fragments/pulse_020.jpg"
     },
     {
       "channel": "vigil",
@@ -449,7 +484,8 @@
       "duration": "65:29",
       "published": "2026-09-16",
       "youtube_id": "36cYDgIZHk4",
-      "thumb": "assets/archive/vigil_018.jpg"
+      "thumb": "assets/archive/vigil_018.jpg",
+      "art": "assets/fragments/vigil_018.jpg"
     },
     {
       "channel": "drift",
@@ -461,7 +497,8 @@
       "duration": "62:25",
       "published": "2026-09-14",
       "youtube_id": "-syGHOHju5g",
-      "thumb": "assets/archive/drift_030.jpg"
+      "thumb": "assets/archive/drift_030.jpg",
+      "art": "assets/fragments/drift_030.jpg"
     },
     {
       "channel": "frequency",
@@ -473,7 +510,8 @@
       "duration": "61:43",
       "published": "2026-09-14",
       "youtube_id": "EXmia6zRDi0",
-      "thumb": "assets/archive/wave_028.jpg"
+      "thumb": "assets/archive/wave_028.jpg",
+      "art": "assets/fragments/wave_028.jpg"
     },
     {
       "channel": "pulse",
@@ -485,7 +523,8 @@
       "duration": "63:35",
       "published": "2026-09-14",
       "youtube_id": "07spWA6sHpk",
-      "thumb": "assets/archive/pulse_019.jpg"
+      "thumb": "assets/archive/pulse_019.jpg",
+      "art": "assets/fragments/pulse_019.jpg"
     },
     {
       "channel": "vigil",
@@ -497,7 +536,8 @@
       "duration": "62:10",
       "published": "2026-09-14",
       "youtube_id": "tRj7kw0lvaw",
-      "thumb": "assets/archive/vigil_017.jpg"
+      "thumb": "assets/archive/vigil_017.jpg",
+      "art": "assets/fragments/vigil_017.jpg"
     },
     {
       "channel": "drift",
@@ -509,7 +549,8 @@
       "duration": "63:01",
       "published": "2026-09-11",
       "youtube_id": "2XUuz00-O3M",
-      "thumb": "assets/archive/drift_029.jpg"
+      "thumb": "assets/archive/drift_029.jpg",
+      "art": "assets/fragments/drift_029.jpg"
     },
     {
       "channel": "frequency",
@@ -521,7 +562,8 @@
       "duration": "64:34",
       "published": "2026-09-11",
       "youtube_id": "mh89lyffG8M",
-      "thumb": "assets/archive/wave_027.jpg"
+      "thumb": "assets/archive/wave_027.jpg",
+      "art": "assets/fragments/wave_027.jpg"
     },
     {
       "channel": "pulse",
@@ -533,7 +575,8 @@
       "duration": "62:54",
       "published": "2026-09-11",
       "youtube_id": "8H63zQazhjw",
-      "thumb": "assets/archive/pulse_018.jpg"
+      "thumb": "assets/archive/pulse_018.jpg",
+      "art": "assets/fragments/pulse_018.jpg"
     },
     {
       "channel": "vigil",
@@ -545,7 +588,8 @@
       "duration": "65:08",
       "published": "2026-09-11",
       "youtube_id": "yobBnBZ2skw",
-      "thumb": "assets/archive/vigil_016.jpg"
+      "thumb": "assets/archive/vigil_016.jpg",
+      "art": "assets/fragments/vigil_016.jpg"
     },
     {
       "channel": "drift",
@@ -557,7 +601,8 @@
       "duration": "61:51",
       "published": "2026-09-09",
       "youtube_id": "laqmDZibcxs",
-      "thumb": "assets/archive/drift_028.jpg"
+      "thumb": "assets/archive/drift_028.jpg",
+      "art": "assets/fragments/drift_028.jpg"
     },
     {
       "channel": "frequency",
@@ -569,7 +614,8 @@
       "duration": "64:50",
       "published": "2026-09-09",
       "youtube_id": "6ZgX3LOeB9E",
-      "thumb": "assets/archive/wave_026.jpg"
+      "thumb": "assets/archive/wave_026.jpg",
+      "art": "assets/fragments/wave_026.jpg"
     },
     {
       "channel": "pulse",
@@ -581,7 +627,8 @@
       "duration": "64:35",
       "published": "2026-09-09",
       "youtube_id": "6TWSPLI9nLU",
-      "thumb": "assets/archive/pulse_017.jpg"
+      "thumb": "assets/archive/pulse_017.jpg",
+      "art": "assets/fragments/pulse_017.jpg"
     },
     {
       "channel": "vigil",
@@ -593,7 +640,8 @@
       "duration": "64:56",
       "published": "2026-09-09",
       "youtube_id": "q6fudv4uYD4",
-      "thumb": "assets/archive/vigil_015.jpg"
+      "thumb": "assets/archive/vigil_015.jpg",
+      "art": "assets/fragments/vigil_015.jpg"
     },
     {
       "channel": "drift",
@@ -605,7 +653,8 @@
       "duration": "61:34",
       "published": "2026-09-07",
       "youtube_id": "zGINvSBOCk0",
-      "thumb": "assets/archive/drift_027.jpg"
+      "thumb": "assets/archive/drift_027.jpg",
+      "art": "assets/fragments/drift_027.jpg"
     },
     {
       "channel": "frequency",
@@ -617,7 +666,8 @@
       "duration": "63:12",
       "published": "2026-09-07",
       "youtube_id": "ilmMJGFdBsk",
-      "thumb": "assets/archive/wave_025.jpg"
+      "thumb": "assets/archive/wave_025.jpg",
+      "art": "assets/fragments/wave_025.jpg"
     },
     {
       "channel": "pulse",
@@ -629,7 +679,8 @@
       "duration": "61:23",
       "published": "2026-09-07",
       "youtube_id": "PK3300tQj80",
-      "thumb": "assets/archive/pulse_016.jpg"
+      "thumb": "assets/archive/pulse_016.jpg",
+      "art": "assets/fragments/pulse_016.jpg"
     },
     {
       "channel": "vigil",
@@ -641,7 +692,8 @@
       "duration": "62:18",
       "published": "2026-09-07",
       "youtube_id": "z30OBmVvTuI",
-      "thumb": "assets/archive/vigil_014.jpg"
+      "thumb": "assets/archive/vigil_014.jpg",
+      "art": "assets/fragments/vigil_014.jpg"
     },
     {
       "channel": "drift",
@@ -653,7 +705,8 @@
       "duration": "62:16",
       "published": "2026-09-04",
       "youtube_id": "MlBjg1-m2Pk",
-      "thumb": "assets/archive/drift_026.jpg"
+      "thumb": "assets/archive/drift_026.jpg",
+      "art": "assets/fragments/drift_026.jpg"
     },
     {
       "channel": "frequency",
@@ -665,7 +718,8 @@
       "duration": "62:15",
       "published": "2026-09-04",
       "youtube_id": "kwt-4Zgk6-4",
-      "thumb": "assets/archive/wave_024.jpg"
+      "thumb": "assets/archive/wave_024.jpg",
+      "art": "assets/fragments/wave_024.jpg"
     },
     {
       "channel": "pulse",
@@ -677,7 +731,8 @@
       "duration": "64:10",
       "published": "2026-09-04",
       "youtube_id": "_7uHxZi5p_Q",
-      "thumb": "assets/archive/pulse_015.jpg"
+      "thumb": "assets/archive/pulse_015.jpg",
+      "art": "assets/fragments/pulse_015.jpg"
     },
     {
       "channel": "vigil",
@@ -689,7 +744,8 @@
       "duration": "65:04",
       "published": "2026-09-04",
       "youtube_id": "cOfxGCPoTGo",
-      "thumb": "assets/archive/vigil_013.jpg"
+      "thumb": "assets/archive/vigil_013.jpg",
+      "art": "assets/fragments/vigil_013.jpg"
     },
     {
       "channel": "drift",
@@ -701,7 +757,8 @@
       "duration": "61:39",
       "published": "2026-09-02",
       "youtube_id": "e4jIaM_NShY",
-      "thumb": "assets/archive/drift_025.jpg"
+      "thumb": "assets/archive/drift_025.jpg",
+      "art": "assets/fragments/drift_025.jpg"
     },
     {
       "channel": "frequency",
@@ -713,7 +770,8 @@
       "duration": "62:16",
       "published": "2026-09-02",
       "youtube_id": "hVFJGNUkfrE",
-      "thumb": "assets/archive/wave_023.jpg"
+      "thumb": "assets/archive/wave_023.jpg",
+      "art": "assets/fragments/wave_023.jpg"
     },
     {
       "channel": "pulse",
@@ -725,7 +783,8 @@
       "duration": "64:41",
       "published": "2026-09-02",
       "youtube_id": "odpP58nx25o",
-      "thumb": "assets/archive/pulse_014.jpg"
+      "thumb": "assets/archive/pulse_014.jpg",
+      "art": "assets/fragments/pulse_014.jpg"
     },
     {
       "channel": "vigil",
@@ -737,7 +796,8 @@
       "duration": "63:03",
       "published": "2026-09-02",
       "youtube_id": "OGvMYiZwPKE",
-      "thumb": "assets/archive/vigil_012.jpg"
+      "thumb": "assets/archive/vigil_012.jpg",
+      "art": "assets/fragments/vigil_012.jpg"
     },
     {
       "channel": "drift",
@@ -749,7 +809,8 @@
       "duration": "63:20",
       "published": "2026-08-31",
       "youtube_id": "hNbf1vfIroU",
-      "thumb": "assets/archive/drift_024.jpg"
+      "thumb": "assets/archive/drift_024.jpg",
+      "art": "assets/fragments/drift_024.jpg"
     },
     {
       "channel": "frequency",
@@ -761,7 +822,8 @@
       "duration": "61:40",
       "published": "2026-08-31",
       "youtube_id": "NgaG0ju2Y08",
-      "thumb": "assets/archive/wave_022.jpg"
+      "thumb": "assets/archive/wave_022.jpg",
+      "art": "assets/fragments/wave_022.jpg"
     },
     {
       "channel": "pulse",
@@ -773,7 +835,8 @@
       "duration": "63:44",
       "published": "2026-08-31",
       "youtube_id": "axp0ukxfQB0",
-      "thumb": "assets/archive/pulse_013.jpg"
+      "thumb": "assets/archive/pulse_013.jpg",
+      "art": "assets/fragments/pulse_013.jpg"
     },
     {
       "channel": "vigil",
@@ -785,7 +848,8 @@
       "duration": "64:43",
       "published": "2026-08-31",
       "youtube_id": "nDq9JFcUIZg",
-      "thumb": "assets/archive/vigil_011.jpg"
+      "thumb": "assets/archive/vigil_011.jpg",
+      "art": "assets/fragments/vigil_011.jpg"
     },
     {
       "channel": "drift",
@@ -797,7 +861,8 @@
       "duration": "61:41",
       "published": "2026-08-28",
       "youtube_id": "G0Gy8wTnxfc",
-      "thumb": "assets/archive/drift_023.jpg"
+      "thumb": "assets/archive/drift_023.jpg",
+      "art": "assets/fragments/drift_023.jpg"
     },
     {
       "channel": "frequency",
@@ -809,7 +874,8 @@
       "duration": "64:44",
       "published": "2026-08-28",
       "youtube_id": "AQy-DA3fg6o",
-      "thumb": "assets/archive/wave_021.jpg"
+      "thumb": "assets/archive/wave_021.jpg",
+      "art": "assets/fragments/wave_021.jpg"
     },
     {
       "channel": "pulse",
@@ -821,7 +887,8 @@
       "duration": "63:04",
       "published": "2026-08-28",
       "youtube_id": "EIvYzwj7OKk",
-      "thumb": "assets/archive/pulse_012.jpg"
+      "thumb": "assets/archive/pulse_012.jpg",
+      "art": "assets/fragments/pulse_012.jpg"
     },
     {
       "channel": "vigil",
@@ -833,7 +900,8 @@
       "duration": "62:23",
       "published": "2026-08-28",
       "youtube_id": "UzuvJ2oCM5k",
-      "thumb": "assets/archive/vigil_010.jpg"
+      "thumb": "assets/archive/vigil_010.jpg",
+      "art": "assets/fragments/vigil_010.jpg"
     },
     {
       "channel": "vigil",
@@ -845,7 +913,8 @@
       "duration": "62:53",
       "published": "2026-08-26",
       "youtube_id": "nwBvsCrOCHc",
-      "thumb": "assets/archive/vigil_009.jpg"
+      "thumb": "assets/archive/vigil_009.jpg",
+      "art": "assets/fragments/vigil_009.jpg"
     },
     {
       "channel": "drift",
@@ -857,7 +926,8 @@
       "duration": "61:35",
       "published": "2026-08-26",
       "youtube_id": "HC9reL5PJYc",
-      "thumb": "assets/archive/drift_022.jpg"
+      "thumb": "assets/archive/drift_022.jpg",
+      "art": "assets/fragments/drift_022.jpg"
     },
     {
       "channel": "frequency",
@@ -869,7 +939,8 @@
       "duration": "61:23",
       "published": "2026-08-26",
       "youtube_id": "HvgVYQQ-3Us",
-      "thumb": "assets/archive/wave_020.jpg"
+      "thumb": "assets/archive/wave_020.jpg",
+      "art": "assets/fragments/wave_020.jpg"
     },
     {
       "channel": "pulse",
@@ -881,7 +952,8 @@
       "duration": "62:59",
       "published": "2026-08-26",
       "youtube_id": "5T3Wr_Hrq7M",
-      "thumb": "assets/archive/pulse_011.jpg"
+      "thumb": "assets/archive/pulse_011.jpg",
+      "art": "assets/fragments/pulse_011.jpg"
     },
     {
       "channel": "vigil",
@@ -893,7 +965,8 @@
       "duration": "66:30",
       "published": "2026-08-24",
       "youtube_id": "pja1YI-5tgU",
-      "thumb": "assets/archive/vigil_008.jpg"
+      "thumb": "assets/archive/vigil_008.jpg",
+      "art": "assets/fragments/vigil_008.jpg"
     },
     {
       "channel": "drift",
@@ -905,7 +978,8 @@
       "duration": "61:52",
       "published": "2026-08-24",
       "youtube_id": "RlTjqxr_Gas",
-      "thumb": "assets/archive/drift_021.jpg"
+      "thumb": "assets/archive/drift_021.jpg",
+      "art": "assets/fragments/drift_021.jpg"
     },
     {
       "channel": "frequency",
@@ -917,7 +991,8 @@
       "duration": "63:42",
       "published": "2026-08-24",
       "youtube_id": "ee2aP_Lb6cc",
-      "thumb": "assets/archive/wave_019.jpg"
+      "thumb": "assets/archive/wave_019.jpg",
+      "art": "assets/fragments/wave_019.jpg"
     },
     {
       "channel": "pulse",
@@ -929,7 +1004,8 @@
       "duration": "62:36",
       "published": "2026-08-24",
       "youtube_id": "q46x6WZr7Wo",
-      "thumb": "assets/archive/pulse_010.jpg"
+      "thumb": "assets/archive/pulse_010.jpg",
+      "art": "assets/fragments/pulse_010.jpg"
     },
     {
       "channel": "pulse",
@@ -941,7 +1017,8 @@
       "duration": "64:35",
       "published": "2026-08-21",
       "youtube_id": "rCG6HkgquxQ",
-      "thumb": "assets/archive/pulse_009.jpg"
+      "thumb": "assets/archive/pulse_009.jpg",
+      "art": "assets/fragments/pulse_009.jpg"
     },
     {
       "channel": "drift",
@@ -953,7 +1030,8 @@
       "duration": "61:39",
       "published": "2026-08-21",
       "youtube_id": "jnAkzcN_yvU",
-      "thumb": "assets/archive/drift_020.jpg"
+      "thumb": "assets/archive/drift_020.jpg",
+      "art": "assets/fragments/drift_020.jpg"
     },
     {
       "channel": "frequency",
@@ -965,7 +1043,8 @@
       "duration": "63:40",
       "published": "2026-08-21",
       "youtube_id": "5-tUBjINeNU",
-      "thumb": "assets/archive/wave_018.jpg"
+      "thumb": "assets/archive/wave_018.jpg",
+      "art": "assets/fragments/wave_018.jpg"
     },
     {
       "channel": "pulse",
@@ -977,7 +1056,8 @@
       "duration": "63:11",
       "published": "2026-08-19",
       "youtube_id": "j_tdTAHyHNc",
-      "thumb": "assets/archive/pulse_008.jpg"
+      "thumb": "assets/archive/pulse_008.jpg",
+      "art": "assets/fragments/pulse_008.jpg"
     },
     {
       "channel": "vigil",
@@ -989,7 +1069,8 @@
       "duration": "64:02",
       "published": "2026-08-19",
       "youtube_id": "Th_Gm6u6Q7w",
-      "thumb": "assets/archive/vigil_007.jpg"
+      "thumb": "assets/archive/vigil_007.jpg",
+      "art": "assets/fragments/vigil_007.jpg"
     },
     {
       "channel": "drift",
@@ -1001,7 +1082,8 @@
       "duration": "61:32",
       "published": "2026-08-19",
       "youtube_id": "r-TIH-oTs9w",
-      "thumb": "assets/archive/drift_019.jpg"
+      "thumb": "assets/archive/drift_019.jpg",
+      "art": "assets/fragments/drift_019.jpg"
     },
     {
       "channel": "frequency",
@@ -1013,7 +1095,8 @@
       "duration": "64:24",
       "published": "2026-08-19",
       "youtube_id": "_MiTRQj9XhA",
-      "thumb": "assets/archive/wave_017.jpg"
+      "thumb": "assets/archive/wave_017.jpg",
+      "art": "assets/fragments/wave_017.jpg"
     },
     {
       "channel": "pulse",
@@ -1025,7 +1108,8 @@
       "duration": "63:42",
       "published": "2026-08-17",
       "youtube_id": "p7n4QjyS23M",
-      "thumb": "assets/archive/pulse_007.jpg"
+      "thumb": "assets/archive/pulse_007.jpg",
+      "art": "assets/fragments/pulse_007.jpg"
     },
     {
       "channel": "vigil",
@@ -1037,7 +1121,8 @@
       "duration": "63:11",
       "published": "2026-08-17",
       "youtube_id": "WQzdvSWLJ8A",
-      "thumb": "assets/archive/vigil_006.jpg"
+      "thumb": "assets/archive/vigil_006.jpg",
+      "art": "assets/fragments/vigil_006.jpg"
     },
     {
       "channel": "drift",
@@ -1049,7 +1134,8 @@
       "duration": "62:40",
       "published": "2026-08-17",
       "youtube_id": "Z6ARG0kNtAs",
-      "thumb": "assets/archive/drift_018.jpg"
+      "thumb": "assets/archive/drift_018.jpg",
+      "art": "assets/fragments/drift_018.jpg"
     },
     {
       "channel": "frequency",
@@ -1061,7 +1147,8 @@
       "duration": "63:04",
       "published": "2026-08-17",
       "youtube_id": "18VucgZa54o",
-      "thumb": "assets/archive/wave_016.jpg"
+      "thumb": "assets/archive/wave_016.jpg",
+      "art": "assets/fragments/wave_016.jpg"
     },
     {
       "channel": "frequency",
@@ -1073,7 +1160,8 @@
       "duration": "64:52",
       "published": "2026-08-15",
       "youtube_id": "X5NytlgeohY",
-      "thumb": "assets/archive/wave_032.jpg"
+      "thumb": "assets/archive/wave_032.jpg",
+      "art": "assets/fragments/wave_032.jpg"
     },
     {
       "channel": "pulse",
@@ -1085,7 +1173,8 @@
       "duration": "60:59",
       "published": "2026-08-14",
       "youtube_id": "8cuY_y3L1J0",
-      "thumb": "assets/archive/pulse_006.jpg"
+      "thumb": "assets/archive/pulse_006.jpg",
+      "art": "assets/fragments/pulse_006.jpg"
     },
     {
       "channel": "frequency",
@@ -1097,7 +1186,8 @@
       "duration": "62:51",
       "published": "2026-08-13",
       "youtube_id": "ZUReAgdzNCA",
-      "thumb": "assets/archive/wave_031.jpg"
+      "thumb": "assets/archive/wave_031.jpg",
+      "art": "assets/fragments/wave_031.jpg"
     },
     {
       "channel": "vigil",
@@ -1109,7 +1199,8 @@
       "duration": "66:08",
       "published": "2026-08-12",
       "youtube_id": "JIOvguZYh2w",
-      "thumb": "assets/archive/vigil_005.jpg"
+      "thumb": "assets/archive/vigil_005.jpg",
+      "art": "assets/fragments/vigil_005.jpg"
     },
     {
       "channel": "pulse",
@@ -1121,7 +1212,8 @@
       "duration": "62:55",
       "published": "2026-08-12",
       "youtube_id": "QCvrnESSdBg",
-      "thumb": "assets/archive/pulse_005.jpg"
+      "thumb": "assets/archive/pulse_005.jpg",
+      "art": "assets/fragments/pulse_005.jpg"
     },
     {
       "channel": "drift",
@@ -1133,7 +1225,8 @@
       "duration": "62:43",
       "published": "2026-08-12",
       "youtube_id": "FpYgnHO4SDc",
-      "thumb": "assets/archive/drift_017.jpg"
+      "thumb": "assets/archive/drift_017.jpg",
+      "art": "assets/fragments/drift_017.jpg"
     },
     {
       "channel": "vigil",
@@ -1145,7 +1238,8 @@
       "duration": "62:33",
       "published": "2026-08-10",
       "youtube_id": "qGQSpd8e4zU",
-      "thumb": "assets/archive/vigil_004.jpg"
+      "thumb": "assets/archive/vigil_004.jpg",
+      "art": "assets/fragments/vigil_004.jpg"
     },
     {
       "channel": "pulse",
@@ -1157,7 +1251,8 @@
       "duration": "61:17",
       "published": "2026-08-10",
       "youtube_id": "oWz4JBuPNeQ",
-      "thumb": "assets/archive/pulse_004.jpg"
+      "thumb": "assets/archive/pulse_004.jpg",
+      "art": "assets/fragments/pulse_004.jpg"
     },
     {
       "channel": "drift",
@@ -1169,7 +1264,8 @@
       "duration": "62:30",
       "published": "2026-08-10",
       "youtube_id": "H3hWQzUL5G4",
-      "thumb": "assets/archive/drift_016.jpg"
+      "thumb": "assets/archive/drift_016.jpg",
+      "art": "assets/fragments/drift_016.jpg"
     },
     {
       "channel": "frequency",
@@ -1181,7 +1277,8 @@
       "duration": "61:16",
       "published": "2026-08-10",
       "youtube_id": "kP1MmTQdykY",
-      "thumb": "assets/archive/wave_015.jpg"
+      "thumb": "assets/archive/wave_015.jpg",
+      "art": "assets/fragments/wave_015.jpg"
     },
     {
       "channel": "vigil",
@@ -1193,7 +1290,8 @@
       "duration": "61:13",
       "published": "2026-08-07",
       "youtube_id": "yW1OZIkFUF8",
-      "thumb": "assets/archive/vigil_003.jpg"
+      "thumb": "assets/archive/vigil_003.jpg",
+      "art": "assets/fragments/vigil_003.jpg"
     },
     {
       "channel": "pulse",
@@ -1205,7 +1303,8 @@
       "duration": "63:48",
       "published": "2026-08-07",
       "youtube_id": "0yS3MG-GX3s",
-      "thumb": "assets/archive/pulse_003.jpg"
+      "thumb": "assets/archive/pulse_003.jpg",
+      "art": "assets/fragments/pulse_003.jpg"
     },
     {
       "channel": "drift",
@@ -1217,7 +1316,8 @@
       "duration": "61:35",
       "published": "2026-08-07",
       "youtube_id": "RpqoA7B8QhU",
-      "thumb": "assets/archive/drift_015.jpg"
+      "thumb": "assets/archive/drift_015.jpg",
+      "art": "assets/fragments/drift_015.jpg"
     },
     {
       "channel": "frequency",
@@ -1229,7 +1329,8 @@
       "duration": "63:23",
       "published": "2026-08-07",
       "youtube_id": "5DL3douyceA",
-      "thumb": "assets/archive/wave_014.jpg"
+      "thumb": "assets/archive/wave_014.jpg",
+      "art": "assets/fragments/wave_014.jpg"
     },
     {
       "channel": "vigil",
@@ -1241,7 +1342,8 @@
       "duration": "64:40",
       "published": "2026-08-05",
       "youtube_id": "AeoA95TfEhg",
-      "thumb": "assets/archive/vigil_002.jpg"
+      "thumb": "assets/archive/vigil_002.jpg",
+      "art": "assets/fragments/vigil_002.jpg"
     },
     {
       "channel": "pulse",
@@ -1253,7 +1355,8 @@
       "duration": "62:39",
       "published": "2026-08-05",
       "youtube_id": "zqItnGKCkgQ",
-      "thumb": "assets/archive/pulse_002.jpg"
+      "thumb": "assets/archive/pulse_002.jpg",
+      "art": "assets/fragments/pulse_002.jpg"
     },
     {
       "channel": "drift",
@@ -1265,7 +1368,8 @@
       "duration": "61:37",
       "published": "2026-08-05",
       "youtube_id": "vxZZZGWOSu4",
-      "thumb": "assets/archive/drift_014.jpg"
+      "thumb": "assets/archive/drift_014.jpg",
+      "art": "assets/fragments/drift_014.jpg"
     },
     {
       "channel": "frequency",
@@ -1277,7 +1381,8 @@
       "duration": "63:50",
       "published": "2026-08-05",
       "youtube_id": "tR5Psj0MpRA",
-      "thumb": "assets/archive/wave_013.jpg"
+      "thumb": "assets/archive/wave_013.jpg",
+      "art": "assets/fragments/wave_013.jpg"
     },
     {
       "channel": "drift",
@@ -1289,7 +1394,8 @@
       "duration": "62:27",
       "published": "2026-08-03",
       "youtube_id": "vd4KSXJ8H5k",
-      "thumb": "assets/archive/drift_013.jpg"
+      "thumb": "assets/archive/drift_013.jpg",
+      "art": "assets/fragments/drift_013.jpg"
     },
     {
       "channel": "frequency",
@@ -1301,7 +1407,8 @@
       "duration": "62:17",
       "published": "2026-08-03",
       "youtube_id": "jw3iakmIDRU",
-      "thumb": "assets/archive/wave_012.jpg"
+      "thumb": "assets/archive/wave_012.jpg",
+      "art": "assets/fragments/wave_012.jpg"
     },
     {
       "channel": "vigil",
@@ -1313,7 +1420,8 @@
       "duration": "62:35",
       "published": "2026-08-03",
       "youtube_id": "lOwfbXDPC9Y",
-      "thumb": "assets/archive/vigil_001.jpg"
+      "thumb": "assets/archive/vigil_001.jpg",
+      "art": "assets/fragments/vigil_001.jpg"
     },
     {
       "channel": "pulse",
@@ -1325,7 +1433,8 @@
       "duration": "61:57",
       "published": "2026-08-03",
       "youtube_id": "UQDUZa1s868",
-      "thumb": "assets/archive/pulse_001.jpg"
+      "thumb": "assets/archive/pulse_001.jpg",
+      "art": "assets/fragments/pulse_001.jpg"
     },
     {
       "channel": "drift",
@@ -1337,7 +1446,8 @@
       "duration": "61:37",
       "published": "2026-07-31",
       "youtube_id": "lGO5VooXkQo",
-      "thumb": "assets/archive/drift_012.jpg"
+      "thumb": "assets/archive/drift_012.jpg",
+      "art": "assets/fragments/drift_012.jpg"
     },
     {
       "channel": "frequency",
@@ -1349,7 +1459,8 @@
       "duration": "61:08",
       "published": "2026-07-31",
       "youtube_id": "DohKYiI8bdg",
-      "thumb": "assets/archive/wave_011.jpg"
+      "thumb": "assets/archive/wave_011.jpg",
+      "art": "assets/fragments/wave_011.jpg"
     },
     {
       "channel": "drift",
@@ -1361,7 +1472,8 @@
       "duration": "62:36",
       "published": "2026-07-29",
       "youtube_id": "pQLM3mSrnQ8",
-      "thumb": "assets/archive/drift_011.jpg"
+      "thumb": "assets/archive/drift_011.jpg",
+      "art": "assets/fragments/drift_011.jpg"
     },
     {
       "channel": "frequency",
@@ -1373,7 +1485,8 @@
       "duration": "61:10",
       "published": "2026-07-29",
       "youtube_id": "0YsPR51RXDo",
-      "thumb": "assets/archive/wave_010.jpg"
+      "thumb": "assets/archive/wave_010.jpg",
+      "art": "assets/fragments/wave_010.jpg"
     },
     {
       "channel": "frequency",
@@ -1385,7 +1498,8 @@
       "duration": "62:23",
       "published": "2026-07-27",
       "youtube_id": "klZKc9tVmck",
-      "thumb": "assets/archive/wave_009.jpg"
+      "thumb": "assets/archive/wave_009.jpg",
+      "art": "assets/fragments/wave_009.jpg"
     },
     {
       "channel": "drift",
@@ -1397,7 +1511,8 @@
       "duration": "63:32",
       "published": "2026-07-27",
       "youtube_id": "q0u3px7QA8w",
-      "thumb": "assets/archive/drift_010.jpg"
+      "thumb": "assets/archive/drift_010.jpg",
+      "art": "assets/fragments/drift_010.jpg"
     },
     {
       "channel": "drift",
@@ -1409,7 +1524,8 @@
       "duration": "64:38",
       "published": "2026-07-24",
       "youtube_id": "H5k_WOds2b4",
-      "thumb": "assets/archive/drift_009.jpg"
+      "thumb": "assets/archive/drift_009.jpg",
+      "art": "assets/fragments/drift_009.jpg"
     },
     {
       "channel": "frequency",
@@ -1421,7 +1537,8 @@
       "duration": "62:58",
       "published": "2026-07-24",
       "youtube_id": "AkagwAARyYQ",
-      "thumb": "assets/archive/wave_008.jpg"
+      "thumb": "assets/archive/wave_008.jpg",
+      "art": "assets/fragments/wave_008.jpg"
     },
     {
       "channel": "drift",
@@ -1433,7 +1550,8 @@
       "duration": "62:12",
       "published": "2026-07-22",
       "youtube_id": "IEXJAVv1ZKc",
-      "thumb": "assets/archive/drift_008.jpg"
+      "thumb": "assets/archive/drift_008.jpg",
+      "art": "assets/fragments/drift_008.jpg"
     },
     {
       "channel": "frequency",
@@ -1445,7 +1563,8 @@
       "duration": "64:03",
       "published": "2026-07-22",
       "youtube_id": "0MwL5XmwkQw",
-      "thumb": "assets/archive/wave_007.jpg"
+      "thumb": "assets/archive/wave_007.jpg",
+      "art": "assets/fragments/wave_007.jpg"
     },
     {
       "channel": "drift",
@@ -1457,7 +1576,8 @@
       "duration": "63:05",
       "published": "2026-07-20",
       "youtube_id": "PCjaMcVTQcs",
-      "thumb": "assets/archive/drift_007.jpg"
+      "thumb": "assets/archive/drift_007.jpg",
+      "art": "assets/fragments/drift_007.jpg"
     },
     {
       "channel": "frequency",
@@ -1469,7 +1589,8 @@
       "duration": "62:15",
       "published": "2026-07-20",
       "youtube_id": "UZ0p9J75cME",
-      "thumb": "assets/archive/wave_006.jpg"
+      "thumb": "assets/archive/wave_006.jpg",
+      "art": "assets/fragments/wave_006.jpg"
     },
     {
       "channel": "drift",
@@ -1481,7 +1602,8 @@
       "duration": "62:06",
       "published": "2026-07-17",
       "youtube_id": "Soh778grCkA",
-      "thumb": "assets/archive/drift_006.jpg"
+      "thumb": "assets/archive/drift_006.jpg",
+      "art": "assets/fragments/drift_006.jpg"
     },
     {
       "channel": "frequency",
@@ -1493,7 +1615,8 @@
       "duration": "63:28",
       "published": "2026-07-15",
       "youtube_id": "aC0Xy5KNCDE",
-      "thumb": "assets/archive/wave_005.jpg"
+      "thumb": "assets/archive/wave_005.jpg",
+      "art": "assets/fragments/wave_005.jpg"
     },
     {
       "channel": "drift",
@@ -1505,7 +1628,8 @@
       "duration": "63:25",
       "published": "2026-07-15",
       "youtube_id": "8STn3aY6UVU",
-      "thumb": "assets/archive/drift_005.jpg"
+      "thumb": "assets/archive/drift_005.jpg",
+      "art": "assets/fragments/drift_005.jpg"
     },
     {
       "channel": "frequency",
@@ -1517,7 +1641,8 @@
       "duration": "62:47",
       "published": "2026-07-13",
       "youtube_id": "k6l0Fgm2Gms",
-      "thumb": "assets/archive/wave_004.jpg"
+      "thumb": "assets/archive/wave_004.jpg",
+      "art": "assets/fragments/wave_004.jpg"
     },
     {
       "channel": "drift",
@@ -1529,7 +1654,8 @@
       "duration": "63:31",
       "published": "2026-07-13",
       "youtube_id": "b9t_kL7NJYg",
-      "thumb": "assets/archive/drift_004.jpg"
+      "thumb": "assets/archive/drift_004.jpg",
+      "art": "assets/fragments/drift_004.jpg"
     },
     {
       "channel": "frequency",
@@ -1541,7 +1667,8 @@
       "duration": "61:35",
       "published": "2026-07-10",
       "youtube_id": "PddSos-xkIM",
-      "thumb": "assets/archive/wave_003.jpg"
+      "thumb": "assets/archive/wave_003.jpg",
+      "art": "assets/fragments/wave_003.jpg"
     },
     {
       "channel": "drift",
@@ -1553,7 +1680,8 @@
       "duration": "61:37",
       "published": "2026-07-10",
       "youtube_id": "p_Ji0E1jvzw",
-      "thumb": "assets/archive/drift_003.jpg"
+      "thumb": "assets/archive/drift_003.jpg",
+      "art": "assets/fragments/drift_003.jpg"
     },
     {
       "channel": "frequency",
@@ -1565,7 +1693,8 @@
       "duration": "63:14",
       "published": "2026-07-08",
       "youtube_id": "cPAdv6N7InU",
-      "thumb": "assets/archive/wave_002.jpg"
+      "thumb": "assets/archive/wave_002.jpg",
+      "art": "assets/fragments/wave_002.jpg"
     },
     {
       "channel": "drift",
@@ -1577,7 +1706,8 @@
       "duration": "62:38",
       "published": "2026-07-08",
       "youtube_id": "7Qc6RxdPSgw",
-      "thumb": "assets/archive/drift_002.jpg"
+      "thumb": "assets/archive/drift_002.jpg",
+      "art": "assets/fragments/drift_002.jpg"
     },
     {
       "channel": "frequency",
@@ -1589,7 +1719,8 @@
       "duration": "63:49",
       "published": "2026-07-06",
       "youtube_id": "Q1p_2CgB2pw",
-      "thumb": "assets/archive/wave_001.jpg"
+      "thumb": "assets/archive/wave_001.jpg",
+      "art": "assets/fragments/wave_001.jpg"
     },
     {
       "channel": "drift",
@@ -1601,7 +1732,8 @@
       "duration": "62:56",
       "published": "2026-07-06",
       "youtube_id": "BZsUmEgARPA",
-      "thumb": "assets/archive/drift_001.jpg"
+      "thumb": "assets/archive/drift_001.jpg",
+      "art": "assets/fragments/drift_001.jpg"
     }
   ]
 }
