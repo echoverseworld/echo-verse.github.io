@@ -189,11 +189,13 @@ main.arch{padding:0 24px 90px}
 #lightbox img{max-width:100%;max-height:76vh;border:1px solid var(--line);border-radius:4px}
 #lightbox .lb-cap{text-align:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;color:var(--text-dim)}
 #lightbox .lb-meta{display:block;margin-top:.45em;font-size:.6rem;letter-spacing:.12em;color:var(--text-faint)}
-#lightbox .lb-play{
+#lightbox .lb-links{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+#lightbox .lb-play,#lightbox .lb-file{
   font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--text-dim);text-decoration:none;
   border:1px solid var(--line);border-radius:2px;padding:.6em 1.3em;cursor:pointer;
 }
-#lightbox .lb-play:hover{color:var(--text);border-color:rgba(223,228,240,.55)}
+#lightbox .lb-play:hover,#lightbox .lb-file:hover{color:var(--text);border-color:rgba(223,228,240,.55)}
+#lightbox .lb-file[hidden]{display:none}
 
 /* ── Empty / error states ────────────────────────── */
 .state{
@@ -286,7 +288,8 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
   <noscript>
     <div class="noscript-box">
       &gt; ARCHIVE INDEX REQUIRES AN ACTIVE TERMINAL (JavaScript disabled).<br><br>
-      The full transmission log lives on the broadcast channels:<br>
+      The full log as plain files: <a href="sig/index.html">▸ TRANSMISSION FILES</a><br><br>
+      Or tune in on the broadcast channels:<br>
       <a href="https://www.youtube.com/@Echo_Frequency_Synthwave" rel="noopener">↗ ECHO FREQUENCY — 95.3</a><br>
       <a href="https://www.youtube.com/@Echo_Drift_PHONK" rel="noopener">↗ ECHO DRIFT — 97.1</a><br>
       <a href="https://www.youtube.com/@Echo_Pulse_House" rel="noopener">↗ ECHO PULSE — 100.4</a><br>
@@ -299,6 +302,7 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
 <footer>
   <div class="foot">
     <a href="index.html">◂ BACK TO THE TUNER</a>
+    <a href="sig/index.html">▸ TRANSMISSION FILES</a>
     <a href="codex.html">▸ ARCHIVE CODEX</a>
   </div>
   <div class="foot-end">© 2026 ECHO VERSE &nbsp;//&nbsp; <span id="txSince">STILL TRANSMITTING</span> &nbsp;//&nbsp; NO CARRIER … RETRY</div>
@@ -307,7 +311,10 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
 <div id="lightbox" role="dialog" aria-label="Fragment fullscreen">
   <img alt="">
   <div class="lb-cap"></div>
-  <a class="lb-play" target="_blank" rel="noopener">▸ PLAY THIS TRANSMISSION</a>
+  <div class="lb-links">
+    <a class="lb-play" target="_blank" rel="noopener">▸ PLAY THIS TRANSMISSION</a>
+    <a class="lb-file" hidden>▸ OPEN TRANSMISSION FILE</a>
+  </div>
 </div>
 
 <script>
@@ -356,7 +363,7 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
   var views=document.getElementById("views");
   var viewBtns=Array.prototype.slice.call(document.querySelectorAll(".view"));
   var lb=document.getElementById("lightbox");
-  var lbImg=lb.querySelector("img"),lbCap=lb.querySelector(".lb-cap"),lbPlay=lb.querySelector(".lb-play");
+  var lbImg=lb.querySelector("img"),lbCap=lb.querySelector(".lb-cap"),lbPlay=lb.querySelector(".lb-play"),lbFile=lb.querySelector(".lb-file");
   var view="signals";
 
   function pad4(v){return ("000"+v).slice(-4);}
@@ -390,12 +397,14 @@ footer{border-top:1px solid var(--line);padding:46px 24px;background:var(--bg-ra
       meta.textContent="recovered with SIG "+it.fm+" — TX "+it.published;
       lbCap.appendChild(meta);
       lbPlay.href="https://www.youtube.com/watch?v="+encodeURIComponent(it.youtube_id);
+      /* W17: every transmission has its own static page (tracklist, player) -- linked once the index carries it */
+      if(it.page){lbFile.href=it.page;lbFile.hidden=false;}else{lbFile.hidden=true;}
       lb.classList.add("on");
     });
     return t;
   }
   function closeLb(){lb.classList.remove("on");lbImg.src="";}
-  lb.addEventListener("click",function(e){if(e.target!==lbPlay)closeLb();});
+  lb.addEventListener("click",function(e){if(e.target!==lbPlay&&e.target!==lbFile)closeLb();});
   document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb();});
 
   function counts(){
