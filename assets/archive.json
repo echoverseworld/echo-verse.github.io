@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-06T18:48:03",
+  "generated": "2026-10-07T18:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,58 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 40,
+      "title": "ECHO 88.1 — DIGITAL SUNSET // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "88.1",
+      "fragment": "DIGITAL SUNSET",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "61:18",
+      "published": "2026-10-07",
+      "youtube_id": "FxX975PujOg",
+      "thumb": "assets/archive/wave_040.jpg",
+      "art": "assets/fragments/wave_040.jpg"
+    },
+    {
+      "channel": "drift",
+      "volume": 40,
+      "title": "ECHO 103.9 — OVERPASS OATH // Drift Phonk, Night Drive Mix",
+      "fm": "103.9",
+      "fragment": "OVERPASS OATH",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "61:39",
+      "published": "2026-10-07",
+      "youtube_id": "z2lcu4YWop4",
+      "thumb": "assets/archive/drift_040.jpg",
+      "art": "assets/fragments/drift_040.jpg"
+    },
+    {
+      "channel": "pulse",
+      "volume": 29,
+      "title": "ECHO 102.0 — RIVER DELTA DUSK // Melodic House, Deep House, Chill House Mix",
+      "fm": "102.0",
+      "fragment": "RIVER DELTA DUSK",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "65:33",
+      "published": "2026-10-07",
+      "youtube_id": "FSpfTWy2nGI",
+      "thumb": "assets/archive/pulse_029.jpg",
+      "art": "assets/fragments/pulse_029.jpg"
+    },
+    {
+      "channel": "vigil",
+      "volume": 27,
+      "title": "ECHO 102.5 — CONCRETE AND FROST // Dark Techno, Dub Techno, Hypnotic Techno Mix",
+      "fm": "102.5",
+      "fragment": "CONCRETE AND FROST",
+      "genres": "Dark Techno, Dub Techno, Hypnotic Techno",
+      "duration": "66:45",
+      "published": "2026-10-07",
+      "youtube_id": "j7nMQK3pe7E",
+      "thumb": "assets/archive/vigil_027.jpg",
+      "art": "assets/fragments/vigil_027.jpg"
+    },
     {
       "channel": "frequency",
       "volume": 39,
