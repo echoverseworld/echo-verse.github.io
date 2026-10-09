@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-07T18:42:36",
+  "generated": "2026-10-09T18:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,62 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 41,
+      "title": "ECHO 93.1 — ORPHANED SATELLITES // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "93.1",
+      "fragment": "ORPHANED SATELLITES",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "61:26",
+      "published": "2026-10-09",
+      "youtube_id": "1hwDjV8JUfU",
+      "thumb": "assets/archive/wave_041.jpg",
+      "art": "assets/fragments/wave_041.jpg",
+      "page": "sig/frequency-041.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 41,
+      "title": "ECHO 102.6 — OCTANE ORACLE // Drift Phonk, Night Drive Mix",
+      "fm": "102.6",
+      "fragment": "OCTANE ORACLE",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "62:16",
+      "published": "2026-10-09",
+      "youtube_id": "uOQEr9-GBeA",
+      "thumb": "assets/archive/drift_041.jpg",
+      "art": "assets/fragments/drift_041.jpg",
+      "page": "sig/drift-041.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 30,
+      "title": "ECHO 104.6 — HEARTBEAT IN THE HAZE // Melodic House, Deep House, Chill House Mix",
+      "fm": "104.6",
+      "fragment": "HEARTBEAT IN THE HAZE",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "61:37",
+      "published": "2026-10-09",
+      "youtube_id": "DX2kG6gzJ64",
+      "thumb": "assets/archive/pulse_030.jpg",
+      "art": "assets/fragments/pulse_030.jpg",
+      "page": "sig/pulse-030.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 28,
+      "title": "ECHO 94.0 — THE ROOM REMEMBERS ITSELF // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "94.0",
+      "fragment": "THE ROOM REMEMBERS ITSELF",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "61:34",
+      "published": "2026-10-09",
+      "youtube_id": "0cGmuZh9p-w",
+      "thumb": "assets/archive/vigil_028.jpg",
+      "art": "assets/fragments/vigil_028.jpg",
+      "page": "sig/vigil-028.html"
+    },
     {
       "channel": "frequency",
       "volume": 40,
