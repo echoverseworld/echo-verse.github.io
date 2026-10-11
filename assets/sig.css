@@ -10,6 +10,7 @@
   --magenta:#FF2D9B;
   --pulse:#7C5CFF;
   --vigil:#FF9E3D;
+  --aurora:#F5F2EA;
   --acc:var(--cyan);
   --acc-rgb:34,211,238;
   --mono:'Share Tech Mono',ui-monospace,monospace;
@@ -18,6 +19,7 @@
 body.drift{--acc:var(--magenta);--acc-rgb:255,45,155}
 body.pulse{--acc:var(--pulse);--acc-rgb:124,92,255}
 body.vigil{--acc:var(--vigil);--acc-rgb:255,158,61}
+body.aurora{--acc:var(--aurora);--acc-rgb:245,242,234}
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -147,6 +149,7 @@ main.wrap{padding:0 24px 80px}
 .files.drift{--acc:var(--magenta);--acc-rgb:255,45,155}
 .files.pulse{--acc:var(--pulse);--acc-rgb:124,92,255}
 .files.vigil{--acc:var(--vigil);--acc-rgb:255,158,61}
+.files.aurora{--acc:var(--aurora);--acc-rgb:245,242,234}
 .files-head{
   font-family:var(--mono);font-weight:400;font-size:1rem;letter-spacing:.16em;color:var(--acc);
   padding-bottom:.8em;border-bottom:1px solid rgba(var(--acc-rgb),.35);
