@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-09T18:30:04",
+  "generated": "2026-10-12T18:30:02",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -19,6 +19,62 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 42,
+      "title": "ECHO 93.6 — ELECTRIC LONELINESS // Synthwave, Retrowave, Chillwave Mix",
+      "fm": "93.6",
+      "fragment": "ELECTRIC LONELINESS",
+      "genres": "Synthwave, Retrowave, Chillwave",
+      "duration": "61:34",
+      "published": "2026-10-12",
+      "youtube_id": "8Tn6nXKNuPA",
+      "thumb": "assets/archive/wave_042.jpg",
+      "art": "assets/fragments/wave_042.jpg",
+      "page": "sig/frequency-042.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 42,
+      "title": "ECHO 104.4 — REV LIMITER PSALM // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "104.4",
+      "fragment": "REV LIMITER PSALM",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "62:14",
+      "published": "2026-10-12",
+      "youtube_id": "16O3iPL16pg",
+      "thumb": "assets/archive/drift_042.jpg",
+      "art": "assets/fragments/drift_042.jpg",
+      "page": "sig/drift-042.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 31,
+      "title": "ECHO 94.3 — THE DEEP KNOWS // Melodic House, Deep House, Chill House Mix",
+      "fm": "94.3",
+      "fragment": "THE DEEP KNOWS",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "61:03",
+      "published": "2026-10-12",
+      "youtube_id": "AI_NkNdX_B4",
+      "thumb": "assets/archive/pulse_031.jpg",
+      "art": "assets/fragments/pulse_031.jpg",
+      "page": "sig/pulse-031.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 29,
+      "title": "ECHO 103.1 — ASH ON THE LENS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "103.1",
+      "fragment": "ASH ON THE LENS",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "61:22",
+      "published": "2026-10-12",
+      "youtube_id": "Db7flC0fBUU",
+      "thumb": "assets/archive/vigil_029.jpg",
+      "art": "assets/fragments/vigil_029.jpg",
+      "page": "sig/vigil-029.html"
+    },
     {
       "channel": "frequency",
       "volume": 41,
