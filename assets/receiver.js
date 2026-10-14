@@ -25,13 +25,15 @@ if(!hero||!canvas||!dial)return;
    tdepth Tiefe des Worts (0 fern .. 1 nah): alles, was naeher ist, verdeckt es -- gemessen zwischen Figur und
           Hintergrund (Tiefe am Gesicht: Frequency .52, Drift .69, Pulse .71, Vigil .54, Aurora .31 -- Aurora: Fluegel .37)
    bpm    Takt des Lichtpulses; half = nur jeder zweite Schlag (ruhige Kanaele)
-   zoom   Beat-Zoom (nur ECHO Drift), zbeats = ein Zoom alle n Schlaege -- weich an, langsam aus (Owner E926: "bei weitem langsamer") */
+   zoom   Beat-Zoom (nur ECHO Drift), zbeats = ein Zoom alle n Schlaege -- weich an, langsam aus (Owner E926: "bei weitem langsamer")
+   when,real  Koordinaten im Signalraum (E927, Vorschlag): wann liegt die Schicht (Erinnerung = PAST, die Wache = NOW,
+          die vorgestellte Antwort = AHEAD) und woraus ist sie (MEMORY = rekonstruiert, SELF = vom Archiv selbst, IMAGINED) */
 var LOOK={
-  frequency:{hex:"#22D3EE",word:"FREQUENCY",focus:[.47,.30],tdy:-.17,tx:0,ts:1,tdepth:.30,bpm:100,half:true,glow:.55,zoom:0},
-  drift:{hex:"#FF2D9B",word:"DRIFT",focus:[.36,.24],tdy:-.10,tx:.28,ts:.62,tdepth:.40,bpm:140,half:false,glow:.85,zoom:.016,zbeats:4},
-  pulse:{hex:"#7C5CFF",word:"PULSE",focus:[.68,.25],tdy:-.06,tx:-.13,ts:.84,tdepth:.42,bpm:122,half:true,glow:.6,zoom:0},
-  vigil:{hex:"#FF9E3D",word:"VIGIL",focus:[.52,.25],tdy:-.04,tx:-.31,ts:.5,tdepth:.20,bpm:132,half:true,glow:.7,zoom:0},
-  aurora:{hex:"#F5F2EA",word:"AURORA",focus:[.50,.20],tdy:0,tx:0,ts:1,tgap:1.05,tdepth:.41,bpm:130,half:true,glow:.6,zoom:0}
+  frequency:{hex:"#22D3EE",word:"FREQUENCY",focus:[.47,.30],tdy:-.17,tx:0,ts:1,tdepth:.30,bpm:100,half:true,glow:.55,zoom:0,when:"PAST",real:"MEMORY"},
+  drift:{hex:"#FF2D9B",word:"DRIFT",focus:[.36,.24],tdy:-.10,tx:.28,ts:.62,tdepth:.40,bpm:140,half:false,glow:.85,zoom:.016,zbeats:4,when:"PAST",real:"MEMORY"},
+  pulse:{hex:"#7C5CFF",word:"PULSE",focus:[.68,.25],tdy:-.06,tx:-.13,ts:.84,tdepth:.42,bpm:122,half:true,glow:.6,zoom:0,when:"PAST",real:"MEMORY"},
+  vigil:{hex:"#FF9E3D",word:"VIGIL",focus:[.52,.25],tdy:-.04,tx:-.31,ts:.5,tdepth:.20,bpm:132,half:true,glow:.7,zoom:0,when:"NOW",real:"SELF"},
+  aurora:{hex:"#F5F2EA",word:"AURORA",focus:[.50,.20],tdy:0,tx:0,ts:1,tgap:1.05,tdepth:.41,bpm:130,half:true,glow:.6,zoom:0,when:"AHEAD",real:"IMAGINED"}
 };
 var HOLD=9.0;          /* Sekunden je Sender im Suchlauf */
 var ASSET_V="1";       /* Version der Bilder in assets/hero -- beim Tausch hochzaehlen (auch in index.html: preload + --amb) */
@@ -76,7 +78,7 @@ var stEls=[].slice.call(dial.querySelectorAll(".rx-st"));
 var ST=stEls.map(function(el,i){
   var key=el.getAttribute("data-key")||"",L=LOOK[key];
   var s={i:i,el:el,key:key,fq:parseFloat(el.getAttribute("data-fq")),dead:!L};
-  el.style.left=posOf(s.fq)+"%";
+  s.pos=posOf(s.fq);el.style.left=s.pos+"%";
   if(!L)return s;
   for(var k in L)s[k]=L[k];
   s.col=rgb(s.hex);
@@ -525,7 +527,7 @@ function deadIn(s){
   announce(s.fq.toFixed(1)+" FM, signal lost");
 }
 function revealStart(s){
-  B=s;phase="reveal";pt=now();wave=0;
+  B=s;phase="reveal";pt=now();wave=0;specFlash(s);
   setWord(s.word,s.tls,s.tgap);hud(s);audioBlip();
 }
 function lockDone(){
@@ -557,7 +559,7 @@ function dragEnd(e){
   dragging=false;userActed();
   var na=nearestAny(f);
   /* schon klar auf dem Sender: direkt einrasten, ohne erneutes Rauschen */
-  if(!na[0].dead&&na[0]===A&&na[1]<.35){f=A.fq;phase="idle";lockAt=now();loss=Math.min(loss,.3);setWord(A.word,A.tls,A.tgap);hud(A);audioBlip();hero.classList.add("rx-locked");kick();}
+  if(!na[0].dead&&na[0]===A&&na[1]<.35){f=A.fq;phase="idle";lockAt=now();specFlash(A);loss=Math.min(loss,.3);setWord(A.word,A.tls,A.tgap);hud(A);audioBlip();hero.classList.add("rx-locked");kick();}
   else if(na[1]<.75){tuneTo(na[0],{fast:true});}
   else{voidIn();kick();}
 }
@@ -607,13 +609,16 @@ window.addEventListener("pointermove",function(e){
 },{passive:true});
 
 /* ---------- Ablauf je Bild ---------- */
-function update(t,dt){
-  /* Wort entschluesseln */
-  if(wordProg<1){wordProg=clamp((t-wordT0)/.75,0,1);drawWord(curWord,wordProg);txtDirty=true;}
-  /* Kamera: Maus, sonst langsame Kreisfahrt wie der DepthFlow-Loop */
+/* Kamera: Maus, sonst langsame Kreisfahrt wie der DepthFlow-Loop */
+function camStep(t,dt){
   var idle=clamp((t-mouseAt-1.5)/2,0,1);
   var dx=lerp(camT[0],Math.sin(t*.23)*.85,idle),dy=lerp(camT[1],Math.cos(t*.17)*.55,idle);
   var k=1-Math.exp(-dt*3.2);cam[0]+=(dx-cam[0])*k;cam[1]+=(dy-cam[1])*k;
+}
+function update(t,dt){
+  /* Wort entschluesseln */
+  if(wordProg<1){wordProg=clamp((t-wordT0)/.75,0,1);drawWord(curWord,wordProg);txtDirty=true;}
+  camStep(t,dt);
 
   if(phase==="boot"){
     loss=1;
@@ -662,13 +667,13 @@ function update(t,dt){
 
 function beatOf(s,t){
   if(!s||REDUCE)return 0;
-  var per=60/s.bpm*(s.half?2:1),ph=(t%per)/per;
+  var per=60/s.bpm*(s.half?2:1),ph=(((t%per)+per)%per)/per;   /* positives Modulo: auch vor dem Seitenstart (t<0) bleibt die Phase in 0..1 */
   return Math.exp(-ph*(s.half?3.2:5.5));
 }
 /* Beat-Zoom: ein Puls je zbeats Schlaege, ~18 % der Periode weich hinein, der Rest langsam (Kosinus) zurueck */
 function zoomOf(s,t){
   if(!s||!s.zoom||REDUCE)return 0;
-  var per=60/s.bpm*(s.zbeats||1),ph=(t%per)/per,att=.18;
+  var per=60/s.bpm*(s.zbeats||1),ph=(((t%per)+per)%per)/per,att=.18;
   return ph<att?easeOutQuad(ph/att):.5+.5*Math.cos(Math.PI*(ph-att)/(1-att));
 }
 function setLayer(s,which,t){
@@ -726,6 +731,137 @@ function render(t){
   gl.drawArrays(gl.TRIANGLES,0,6);
 }
 
+/* ---------- Signalraum: die Skala als 3D-Spektrum (E927) ----------
+   Quer die Frequenz (wo), in die Tiefe die Zeit (jede Zeile ein Moment, die juengste vorn), nach oben die Signalstaerke.
+   Jeder Sender ist ein Kamm im Takt seines Kanals, tote Frequenzen flackern, beim Einrasten blitzt der Kamm auf und der
+   Blitz wandert nach hinten. Die Nadel zieht eine Spur durch die Zeit (Suchlauf = Zickzack). 2D-Canvas: laeuft auch in
+   der CSS-Fassung; die Maus kippt den Raum mit der Kamera des Bildes. Bedienung bleibt die Leiste darunter. */
+var SP={cv:null,cx:null,w:0,h:0,dpr:1,by:0,hy:0,rows:[],N:24,M:180,last:-1,step:.09,flash:null};
+var BASEC=[.55,.62,.8],DEADC=[.6,.63,.72],GREYC=[.62,.66,.75];
+function rgbs(c,a){return "rgba("+Math.round(c[0]*255)+","+Math.round(c[1]*255)+","+Math.round(c[2]*255)+","+(+a).toFixed(3)+")";}
+function specInit(){
+  SP.cv=dial.querySelector(".rx-spec");
+  if(!SP.cv)return;
+  try{SP.cx=SP.cv.getContext("2d");}catch(e){SP.cx=null;}
+  if(!SP.cx||typeof Path2D==="undefined"){SP.cx=null;return;}
+  hero.classList.add("rx-specon");
+  specResize();
+  window.addEventListener("resize",specResize);
+}
+function specResize(){
+  if(!SP.cx)return;
+  var r=SP.cv.getBoundingClientRect(),dr=dial.getBoundingClientRect();
+  SP.dpr=Math.min(window.devicePixelRatio||1,2);
+  SP.w=Math.max(1,Math.round(r.width*SP.dpr));SP.h=Math.max(1,Math.round(r.height*SP.dpr));
+  if(SP.cv.width!==SP.w||SP.cv.height!==SP.h){SP.cv.width=SP.w;SP.cv.height=SP.h;}
+  /* Der Raum liegt IN der Leiste: Grundlinie ueber den Senderbeschriftungen, Horizont an ihrer Oberkante;
+     die Leinwand ragt nur fuer hohe Kaemme etwas darueber hinaus (--spec-up) */
+  var lab=hero.clientWidth<761?22:38;   /* Beschriftungen: am Handy nur die Frequenz, sonst Frequenz + Name */
+  SP.by=(r.height-lab)*SP.dpr;
+  SP.hy=(dr.top-r.top+6)*SP.dpr;
+  var n=small()?16:24,m=small()?120:180;
+  if(n!==SP.N||m!==SP.M){SP.N=n;SP.M=m;SP.rows=[];}
+  if(REDUCE)specDraw(now());
+}
+function specFlash(s){if(s&&s.pos!=null)SP.flash={p:s.pos,t0:now()};}
+/* eingerasteter Sender (die CSS-Fassung kennt keine Phasen: dort ist es der angezeigte) */
+function tunedNow(){if(MODE==="css")return A&&!A.dead?A:null;return phase==="reveal"?B:(phase==="idle"?A:null);}
+function specRow(t){
+  var M=SP.M,a=new Float32Array(M),pn=posOf(f),cur=tunedNow();
+  var search=MODE!=="css"&&(phase==="sweep"||phase==="drag"||phase==="void"||phase==="acquire"||phase==="boot");
+  var fl=SP.flash&&t-SP.flash.t0>=0&&t-SP.flash.t0<.5?SP.flash:null,fk=fl?1-(t-fl.t0)/.5:0;
+  for(var i=0;i<M;i++){
+    var p=i/(M-1)*100,v=.02+.07*Math.random()*Math.random();
+    for(var k=0;k<ST.length;k++){
+      var s=ST[k],wd=s.dead?.9:1.4,dp=p-s.pos;
+      if(dp>4*wd||dp<-4*wd)continue;
+      var g=Math.exp(-dp*dp/(2*wd*wd)),hh;
+      if(s.dead){hh=Math.random()<.35?.03:.07+.13*Math.random();if(phase==="dead"&&Math.abs(f-s.fq)<.05)hh+=.1+.25*Math.random();}
+      else if(rising(s))hh=.2+.07*Math.sin(t*3.1+k);
+      else{hh=.3+.22*beatOf(s,t);if(s===cur)hh+=.26;}
+      if(hh*g>v)v=hh*g;
+    }
+    if(search){var dn=p-pn;if(dn<3&&dn>-3)v+=Math.random()*.3*(1-Math.abs(dn)/3);}
+    if(fl){var df=p-fl.p;v+=.6*fk*Math.exp(-df*df/3);}
+    a[i]=v;
+  }
+  return{a:a,pn:pn,col:cur&&cur.col?cur.col:GREYC};
+}
+function specDraw(t){
+  if(!SP.cx||SP.w<2)return;
+  if(REDUCE&&SP.rows.length<SP.N){SP.rows=[];for(var q=0;q<SP.N;q++)SP.rows.push(specRow(t));SP.last=t;}
+  else if(SP.last<0||t-SP.last>=SP.step||t<SP.last){SP.rows.unshift(specRow(t));if(SP.rows.length>SP.N)SP.rows.length=SP.N;SP.last=t;}
+  var c=SP.cx,w=SP.w,dpr=SP.dpr,N=SP.N,M=SP.M,rows=SP.rows;
+  var frac=REDUCE?0:clamp((t-SP.last)/SP.step,0,1);
+  var vx=w*(.5+cam[0]*.05),by=SP.by,hy=SP.hy+cam[1]*(SP.by-SP.hy)*.08,DY=by-hy,AH=DY*.75;
+  /* Tiefe d (0 vorn .. 1 hinten): in der Hoehe perspektivisch gestaucht, in der Breite nur sanft verschmaelert */
+  function zy(d){return by-DY*(1-1/(1+d*1.6))/(1-1/2.6);}
+  function zs(d){return 1-d*.28;}
+  c.clearRect(0,0,w,SP.h);
+  /* Bahnen der Sender in die Tiefe */
+  var k,s,g;
+  for(k=0;k<ST.length;k++){
+    s=ST[k];var x0=w*s.pos/100,x1=vx+(x0-vx)*zs(1),y1=hy,col=s.dead?DEADC:s.col;
+    g=c.createLinearGradient(x0,by,x1,y1);
+    g.addColorStop(0,rgbs(col,s.dead?.12:.3));g.addColorStop(1,rgbs(col,0));
+    c.strokeStyle=g;c.lineWidth=dpr;c.beginPath();c.moveTo(x0,by);c.lineTo(x1,y1);c.stroke();
+  }
+  /* Zeilen von hinten nach vorn: die Flaeche verdeckt, was dahinter liegt; Linie in Grundfarbe, an den Sendern deren Farbe */
+  var trail=[];
+  for(var r=rows.length-1;r>=0;r--){
+    var d=(r+frac)/N;if(d>1)continue;
+    var sc=zs(d),yb=zy(d),row=rows[r],arr=row.a,xl=vx-vx*sc,xr=vx+(w-vx)*sc,ah=AH*(1-d*.5);
+    var path=new Path2D();
+    for(var i=0;i<M;i++){var x=xl+(xr-xl)*i/(M-1),y=yb-arr[i]*ah;if(i)path.lineTo(x,y);else path.moveTo(x,y);}
+    var fill=new Path2D(path);fill.lineTo(xr,yb+3*dpr);fill.lineTo(xl,yb+3*dpr);fill.closePath();
+    c.fillStyle="rgba(4,6,11,"+(.9-.5*d).toFixed(3)+")";c.fill(fill);
+    var al=.06+.86*Math.pow(1-d,1.5),gr=c.createLinearGradient(xl,0,xr,0);
+    gr.addColorStop(0,rgbs(BASEC,al*.55));
+    for(k=0;k<ST.length;k++){
+      s=ST[k];var o=s.pos/100;
+      gr.addColorStop(clamp(o-.022,0,1),rgbs(BASEC,al*.55));
+      gr.addColorStop(clamp(o,0,1),rgbs(s.dead?DEADC:s.col,al*(s.dead?.6:1)));
+      gr.addColorStop(clamp(o+.022,0,1),rgbs(BASEC,al*.55));
+    }
+    gr.addColorStop(1,rgbs(BASEC,al*.55));
+    c.strokeStyle=gr;c.lineWidth=(.7+1.1*(1-d))*dpr;c.stroke(path);
+    var ip=clamp(row.pn/100*(M-1),0,M-1),i0=Math.floor(ip),fr=ip-i0,av=arr[i0]*(1-fr)+arr[Math.min(M-1,i0+1)]*fr;
+    trail.push([xl+(xr-xl)*row.pn/100,yb-av*ah-2*dpr,d,row.col]);
+  }
+  /* Spur der Nadel durch die Zeit */
+  c.lineCap="round";
+  for(var j=1;j<trail.length;j++){
+    var p0=trail[j-1],p1=trail[j],fa=1-p1[2];
+    c.strokeStyle=rgbs(p1[3],.1+.8*Math.pow(fa,1.3));c.lineWidth=(.7+1.7*fa)*dpr;
+    c.shadowColor=rgbs(p1[3],.8);c.shadowBlur=fa>.75?8*dpr:0;
+    c.beginPath();c.moveTo(p0[0],p0[1]);c.lineTo(p1[0],p1[1]);c.stroke();
+  }
+  c.shadowBlur=0;
+  /* Nadel jetzt: Strahl an der Grundlinie, Raute, Koordinaten des eingerasteten Senders */
+  var cur=tunedNow(),nc=cur&&cur.col?cur.col:GREYC,xn=w*posOf(f)/100,top=hy-6*dpr;
+  var gb=c.createLinearGradient(0,by+6*dpr,0,top);
+  gb.addColorStop(0,rgbs(nc,.95));gb.addColorStop(1,rgbs(nc,0));
+  c.strokeStyle=gb;c.lineWidth=2*dpr;c.shadowColor=rgbs(nc,.9);c.shadowBlur=10*dpr;
+  c.beginPath();c.moveTo(xn,by+6*dpr);c.lineTo(xn,top);c.stroke();c.shadowBlur=0;
+  c.fillStyle=rgbs(nc,1);c.beginPath();c.moveTo(xn,by-5*dpr);c.lineTo(xn+4*dpr,by);c.lineTo(xn,by+5*dpr);c.lineTo(xn-4*dpr,by);c.closePath();c.fill();
+  if(cur&&cur.when){
+    var sig=Math.round((rising(cur)?52:84)+14*beatOf(cur,t));
+    var txt="T:"+cur.when+"  R:"+cur.real+"  SIG "+sig+"%";
+    c.font=Math.round(10*dpr)+"px 'Share Tech Mono',ui-monospace,monospace";c.textBaseline="alphabetic";
+    var tw=c.measureText(txt).width,tx=xn+9*dpr;
+    if(tx+tw>w-4*dpr)tx=xn-9*dpr-tw;
+    c.fillStyle="rgba(4,6,11,.75)";c.fillRect(tx-4*dpr,by-19*dpr,tw+8*dpr,14*dpr);
+    c.fillStyle=rgbs(nc,.92);c.fillText(txt,tx,by-8*dpr);
+  }
+}
+/* Pruefansicht: den Raum mit Vergangenheit fuellen, damit ein Standbild ihn ganz zeigt */
+function specPrefill(t){
+  if(!SP.cx)return;
+  SP.rows=[];
+  for(var q=SP.N-1;q>=0;q--){var tt=t-q*SP.step;SP.rows.unshift(specRow(tt));}
+  SP.last=t;
+}
+
 /* Bildfrequenz im Blick: ist das Geraet zu langsam, rechnet der Empfaenger mit weniger Pixeln */
 var perf={n:0,sum:0};
 function frame(ts){
@@ -734,23 +870,27 @@ function frame(ts){
   var t=now();
   if(small()&&lastT&&t-lastT<1/32){schedule();return;}
   var dt=lastT?Math.min(.1,t-lastT):.016;lastT=t;
-  update(t,dt);
-  render(t);
-  /* nur echte Bildabstaende werten: >0,1 s heisst gedrosselt (Hintergrund-Tab, Energiesparen), nicht "GPU zu langsam" */
-  if(dt<.1){perf.n++;perf.sum+=dt;}
-  if(perf.n>=90){
-    var avg=perf.sum/perf.n;perf.n=perf.sum=0;
-    if(avg>(small()?.05:.034)&&QUAL>.55){QUAL=Math.max(.55,QUAL*.8);resize();}
-  }
+  if(MODE==="gl"){
+    update(t,dt);
+    render(t);
+    /* nur echte Bildabstaende werten: >0,1 s heisst gedrosselt (Hintergrund-Tab, Energiesparen), nicht "GPU zu langsam" */
+    if(dt<.1){perf.n++;perf.sum+=dt;}
+    if(perf.n>=90){
+      var avg=perf.sum/perf.n;perf.n=perf.sum=0;
+      if(avg>(small()?.05:.034)&&QUAL>.55){QUAL=Math.max(.55,QUAL*.8);resize();}
+    }
+  }else camStep(t,dt);
+  specDraw(t);
   schedule();
 }
-function schedule(){if(!running&&visible&&!document.hidden&&MODE==="gl"&&!REDUCE){running=true;requestAnimationFrame(frame);}}
+function schedule(){if(!running&&visible&&!document.hidden&&!REDUCE&&(MODE==="gl"||SP.cx)){running=true;requestAnimationFrame(frame);}}
 /* Ruhe-Modus (reduced motion): kein Dauerlauf -- gerechnet wird nur bei Zustandswechseln */
 function kick(){
   if(!REDUCE){schedule();return;}
+  if(MODE!=="gl"){specDraw(now());return;}
   var tries=0;
   (function step(){
-    var t=now();update(t,.016);render(t);
+    var t=now();update(t,.016);render(t);specDraw(t);
     if(phase==="acquire"&&tries++<200)setTimeout(step,60);
   })();
 }
@@ -763,6 +903,7 @@ function toCss(){
   if(!box)return;
   cssA=box.children[0];cssB=box.children[1];
   if(phase==="boot"||!A){cssTune(LIVE[0]);}else cssTune(A);
+  schedule();
 }
 function cssTune(s){
   f=s.fq;setNeedle();
@@ -783,7 +924,7 @@ function cssTune(s){
     el.style.backgroundPosition=(s.focus[0]*100)+"% "+(s.focus[1]*100)+"%";
     other.classList.remove("on");el.classList.add("on");
     setTimeout(function(){hero.classList.remove("rx-static");},REDUCE?0:260);
-    A=s;setWord(s.word,s.tls,s.tgap);hud(s);lockAt=now();hero.classList.add("rx-locked");
+    A=s;setWord(s.word,s.tls,s.tgap);hud(s);lockAt=now();hero.classList.add("rx-locked");specFlash(s);
     clearTimeout(cssTimer);
     if(!REDUCE)cssTimer=setTimeout(function(){if(auto&&visible)cssTune(nextLive(A,1));else if(!auto)cssTimer=setTimeout(function(){auto=true;cssTune(nextLive(A,1));},30000);},HOLD*1000);
   },function(){});
@@ -791,6 +932,7 @@ function cssTune(s){
 
 /* ---------- Start ---------- */
 function start(){
+  specInit();
   if(!glInit()){toCss();}
   else{
     resize();
@@ -826,12 +968,23 @@ function start(){
 var TEST=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)?/[?&]rx=([^&]+)/.exec(location.search):null;
 /* Bild rechnen und zusaetzlich als <img> ablegen: Headless-Bildschirmfotos erwischen die WebGL-Leinwand sonst nicht */
 function snap(){
+  specPrefill(now());
+  /* &rxtrail: Spur eines Suchlaufs eintragen (vorn eingerastet, davor von 97.1 heruebergewandert) -- nur fuer das Pruefbild */
+  if(/[?&]rxtrail/.test(location.search)&&SP.rows.length>8){
+    var L=SP.rows.length,pA=posOf(97.1),pB=posOf(f);
+    for(var q=0;q<L;q++){var u=clamp((q-5)/7,0,1);SP.rows[q].pn=lerp(pB,pA,easeInOut(u));if(u>0&&u<1)SP.rows[q].col=GREYC;else if(u>=1)SP.rows[q].col=ST.filter(function(x){return x.key==="drift";})[0].col;}
+  }
+  specDraw(now());
   render(now());
   setTimeout(function(){
     render(now());
     try{var im=document.createElement("img");im.src=canvas.toDataURL("image/png");im.alt="";
       im.style.cssText="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none";
       hero.insertBefore(im,canvas.nextSibling);}catch(e){}
+    /* dasselbe fuer den Signalraum (2D-Leinwand, dieselbe Falle) */
+    if(SP.cx){try{specDraw(now());var is=document.createElement("img");is.src=SP.cv.toDataURL("image/png");is.alt="";
+      is.style.cssText="position:absolute;left:0;bottom:0;width:100%;height:calc(100% + var(--spec-up,220px));z-index:-1;pointer-events:none";
+      SP.cv.parentNode.insertBefore(is,SP.cv.nextSibling);}catch(e){}}
   },250);
 }
 function testView(arg){
@@ -842,7 +995,7 @@ function testView(arg){
   if(!s){var fq=parseFloat(p[0]);if(isNaN(fq))return;f=fq;setNeedle();
     var na=nearestAny(fq);
     var d=na[1]<.15?na[0]:null;
-    load(LIVE[0]).then(function(){if(d&&d.dead){deadIn(d);}else voidIn();loss=phase==="dead"?.84:1;if(MODE==="gl")snap();});
+    load(LIVE[0]).then(function(){if(d&&d.dead){deadIn(d);}else voidIn();loss=phase==="dead"?.84:1;if(MODE==="gl")snap();else{specPrefill(now());specDraw(now());}});
     return;}
   var fontP=document.fonts&&document.fonts.load?document.fonts.load("400 100px 'Share Tech Mono'"):Promise.resolve();
   Promise.all([load(s),fontP]).then(function(){
@@ -859,7 +1012,8 @@ setNeedle();
 start();
 
 /* Schnittstelle: tune(f) fuer den Terminal-Befehl 'tune <freq>' (jede Frequenz des Bandes, tote und leere inklusive);
-   step/state sind Pruefhilfen fuer eine verdeckte Vorschau, in der requestAnimationFrame ruht (Bild von Hand weiterdrehen). */
+   step/state/spec/bench sind Pruefhilfen fuer eine verdeckte Vorschau, in der requestAnimationFrame ruht (Bild von Hand weiterdrehen,
+   Signalraum von Hand zeichnen, Rechenzeit messen). */
 window.ECHO_RECEIVER={
   tune:function(fq){
     fq=clamp(Math.round(+fq*10)/10,87.5,108);userActed();
@@ -870,6 +1024,7 @@ window.ECHO_RECEIVER={
   },
   step:function(sec,n){n=n||1;for(var i=0;i<n;i++){toff+=sec;update(now(),sec);}render(now());return phase+" "+f.toFixed(1)+(A?" A="+A.key:"")+(B?" B="+B.key:"");},
   bench:function(n){if(!gl)return null;n=n||20;var t0=performance.now();var px=new Uint8Array(4);for(var i=0;i<n;i++){render(now());gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,px);}return +((performance.now()-t0)/n).toFixed(2)+" ms/Bild bei "+W+"x"+H;},
+  spec:function(draw){var e=null;if(draw){try{specDraw(now());}catch(x){e=String(x&&x.stack||x);}}return{cx:!!SP.cx,w:SP.w,h:SP.h,by:SP.by,N:SP.N,M:SP.M,rows:SP.rows.length,last:SP.last,err:e};},
   state:function(){return{phase:phase,f:f,A:A&&A.key,B:B&&B.key,loss:loss,wave:wave,mode:MODE,W:W,H:H,auto:auto,qual:QUAL};}
 };
 })();

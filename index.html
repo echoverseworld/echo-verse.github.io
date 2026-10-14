@@ -241,6 +241,15 @@ section{scroll-margin-top:58px}
 .rx-st:focus{outline:none}
 .rx-st:focus-visible{outline:1px solid var(--c,var(--text-dim));outline-offset:2px;border-radius:2px}
 @media (prefers-reduced-motion:no-preference){.rx-st.rising::after{animation:risePulse 2.4s ease-in-out infinite}@keyframes risePulse{50%{opacity:.35}}}
+/* Signalraum (E927): die Skala als 3D-Spektrum -- Canvas waechst ueber der Leiste nach oben hinter Titel und Anzeige
+   (z-index -1 im HUD: Text bleibt davor); Bedienung bleibt die Leiste, Beschriftungen unter der Grundlinie */
+.rx-spec{display:none;position:absolute;left:0;bottom:0;width:100%;height:calc(100% + var(--spec-up,220px));z-index:-1;pointer-events:none} /* Canvas zieht sich mit left/right nicht auf: Breite ausdruecklich */
+.rx.rx-specon .rx-spec{display:block}
+.rx.rx-specon .rx-scale,.rx.rx-specon .rx-needle{display:none}
+.rx.rx-specon .rx-dial{height:clamp(110px,16vh,150px);--spec-up:34px}
+.rx.rx-specon .rx-st{justify-content:flex-end;padding-bottom:1px}
+.rx.rx-specon .rx-st::after{display:none}
+.rx.rx-specon .rx-st .fq{margin-bottom:1px}
 .rx-note{position:relative;min-height:1.5em;margin-top:.45rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--text-faint)}
 #deadMsg{position:absolute;left:0;right:0;top:0;color:var(--magenta);opacity:0;transition:opacity .4s;pointer-events:none}
 #deadMsg.show{opacity:.9}
@@ -265,9 +274,11 @@ section{scroll-margin-top:58px}
   .rx-st.aurora .fq{transform:translateX(7px)}
   .rx-dial{height:46px}
   .rx-scale{top:18px}
+  .rx.rx-specon .rx-dial{height:92px;--spec-up:24px}
   .rx-st::after{top:31px}
 }
-@media (max-height:640px) and (min-width:761px){.rx .hero-sub,.rx .hero-status{display:none}}
+@media (max-height:640px) and (min-width:761px){.rx .hero-sub{display:none}}
+@media (max-height:820px) and (min-width:761px){.rx .hero-status{display:none}}
 
 /* ── Channel panels ──────────────────────────────── */
 .channel{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
@@ -577,6 +588,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     </div>
     <div class="rx-dialwrap">
       <div class="rx-dial" role="group" aria-label="Frequency dial — five signals, three dead. Drag, click or use the arrow keys to tune.">
+        <canvas class="rx-spec" aria-hidden="true"></canvas>
         <div class="rx-scale" aria-hidden="true"></div>
         <div class="rx-needle" aria-hidden="true"></div>
         <button class="rx-st station dead" type="button" data-fq="89.2" style="left:7%" aria-label="89.2, signal lost"><span class="fq">89.2</span><span class="nm">—</span></button>
