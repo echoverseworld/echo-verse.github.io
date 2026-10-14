@@ -439,7 +439,7 @@ fetch("assets/archive.json")
     setView(hasArt&&location.hash==="#fragments"?"fragments":"signals",false);
     if(AT.setData){AT.setData(data.items);AT.filterChanged();if(AT.test)AT.test();}
     window.ECHO_ATLAS=AT;
-    /* Pruefansicht: ?probe zaehlt nach 3,5 s die gezeichneten Pixel der Leinwand (Headless-Fotos zeigen dort ein altes Bild) */
+    /* Pruefansicht: ?probe zaehlt nach 3,5 s die gezeichneten Pixel der Leinwand -- prueft den echten Zeichenweg, den ?at=12 umgeht (E933) */
     if(TEST&&TEST.has("probe")&&AT.S)setTimeout(function(){
       var cv=document.getElementById("atlas"),d=cv.getContext("2d").getImageData(0,0,cv.width,cv.height).data,n=0;
       for(var i=3;i<d.length;i+=16)if(d[i]>8)n++;
