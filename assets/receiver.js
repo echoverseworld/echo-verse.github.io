@@ -772,20 +772,34 @@ function tunedNow(){if(MODE==="css")return A&&!A.dead?A:null;return phase==="rev
 /* Skala (Prozent) <-> Leinwand (0..1): die Zeilen reichen ueber die Skala hinaus in den Seitenrand */
 function specP(u){return (u*SP.w-SP.x0)/SP.w0*100;}
 function specU(p){return (SP.x0+SP.w0*p/100)/SP.w;}
+/* weiches Wertrauschen (-1..1): zufaellig wirkend, aber stetig -- die vorderste Zeile aendert sich fliessend,
+   die gespeicherten Zeilen (Schnappschuesse im Abstand von 0,3-0,55 s) unterscheiden sich sichtbar */
+function hash1(n){var x=Math.sin(n*127.1+311.7)*43758.5453;return x-Math.floor(x);}
+function vnoise(x){var i=Math.floor(x),u=x-i;u=u*u*(3-2*u);return (hash1(i)*(1-u)+hash1(i+1)*u)*2-1;}
 function specRow(t){
   var M=SP.M,a=new Float32Array(M),pn=posOf(f),cur=tunedNow();
   var search=MODE!=="css"&&(phase==="sweep"||phase==="drag"||phase==="void"||phase==="acquire"||phase==="boot");
   var fl=SP.flash&&t-SP.flash.t0>=0&&t-SP.flash.t0<.9?SP.flash:null,fk=fl?1-(t-fl.t0)/.9:0;
+  /* je Sender und Zeile: Hoehe, Lage und Breite des Gipfels schwanken, dazu eine kleine Schulter links oder rechts
+     (Owner E930: "aktuell sehense ja aus wie kopiert") */
+  var P=ST.map(function(s,k){
+    var sd=k*17.31,br=Math.sin(t*(.8+.13*k)+k*1.7),hh;
+    if(s.dead)hh=.05+.02*br+(phase==="dead"&&Math.abs(f-s.fq)<.05?.12:0);
+    else if(rising(s))hh=.24+.04*br;
+    else{hh=.36+.05*br;if(s===cur)hh+=.2;}
+    return{c:s.pos+.45*vnoise(t*.6+sd*1.7),
+           w:(s.dead?1.1:1.7)*(1+.18*vnoise(t*.75+sd*2.3)),
+           h:hh*(1+.3*vnoise(t*.85+sd)+.12*vnoise(t*2.1+sd*.37)),
+           sh:.5*Math.max(0,vnoise(t*1.2+sd*3.1)),
+           so:2.1*vnoise(t*.45+sd*4.7)};
+  });
   for(var i=0;i<M;i++){
     var p=specP(i/(M-1)),v=0;
     for(var k=0;k<ST.length;k++){
-      var s=ST[k],wd=s.dead?1.1:1.7,dp=p-s.pos;
-      if(dp>4*wd||dp<-4*wd)continue;
-      var g=Math.exp(-dp*dp/(2*wd*wd)),br=Math.sin(t*(.8+.13*k)+k*1.7),hh;
-      if(s.dead)hh=.05+.02*br+(phase==="dead"&&Math.abs(f-s.fq)<.05?.12:0);
-      else if(rising(s))hh=.24+.04*br;
-      else{hh=.36+.06*br;if(s===cur)hh+=.2;}
-      v+=hh*g;
+      var q=P[k],dp=p-q.c;
+      if(dp>4*q.w+2.5||dp<-4*q.w-2.5)continue;
+      var ds=dp-q.so,w2=q.w*.6;
+      v+=q.h*(Math.exp(-dp*dp/(2*q.w*q.w))+q.sh*Math.exp(-ds*ds/(2*w2*w2)));
     }
     if(search){var dn=p-pn;v+=.16*Math.exp(-dn*dn/8)*(.85+.15*Math.sin(t*6));}
     if(fl){var df=p-fl.p;v+=.3*fk*Math.exp(-df*df/4);}
