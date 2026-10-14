@@ -16,10 +16,18 @@
 <meta name="theme-color" content="#04060b">
 <link rel="icon" type="image/png" href="../assets/logos/favicon.png">
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="preload" href="../assets/fonts/share-tech-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/sig.css">
 </head>
 <body>
-<header class="sig-head">
+<nav class="topnav" id="topnav" aria-label="Main">
+  <a class="tn-brand" href="../index.html"><img class="flicker" src="../assets/logos/echoverse_512.png" alt="" width="28" height="28"><span>ECHO VERSE</span></a>
+  <div class="tn-links">
+    <a class="tn-y" href="../index.html#frequency">BAND</a><a class="tn-y" href="../index.html#lore">LORE</a><a class="tn-x" href="../index.html#signal">SIGNAL</a><a class="tn-x" href="../index.html#fragments">FRAGMENTS</a><a href="../codex.html">CODEX</a><a href="../archive.html" aria-current="page">ARCHIVE</a>
+  </div>
+</nav>
+<header class="sig-head idx">
   <div class="wrap">
     <a class="back" href="../archive.html">&#9666; ALL TRANSMISSIONS</a>
     <div class="term-tag">archive index &mdash; plain files</div>
@@ -29,7 +37,7 @@
 </header>
 
 <main class="wrap">
-  <section class="files freq">
+  <section class="files freq" data-fq="95.3">
     <h2 class="files-head">95.3 &mdash; ECHO FREQUENCY <span>THE MEMORY BAND &middot; 43 on record</span></h2>
     <ul class="filelist">
       <li><a href="frequency-043.html"><span class="v">VOL.043</span><span class="n">ECHO 94.0 &mdash; STARS BENEATH THE ICE</span><span class="g">Synthwave, Retrowave, Chillwave</span><span class="d">2026-10-14 &middot; 61:27</span></a></li>
@@ -78,7 +86,7 @@
     </ul>
   </section>
 
-  <section class="files drift">
+  <section class="files drift" data-fq="97.1">
     <h2 class="files-head">97.1 &mdash; ECHO DRIFT <span>THE RAW BAND &middot; 43 on record</span></h2>
     <ul class="filelist">
       <li><a href="drift-043.html"><span class="v">VOL.043</span><span class="n">ECHO 93.2 &mdash; IGNITION LITANY</span><span class="g">Drift Phonk, Night Drive</span><span class="d">2026-10-14 &middot; 61:44</span></a></li>
@@ -127,7 +135,7 @@
     </ul>
   </section>
 
-  <section class="files pulse">
+  <section class="files pulse" data-fq="100.4">
     <h2 class="files-head">100.4 &mdash; ECHO PULSE <span>THE DEEP BAND &middot; 32 on record</span></h2>
     <ul class="filelist">
       <li><a href="pulse-032.html"><span class="v">VOL.032</span><span class="n">ECHO 103.1 &mdash; EVERGREEN EMBRACE</span><span class="g">Deep House, Melodic House, Organic House</span><span class="d">2026-10-14 &middot; 63:08</span></a></li>
@@ -165,7 +173,7 @@
     </ul>
   </section>
 
-  <section class="files vigil">
+  <section class="files vigil" data-fq="106.5">
     <h2 class="files-head">106.5 &mdash; ECHO VIGIL <span>THE COLD BAND &middot; 30 on record</span></h2>
     <ul class="filelist">
       <li><a href="vigil-030.html"><span class="v">VOL.030</span><span class="n">ECHO 94.3 &mdash; THE VIGIL HOURS</span><span class="g">Dark Techno, Hypnotic Techno, Deep Techno</span><span class="d">2026-10-14 &middot; 66:21</span></a></li>
@@ -203,15 +211,25 @@
 
 </main>
 
-<footer>
+<footer class="site">
   <div class="foot">
-    <a href="../index.html">&#9666; BACK TO THE TUNER</a>
-    <a href="../archive.html">&#9656; ALL TRANSMISSIONS</a>
-    <a href="index.html">&#9656; TRANSMISSION FILES</a>
-    <a href="../codex.html">&#9656; ARCHIVE CODEX</a>
+    <div>
+      <div class="mono" style="margin-bottom:.9em">ECHO VERSE &mdash; ARCHIVE SYSTEM</div>
+      <div class="foot-links">
+        <a href="../index.html">&#9666; BACK TO THE TUNER</a>
+        <a href="../archive.html">&#9656; ALL TRANSMISSIONS</a>
+        <a href="index.html">&#9656; TRANSMISSION FILES</a>
+        <a href="../codex.html">&#9656; ARCHIVE CODEX</a>
+      </div>
+    </div>
+    <div>
+      <div class="mono" style="margin-bottom:.9em">CONTACT</div>
+      <div class="foot-links"><a href="mailto:contact@echo-verse.world">contact@echo-verse.world</a></div>
+    </div>
   </div>
   <div class="foot-end">&copy; 2026 ECHO VERSE &nbsp;//&nbsp; <span id="txSince">STILL TRANSMITTING</span> &nbsp;//&nbsp; NO CARRIER &hellip; RETRY</div>
 </footer>
+<script src="../assets/site.js" defer></script>
 <script src="../assets/sig.js" defer></script>
 </body>
 </html>
