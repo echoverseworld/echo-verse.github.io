@@ -738,7 +738,7 @@ function render(t){
    In Ruhe wandert der Raum nur langsam in die Tiefe, beim Abstimmen schneller; die Nadel zieht eine Spur durch die Zeit.
    2D-Canvas: laeuft auch in der CSS-Fassung; die Maus kippt den Raum leicht mit der Kamera des Bildes.
    Owner E928: "viel zu unruhig", "zu viel weisse flaeche", "raender zu hart" -- daher kein Zufallsrauschen, kein Takt. */
-var SP={cv:null,cx:null,w:0,h:0,dpr:1,by:0,hy:0,x0:0,w0:1,rows:[],N:14,M:160,acc:0,lt:0,flash:null};
+var SP={cv:null,cx:null,w:0,h:0,dpr:1,by:0,hy:0,x0:0,w0:1,rows:[],N:14,M:160,acc:0,lt:0,rate:0,flash:null};
 var BASEC=[.55,.62,.8],DEADC=[.6,.63,.72],GREYC=[.62,.66,.75];
 function rgbs(c,a){return "rgba("+Math.round(c[0]*255)+","+Math.round(c[1]*255)+","+Math.round(c[2]*255)+","+(+a).toFixed(3)+")";}
 function specInit(){
@@ -801,8 +801,11 @@ function specDraw(t){
   if(REDUCE){if(SP.rows.length<SP.N){SP.rows=[];for(var q=0;q<SP.N;q++)SP.rows.push(live);}SP.acc=0;}
   else{
     if(!SP.rows.length)SP.rows.unshift(live);
-    /* in Ruhe alle 0,55 s eine Zeile nach hinten, beim Abstimmen alle 0,12 s */
-    SP.acc+=dt/(moving?.12:.55);
+    /* in Ruhe alle 0,55 s eine Zeile nach hinten, beim Abstimmen alle 0,3 s -- das Tempo gleitet (Zeitkonstante 0,8 s),
+       sonst bremst der Raum nach dem Einrasten schlagartig (Owner E929) */
+    var target=moving?1/.3:1/.55;
+    SP.rate=SP.rate?SP.rate+(target-SP.rate)*(1-Math.exp(-dt/.8)):target;
+    SP.acc+=dt*SP.rate;
     while(SP.acc>=1){SP.acc-=1;SP.rows.unshift(live);if(SP.rows.length>SP.N)SP.rows.length=SP.N;}
   }
   var c=SP.cx,w=SP.w,dpr=SP.dpr,N=SP.N,M=SP.M,rows=SP.rows,frac=REDUCE?0:SP.acc,cur=tunedNow(),k,s;
