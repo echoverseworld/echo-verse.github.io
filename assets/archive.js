@@ -16,6 +16,8 @@ var LABEL={frequency:"FREQUENCY",drift:"DRIFT",pulse:"PULSE",vigil:"VIGIL",auror
 var ORDER=["frequency","drift","pulse","vigil","aurora"];
 var reduce=!!window.ECHO_REDUCE;
 var TEST=/^(localhost|127\.0\.0\.1)$/.test(location.hostname)&&window.URLSearchParams?new URLSearchParams(location.search):null;
+/* Pruefansicht: ?noraf spielt eine Umgebung ohne Animations-Frames nach (wie das Vorschau-Fenster der Claude-App) */
+if(TEST&&TEST.has("noraf"))window.requestAnimationFrame=function(){return 0;};
 
 function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e;}
 function pad3(v){return String(v).length>=3?String(v):("00"+v).slice(-3);}
@@ -178,7 +180,6 @@ var AT=(function(){
     });
     var dates=Object.keys(byDate).sort();
     if(!dates.length)return;
-    S.first=dates[0];S.last=dates[dates.length-1];
     /* je Sendetag eine Zeile (alt -> neu); Zeitmarken: erste Zeile je Monat, dazu erstes und letztes Signal */
     S.all=dates.map(function(ds,ri){return{date:ds,day:dayNum(ds),items:byDate[ds],seed:ri*7.31+3.3,mon:+ds.split("-")[1]};});
     var seen={};
@@ -228,7 +229,7 @@ var AT=(function(){
     if(mode!==S.mode){S.mode=mode;layout();}
     var M=S.small?260:420;
     if(M!==S.M||!S.all[0].rp){S.M=M;prep();}
-    if(reduce||S.fixed!=null)draw();
+    if(reduce||S.fixed!=null||S.still)draw();
   }
   /* Band -> x der vordersten Zeile */
   function fx(f){return S.x0+(S.x1-S.x0)*(f-B0)/(B1-B0);}
@@ -238,13 +239,14 @@ var AT=(function(){
 
   function draw(){
     if(!A.ok)return;
+    S.drawn=true;
     var t=now(),c=cx,dpr=S.dpr,M=S.M,w=S.w,i,k;
     var dt=S.lt?clamp(t-S.lt,0,.1):0;S.lt=t;
     ORDER.forEach(function(ch){S.wt[ch]+=(S.tgt[ch]-S.wt[ch])*(dt?1-Math.exp(-dt/.28):1);});
     S.cam+=(S.camT-S.cam)*(dt?1-Math.exp(-dt/.9):1);
     var vx=S.vx+S.cam*(S.x1-S.x0)*.035,DY=S.by-S.hy,AH=DY*(S.small?.36:.42);
     var xlo=fx(LO),xhi=fx(HI),e0=(B0-LO)/(HI-LO),e1=(B1-LO)/(HI-LO);
-    var intro=reduce||S.fixed!=null?99:t,marks=[];
+    var intro=reduce||S.fixed!=null||S.still?99:t,marks=[];
     for(i=0;i<S.items.length;i++)S.items[i]._x=null;   /* nur gezeichnete Kaemme sind waehlbar */
     c.clearRect(0,0,w,S.h);
     for(var ri=0;ri<S.rows.length;ri++){
@@ -318,13 +320,23 @@ var AT=(function(){
     }
   }
   function frame(){
-    S.raf=0;
+    S.raf=0;S.still=false;
     if(!S.vis||document.hidden)return;
     var t=performance.now();
     if(t-S.last>=(S.small?40:31)){S.last=t;draw();}
     S.raf=requestAnimationFrame(frame);
   }
-  function start(){if(reduce||S.fixed!=null){draw();return;}if(!S.raf)S.raf=requestAnimationFrame(frame);}
+  /* Rueckfallebene: laufen keine Animations-Frames oder nur vereinzelte (Vorschau-Fenster der Claude-App, Headless,
+     gedrosselte oder verdeckte Tabs), bliebe der Atlas beim ersten, noch flachen Bild des Aufbaus stehen (Owner E933:
+     "was ich allerdings nicht sehe, sind diese wellen"). Dann steht er fertig still da und zeichnet bei Maus, Filter
+     und Groesse neu: nach 0,4 s ohne jedes Bild, spaetestens nach dem Aufbau (2,4 s), wenn das letzte Bild alt ist. */
+  function start(){
+    if(reduce||S.fixed!=null){draw();return;}
+    if(!S.raf)S.raf=requestAnimationFrame(frame);
+    clearTimeout(S.fb);clearTimeout(S.fb2);
+    S.fb=setTimeout(function(){if(!S.drawn){S.still=true;draw();}},400);
+    S.fb2=setTimeout(function(){if(performance.now()-S.last>250){S.still=true;draw();}},2400);
+  }
 
   /* ── Maus und Finger ── */
   function pick(mx,my){
@@ -365,7 +377,7 @@ var AT=(function(){
       tip.appendChild(s);
       tip.hidden=false;
     }
-    if(reduce||S.fixed!=null)draw();
+    if(reduce||S.fixed!=null||S.still)draw();
   }
   function placeTip(){
     var h=S.hover;if(!h||tip.hidden)return;
@@ -400,7 +412,7 @@ var AT=(function(){
   A.filterChanged=function(){
     ORDER.forEach(function(ch){S.tgt[ch]=filter==="all"||filter===ch?1:.12;});
     if(S.hover&&S.tgt[S.hover.channel]<.5)setHover(null);
-    if(reduce||S.fixed!=null){ORDER.forEach(function(ch){S.wt[ch]=S.tgt[ch];});draw();}
+    if(reduce||S.fixed!=null||S.still){ORDER.forEach(function(ch){S.wt[ch]=S.tgt[ch];});draw();}
   };
   /* Pruefansicht (nur localhost): ?at=12 friert den Atlas bei 12 s ein, &ahover=3 zeigt Sendung Nr. 3 */
   A.test=function(){
@@ -427,6 +439,12 @@ fetch("assets/archive.json")
     setView(hasArt&&location.hash==="#fragments"?"fragments":"signals",false);
     if(AT.setData){AT.setData(data.items);AT.filterChanged();if(AT.test)AT.test();}
     window.ECHO_ATLAS=AT;
+    /* Pruefansicht: ?probe zaehlt nach 3,5 s die gezeichneten Pixel der Leinwand (Headless-Fotos zeigen dort ein altes Bild) */
+    if(TEST&&TEST.has("probe")&&AT.S)setTimeout(function(){
+      var cv=document.getElementById("atlas"),d=cv.getContext("2d").getImageData(0,0,cv.width,cv.height).data,n=0;
+      for(var i=3;i<d.length;i+=16)if(d[i]>8)n++;
+      document.title="PROBE n="+n+" still="+AT.S.still+" lastAgo="+Math.round(performance.now()-AT.S.last)+" drawn="+AT.S.drawn;
+    },3500);
   })
   .catch(function(){
     statusLine.textContent="INDEX OFFLINE";
