@@ -170,7 +170,7 @@ section{scroll-margin-top:58px}
 /* HUD unten: Marke links, Senderanzeige rechts, Skala ueber die ganze Breite */
 .rx-hud{
   position:absolute;left:0;right:0;bottom:0;z-index:2;
-  padding:0 clamp(16px,4vw,56px) clamp(10px,2vh,22px);
+  --pad:clamp(16px,4vw,56px);padding:0 var(--pad) clamp(10px,2vh,22px);
   display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,400px);grid-template-areas:"brand card" "dial dial";
   column-gap:48px;align-items:end;
 }
@@ -243,7 +243,7 @@ section{scroll-margin-top:58px}
 @media (prefers-reduced-motion:no-preference){.rx-st.rising::after{animation:risePulse 2.4s ease-in-out infinite}@keyframes risePulse{50%{opacity:.35}}}
 /* Signalraum (E927): die Skala als 3D-Spektrum -- Canvas waechst ueber der Leiste nach oben hinter Titel und Anzeige
    (z-index -1 im HUD: Text bleibt davor); Bedienung bleibt die Leiste, Beschriftungen unter der Grundlinie */
-.rx-spec{display:none;position:absolute;left:0;bottom:0;width:100%;height:calc(100% + var(--spec-up,220px));z-index:-1;pointer-events:none} /* Canvas zieht sich mit left/right nicht auf: Breite ausdruecklich */
+.rx-spec{display:none;position:absolute;left:calc(-1 * var(--pad,0px));bottom:0;width:calc(100% + 2 * var(--pad,0px));height:calc(100% + var(--spec-up,220px));z-index:-1;pointer-events:none} /* Canvas zieht sich mit left/right nicht auf: Breite ausdruecklich; reicht in den Seitenrand, dort laufen die Zeilen aus */
 .rx.rx-specon .rx-spec{display:block}
 .rx.rx-specon .rx-scale,.rx.rx-specon .rx-needle{display:none}
 .rx.rx-specon .rx-dial{height:clamp(110px,16vh,150px);--spec-up:34px}

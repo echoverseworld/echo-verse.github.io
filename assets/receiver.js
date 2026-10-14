@@ -731,12 +731,14 @@ function render(t){
   gl.drawArrays(gl.TRIANGLES,0,6);
 }
 
-/* ---------- Signalraum: die Skala als 3D-Spektrum (E927) ----------
-   Quer die Frequenz (wo), in die Tiefe die Zeit (jede Zeile ein Moment, die juengste vorn), nach oben die Signalstaerke.
-   Jeder Sender ist ein Kamm im Takt seines Kanals, tote Frequenzen flackern, beim Einrasten blitzt der Kamm auf und der
-   Blitz wandert nach hinten. Die Nadel zieht eine Spur durch die Zeit (Suchlauf = Zickzack). 2D-Canvas: laeuft auch in
-   der CSS-Fassung; die Maus kippt den Raum mit der Kamera des Bildes. Bedienung bleibt die Leiste darunter. */
-var SP={cv:null,cx:null,w:0,h:0,dpr:1,by:0,hy:0,rows:[],N:24,M:180,last:-1,step:.09,flash:null};
+/* ---------- Signalraum: die Skala als 3D-Spektrum (E927, ruhig seit E928) ----------
+   Quer die Frequenz (wo), in die Tiefe die Zeit (wann), nach oben die Signalstaerke. Sichtbar sind vor allem die fuenf
+   Sender als farbige Kaemme, die langsam atmen (je Sender eigene Periode, 4-8 s); die Linien dazwischen sind fast
+   unsichtbar, links und rechts laufen die Zeilen im Seitenrand weich aus (die Leinwand ist breiter als die Skala).
+   In Ruhe wandert der Raum nur langsam in die Tiefe, beim Abstimmen schneller; die Nadel zieht eine Spur durch die Zeit.
+   2D-Canvas: laeuft auch in der CSS-Fassung; die Maus kippt den Raum leicht mit der Kamera des Bildes.
+   Owner E928: "viel zu unruhig", "zu viel weisse flaeche", "raender zu hart" -- daher kein Zufallsrauschen, kein Takt. */
+var SP={cv:null,cx:null,w:0,h:0,dpr:1,by:0,hy:0,x0:0,w0:1,rows:[],N:14,M:160,acc:0,lt:0,flash:null};
 var BASEC=[.55,.62,.8],DEADC=[.6,.63,.72],GREYC=[.62,.66,.75];
 function rgbs(c,a){return "rgba("+Math.round(c[0]*255)+","+Math.round(c[1]*255)+","+Math.round(c[2]*255)+","+(+a).toFixed(3)+")";}
 function specInit(){
@@ -755,111 +757,140 @@ function specResize(){
   SP.w=Math.max(1,Math.round(r.width*SP.dpr));SP.h=Math.max(1,Math.round(r.height*SP.dpr));
   if(SP.cv.width!==SP.w||SP.cv.height!==SP.h){SP.cv.width=SP.w;SP.cv.height=SP.h;}
   /* Der Raum liegt IN der Leiste: Grundlinie ueber den Senderbeschriftungen, Horizont an ihrer Oberkante;
-     die Leinwand ragt nur fuer hohe Kaemme etwas darueber hinaus (--spec-up) */
+     die Leinwand ragt fuer hohe Kaemme etwas darueber hinaus (--spec-up) und links/rechts in den Seitenrand */
   var lab=hero.clientWidth<761?22:38;   /* Beschriftungen: am Handy nur die Frequenz, sonst Frequenz + Name */
   SP.by=(r.height-lab)*SP.dpr;
   SP.hy=(dr.top-r.top+6)*SP.dpr;
-  var n=small()?16:24,m=small()?120:180;
+  SP.x0=(dr.left-r.left)*SP.dpr;SP.w0=Math.max(1,dr.width*SP.dpr);
+  var n=small()?10:14,m=small()?110:160;
   if(n!==SP.N||m!==SP.M){SP.N=n;SP.M=m;SP.rows=[];}
   if(REDUCE)specDraw(now());
 }
 function specFlash(s){if(s&&s.pos!=null)SP.flash={p:s.pos,t0:now()};}
 /* eingerasteter Sender (die CSS-Fassung kennt keine Phasen: dort ist es der angezeigte) */
 function tunedNow(){if(MODE==="css")return A&&!A.dead?A:null;return phase==="reveal"?B:(phase==="idle"?A:null);}
+/* Skala (Prozent) <-> Leinwand (0..1): die Zeilen reichen ueber die Skala hinaus in den Seitenrand */
+function specP(u){return (u*SP.w-SP.x0)/SP.w0*100;}
+function specU(p){return (SP.x0+SP.w0*p/100)/SP.w;}
 function specRow(t){
   var M=SP.M,a=new Float32Array(M),pn=posOf(f),cur=tunedNow();
   var search=MODE!=="css"&&(phase==="sweep"||phase==="drag"||phase==="void"||phase==="acquire"||phase==="boot");
-  var fl=SP.flash&&t-SP.flash.t0>=0&&t-SP.flash.t0<.5?SP.flash:null,fk=fl?1-(t-fl.t0)/.5:0;
+  var fl=SP.flash&&t-SP.flash.t0>=0&&t-SP.flash.t0<.9?SP.flash:null,fk=fl?1-(t-fl.t0)/.9:0;
   for(var i=0;i<M;i++){
-    var p=i/(M-1)*100,v=.02+.07*Math.random()*Math.random();
+    var p=specP(i/(M-1)),v=0;
     for(var k=0;k<ST.length;k++){
-      var s=ST[k],wd=s.dead?.9:1.4,dp=p-s.pos;
+      var s=ST[k],wd=s.dead?1.1:1.7,dp=p-s.pos;
       if(dp>4*wd||dp<-4*wd)continue;
-      var g=Math.exp(-dp*dp/(2*wd*wd)),hh;
-      if(s.dead){hh=Math.random()<.35?.03:.07+.13*Math.random();if(phase==="dead"&&Math.abs(f-s.fq)<.05)hh+=.1+.25*Math.random();}
-      else if(rising(s))hh=.2+.07*Math.sin(t*3.1+k);
-      else{hh=.3+.22*beatOf(s,t);if(s===cur)hh+=.26;}
-      if(hh*g>v)v=hh*g;
+      var g=Math.exp(-dp*dp/(2*wd*wd)),br=Math.sin(t*(.8+.13*k)+k*1.7),hh;
+      if(s.dead)hh=.05+.02*br+(phase==="dead"&&Math.abs(f-s.fq)<.05?.12:0);
+      else if(rising(s))hh=.24+.04*br;
+      else{hh=.36+.06*br;if(s===cur)hh+=.2;}
+      v+=hh*g;
     }
-    if(search){var dn=p-pn;if(dn<3&&dn>-3)v+=Math.random()*.3*(1-Math.abs(dn)/3);}
-    if(fl){var df=p-fl.p;v+=.6*fk*Math.exp(-df*df/3);}
+    if(search){var dn=p-pn;v+=.16*Math.exp(-dn*dn/8)*(.85+.15*Math.sin(t*6));}
+    if(fl){var df=p-fl.p;v+=.3*fk*Math.exp(-df*df/4);}
     a[i]=v;
   }
   return{a:a,pn:pn,col:cur&&cur.col?cur.col:GREYC};
 }
 function specDraw(t){
   if(!SP.cx||SP.w<2)return;
-  if(REDUCE&&SP.rows.length<SP.N){SP.rows=[];for(var q=0;q<SP.N;q++)SP.rows.push(specRow(t));SP.last=t;}
-  else if(SP.last<0||t-SP.last>=SP.step||t<SP.last){SP.rows.unshift(specRow(t));if(SP.rows.length>SP.N)SP.rows.length=SP.N;SP.last=t;}
-  var c=SP.cx,w=SP.w,dpr=SP.dpr,N=SP.N,M=SP.M,rows=SP.rows;
-  var frac=REDUCE?0:clamp((t-SP.last)/SP.step,0,1);
-  var vx=w*(.5+cam[0]*.05),by=SP.by,hy=SP.hy+cam[1]*(SP.by-SP.hy)*.08,DY=by-hy,AH=DY*.75;
-  /* Tiefe d (0 vorn .. 1 hinten): in der Hoehe perspektivisch gestaucht, in der Breite nur sanft verschmaelert */
-  function zy(d){return by-DY*(1-1/(1+d*1.6))/(1-1/2.6);}
-  function zs(d){return 1-d*.28;}
-  c.clearRect(0,0,w,SP.h);
-  /* Bahnen der Sender in die Tiefe */
-  var k,s,g;
-  for(k=0;k<ST.length;k++){
-    s=ST[k];var x0=w*s.pos/100,x1=vx+(x0-vx)*zs(1),y1=hy,col=s.dead?DEADC:s.col;
-    g=c.createLinearGradient(x0,by,x1,y1);
-    g.addColorStop(0,rgbs(col,s.dead?.12:.3));g.addColorStop(1,rgbs(col,0));
-    c.strokeStyle=g;c.lineWidth=dpr;c.beginPath();c.moveTo(x0,by);c.lineTo(x1,y1);c.stroke();
+  var dt=SP.lt?clamp(t-SP.lt,0,.1):0;SP.lt=t;
+  var moving=MODE!=="css"&&(phase==="sweep"||phase==="drag"||phase==="acquire"||phase==="reveal");
+  var live=specRow(t);
+  if(REDUCE){if(SP.rows.length<SP.N){SP.rows=[];for(var q=0;q<SP.N;q++)SP.rows.push(live);}SP.acc=0;}
+  else{
+    if(!SP.rows.length)SP.rows.unshift(live);
+    /* in Ruhe alle 0,55 s eine Zeile nach hinten, beim Abstimmen alle 0,12 s */
+    SP.acc+=dt/(moving?.12:.55);
+    while(SP.acc>=1){SP.acc-=1;SP.rows.unshift(live);if(SP.rows.length>SP.N)SP.rows.length=SP.N;}
   }
-  /* Zeilen von hinten nach vorn: die Flaeche verdeckt, was dahinter liegt; Linie in Grundfarbe, an den Sendern deren Farbe */
+  var c=SP.cx,w=SP.w,dpr=SP.dpr,N=SP.N,M=SP.M,rows=SP.rows,frac=REDUCE?0:SP.acc,cur=tunedNow(),k,s;
+  var vx=SP.x0+SP.w0*(.5+cam[0]*.04),by=SP.by,hy=SP.hy+cam[1]*(SP.by-SP.hy)*.06,DY=by-hy,AH=DY*.72;
+  var e0=specU(0),e1=specU(100);   /* Raender der Skala auf der Leinwand: dahinter laufen die Zeilen weich aus */
+  function zy(d){return by-DY*(1-1/(1+d*1.6))/(1-1/2.6);}
+  function zs(d){return 1-d*.26;}
+  function row(arr,d,front){
+    var sc=zs(d),yb=zy(d),xl=vx-vx*sc,xr=vx+(w-vx)*sc,ah=AH*(1-d*.45),fd=1-d,i;
+    var path=new Path2D();
+    for(i=0;i<M;i++){var x=xl+(xr-xl)*i/(M-1),y=yb-arr[i]*ah;if(i)path.lineTo(x,y);else path.moveTo(x,y);}
+    /* Flaeche: verdeckt die Zeilen dahinter, an den Enden weich */
+    var fill=new Path2D(path);fill.lineTo(xr,yb+2*dpr);fill.lineTo(xl,yb+2*dpr);fill.closePath();
+    var fa=(.18+.5*fd).toFixed(3),gf=c.createLinearGradient(xl,0,xr,0);
+    gf.addColorStop(0,"rgba(4,6,11,0)");gf.addColorStop(e0,"rgba(4,6,11,"+fa+")");
+    gf.addColorStop(e1,"rgba(4,6,11,"+fa+")");gf.addColorStop(1,"rgba(4,6,11,0)");
+    c.fillStyle=gf;c.fill(fill);
+    /* Linie: zwischen den Sendern fast unsichtbar, an den Sendern deren Farbe, an den Enden ausgeblendet */
+    var ab=.015+.07*fd*fd,ac=.08+.72*Math.pow(fd,1.4),gr=c.createLinearGradient(xl,0,xr,0);
+    gr.addColorStop(0,rgbs(BASEC,0));gr.addColorStop(e0,rgbs(BASEC,ab));
+    for(k=0;k<ST.length;k++){
+      s=ST[k];var o=specU(s.pos),wq=specU(s.pos+3.2)-o;
+      gr.addColorStop(clamp(o-wq,0,1),rgbs(BASEC,ab));
+      gr.addColorStop(clamp(o,0,1),rgbs(s.dead?DEADC:s.col,ac*(s.dead?.35:(s===cur?1:.7))));
+      gr.addColorStop(clamp(o+wq,0,1),rgbs(BASEC,ab));
+    }
+    gr.addColorStop(e1,rgbs(BASEC,ab));gr.addColorStop(1,rgbs(BASEC,0));
+    c.strokeStyle=gr;c.lineWidth=(.6+.6*fd)*dpr;c.stroke(path);
+    /* Kaemme der Sender: eigener Strich in ihrer Farbe, vorn mit weichem Schein -- sie tragen das Bild, nicht die Linien */
+    var ka=.14+.8*Math.pow(fd,1.05);
+    for(k=0;k<ST.length;k++){
+      s=ST[k];if(s.dead)continue;
+      var i0=Math.max(0,Math.floor(specU(s.pos-4.2)*(M-1))),i1=Math.min(M-1,Math.ceil(specU(s.pos+4.2)*(M-1)));
+      var seg=new Path2D();
+      for(i=i0;i<=i1;i++){var sx=xl+(xr-xl)*i/(M-1),sy=yb-arr[i]*ah;if(i>i0)seg.lineTo(sx,sy);else seg.moveTo(sx,sy);}
+      var x0s=xl+(xr-xl)*i0/(M-1),x1s=xl+(xr-xl)*i1/(M-1),gs=c.createLinearGradient(x0s,0,x1s,0),al2=ka*(s===cur?1:.78);
+      gs.addColorStop(0,rgbs(s.col,0));gs.addColorStop(.5,rgbs(s.col,al2));gs.addColorStop(1,rgbs(s.col,0));
+      if(front){c.save();c.globalAlpha=.3;c.strokeStyle=gs;c.lineWidth=5*dpr;c.stroke(seg);c.restore();}
+      c.strokeStyle=gs;c.lineWidth=(.8+1.1*fd)*dpr;c.stroke(seg);
+    }
+    return{xl:xl,xr:xr,yb:yb,ah:ah};
+  }
+  function needleY(arr,g,pn){
+    var ip=clamp(specU(pn)*(M-1),0,M-1),i0=Math.floor(ip),fr=ip-i0,av=arr[i0]*(1-fr)+arr[Math.min(M-1,i0+1)]*fr;
+    return[g.xl+(g.xr-g.xl)*specU(pn),g.yb-av*g.ah-2*dpr];
+  }
+  c.clearRect(0,0,w,SP.h);
+  /* gespeicherte Zeilen von hinten nach vorn, die lebende Zeile zuletzt ganz vorn */
   var trail=[];
   for(var r=rows.length-1;r>=0;r--){
     var d=(r+frac)/N;if(d>1)continue;
-    var sc=zs(d),yb=zy(d),row=rows[r],arr=row.a,xl=vx-vx*sc,xr=vx+(w-vx)*sc,ah=AH*(1-d*.5);
-    var path=new Path2D();
-    for(var i=0;i<M;i++){var x=xl+(xr-xl)*i/(M-1),y=yb-arr[i]*ah;if(i)path.lineTo(x,y);else path.moveTo(x,y);}
-    var fill=new Path2D(path);fill.lineTo(xr,yb+3*dpr);fill.lineTo(xl,yb+3*dpr);fill.closePath();
-    c.fillStyle="rgba(4,6,11,"+(.9-.5*d).toFixed(3)+")";c.fill(fill);
-    var al=.06+.86*Math.pow(1-d,1.5),gr=c.createLinearGradient(xl,0,xr,0);
-    gr.addColorStop(0,rgbs(BASEC,al*.55));
-    for(k=0;k<ST.length;k++){
-      s=ST[k];var o=s.pos/100;
-      gr.addColorStop(clamp(o-.022,0,1),rgbs(BASEC,al*.55));
-      gr.addColorStop(clamp(o,0,1),rgbs(s.dead?DEADC:s.col,al*(s.dead?.6:1)));
-      gr.addColorStop(clamp(o+.022,0,1),rgbs(BASEC,al*.55));
-    }
-    gr.addColorStop(1,rgbs(BASEC,al*.55));
-    c.strokeStyle=gr;c.lineWidth=(.7+1.1*(1-d))*dpr;c.stroke(path);
-    var ip=clamp(row.pn/100*(M-1),0,M-1),i0=Math.floor(ip),fr=ip-i0,av=arr[i0]*(1-fr)+arr[Math.min(M-1,i0+1)]*fr;
-    trail.push([xl+(xr-xl)*row.pn/100,yb-av*ah-2*dpr,d,row.col]);
+    var gm=row(rows[r].a,d,false),pt=needleY(rows[r].a,gm,rows[r].pn);
+    trail.push([pt[0],pt[1],d,rows[r].col]);
   }
-  /* Spur der Nadel durch die Zeit */
+  var g0=row(live.a,0,true),p0=needleY(live.a,g0,live.pn);
+  trail.push([p0[0],p0[1],0,live.col]);
+  /* Spur der Nadel durch die Zeit -- leise, nur vorn mit Schein */
   c.lineCap="round";
   for(var j=1;j<trail.length;j++){
-    var p0=trail[j-1],p1=trail[j],fa=1-p1[2];
-    c.strokeStyle=rgbs(p1[3],.1+.8*Math.pow(fa,1.3));c.lineWidth=(.7+1.7*fa)*dpr;
-    c.shadowColor=rgbs(p1[3],.8);c.shadowBlur=fa>.75?8*dpr:0;
-    c.beginPath();c.moveTo(p0[0],p0[1]);c.lineTo(p1[0],p1[1]);c.stroke();
+    var q0=trail[j-1],q1=trail[j],fa1=1-q1[2];
+    c.strokeStyle=rgbs(q1[3],.06+.55*Math.pow(fa1,1.5));c.lineWidth=(.6+1.2*fa1)*dpr;
+    c.shadowColor=rgbs(q1[3],.7);c.shadowBlur=fa1>.8?6*dpr:0;
+    c.beginPath();c.moveTo(q0[0],q0[1]);c.lineTo(q1[0],q1[1]);c.stroke();
   }
   c.shadowBlur=0;
-  /* Nadel jetzt: Strahl an der Grundlinie, Raute, Koordinaten des eingerasteten Senders */
-  var cur=tunedNow(),nc=cur&&cur.col?cur.col:GREYC,xn=w*posOf(f)/100,top=hy-6*dpr;
+  /* Nadel jetzt: Strahl, Raute, Koordinaten des eingerasteten Senders */
+  var nc=cur&&cur.col?cur.col:GREYC,xn=SP.x0+SP.w0*posOf(f)/100,top=hy-6*dpr;
   var gb=c.createLinearGradient(0,by+6*dpr,0,top);
-  gb.addColorStop(0,rgbs(nc,.95));gb.addColorStop(1,rgbs(nc,0));
-  c.strokeStyle=gb;c.lineWidth=2*dpr;c.shadowColor=rgbs(nc,.9);c.shadowBlur=10*dpr;
+  gb.addColorStop(0,rgbs(nc,.8));gb.addColorStop(1,rgbs(nc,0));
+  c.strokeStyle=gb;c.lineWidth=1.5*dpr;c.shadowColor=rgbs(nc,.8);c.shadowBlur=6*dpr;
   c.beginPath();c.moveTo(xn,by+6*dpr);c.lineTo(xn,top);c.stroke();c.shadowBlur=0;
-  c.fillStyle=rgbs(nc,1);c.beginPath();c.moveTo(xn,by-5*dpr);c.lineTo(xn+4*dpr,by);c.lineTo(xn,by+5*dpr);c.lineTo(xn-4*dpr,by);c.closePath();c.fill();
+  c.fillStyle=rgbs(nc,1);c.beginPath();c.moveTo(xn,by-4*dpr);c.lineTo(xn+3.5*dpr,by);c.lineTo(xn,by+4*dpr);c.lineTo(xn-3.5*dpr,by);c.closePath();c.fill();
   if(cur&&cur.when){
-    var sig=Math.round((rising(cur)?52:84)+14*beatOf(cur,t));
+    var sig=Math.round((rising(cur)?52:86)+6*Math.sin(t*.9));
     var txt="T:"+cur.when+"  R:"+cur.real+"  SIG "+sig+"%";
     c.font=Math.round(10*dpr)+"px 'Share Tech Mono',ui-monospace,monospace";c.textBaseline="alphabetic";
     var tw=c.measureText(txt).width,tx=xn+9*dpr;
-    if(tx+tw>w-4*dpr)tx=xn-9*dpr-tw;
-    c.fillStyle="rgba(4,6,11,.75)";c.fillRect(tx-4*dpr,by-19*dpr,tw+8*dpr,14*dpr);
-    c.fillStyle=rgbs(nc,.92);c.fillText(txt,tx,by-8*dpr);
+    if(tx+tw>SP.x0+SP.w0)tx=xn-9*dpr-tw;
+    c.fillStyle="rgba(4,6,11,.7)";c.fillRect(tx-4*dpr,by-19*dpr,tw+8*dpr,14*dpr);
+    c.fillStyle=rgbs(nc,.85);c.fillText(txt,tx,by-8*dpr);
   }
 }
 /* Pruefansicht: den Raum mit Vergangenheit fuellen, damit ein Standbild ihn ganz zeigt */
 function specPrefill(t){
   if(!SP.cx)return;
   SP.rows=[];
-  for(var q=SP.N-1;q>=0;q--){var tt=t-q*SP.step;SP.rows.unshift(specRow(tt));}
-  SP.last=t;
+  for(var q=SP.N-1;q>=0;q--){SP.rows.unshift(specRow(t-(q+1)*.55));}
+  SP.acc=.5;SP.lt=t;
 }
 
 /* Bildfrequenz im Blick: ist das Geraet zu langsam, rechnet der Empfaenger mit weniger Pixeln */
@@ -983,7 +1014,7 @@ function snap(){
       hero.insertBefore(im,canvas.nextSibling);}catch(e){}
     /* dasselbe fuer den Signalraum (2D-Leinwand, dieselbe Falle) */
     if(SP.cx){try{specDraw(now());var is=document.createElement("img");is.src=SP.cv.toDataURL("image/png");is.alt="";
-      is.style.cssText="position:absolute;left:0;bottom:0;width:100%;height:calc(100% + var(--spec-up,220px));z-index:-1;pointer-events:none";
+      is.style.cssText="position:absolute;left:calc(-1 * var(--pad,0px));bottom:0;width:calc(100% + 2 * var(--pad,0px));height:calc(100% + var(--spec-up,220px));z-index:-1;pointer-events:none";
       SP.cv.parentNode.insertBefore(is,SP.cv.nextSibling);}catch(e){}}
   },250);
 }
