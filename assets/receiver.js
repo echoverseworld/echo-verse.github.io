@@ -24,10 +24,11 @@ if(!hero||!canvas||!dial)return;
    tls    Sperrung in em; tgap = Luecke in der Wortmitte in em (das Wort teilt sich um einen mittig stehenden Kopf)
    tdepth Tiefe des Worts (0 fern .. 1 nah): alles, was naeher ist, verdeckt es -- gemessen zwischen Figur und
           Hintergrund (Tiefe am Gesicht: Frequency .52, Drift .69, Pulse .71, Vigil .54, Aurora .31 -- Aurora: Fluegel .37)
-   bpm    Takt des Lichtpulses; half = nur jeder zweite Schlag (ruhige Kanaele), zoom = Beat-Zoom (nur ECHO Drift) */
+   bpm    Takt des Lichtpulses; half = nur jeder zweite Schlag (ruhige Kanaele)
+   zoom   Beat-Zoom (nur ECHO Drift), zbeats = ein Zoom alle n Schlaege -- weich an, langsam aus (Owner E926: "bei weitem langsamer") */
 var LOOK={
   frequency:{hex:"#22D3EE",word:"FREQUENCY",focus:[.47,.30],tdy:-.17,tx:0,ts:1,tdepth:.30,bpm:100,half:true,glow:.55,zoom:0},
-  drift:{hex:"#FF2D9B",word:"DRIFT",focus:[.36,.24],tdy:-.10,tx:.28,ts:.62,tdepth:.40,bpm:140,half:false,glow:.85,zoom:.016},
+  drift:{hex:"#FF2D9B",word:"DRIFT",focus:[.36,.24],tdy:-.10,tx:.28,ts:.62,tdepth:.40,bpm:140,half:false,glow:.85,zoom:.016,zbeats:4},
   pulse:{hex:"#7C5CFF",word:"PULSE",focus:[.68,.25],tdy:-.06,tx:-.13,ts:.84,tdepth:.42,bpm:122,half:true,glow:.6,zoom:0},
   vigil:{hex:"#FF9E3D",word:"VIGIL",focus:[.52,.25],tdy:-.04,tx:-.31,ts:.5,tdepth:.20,bpm:132,half:true,glow:.7,zoom:0},
   aurora:{hex:"#F5F2EA",word:"AURORA",focus:[.50,.20],tdy:0,tx:0,ts:1,tgap:1.05,tdepth:.41,bpm:130,half:true,glow:.6,zoom:0}
@@ -664,6 +665,12 @@ function beatOf(s,t){
   var per=60/s.bpm*(s.half?2:1),ph=(t%per)/per;
   return Math.exp(-ph*(s.half?3.2:5.5));
 }
+/* Beat-Zoom: ein Puls je zbeats Schlaege, ~18 % der Periode weich hinein, der Rest langsam (Kosinus) zurueck */
+function zoomOf(s,t){
+  if(!s||!s.zoom||REDUCE)return 0;
+  var per=60/s.bpm*(s.zbeats||1),ph=(t%per)/per,att=.18;
+  return ph<att?easeOutQuad(ph/att):.5+.5*Math.cos(Math.PI*(ph-att)/(1-att));
+}
 function setLayer(s,which,t){
   var unit=which==="A"?0:2;
   if(!s||!s.tex){
@@ -685,7 +692,7 @@ function setLayer(s,which,t){
   var fs=focalScreen(s,fr);
   gl.uniform2fv(U["uZc"+which],fs);
   var b=beatOf(s,t);
-  gl.uniform1f(U["uZoom"+which],1+(s.zoom||0)*b);
+  gl.uniform1f(U["uZoom"+which],1+(s.zoom||0)*zoomOf(s,t));
   gl.uniform3fv(U["uSig"+which],s.col);
   gl.uniform1f(U["uBeat"+which],b);
   gl.uniform1f(U["uGlow"+which],s.glow||.6);
