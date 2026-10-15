@@ -162,7 +162,7 @@ var AT=(function(){
   var cx=null;
   try{cx=cv&&cv.getContext("2d");}catch(e){cx=null;}
   if(!cx||!space||typeof Path2D==="undefined"){if(cv)cv.hidden=true;return A;}
-  var LO=86.2,HI=109.3,B0=87.5,B1=108,SIG=.15;   /* Zeilen reichen etwas ueber das Band hinaus und laufen dort aus */
+  var LO=86.2,HI=109.3,B0=87.5,B1=108,SIG=.2;   /* Zeilen reichen etwas ueber das Band hinaus und laufen dort aus */
   var S={w:0,h:0,dpr:1,M:420,x0:0,x1:0,by:0,hy:0,vx:0,small:false,rows:[],items:[],t0:0,raf:0,vis:true,last:0,
          cam:0,camT:0,hover:null,pin:null,touch:false,wt:{},tgt:{},fixed:null,lt:0};
   ORDER.forEach(function(k){S.wt[k]=1;S.tgt[k]=1;});
@@ -173,7 +173,7 @@ var AT=(function(){
     S.items=items.filter(function(it){return it.published&&isFinite(parseFloat(it.fm));});
     S.items.forEach(function(it,k){
       it._fm=parseFloat(it.fm);
-      it._h=.62+.3*hash1(k*3.7+it._fm*.13);
+      it._h=.5+.2*hash1(k*3.7+it._fm*.13);
       it._ph=hash1(k*1.31+.5)*6.2832;
       it._sp=.45+.35*hash1(k*5.17+1.9);
       (byDate[it.published]=byDate[it.published]||[]).push(it);
@@ -211,7 +211,7 @@ var AT=(function(){
     S.all.forEach(function(r){
       var rp=new Float32Array(M);
       for(var i=0;i<M;i++)rp[i]=.012*vnoise(i*.07+r.seed)+.006*vnoise(i*.29+r.seed*2.1);
-      r.rp=rp;r.a=new Float32Array(M);
+      r.rp=rp;r.a=new Float32Array(M);r.sw=new Float32Array(M);
     });
   }
   function resize(){
@@ -244,7 +244,11 @@ var AT=(function(){
     var dt=S.lt?clamp(t-S.lt,0,.1):0;S.lt=t;
     ORDER.forEach(function(ch){S.wt[ch]+=(S.tgt[ch]-S.wt[ch])*(dt?1-Math.exp(-dt/.28):1);});
     S.cam+=(S.camT-S.cam)*(dt?1-Math.exp(-dt/.9):1);
-    var vx=S.vx+S.cam*(S.x1-S.x0)*.035,DY=S.by-S.hy,AH=DY*(S.small?.36:.42);
+    /* Owner 15.10.: "die wellen hier extrem unruhig ... wenn wir die signale bissl abflachen und nen tacken mehr
+       animation (dass sie sich wirklich bewegen in wellenform, aehnlich wie ein ozean wellengang hat)" -- Kaemme flach
+       und weich, darunter eine Duenung: lange Wellen, die langsam von hinten nach vorn rollen, die Kaemme reiten darauf */
+    var vx=S.vx+S.cam*(S.x1-S.x0)*.035,DY=S.by-S.hy,AH=DY*(S.small?.2:.24);
+    var ts=reduce?0:t,SW=(S.small?6:11)*dpr;
     var xlo=fx(LO),xhi=fx(HI),e0=(B0-LO)/(HI-LO),e1=(B1-LO)/(HI-LO);
     var intro=reduce||S.fixed!=null||S.still?99:t,marks=[];
     for(i=0;i<S.items.length;i++)S.items[i]._x=null;   /* nur gezeichnete Kaemme sind waehlbar */
@@ -252,23 +256,28 @@ var AT=(function(){
     for(var ri=0;ri<S.rows.length;ri++){
       var row=S.rows[ri],d=row.d,sc=zs(d),yb=zy(d),ah=AH*(1-d*.68),fd=1-d;
       var rise=ease((intro-(d>0?(1-d):1)*1.1)/.9);   /* vom ersten Signal nach vorn, die neuesten zuletzt */
-      var a=row.a;
-      for(i=0;i<M;i++)a[i]=row.rp[i]*(.4+.6*rise);
+      var a=row.a,sw=row.sw,sa=SW*(1-d*.55)*rise;
+      for(i=0;i<M;i++){
+        var u=i/(M-1);
+        sw[i]=sa*(.68*Math.sin(d*9-ts*.8+u*2.4)+.32*Math.sin(u*7.3+ts*.37+d*4.1+1.3));   /* Kamm der Duenung wandert nach vorn */
+        a[i]=row.rp[i]*(.4+.6*rise);
+      }
       for(k=0;k<row.items.length;k++){
         var it=row.items[k],wt=S.wt[it.channel]==null?1:S.wt[it.channel];
         var br=reduce?1:1+.05*Math.sin(t*it._sp+it._ph);
-        var H=it._h*br*rise*(.3+.7*wt)*(it===S.hover?1.12:1);
+        var lift=sa?sw[Math.round(it._c)]/sa:0;   /* auf dem Wellenkamm etwas hoeher, im Tal etwas flacher */
+        var H=it._h*br*rise*(.3+.7*wt)*(1+.18*lift)*(it===S.hover?1.12:1);
         it._H=H;
         for(i=it._i0;i<=it._i1;i++)a[i]+=H*it._g[i-it._i0];
       }
       var xl=vx+(xlo-vx)*sc,xr=vx+(xhi-vx)*sc,step=(xr-xl)/(M-1);
       var path=new Path2D();
-      for(i=0;i<M;i++){var x=xl+step*i,y=yb-a[i]*ah;if(i)path.lineTo(x,y);else path.moveTo(x,y);}
+      for(i=0;i<M;i++){var x=xl+step*i,y=yb-a[i]*ah-sw[i];if(i)path.lineTo(x,y);else path.moveTo(x,y);}
       /* Flaeche unter der Linie verdeckt die Zeilen dahinter */
-      var fill=new Path2D(path);fill.lineTo(xr,yb+2*dpr);fill.lineTo(xl,yb+2*dpr);fill.closePath();
+      var fill=new Path2D(path);fill.lineTo(xr,yb+sa+2*dpr);fill.lineTo(xl,yb+sa+2*dpr);fill.closePath();
       c.fillStyle="rgba(4,6,11,"+(.55+.4*fd).toFixed(3)+")";c.fill(fill);
       /* Grundlinie: fast unsichtbar, an den Enden ausgeblendet */
-      var ab=.012+.06*fd*fd,gl=c.createLinearGradient(xl,0,xr,0);
+      var ab=.016+.075*fd*fd,gl=c.createLinearGradient(xl,0,xr,0);   /* etwas sichtbarer: die Wasserflaeche traegt die Bewegung */
       gl.addColorStop(0,"rgba(150,165,205,0)");gl.addColorStop(e0,"rgba(150,165,205,"+ab.toFixed(3)+")");
       gl.addColorStop(e1,"rgba(150,165,205,"+ab.toFixed(3)+")");gl.addColorStop(1,"rgba(150,165,205,0)");
       c.strokeStyle=gl;c.lineWidth=(.55+.55*fd)*dpr;c.stroke(path);
@@ -280,13 +289,14 @@ var AT=(function(){
         var hot=q===S.hover,al=ka*(.22+.78*qw)*(S.hover&&!hot?.75:1);
         if(hot)al=1;
         var seg=new Path2D(),i0=q._i0,i1=q._i1;
-        for(i=i0;i<=i1;i++){var sx=xl+step*i,sy=yb-a[i]*ah;if(i>i0)seg.lineTo(sx,sy);else seg.moveTo(sx,sy);}
+        for(i=i0;i<=i1;i++){var sx=xl+step*i,sy=yb-a[i]*ah-sw[i];if(i>i0)seg.lineTo(sx,sy);else seg.moveTo(sx,sy);}
         var g=c.createLinearGradient(xl+step*i0,0,xl+step*i1,0);
         g.addColorStop(0,rgba(mix,0));g.addColorStop(.5,rgba(mix,al));g.addColorStop(1,rgba(mix,0));
         if(hot||(fd>.93&&qw>.5)){c.save();c.globalAlpha=hot?.5:.28;c.strokeStyle=g;c.lineWidth=(hot?7:5)*dpr;c.stroke(seg);c.restore();}
         c.strokeStyle=g;c.lineWidth=(hot?2.2:(.7+1.1*fd))*dpr;c.stroke(seg);
         /* Lage merken: Spitze und Grundlinie fuer Maus und Hinweis */
-        q._x=xl+step*q._c;q._top=yb-q._H*ah;q._yb=yb;q._d=d;q._spx=step*SIG*(M-1)/(HI-LO);
+        var qs=sw[Math.round(q._c)];
+        q._x=xl+step*q._c;q._top=yb-q._H*ah-qs;q._yb=yb-qs;q._d=d;q._spx=step*SIG*(M-1)/(HI-LO);
       }
       /* Zeitmarke am rechten Ende der Zeile (gezeichnet nach allen Zeilen, sonst verdecken die vorderen sie) */
       /* nicht am Horizont: dort steht die Anzeige mit dem ersten Signal schon direkt darueber */
@@ -320,8 +330,8 @@ var AT=(function(){
     }
   }
   function frame(){
-    S.raf=0;S.still=false;
-    if(!S.vis||document.hidden)return;
+    S.raf=0;S.still=false;S.fc=(S.fc||0)+1;
+    if(!S.vis||document.hidden){S.stop=(S.vis?'':'vis ')+(document.hidden?'hidden':'');return;}
     var t=performance.now();
     if(t-S.last>=(S.small?40:31)){S.last=t;draw();}
     S.raf=requestAnimationFrame(frame);
@@ -443,7 +453,7 @@ fetch("assets/archive.json")
     if(TEST&&TEST.has("probe")&&AT.S)setTimeout(function(){
       var cv=document.getElementById("atlas"),d=cv.getContext("2d").getImageData(0,0,cv.width,cv.height).data,n=0;
       for(var i=3;i<d.length;i+=16)if(d[i]>8)n++;
-      document.title="PROBE n="+n+" still="+AT.S.still+" lastAgo="+Math.round(performance.now()-AT.S.last)+" drawn="+AT.S.drawn;
+      document.title="PROBE n="+n+" still="+AT.S.still+" lastAgo="+Math.round(performance.now()-AT.S.last)+" drawn="+AT.S.drawn+" fc="+AT.S.fc+" stop="+AT.S.stop+" vis="+AT.S.vis+" hidden="+document.hidden;
     },3500);
   })
   .catch(function(){

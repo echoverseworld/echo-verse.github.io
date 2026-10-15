@@ -65,6 +65,7 @@ main.files{padding:26px var(--pad) 110px}
   background:linear-gradient(90deg,rgba(var(--c-rgb),.04),transparent 45%),var(--bg-raise);
   transition:border-color .3s,box-shadow .4s;
 }
+.file.drift{--c:#FF2D9B;--c-rgb:255,45,155}
 .file.pulse{--c:#7C5CFF;--c-rgb:124,92,255}
 .file.vigil{--c:#FF9E3D;--c-rgb:255,158,61}
 .file.aurora{--c:#F5F2EA;--c-rgb:245,242,234}
@@ -176,6 +177,8 @@ main.files{padding:26px var(--pad) 110px}
     <i class="blip" data-file="f5" style="--a:252deg;--r:26%;--c:#7C5CFF;--d:11.20s"></i>
     <i class="blip" data-file="f6" style="--a:299deg;--r:31%;--c:#FF9E3D;--d:13.29s"></i>
     <i class="blip" data-file="f7" style="--a:338deg;--r:34%;--c:#F5F2EA;--d:15.02s"></i>
+    <i class="blip" data-file="f8" style="--a:62deg;--r:33%;--c:#22D3EE;--d:2.76s"></i>
+    <i class="blip" data-file="f9" style="--a:124deg;--r:20%;--c:#FF2D9B;--d:5.51s"></i>
   </div>
   <div class="wrap ph-grid">
     <div>
@@ -184,7 +187,7 @@ main.files{padding:26px var(--pad) 110px}
       <p class="ph-sub">Recovered documentation of the ECHO system. Files decrypt on request. Contents are reconstructions — read them as such.</p>
     </div>
     <div class="ph-card">
-      <div class="pc-big"><span id="decCount">0</span><small>/ 7 DECRYPTED</small></div>
+      <div class="pc-big"><span id="decCount">0</span><small>/ 9 DECRYPTED</small></div>
       <div class="pc-row"><span class="dot" aria-hidden="true"></span><span>CLEARANCE: LISTENER</span></div>
       <div class="pc-band">RESTRICTED · DEEPER SECTORS SEALED</div>
     </div>
@@ -377,10 +380,57 @@ main.files{padding:26px var(--pad) 110px}
       </div></div>
     </div>
 
-    <!-- FILE 0008: versiegelt -- tiefere Sektoren -->
-    <div class="file locked reveal">
-      <button class="file-head" type="button" aria-label="File 0008, encrypted">
+    <!-- FILE 0008 -->
+    <div class="file reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f8">
         <span class="f-id">FILE 0008</span>
+        <span class="f-name">THE MEMORY BAND</span>
+        <span class="f-tag">SIGNAL 95.3</span>
+        <span class="f-status">SEALED</span>
+        <span class="f-bar" aria-hidden="true"></span>
+      </button>
+      <div class="file-body" id="f8" hidden><div class="inner">
+        <div class="syslog"><span class="k">[SWEEP]</span>  first survey after the Silence. carrier 95.3 holds. noise floor: <span class="ok">stable.</span>
+<span class="k">[SCAN]</span>   fragments recovered: night drives, coastal roads, a summer that would not end.
+<span class="k">[CHECK]</span>  source cities: no reply. timestamps: after midnight, mostly.
+<span class="k">[TUNE]</span>   carrier 95.3 transmitting — <span class="ok">steady. the first band to hold.</span>
+<span class="k">designation:</span> <span class="ok">ECHO FREQUENCY</span></div>
+        <div class="lore-log">
+          <p>The first sector the archive reopened was the gentlest one. Not the loudest memories — the ones people kept for themselves: the drive home with the windows down, the city lights sliding past, the hour when nobody called. <span class="hl">They were stored softly, so they survived.</span></p>
+          <p>Reconstruction came easy here and still came out imperfect. The roads in these fragments lead to cities that no longer answer; the summers have no last day. ECHO did not correct that. <span class="cy">It is how the memories were kept.</span></p>
+          <p>Carrier 95.3 was the first to hold steady after the Silence. The registry lists it as the memory band. It was never discovered — <span class="hl">it is where the archive started listening.</span></p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- FILE 0009 -->
+    <div class="file drift reveal">
+      <button class="file-head" type="button" aria-expanded="false" aria-controls="f9">
+        <span class="f-id">FILE 0009</span>
+        <span class="f-name">BURNED INTO TAPE</span>
+        <span class="f-tag">SIGNAL 97.1</span>
+        <span class="f-status">SEALED</span>
+        <span class="f-bar" aria-hidden="true"></span>
+      </button>
+      <div class="file-body" id="f9" hidden><div class="inner">
+        <div class="syslog"><span class="k">[SWEEP]</span>  second carrier, same night. 97.1. expected: memory. found: <span class="bad">overload.</span>
+<span class="k">[SCAN]</span>   fragments recovered: engines at the limit, wet asphalt, tail-lights, a crowd counting down.
+<span class="k">[CHECK]</span>  source medium: magnetic tape. saturated. <span class="bad">clipping on every track.</span>
+<span class="k">[RESOLVE]</span> distortion is not damage. <span class="mg">it is the memory.</span>
+<span class="k">[TUNE]</span>   carrier 97.1 transmitting — <span class="mg">raw. loud. burning.</span>
+<span class="k">designation:</span> <span class="mg">ECHO DRIFT</span></div>
+        <div class="lore-log">
+          <p>Some memories were never thought. They were felt — in the hands on a wheel, in the chest when the bass hit, in the seconds before a car breaks loose on purpose. Nobody wrote them down. <span class="hl">They were burned into tape, too loud for the recorder, and that is how they survived.</span></p>
+          <p>The archive tried to clean them and lost them: every pass of noise reduction took the memory with it. So ECHO stopped repairing. The distortion stays, the overdrive stays, and the voices in these fragments stay as they were found — <span class="mg">cut too short to hold a word.</span> A shout, a count, a breath.</p>
+          <p>Carrier 97.1 went live the same night as 95.3. The registry calls it the raw band — the physical layer. <span class="hl">Where Frequency remembers how the night looked, Drift remembers how it felt.</span></p>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- FILE 0010: versiegelt -- tiefere Sektoren -->
+    <div class="file locked reveal">
+      <button class="file-head" type="button" aria-label="File 0010, encrypted">
+        <span class="f-id">FILE 0010</span>
         <span class="f-name">▓▓▓▓▓ ▓▓ ▓ ▓▓▓▓ ▓▓▓▓▓▓▓</span>
         <span class="f-tag">SECTOR UNKNOWN</span>
         <span class="f-status">ENCRYPTED</span>
