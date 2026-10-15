@@ -236,6 +236,13 @@ var AT=(function(){
   function zy(d){return S.by-(S.by-S.hy)*(1-1/(1+d*1.15))/(1-1/2.15);}
   function zs(d){return 1-d*.3;}
   function ease(x){x=clamp(x,0,1);return 1-Math.pow(1-x,3);}
+  var SCP=16,SCD=7,SCOFF=9,SC=false,SCph=0;   /* Takt, Dauer eines Durchlaufs, erster Durchlauf ~7 s nach dem Laden */
+  function rise0(t){return reduce||S.fixed!=null||S.still?1:ease((t-1.1)/.9);}   /* Aufbau fertig: erst dann scannen */
+  function scanGlow(q){
+    if(!SC)return 0;
+    var tp=(q._fm-B0)/(B1-B0)*SCD;
+    return SCph<tp?0:Math.exp(-(SCph-tp)/1.3);
+  }
 
   function draw(){
     if(!A.ok)return;
@@ -248,7 +255,11 @@ var AT=(function(){
        animation (dass sie sich wirklich bewegen in wellenform, aehnlich wie ein ozean wellengang hat)" -- Kaemme flach
        und weich, darunter eine Duenung: lange Wellen, die langsam von hinten nach vorn rollen, die Kaemme reiten darauf */
     var vx=S.vx+S.cam*(S.x1-S.x0)*.035,DY=S.by-S.hy,AH=DY*(S.small?.2:.24);
-    var ts=reduce?0:t,SW=(S.small?6:11)*dpr;
+    var ts=reduce?0:t,SW=(S.small?10:18)*dpr;
+    /* Suchstrahl (Owner 15.10.: "ne art von scanner ... der periodisch ueber die animation scannt und unterschiedliche
+       frequencen aufleuchten laesst"): alle 16 s einmal von 88 bis 108 MHz in 7 s, ueber alle Sendetage zugleich;
+       wer ueberstrichen wird, leuchtet kurz in voller Kanalfarbe und glimmt in gut 1 s ab. Nicht bei "Bewegung reduzieren". */
+    SCph=(ts+SCOFF)%SCP;SC=!reduce&&rise0(t)>.98;   /* E935: mehr Hub (Owner: "duerfen sich gerne noch staerker auf und ab bewegen") */
     var xlo=fx(LO),xhi=fx(HI),e0=(B0-LO)/(HI-LO),e1=(B1-LO)/(HI-LO);
     var intro=reduce||S.fixed!=null||S.still?99:t,marks=[];
     for(i=0;i<S.items.length;i++)S.items[i]._x=null;   /* nur gezeichnete Kaemme sind waehlbar */
@@ -264,9 +275,9 @@ var AT=(function(){
       }
       for(k=0;k<row.items.length;k++){
         var it=row.items[k],wt=S.wt[it.channel]==null?1:S.wt[it.channel];
-        var br=reduce?1:1+.05*Math.sin(t*it._sp+it._ph);
+        var br=reduce?1:1+.08*Math.sin(t*it._sp+it._ph);
         var lift=sa?sw[Math.round(it._c)]/sa:0;   /* auf dem Wellenkamm etwas hoeher, im Tal etwas flacher */
-        var H=it._h*br*rise*(.3+.7*wt)*(1+.18*lift)*(it===S.hover?1.12:1);
+        var H=it._h*br*rise*(.3+.7*wt)*(1+.4*lift)*(1+.12*scanGlow(it))*(it===S.hover?1.12:1);
         it._H=H;
         for(i=it._i0;i<=it._i1;i++)a[i]+=H*it._g[i-it._i0];
       }
@@ -275,25 +286,33 @@ var AT=(function(){
       for(i=0;i<M;i++){var x=xl+step*i,y=yb-a[i]*ah-sw[i];if(i)path.lineTo(x,y);else path.moveTo(x,y);}
       /* Flaeche unter der Linie verdeckt die Zeilen dahinter */
       var fill=new Path2D(path);fill.lineTo(xr,yb+sa+2*dpr);fill.lineTo(xl,yb+sa+2*dpr);fill.closePath();
-      c.fillStyle="rgba(4,6,11,"+(.55+.4*fd).toFixed(3)+")";c.fill(fill);
+      /* E935: Flaeche zu den Enden und nach hinten weich -- vorher endete sie hart (Owner: "kanten ... fallen se schon arg auf") */
+      var fa=(.12+.83*Math.pow(fd,1.4)).toFixed(3),gf=c.createLinearGradient(xl,0,xr,0);
+      gf.addColorStop(0,"rgba(4,6,11,0)");gf.addColorStop(Math.min(e0+.05,.49),"rgba(4,6,11,"+fa+")");
+      gf.addColorStop(Math.max(e1-.05,.51),"rgba(4,6,11,"+fa+")");gf.addColorStop(1,"rgba(4,6,11,0)");
+      c.fillStyle=gf;c.fill(fill);
       /* Grundlinie: fast unsichtbar, an den Enden ausgeblendet */
       var ab=.016+.075*fd*fd,gl=c.createLinearGradient(xl,0,xr,0);   /* etwas sichtbarer: die Wasserflaeche traegt die Bewegung */
       gl.addColorStop(0,"rgba(150,165,205,0)");gl.addColorStop(e0,"rgba(150,165,205,"+ab.toFixed(3)+")");
       gl.addColorStop(e1,"rgba(150,165,205,"+ab.toFixed(3)+")");gl.addColorStop(1,"rgba(150,165,205,0)");
       c.strokeStyle=gl;c.lineWidth=(.55+.55*fd)*dpr;c.stroke(path);
       /* Kaemme in der Farbe ihres Kanals; die Vergangenheit verblasst nach hinten */
-      var ka=.07+.82*Math.pow(fd,1.8);
+      var ka=.06+.66*Math.pow(fd,1.8);
       for(k=0;k<row.items.length;k++){
         var q=row.items[k],qw=S.wt[q.channel]==null?1:S.wt[q.channel],col=CH_RGB[q.channel]||[200,210,230];
-        var mix=[Math.round(130+(col[0]-130)*qw),Math.round(140+(col[1]-140)*qw),Math.round(165+(col[2]-165)*qw)];
+        /* E935: nur ein Hauch der Kanalfarbe auf kuehlem Blaugrau (Owner: "luftschlangenmaessig"); voll nur unter der Maus,
+           etwas mehr fuer den gewaehlten Kanal im Filter */
+        var sg=scanGlow(q)*(qw>.5?1:.25),tint=q===S.hover?1:Math.max((filter!=="all"&&q.channel===filter?.72:.34)*qw,.95*sg);
+        var mix=[Math.round(150+(col[0]-150)*tint),Math.round(160+(col[1]-160)*tint),Math.round(186+(col[2]-186)*tint)];
         var hot=q===S.hover,al=ka*(.22+.78*qw)*(S.hover&&!hot?.75:1);
-        if(hot)al=1;
+        if(hot)al=1;else if(sg)al=Math.max(al,Math.min(1,ka*.4+.7*sg));
         var seg=new Path2D(),i0=q._i0,i1=q._i1;
         for(i=i0;i<=i1;i++){var sx=xl+step*i,sy=yb-a[i]*ah-sw[i];if(i>i0)seg.lineTo(sx,sy);else seg.moveTo(sx,sy);}
         var g=c.createLinearGradient(xl+step*i0,0,xl+step*i1,0);
         g.addColorStop(0,rgba(mix,0));g.addColorStop(.5,rgba(mix,al));g.addColorStop(1,rgba(mix,0));
-        if(hot||(fd>.93&&qw>.5)){c.save();c.globalAlpha=hot?.5:.28;c.strokeStyle=g;c.lineWidth=(hot?7:5)*dpr;c.stroke(seg);c.restore();}
-        c.strokeStyle=g;c.lineWidth=(hot?2.2:(.7+1.1*fd))*dpr;c.stroke(seg);
+        /* weicher Schimmer unter einem schmalen Kern statt eines harten Strichs */
+        c.save();c.globalAlpha=hot?.5:.2+.3*sg;c.strokeStyle=g;c.lineWidth=(hot?7:(2.5+3*fd+3*sg))*dpr;c.stroke(seg);c.restore();
+        c.strokeStyle=g;c.lineWidth=(hot?2:(.5+.8*fd))*dpr;c.stroke(seg);
         /* Lage merken: Spitze und Grundlinie fuer Maus und Hinweis */
         var qs=sw[Math.round(q._c)];
         q._x=xl+step*q._c;q._top=yb-q._H*ah-qs;q._yb=yb-qs;q._d=d;q._spx=step*SIG*(M-1)/(HI-LO);
@@ -301,6 +320,17 @@ var AT=(function(){
       /* Zeitmarke am rechten Ende der Zeile (gezeichnet nach allen Zeilen, sonst verdecken die vorderen sie) */
       /* nicht am Horizont: dort steht die Anzeige mit dem ersten Signal schon direkt darueber */
       if(row.mark&&!S.small&&rise>.5&&d<.97)marks.push([row.mark,vx+(fx(B1+.5)-vx)*sc,yb,.22+.4*fd]);
+    }
+    if(SC&&SCph<SCD){
+      var fs=B0+(B1-B0)*SCph/SCD,env=Math.sin(Math.PI*SCph/SCD),bx0=vx+(fx(fs)-vx)*zs(0),bx1=vx+(fx(fs)-vx)*zs(1),by0=S.by+2*dpr,by1=zy(1)-12*dpr;
+      var gs=c.createLinearGradient(0,by0,0,by1);
+      gs.addColorStop(0,"rgba(205,228,245,"+(.55*env).toFixed(3)+")");gs.addColorStop(1,"rgba(205,228,245,0)");
+      c.save();c.lineCap="round";
+      c.globalAlpha=.16;c.strokeStyle=gs;c.lineWidth=16*dpr;c.beginPath();c.moveTo(bx0,by0);c.lineTo(bx1,by1);c.stroke();
+      c.globalAlpha=1;c.lineWidth=1.2*dpr;c.beginPath();c.moveTo(bx0,by0);c.lineTo(bx1,by1);c.stroke();
+      c.restore();
+      c.font=Math.round(9*dpr)+"px 'Share Tech Mono',ui-monospace,monospace";c.textBaseline="bottom";c.textAlign="center";
+      var lbl="SCAN "+fs.toFixed(1),lw=c.measureText(lbl).width;c.fillStyle="rgba(4,6,11,"+(.75*env).toFixed(3)+")";c.fillRect(bx0-lw/2-4*dpr,S.by-17*dpr,lw+8*dpr,14*dpr);c.fillStyle="rgba(205,228,245,"+(.8*env).toFixed(3)+")";c.fillText(lbl,bx0,S.by-4*dpr);
     }
     c.font=Math.round(9*dpr)+"px 'Share Tech Mono',ui-monospace,monospace";c.textBaseline="middle";c.textAlign="left";
     marks.forEach(function(m){c.fillStyle="rgba(139,147,168,"+m[3].toFixed(3)+")";c.fillText(m[0],m[1],m[2]);});

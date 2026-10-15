@@ -932,6 +932,19 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
    scheduled/private Uploads koennen also nie "Video unavailable" zeigen).
    Fallback ohne latest.json: Uploads-Playlist (data-list). */
 var latestSignal=fetch("assets/latest.json").then(function(r){return r.ok?r.json():null}).catch(function(){return null});
+/* Vorschaubild = Artwork der Sendung, die der Player wirklich laedt (Owner 15.10.: Bild und Video passten nicht
+   zusammen). assets/latest_<kanal>.jpg zieht die GitHub Action seit 09.10.2026 nicht mehr nach (Download vom
+   YouTube-Bildserver scheitert dort); archive.json (taeglicher Archiv-Job) kennt das Artwork je Video-ID.
+   Fehlt die Sendung dort noch, bleibt das bisherige Bild. Alles von der eigenen Domain. */
+Promise.all([latestSignal,fetch("assets/archive.json").then(function(r){return r.ok?r.json():null}).catch(function(){return null})]).then(function(res){
+  var latest=res[0],arch=res[1],byId={};
+  if(!latest||!arch||!arch.items)return;
+  arch.items.forEach(function(it){if(it.youtube_id)byId[it.youtube_id]=it;});
+  document.querySelectorAll(".player[data-channel]").forEach(function(p){
+    var it=byId[latest[p.getAttribute("data-channel")]],img=p.querySelector(".player-face img");
+    if(it&&img&&(it.art||it.thumb))img.src=it.art||it.thumb;
+  });
+});
 document.querySelectorAll(".player").forEach(function(p){
   var face=p.querySelector(".player-face");
   if(!face)return;
