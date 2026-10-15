@@ -15,6 +15,7 @@
 - Bilder: `assets/hero/<key>.jpg` + `<key>_depth.jpg` (Rot = Tiefe für die Parallaxe, Grün = ausgeweitete Tiefe für die Verdeckung des Worts). Neu bauen nur mit `97_Programme/tools/Build-WebsiteHero.py` im DepthFlow-Venv – nie direkt in diesen Checkout, der Archiv-Job veröffentlicht jeden Commit auf `main` (E898). Nach einem Tausch `ASSET_V` in `receiver.js` und `?v=` in `index.html` (preload, `--amb`) hochzählen.
 - Prüfansicht nur lokal (localhost/127.0.0.1): `?rx=drift,3` eingerastet, `?rx=reveal,pulse,0.4` mitten in der Rekonstruktion, `?rx=89.2` tote, `?rx=99.0` leere Frequenz, `&rxcss` CSS-Fassung. Headless-Browser fotografieren die WebGL-Leinwand nur über das `<img>`-Abbild dieser Ansicht.
 - Keine Requests nach außen, nichts im Speicher des Besuchers; Ton (FM-Rauschen) erst nach Klick auf SOUND.
+- Vorschaubild der Player in den Kanal-Panels: das Artwork aus `assets/archive.json` zur Video-ID in `assets/latest.json` (E935). `assets/latest_<kanal>.jpg` ist nur noch Rückfall – die GitHub Action lädt sie seit 09.10.2026 nicht mehr nach (Download vom YouTube-Bildserver scheitert dort, Ursache ohne Protokolle unbelegt).
 
 ## Unterseiten im Look der Startseite (E932)
 
