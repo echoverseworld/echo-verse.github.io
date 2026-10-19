@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-16T18:30:03",
+  "generated": "2026-10-19T18:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -16,9 +16,83 @@
     "vigil": {
       "name": "ECHO Vigil",
       "fm": "106.5"
+    },
+    "aurora": {
+      "name": "ECHO Aurora",
+      "fm": "107.9"
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 45,
+      "title": "ECHO 91.6 — FLICKERING FOREVER // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "91.6",
+      "fragment": "FLICKERING FOREVER",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "63:39",
+      "published": "2026-10-19",
+      "youtube_id": "-Y-BxBOb0d0",
+      "thumb": "assets/archive/wave_045.jpg",
+      "art": "assets/fragments/wave_045.jpg",
+      "page": "sig/frequency-045.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 45,
+      "title": "ECHO 89.7 — KILL SWITCH SERMON // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "89.7",
+      "fragment": "KILL SWITCH SERMON",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "62:52",
+      "published": "2026-10-19",
+      "youtube_id": "h_IAAJWLFp8",
+      "thumb": "assets/archive/drift_045.jpg",
+      "art": "assets/fragments/drift_045.jpg",
+      "page": "sig/drift-045.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 34,
+      "title": "ECHO 90.0 — MIDNIGHT MANGROVE // Melodic House, Organic House, Chill House Mix",
+      "fm": "90.0",
+      "fragment": "MIDNIGHT MANGROVE",
+      "genres": "Melodic House, Organic House, Chill House",
+      "duration": "63:03",
+      "published": "2026-10-19",
+      "youtube_id": "aZ6BlyDDW-g",
+      "thumb": "assets/archive/pulse_034.jpg",
+      "art": "assets/fragments/pulse_034.jpg",
+      "page": "sig/pulse-034.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 32,
+      "title": "ECHO 88.5 — CARRIER WITHOUT END // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "fm": "88.5",
+      "fragment": "CARRIER WITHOUT END",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "61:15",
+      "published": "2026-10-19",
+      "youtube_id": "WTZonJd01eA",
+      "thumb": "assets/archive/vigil_032.jpg",
+      "art": "assets/fragments/vigil_032.jpg",
+      "page": "sig/vigil-032.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 1,
+      "title": "ECHO 102.5 — THE REPLY IT HOPED FOR // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
+      "fm": "102.5",
+      "fragment": "THE REPLY IT HOPED FOR",
+      "genres": "Ethereal Trance, Melodic Trance, Progressive Trance",
+      "duration": "64:27",
+      "published": "2026-10-19",
+      "youtube_id": "S84CtlCCnKM",
+      "thumb": "assets/archive/aurora_001.jpg",
+      "art": "assets/fragments/aurora_001.jpg",
+      "page": "sig/aurora-001.html"
+    },
     {
       "channel": "frequency",
       "volume": 44,
