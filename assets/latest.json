@@ -1,7 +1,11 @@
 {
-  "frequency": "-Y-BxBOb0d0",
-  "frequency_title": "ECHO 91.6 — FLICKERING FOREVER // Chillwave, Dreamwave, Downtempo Mix",
+  "frequency": "1aot25iLgBk",
+  "frequency_title": "ECHO 98.5 — EMBERS OF THE GRID // Synthwave, Dreamwave, Chillwave Mix",
   "recent_frequency": [
+    {
+      "id": "1aot25iLgBk",
+      "title": "ECHO 98.5 — EMBERS OF THE GRID // Synthwave, Dreamwave, Chillwave Mix"
+    },
     {
       "id": "-Y-BxBOb0d0",
       "title": "ECHO 91.6 — FLICKERING FOREVER // Chillwave, Dreamwave, Downtempo Mix"
@@ -13,15 +17,15 @@
     {
       "id": "lvmL7R4PKc8",
       "title": "ECHO 94.0 — STARS BENEATH THE ICE // Synthwave, Retrowave, Chillwave Mix"
-    },
-    {
-      "id": "8Tn6nXKNuPA",
-      "title": "ECHO 93.6 — ELECTRIC LONELINESS // Synthwave, Retrowave, Chillwave Mix"
     }
   ],
-  "drift": "h_IAAJWLFp8",
-  "drift_title": "ECHO 89.7 — KILL SWITCH SERMON // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "XgIF0KAZdQI",
+  "drift_title": "ECHO 104.5 — NITROUS NOCTURNE // Drift Phonk, Night Drive Mix",
   "recent_drift": [
+    {
+      "id": "XgIF0KAZdQI",
+      "title": "ECHO 104.5 — NITROUS NOCTURNE // Drift Phonk, Night Drive Mix"
+    },
     {
       "id": "h_IAAJWLFp8",
       "title": "ECHO 89.7 — KILL SWITCH SERMON // Aggressive Phonk, Gym Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "Fm9jd4tAoXE",
       "title": "ECHO 93.2 — IGNITION LITANY // Drift Phonk, Night Drive Mix"
-    },
-    {
-      "id": "16O3iPL16pg",
-      "title": "ECHO 104.4 — REV LIMITER PSALM // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "pulse": "aZ6BlyDDW-g",
-  "pulse_title": "ECHO 90.0 — MIDNIGHT MANGROVE // Melodic House, Organic House, Chill House Mix",
+  "pulse": "RrXSHdcRbgI",
+  "pulse_title": "ECHO 91.2 — NOMAD HEARTLINE // Melodic House, Organic House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "RrXSHdcRbgI",
+      "title": "ECHO 91.2 — NOMAD HEARTLINE // Melodic House, Organic House, Chill House Mix"
+    },
     {
       "id": "aZ6BlyDDW-g",
       "title": "ECHO 90.0 — MIDNIGHT MANGROVE // Melodic House, Organic House, Chill House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "nOsVXZeR1_I",
       "title": "ECHO 103.1 — EVERGREEN EMBRACE // Deep House, Melodic House, Organic House Mix"
-    },
-    {
-      "id": "AI_NkNdX_B4",
-      "title": "ECHO 94.3 — THE DEEP KNOWS // Melodic House, Deep House, Chill House Mix"
     }
   ],
-  "vigil": "WTZonJd01eA",
-  "vigil_title": "ECHO 88.5 — CARRIER WITHOUT END // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "C3T21WDodd4",
+  "vigil_title": "ECHO 100.1 — LAST OPERATOR // Dark Techno, Dub Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "C3T21WDodd4",
+      "title": "ECHO 100.1 — LAST OPERATOR // Dark Techno, Dub Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "WTZonJd01eA",
       "title": "ECHO 88.5 — CARRIER WITHOUT END // Hypnotic Techno, Deep Techno, Dark Techno Mix"
@@ -73,19 +77,19 @@
     {
       "id": "OFwe_muzKNU",
       "title": "ECHO 94.3 — THE VIGIL HOURS // Dark Techno, Hypnotic Techno, Deep Techno Mix"
-    },
-    {
-      "id": "Db7flC0fBUU",
-      "title": "ECHO 103.1 — ASH ON THE LENS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
     }
   ],
-  "aurora": "S84CtlCCnKM",
-  "aurora_title": "ECHO 102.5 — THE REPLY IT HOPED FOR // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
+  "aurora": "w8WzE0ijtCY",
+  "aurora_title": "ECHO 95.0 — CARRIER AT SUNRISE // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
   "recent_aurora": [
+    {
+      "id": "w8WzE0ijtCY",
+      "title": "ECHO 95.0 — CARRIER AT SUNRISE // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
+    },
     {
       "id": "S84CtlCCnKM",
       "title": "ECHO 102.5 — THE REPLY IT HOPED FOR // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
     }
   ],
-  "updated": "2026-10-21T12:01:09Z"
+  "updated": "2026-10-21T17:21:12Z"
 }
