@@ -591,14 +591,15 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
         <canvas class="rx-spec" aria-hidden="true"></canvas>
         <div class="rx-scale" aria-hidden="true"></div>
         <div class="rx-needle" aria-hidden="true"></div>
-        <button class="rx-st station dead" type="button" data-fq="89.2" style="left:7%" aria-label="89.2, signal lost"><span class="fq">89.2</span><span class="nm">—</span></button>
-        <button class="rx-st station dead" type="button" data-fq="91.7" style="left:22%" aria-label="91.7, signal lost"><span class="fq">91.7</span><span class="nm">—</span></button>
-        <a class="rx-st station live freq" data-key="frequency" data-fq="95.3" style="left:38%" href="#frequency" aria-label="ECHO Frequency, 95.3, live"><span class="fq">95.3</span><span class="nm">FREQUENCY</span></a>
-        <a class="rx-st station live drift" data-key="drift" data-fq="97.1" style="left:50%" href="#drift" aria-label="ECHO Drift, 97.1, live"><span class="fq">97.1</span><span class="nm">DRIFT</span></a>
-        <a class="rx-st station live pulse" data-key="pulse" data-fq="100.4" style="left:66%" href="#pulse" aria-label="ECHO Pulse, 100.4, live"><span class="fq">100.4</span><span class="nm">PULSE</span></a>
-        <button class="rx-st station dead" type="button" data-fq="103.8" style="left:79%" aria-label="103.8, signal lost"><span class="fq">103.8</span><span class="nm">—</span></button>
-        <a class="rx-st station live vigil" data-key="vigil" data-fq="106.5" style="left:88.5%" href="#vigil" aria-label="ECHO Vigil, 106.5, live"><span class="fq">106.5</span><span class="nm">VIGIL</span></a>
-        <a class="rx-st station live aurora rising" data-key="aurora" data-fq="107.9" style="left:96%" href="#aurora" aria-label="ECHO Aurora, 107.9, rising"><span class="fq">107.9</span><span class="nm">AURORA</span></a>
+        <button class="rx-st station dead" type="button" data-fq="89.2" style="left:5%" aria-label="89.2, signal lost"><span class="fq">89.2</span><span class="nm">—</span></button>
+        <button class="rx-st station dead" type="button" data-fq="91.7" style="left:13%" aria-label="91.7, signal lost"><span class="fq">91.7</span><span class="nm">—</span></button>
+        <a class="rx-st station live freq" data-key="frequency" data-fq="95.3" style="left:23%" href="#frequency" aria-label="ECHO Frequency, 95.3, live"><span class="fq">95.3</span><span class="nm">FREQUENCY</span></a>
+        <a class="rx-st station live drift" data-key="drift" data-fq="97.1" style="left:35%" href="#drift" aria-label="ECHO Drift, 97.1, live"><span class="fq">97.1</span><span class="nm">DRIFT</span></a>
+        <a class="rx-st station live pulse" data-key="pulse" data-fq="100.4" style="left:47%" href="#pulse" aria-label="ECHO Pulse, 100.4, live"><span class="fq">100.4</span><span class="nm">PULSE</span></a>
+        <button class="rx-st station dead" type="button" data-fq="103.8" style="left:59%" aria-label="103.8, signal lost"><span class="fq">103.8</span><span class="nm">—</span></button>
+        <a class="rx-st station live vigil" data-key="vigil" data-fq="106.5" style="left:69%" href="#vigil" aria-label="ECHO Vigil, 106.5, live"><span class="fq">106.5</span><span class="nm">VIGIL</span></a>
+        <a class="rx-st station live aurora rising" data-key="aurora" data-fq="107.9" style="left:79%" href="#aurora" aria-label="ECHO Aurora, 107.9, rising"><span class="fq">107.9</span><span class="nm">AURORA</span></a>
+        <button class="rx-st station dead" type="button" data-fq="108.0" style="left:92%" aria-label="108.0, signal lost"><span class="fq">108.0</span><span class="nm">—</span></button>
       </div>
       <p class="rx-note"><span id="deadMsg" aria-live="polite"></span><span class="rx-hint">// drag the dial or use ← → &nbsp;·&nbsp; most frequencies fell silent. <span id="bandCount">four carry a signal. a fifth is rising.</span></span></p>
     </div>
@@ -1303,6 +1304,6 @@ latestSignal.then(function(l){
   new IntersectionObserver(function(es){nav.classList.toggle("solid",es[0].intersectionRatio<.35);},{threshold:[0,.35,.7,1]}).observe(hero);
 })();
 </script>
-<script src="assets/receiver.js"></script>
+<script src="assets/receiver.js?v=2"></script>
 </body>
 </html>

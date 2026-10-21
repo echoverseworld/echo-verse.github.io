@@ -61,9 +61,10 @@ function now(){return performance.now()/1000+toff;}
 var REDUCE=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 var SAVE=!!(navigator.connection&&navigator.connection.saveData);
 
-/* Skala: Frequenz <-> Position (Prozent). Stueckweise linear ueber die Senderplaetze der alten Skala --
-   so bleiben 106.5 und 107.9 auch auf dem Handy auseinander, und Ziehen bleibt stetig. */
-var ANCH=[[87.5,0],[89.2,7],[91.7,22],[95.3,38],[97.1,50],[100.4,66],[103.8,79],[106.5,88.5],[107.9,96],[108.0,100]];
+/* Skala: Frequenz <-> Position (Prozent). Stueckweise linear ueber die Senderplaetze -- so bleiben 106.5 und
+   107.9 auch auf dem Handy auseinander, und Ziehen bleibt stetig. Seit E974 liegen die fuenf Sender mittig
+   (23-79 %), links zwei und rechts eine schlafende Frequenz (108.0 bei 92 %); dahinter ist das Bandende. */
+var ANCH=[[87.5,0],[89.2,5],[91.7,13],[95.3,23],[97.1,35],[100.4,47],[103.8,59],[106.5,69],[107.9,79],[108.0,92]];
 function posOf(f){
   for(var i=1;i<ANCH.length;i++){if(f<=ANCH[i][0]){var a=ANCH[i-1],b=ANCH[i];return lerp(a[1],b[1],(f-a[0])/(b[0]-a[0]));}}
   return 100;
