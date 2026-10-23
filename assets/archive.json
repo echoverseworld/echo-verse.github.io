@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-21T18:30:04",
+  "generated": "2026-10-23T18:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 47,
+      "title": "ECHO 103.6 — MIDNIGHT ARCHIVE // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "103.6",
+      "fragment": "MIDNIGHT ARCHIVE",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "62:12",
+      "published": "2026-10-23",
+      "youtube_id": "VG0a-I2N7HE",
+      "thumb": "assets/archive/wave_047.jpg",
+      "art": "assets/fragments/wave_047.jpg",
+      "page": "sig/frequency-047.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 47,
+      "title": "ECHO 94.9 — TORQUE DEMON // Phonk, Drift Phonk Mix",
+      "fm": "94.9",
+      "fragment": "TORQUE DEMON",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "61:38",
+      "published": "2026-10-23",
+      "youtube_id": "yADs4Du8zjA",
+      "thumb": "assets/archive/drift_047.jpg",
+      "art": "assets/fragments/drift_047.jpg",
+      "page": "sig/drift-047.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 36,
+      "title": "ECHO 93.3 — HARBOR OF HUSH // Deep House, Melodic House, Organic House Mix",
+      "fm": "93.3",
+      "fragment": "HARBOR OF HUSH",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "64:03",
+      "published": "2026-10-23",
+      "youtube_id": "54_HL8nH20M",
+      "thumb": "assets/archive/pulse_036.jpg",
+      "art": "assets/fragments/pulse_036.jpg",
+      "page": "sig/pulse-036.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 34,
+      "title": "ECHO 92.1 — COOLING TOWERS AT DAWN // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "fm": "92.1",
+      "fragment": "COOLING TOWERS AT DAWN",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "63:35",
+      "published": "2026-10-23",
+      "youtube_id": "WACvaVW1ZDI",
+      "thumb": "assets/archive/vigil_034.jpg",
+      "art": "assets/fragments/vigil_034.jpg",
+      "page": "sig/vigil-034.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 3,
+      "title": "ECHO 96.0 — LISTENING UPWARD // Melodic Trance, Uplifting Trance, Progressive Trance Mix",
+      "fm": "96.0",
+      "fragment": "LISTENING UPWARD",
+      "genres": "Melodic Trance, Uplifting Trance, Progressive Trance",
+      "duration": "63:24",
+      "published": "2026-10-23",
+      "youtube_id": "itprjX5SXvs",
+      "thumb": "assets/archive/aurora_003.jpg",
+      "art": "assets/fragments/aurora_003.jpg",
+      "page": "sig/aurora-003.html"
+    },
     {
       "channel": "frequency",
       "volume": 46,
