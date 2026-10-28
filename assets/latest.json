@@ -1,7 +1,11 @@
 {
-  "frequency": "ZQmtlbd-PtI",
-  "frequency_title": "ECHO 107.6 — SYNTHETIC MEMORIES // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "LTtvJTSms-E",
+  "frequency_title": "ECHO 88.5 — MOONLIGHT ON MONOLITHS // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "LTtvJTSms-E",
+      "title": "ECHO 88.5 — MOONLIGHT ON MONOLITHS // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "ZQmtlbd-PtI",
       "title": "ECHO 107.6 — SYNTHETIC MEMORIES // Retrowave, Synthwave, Cyberpunk Mix"
@@ -13,15 +17,15 @@
     {
       "id": "1aot25iLgBk",
       "title": "ECHO 98.5 — EMBERS OF THE GRID // Synthwave, Dreamwave, Chillwave Mix"
-    },
-    {
-      "id": "-Y-BxBOb0d0",
-      "title": "ECHO 91.6 — FLICKERING FOREVER // Chillwave, Dreamwave, Downtempo Mix"
     }
   ],
-  "drift": "gnEBPf52z1U",
-  "drift_title": "ECHO 105.3 — HAIRPIN HALO // Drift Phonk, Night Drive Mix",
+  "drift": "qG-DkAIUjbw",
+  "drift_title": "ECHO 95.7 — LOW BEAM LAMENT // Drift Phonk, Night Drive Mix",
   "recent_drift": [
+    {
+      "id": "qG-DkAIUjbw",
+      "title": "ECHO 95.7 — LOW BEAM LAMENT // Drift Phonk, Night Drive Mix"
+    },
     {
       "id": "gnEBPf52z1U",
       "title": "ECHO 105.3 — HAIRPIN HALO // Drift Phonk, Night Drive Mix"
@@ -33,15 +37,15 @@
     {
       "id": "XgIF0KAZdQI",
       "title": "ECHO 104.5 — NITROUS NOCTURNE // Drift Phonk, Night Drive Mix"
-    },
-    {
-      "id": "h_IAAJWLFp8",
-      "title": "ECHO 89.7 — KILL SWITCH SERMON // Aggressive Phonk, Gym Phonk Mix"
     }
   ],
-  "pulse": "2zgxiGjZvHU",
-  "pulse_title": "ECHO 105.6 — EMBERS ON THE WATER // Melodic House, Deep House, Chill House Mix",
+  "pulse": "VZ8Mzsk8Y4Q",
+  "pulse_title": "ECHO 107.0 — BODY OF LIGHT // Deep House, Melodic House, Organic House Mix",
   "recent_pulse": [
+    {
+      "id": "VZ8Mzsk8Y4Q",
+      "title": "ECHO 107.0 — BODY OF LIGHT // Deep House, Melodic House, Organic House Mix"
+    },
     {
       "id": "2zgxiGjZvHU",
       "title": "ECHO 105.6 — EMBERS ON THE WATER // Melodic House, Deep House, Chill House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "RrXSHdcRbgI",
       "title": "ECHO 91.2 — NOMAD HEARTLINE // Melodic House, Organic House, Chill House Mix"
-    },
-    {
-      "id": "aZ6BlyDDW-g",
-      "title": "ECHO 90.0 — MIDNIGHT MANGROVE // Melodic House, Organic House, Chill House Mix"
     }
   ],
-  "vigil": "xLuKkJW8jZY",
-  "vigil_title": "ECHO 93.3 — NO ONE IS COMING // Dub Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "yrKFJEqu35c",
+  "vigil_title": "ECHO 101.5 — NO ACKNOWLEDGMENT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "yrKFJEqu35c",
+      "title": "ECHO 101.5 — NO ACKNOWLEDGMENT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "xLuKkJW8jZY",
       "title": "ECHO 93.3 — NO ONE IS COMING // Dub Techno, Deep Techno, Dark Techno Mix"
@@ -73,15 +77,15 @@
     {
       "id": "C3T21WDodd4",
       "title": "ECHO 100.1 — LAST OPERATOR // Dark Techno, Dub Techno, Hypnotic Techno Mix"
-    },
-    {
-      "id": "WTZonJd01eA",
-      "title": "ECHO 88.5 — CARRIER WITHOUT END // Hypnotic Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "aurora": "7scQRZzzLXQ",
-  "aurora_title": "ECHO 96.7 — A CITY MADE OF LISTENING // Progressive Trance, Melodic Trance, Ethereal Trance Mix",
+  "aurora": "1eubIFNA0A4",
+  "aurora_title": "ECHO 89.9 — THE ARCHIVE LOOKS UP // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
   "recent_aurora": [
+    {
+      "id": "1eubIFNA0A4",
+      "title": "ECHO 89.9 — THE ARCHIVE LOOKS UP // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
+    },
     {
       "id": "7scQRZzzLXQ",
       "title": "ECHO 96.7 — A CITY MADE OF LISTENING // Progressive Trance, Melodic Trance, Ethereal Trance Mix"
@@ -93,11 +97,7 @@
     {
       "id": "w8WzE0ijtCY",
       "title": "ECHO 95.0 — CARRIER AT SUNRISE // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
-    },
-    {
-      "id": "S84CtlCCnKM",
-      "title": "ECHO 102.5 — THE REPLY IT HOPED FOR // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
     }
   ],
-  "updated": "2026-10-28T13:11:59Z"
+  "updated": "2026-10-28T22:41:32Z"
 }
