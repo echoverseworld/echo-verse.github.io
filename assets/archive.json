@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-26T17:30:03",
+  "generated": "2026-10-28T17:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "aurora",
+      "volume": 5,
+      "title": "ECHO 89.9 — THE ARCHIVE LOOKS UP // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
+      "fm": "89.9",
+      "fragment": "THE ARCHIVE LOOKS UP",
+      "genres": "Ethereal Trance, Melodic Trance, Progressive Trance",
+      "duration": "63:35",
+      "published": "2026-10-28",
+      "youtube_id": "1eubIFNA0A4",
+      "thumb": "assets/archive/aurora_005.jpg",
+      "art": "assets/fragments/aurora_005.jpg",
+      "page": "sig/aurora-005.html"
+    },
+    {
+      "channel": "frequency",
+      "volume": 49,
+      "title": "ECHO 88.5 — MOONLIGHT ON MONOLITHS // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "88.5",
+      "fragment": "MOONLIGHT ON MONOLITHS",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "64:18",
+      "published": "2026-10-28",
+      "youtube_id": "LTtvJTSms-E",
+      "thumb": "assets/archive/wave_049.jpg",
+      "art": "assets/fragments/wave_049.jpg",
+      "page": "sig/frequency-049.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 49,
+      "title": "ECHO 95.7 — LOW BEAM LAMENT // Drift Phonk, Night Drive Mix",
+      "fm": "95.7",
+      "fragment": "LOW BEAM LAMENT",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "63:21",
+      "published": "2026-10-28",
+      "youtube_id": "qG-DkAIUjbw",
+      "thumb": "assets/archive/drift_049.jpg",
+      "art": "assets/fragments/drift_049.jpg",
+      "page": "sig/drift-049.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 38,
+      "title": "ECHO 107.0 — BODY OF LIGHT // Deep House, Melodic House, Organic House Mix",
+      "fm": "107.0",
+      "fragment": "BODY OF LIGHT",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "62:43",
+      "published": "2026-10-28",
+      "youtube_id": "VZ8Mzsk8Y4Q",
+      "thumb": "assets/archive/pulse_038.jpg",
+      "art": "assets/fragments/pulse_038.jpg",
+      "page": "sig/pulse-038.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 36,
+      "title": "ECHO 101.5 — NO ACKNOWLEDGMENT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "101.5",
+      "fragment": "NO ACKNOWLEDGMENT",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "63:18",
+      "published": "2026-10-28",
+      "youtube_id": "yrKFJEqu35c",
+      "thumb": "assets/archive/vigil_036.jpg",
+      "art": "assets/fragments/vigil_036.jpg",
+      "page": "sig/vigil-036.html"
+    },
     {
       "channel": "frequency",
       "volume": 48,
