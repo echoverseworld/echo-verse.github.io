@@ -224,8 +224,49 @@ section{scroll-margin-top:58px}
 button.rx-btn{cursor:pointer;font-family:var(--mono)}
 .rx-btn.listen:not(.ghost){box-shadow:0 0 18px color-mix(in srgb,var(--sig) 22%,transparent)}
 .rx-btn.listen.ghost{order:2}   /* beim Hoeren steht "weiter auf YouTube" vorn (am Handy oben) */
-.rx-band .lv{display:inline-flex;align-items:flex-end;gap:2px;height:.95em;margin-right:.7em;vertical-align:-.1em}
-.rx-band .lv i{width:3px;height:100%;background:var(--sig);transform-origin:bottom;transform:scaleY(.15);box-shadow:0 0 6px var(--sig)}
+.lv{display:inline-flex;align-items:flex-end;gap:2px;height:.95em;margin-right:.7em;vertical-align:-.1em}
+.lv i{width:3px;height:100%;background:var(--sig);transform-origin:bottom;transform:scaleY(.15);box-shadow:0 0 6px var(--sig)}
+/* Hoer-Paket (E1021): Werkzeugzeile, Mini-Tuner, FULL SIGNAL, Tastatur-Hilfe */
+.rx-tools{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:.55rem}
+.rx-tools button{background:none;border:0;padding:.3em 0;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--text-faint);cursor:pointer;transition:color .2s}
+.rx-tools button:hover,.rx-tools button:focus-visible{color:var(--text)}
+.rx-tools button[aria-pressed="true"]{color:var(--sig)}
+@media (hover:none){#rxKeysBtn{display:none}}
+.mt{
+  position:fixed;left:50%;bottom:max(12px,env(safe-area-inset-bottom));z-index:70;transform:translateX(-50%);
+  width:min(560px,calc(100% - 32px));display:flex;align-items:center;gap:2px;padding:6px 6px 6px 4px;
+  background:rgba(4,6,11,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid var(--line);border-top-color:color-mix(in srgb,var(--sig) 55%,transparent);border-radius:3px;
+  box-shadow:0 10px 40px rgba(0,0,0,.6),0 -1px 18px color-mix(in srgb,var(--sig) 14%,transparent);font-family:var(--mono);
+}
+@media (prefers-reduced-motion:no-preference){.mt:not([hidden]){animation:mtIn .45s cubic-bezier(.2,.8,.2,1)}@keyframes mtIn{from{opacity:0;transform:translate(-50%,14px)}}}
+body.mt-on{padding-bottom:76px}
+.mt button,.mt a{background:none;border:0;color:var(--text-dim);font:inherit;cursor:pointer;text-decoration:none}
+.mt-back{flex:1;min-width:0;display:flex;align-items:center;gap:.7em;padding:.55em .6em;text-align:left}
+.mt-back .lv{margin-right:0;flex:none}
+.mt-fq{color:var(--sig);font-size:.95rem;letter-spacing:.04em;flex:none}
+.mt-song{font-size:.62rem;letter-spacing:.16em;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.mt-b{flex:none;width:34px;height:34px;font-size:.72rem!important;border-radius:2px}
+.mt-b:hover,.mt-b:focus-visible,.mt-back:hover .mt-song{color:var(--text)}
+.mt-yt{flex:none;margin-left:4px;padding:.6em .9em!important;border:1px solid var(--sig)!important;border-radius:2px;color:var(--sig)!important;font-size:.62rem!important;letter-spacing:.18em}
+.mt-yt:hover{background:color-mix(in srgb,var(--sig) 14%,transparent)!important}
+@media(max-width:480px){.mt-l{display:none}.mt-b{width:30px}}
+.rx:fullscreen{height:100vh;max-height:none}
+body.zen-on{overflow:hidden}
+body.zen-on .topnav{opacity:0;pointer-events:none;transition:opacity .6s}
+.rx.rx-zen .rx-boot{display:none}
+.rx.rx-zen .rx-brand,.rx.rx-zen .rx-card,.rx.rx-zen .rx-note{opacity:0;pointer-events:none;transition:opacity .9s ease}
+.rx.rx-zen .rx-dialwrap{opacity:.4;transition:opacity .9s ease}
+.rx.rx-zen .rx-shade{opacity:.5;transition:opacity .9s ease}
+.rx.rx-zen.zen-awake .rx-brand,.rx.rx-zen.zen-awake .rx-card,.rx.rx-zen.zen-awake .rx-note{opacity:1;pointer-events:auto;transition-duration:.25s}
+.rx.rx-zen.zen-awake .rx-dialwrap,.rx.rx-zen.zen-awake .rx-shade{opacity:1;transition-duration:.25s}
+.rx.rx-zen:not(.zen-awake){cursor:none}
+.keys{position:fixed;inset:0;z-index:95;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(2,3,7,.6);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.keys-box{width:min(380px,100%);padding:22px 26px;background:var(--bg-raise);border:1px solid var(--line);border-top-color:var(--sig);border-radius:3px;font-family:var(--mono)}
+.keys-h{font-size:.64rem;letter-spacing:.22em;color:var(--sig);margin-bottom:1rem}
+.keys dl{display:grid;grid-template-columns:auto 1fr;gap:.55em 1.4em;font-size:.72rem;letter-spacing:.08em}
+.keys dt{color:var(--text)}
+.keys dd{color:var(--text-dim)}
 .rx-band .rx-song{color:var(--text)}
 @media (prefers-reduced-motion:no-preference){
   .rx-btn.nudge{animation:nudge 2.6s ease-out 1}
@@ -607,6 +648,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="rx-name" id="rxName">ACQUIRING SIGNAL…</div>
       <div class="rx-band" id="rxBand">THE OLD FM BAND · MOST FREQUENCIES FELL SILENT</div>
       <div class="rx-act"><button class="rx-btn listen" id="rxListen" type="button" aria-pressed="false" hidden>◉ LISTEN LIVE</button><a class="rx-btn" id="rxPlay" href="#frequency" hidden>▶ PLAY LATEST</a><a class="rx-btn ghost" id="rxOpen" href="#frequency" hidden>TUNE IN ▾</a></div>
+      <div class="rx-tools" id="rxTools" hidden><button type="button" id="rxFull" aria-pressed="false">⛶ FULL SIGNAL</button><button type="button" id="rxSleep" aria-pressed="false">◷ SLEEP OFF</button><button type="button" id="rxKeysBtn" aria-label="Keyboard controls">?</button></div>
     </div>
     <div class="rx-dialwrap">
       <div class="rx-dial" role="group" aria-label="Frequency dial — five signals, three dead. Drag, click or use the arrow keys to tune.">
@@ -628,6 +670,21 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
   </div>
   <p class="sr-only" id="rxLive" aria-live="polite"></p>
 </section>
+
+<!-- Mini-Tuner + Tastatur-Hilfe (E1021, steuert assets/receiver.js) -->
+<div class="mt" id="miniTuner" role="region" aria-label="Now receiving" hidden>
+  <button class="mt-back" id="mtBack" type="button" aria-label="Back to the receiver"><span class="lv" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="mt-fq" id="mtFq">—</span><span class="mt-song" id="mtSong"></span></button>
+  <button class="mt-b" id="mtPrev" type="button" aria-label="Previous station">◀</button>
+  <button class="mt-b" id="mtNext" type="button" aria-label="Next station">▶</button>
+  <button class="mt-b" id="mtStop" type="button" aria-label="Stop listening">■</button>
+  <a class="mt-yt" id="mtYt" href="#" target="_blank" rel="noopener" hidden><span class="mt-l">CONTINUE </span>↗</a>
+</div>
+<div class="keys" id="rxKeys" role="dialog" aria-label="Receiver controls" hidden>
+  <div class="keys-box">
+    <p class="keys-h">// RECEIVER CONTROLS</p>
+    <dl><dt>1 – 5</dt><dd>tune a station</dd><dt>← →</dt><dd>step along the dial</dd><dt>SPACE</dt><dd>listen / stop</dd><dt>F</dt><dd>full signal</dd><dt>S</dt><dd>sleep timer · 30 / 60 / 90 min</dd><dt>~</dt><dd>terminal</dd><dt>ESC</dt><dd>close</dd></dl>
+  </div>
+</div>
 
 <!-- ── ECHO FREQUENCY ───────────────────────────── -->
 <section id="frequency" class="chsec" data-fq="95.3">
@@ -1326,6 +1383,6 @@ latestSignal.then(function(l){
   new IntersectionObserver(function(es){nav.classList.toggle("solid",es[0].intersectionRatio<.35);},{threshold:[0,.35,.7,1]}).observe(hero);
 })();
 </script>
-<script src="assets/receiver.js?v=3"></script>
+<script src="assets/receiver.js?v=4"></script>
 </body>
 </html>
