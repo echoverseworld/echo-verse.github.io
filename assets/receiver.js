@@ -217,10 +217,13 @@ function audioTick(){
     /* lange nichts zu hoeren: anhalten; beim naechsten Sender geht es in Sendezeit weiter */
     if(!AU.quietAt)AU.quietAt=T;else if(T-AU.quietAt>1.5){AU.el.pause();AU.quietAt=0;}
   }
+  var sg=sleepGain();   /* Sleep-Timer: die letzten 20 s blendet alles aus */
+  g*=sg;
   AU.level=gh?0:g;
   if(AU.mg)AU.mg.gain.setTargetAtTime(g,T,.08);
-  audioStatic(Math.max(staticLevel(),drop*(s&&!gh?1:0)));
+  audioStatic(Math.max(staticLevel(),drop*(s&&!gh?1:0))*sg);
   nowHud(AU.on&&s&&!gh&&cl>.6&&meta?s:null,meta);
+  miniUpdate();
 }
 /* Bass (40-130 Hz) als Licht: Bereich laeuft mit (unten = Pegel zwischen den Kicks), damit jeder Song gleich stark pulst */
 var BANDS=[[60,150],[150,400],[400,1000],[1000,2500],[2500,6000]];
@@ -817,6 +820,7 @@ function update(t,dt){
     if(w>=1)lockDone();
   }else if(phase==="idle"){
     loss=Math.max(0,loss-dt*3);
+    if(A&&!A.tex&&A.ready&&!A.dead)ensureTex(A);   /* nach quickTune: Bild nachladen, sobald es da ist */
     if(!auto&&t-lastUser>30&&visible)auto=!REDUCE;
     if(auto&&t-lockAt>HOLD&&visible&&!AU.on){tuneTo(nextLive(A,1));}   /* wer zuhoert, bleibt auf dem Sender */
   }else if(phase==="dead"){
@@ -1158,6 +1162,141 @@ function cssTune(s){
   },function(){});
 }
 
+/* ---------- Hoer-Paket (E1021): Mini-Tuner, FULL SIGNAL, Sleep-Timer, Tastatur ----------
+   Mini-Tuner: wer zuhoert und vom Empfaenger wegscrollt, behaelt unten eine Leiste mit Pegel, Song, Senderwahl, Stopp und
+   "weiter auf YouTube". FULL SIGNAL: Vollbild (wo der Browser es kann, sonst nur ausgeblendete Seite), Anzeige und Zeiger
+   verschwinden nach 3 s Ruhe -- Bild, Wort, Licht und Musik bleiben. Sleep-Timer 30/60/90 min, die letzten 20 s blenden aus.
+   Tasten: 1-5 Sender, Leertaste hoeren/stopp (nur am Empfaenger), F Vollbild, S Sleep, ? Hilfe, Esc schliesst. */
+var elMini=$("miniTuner"),elTools=$("rxTools"),elFull=$("rxFull"),elSleep=$("rxSleep"),elKeys=$("rxKeys"),elKeysBtn=$("rxKeysBtn");
+/* Abstimmen ohne Animation: ausserhalb des Bildschirms laufen keine Animations-Frames, der Suchlauf kaeme nie an */
+function quickTune(s){
+  if(!s||s.dead)return;
+  userActed();load(s);
+  if(MODE==="css"){cssTune(s);return;}
+  f=s.fq;setNeedle();B=null;A=s;phase="idle";loss=0;wave=0;lockAt=now();
+  if(elMsg)elMsg.classList.remove("show");
+  setWord(s.word,s.tls,s.tgap);hud(s);specFlash(s);hero.classList.add("rx-locked");
+  if(s.ready)ensureTex(s);
+}
+/* Empfaenger auf dem Schirm? Direkt aus der Lage gemessen -- der IntersectionObserver meldet nur mit Animations-Frames */
+function heroOnScreen(){var r=hero.getBoundingClientRect();return r.bottom>60&&r.top<window.innerHeight;}
+function tuneSmart(s){if(heroOnScreen()&&!document.hidden&&!REDUCE)tuneTo(s);else quickTune(s);}
+function stepStation(dir){userActed();tuneSmart(nextLive(tunedNow()||A,dir));}
+
+/* Mini-Tuner */
+var mini={on:false,txt:"",href:"",lv:null};
+function miniUpdate(){
+  if(!elMini)return;
+  var show=AU.on&&!zen&&!heroOnScreen();
+  if(show!==mini.on){
+    mini.on=show;elMini.hidden=!show;document.body.classList.toggle("mt-on",show);
+    if(show)mini.lv=[].slice.call(elMini.querySelectorAll(".lv i"));
+  }
+  if(!show)return;
+  var cur=tunedNow()||A,m=AU.cta&&AU.meta?AU.meta[AU.cta.key]:null;
+  var txt=cur&&!cur.dead?cur.fq.toFixed(1)+"|"+(m?m.song.toUpperCase():cur.name):"—|SEARCHING…";
+  if(txt!==mini.txt){mini.txt=txt;var p=txt.split("|");$("mtFq").textContent=p[0];$("mtSong").textContent=p[1];}
+  var yt=$("mtYt"),href=AU.cta?elPlay.href:"";
+  if(href!==mini.href){mini.href=href;yt.hidden=!href;if(href)yt.href=href;}
+  /* ohne Animations-Frames (Empfaenger verdeckt) rechnet der Ton-Takt den Pegel */
+  musicBeat(.06);
+  for(var i=0;i<5;i++)mini.lv[i].style.transform="scaleY("+(.15+.85*clamp(AU.bands[i]*1.5,0,1)).toFixed(3)+")";
+}
+if(elMini){
+  $("mtBack").addEventListener("click",function(){window.scrollTo({top:0,behavior:REDUCE?"auto":"smooth"});});
+  $("mtPrev").addEventListener("click",function(){stepStation(-1);});
+  $("mtNext").addEventListener("click",function(){stepStation(1);});
+  $("mtStop").addEventListener("click",function(){setSound(false);miniUpdate();});
+}
+
+/* FULL SIGNAL */
+var zen=false,zenIdle=null;
+function zenWake(){
+  if(!zen)return;
+  hero.classList.add("zen-awake");clearTimeout(zenIdle);
+  zenIdle=setTimeout(function(){hero.classList.remove("zen-awake");},3000);
+}
+function zenSet(on){
+  if(on===zen)return;
+  zen=on;
+  hero.classList.toggle("rx-zen",on);document.body.classList.toggle("zen-on",on);
+  if(on){
+    window.scrollTo(0,0);
+    if(!AU.on)setSound(true);   /* Klick bzw. Taste = Freigabe fuer den Ton */
+    try{if(hero.requestFullscreen&&!document.fullscreenElement){var pr=hero.requestFullscreen({navigationUI:"hide"});if(pr&&pr.catch)pr.catch(function(){});}}catch(e){}
+    zenWake();
+  }else{
+    clearTimeout(zenIdle);hero.classList.remove("zen-awake");
+    try{if(document.fullscreenElement&&document.exitFullscreen){var px=document.exitFullscreen();if(px&&px.catch)px.catch(function(){});}}catch(e){}
+  }
+  if(elFull){elFull.textContent=on?"⛶ EXIT FULL SIGNAL":"⛶ FULL SIGNAL";elFull.setAttribute("aria-pressed",on?"true":"false");}
+  miniUpdate();
+  if(REDUCE)kick();
+}
+document.addEventListener("fullscreenchange",function(){if(!document.fullscreenElement&&zen)zenSet(false);});
+/* nur echte Bewegung weckt (manche Umgebungen melden pointermove auch bei ruhender Maus) */
+var zenPt=null;
+hero.addEventListener("pointermove",function(e){
+  if(zenPt&&Math.abs(e.clientX-zenPt[0])+Math.abs(e.clientY-zenPt[1])<6)return;
+  zenPt=[e.clientX,e.clientY];zenWake();
+},{passive:true});
+hero.addEventListener("pointerdown",zenWake,{passive:true});
+
+/* Sleep-Timer */
+var SLEEP=[0,30,60,90],sleepI=0,sleepEnd=0,sleepTxt="";
+function sleepGain(){
+  if(!sleepEnd)return 1;
+  var r=sleepEnd-Date.now();
+  if(r<=0){
+    sleepEnd=0;sleepI=0;setSound(false);sleepShow();
+    if(elMsg){elMsg.textContent="…carrier faded. the archive keeps watch.";elMsg.classList.add("show");}
+    announce("Sleep timer: carrier faded");
+    return 0;
+  }
+  sleepShow();
+  return r<20000?r/20000:1;
+}
+function sleepShow(){
+  if(!elSleep)return;
+  var t=sleepEnd?"◷ SLEEP "+Math.max(1,Math.ceil((sleepEnd-Date.now())/60000))+" MIN":"◷ SLEEP OFF";
+  if(t!==sleepTxt){sleepTxt=t;elSleep.textContent=t;elSleep.setAttribute("aria-pressed",sleepEnd?"true":"false");}
+}
+function sleepCycle(){
+  sleepI=(sleepI+1)%SLEEP.length;
+  sleepEnd=SLEEP[sleepI]?Date.now()+SLEEP[sleepI]*60000:0;
+  sleepShow();
+  announce(sleepEnd?"Sleep timer "+SLEEP[sleepI]+" minutes":"Sleep timer off");
+}
+
+/* Tastatur-Hilfe */
+function keysToggle(on){
+  if(!elKeys)return;
+  if(on===undefined)on=elKeys.hidden;
+  elKeys.hidden=!on;
+}
+if(elKeys)elKeys.addEventListener("click",function(){keysToggle(false);});
+
+if(elTools&&elListen){
+  elTools.hidden=false;
+  elFull.addEventListener("click",function(){userActed();zenSet(!zen);});
+  elSleep.addEventListener("click",function(){sleepCycle();});
+  if(elKeysBtn)elKeysBtn.addEventListener("click",function(){keysToggle();});
+  sleepShow();
+}
+document.addEventListener("keydown",function(e){
+  if(e.defaultPrevented||e.ctrlKey||e.metaKey||e.altKey)return;
+  var t=e.target,tag=(t&&t.tagName||"").toLowerCase();
+  if(tag==="input"||tag==="textarea"||tag==="select"||(t&&t.isContentEditable))return;
+  var k=e.key;
+  if(k==="Escape"){keysToggle(false);if(zen&&!document.fullscreenElement)zenSet(false);return;}
+  if(!elListen)return;   /* ohne Web Audio keine Hoer-Tasten */
+  if(k>="1"&&k<="5"&&k.length===1){var s=LIVE[+k-1];if(s){e.preventDefault();userActed();tuneSmart(s);zenWake();}return;}
+  if(k===" "&&(zen||heroOnScreen())&&tag!=="button"&&tag!=="a"){e.preventDefault();userActed();setSound(!AU.on);zenWake();return;}
+  if(k==="f"||k==="F"){e.preventDefault();userActed();zenSet(!zen);return;}
+  if(k==="s"||k==="S"){sleepCycle();zenWake();return;}
+  if(k==="?"){keysToggle();return;}
+});
+
 /* ---------- Start ---------- */
 function start(){
   specInit();
@@ -1256,6 +1395,8 @@ window.ECHO_RECEIVER={
   state:function(){return{phase:phase,f:f,A:A&&A.key,B:B&&B.key,loss:loss,wave:wave,mode:MODE,W:W,H:H,auto:auto,qual:QUAL,
     au:{on:AU.on,key:AU.key,level:+AU.level.toFixed(3),beat:+AU.beat.toFixed(3),pos:AU.el?+AU.el.currentTime.toFixed(2):null,
         paused:AU.el?AU.el.paused:null,cta:AU.cta&&AU.cta.key,lp:AU.lp?Math.round(AU.lp.frequency.value):null}};},
-  listen:function(on){setSound(on!==false);return AU.on;}
+  listen:function(on){setSound(on!==false);return AU.on;},
+  sleepIn:function(sec){sleepI=1;sleepEnd=Date.now()+sec*1000;sleepShow();return sleepTxt;},   /* Pruefhilfe: Sleep-Timer mit kurzer Restzeit */
+  zen:function(on){zenSet(on!==false);return zen;}
 };
 })();
