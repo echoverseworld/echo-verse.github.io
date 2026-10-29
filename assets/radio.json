@@ -1,0 +1,37 @@
+{
+ "frequency": {
+  "song": "Static Wavelength",
+  "volume": 49,
+  "youtube_id": "LTtvJTSms-E",
+  "mix_start": 1613.0,
+  "clip": 64.0
+ },
+ "drift": {
+  "song": "Phantom Night",
+  "volume": 49,
+  "youtube_id": "qG-DkAIUjbw",
+  "mix_start": 1935.0,
+  "clip": 64.0
+ },
+ "pulse": {
+  "song": "Lunar Bloom",
+  "volume": 38,
+  "youtube_id": "VZ8Mzsk8Y4Q",
+  "mix_start": 1307.0,
+  "clip": 64.0
+ },
+ "vigil": {
+  "song": "Constant Watch",
+  "volume": 36,
+  "youtube_id": "yrKFJEqu35c",
+  "mix_start": 3663.0,
+  "clip": 64.0
+ },
+ "aurora": {
+  "song": "First Message",
+  "volume": 5,
+  "youtube_id": "1eubIFNA0A4",
+  "mix_start": 2135.5,
+  "clip": 64.0
+ }
+}

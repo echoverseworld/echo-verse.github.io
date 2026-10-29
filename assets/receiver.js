@@ -8,7 +8,7 @@
 
    Ohne WebGL2 laeuft eine CSS-Fassung (Bild + Ueberblendung), bei prefers-reduced-motion steht das Bild still
    und wechselt nur auf Klick. Keine Requests nach aussen, nichts wird gespeichert. Ton nur nach Klick auf
-   SOUND (synthetisches FM-Rauschen wie W8-Lite, E558). */
+   SOUND bzw. LISTEN LIVE: FM-Rauschen (W8-Lite, E558) und seit E1020 echte Musik je Sender ("Live Carrier"). */
 (function(){
 "use strict";
 
@@ -124,8 +124,17 @@ function decode(el,text,ms){
   })();
 }
 
-/* ---------- Ton (nur nach Klick auf SOUND) ---------- */
-var AU={on:false,ctx:null,master:null,ng:null,bp:null,wob:null};
+/* ---------- Ton (nur nach Klick auf SOUND bzw. LISTEN LIVE) ----------
+   E1020 "Live Carrier": jeder Sender spielt einen echten Ausschnitt aus einem veroeffentlichten Mix
+   (assets/radio/<key>.mp3 + radio.json, gebaut mit 97_Programme/tools/Build-WebsiteRadio.py). Rauschen und Musik teilen
+   sich das Signal: beim Abstimmen klingt die Musik dumpf und duenn (Tief-/Hochpass), eingerastet klar. Die Sender laufen
+   in Sendezeit weiter (Position aus der Uhr) -- wer zurueckschaltet, landet nicht am Anfang. Auf toten Frequenzen klingt ein
+   Geistersender dumpf durch. Die Bassenergie treibt das Licht im Bild statt des gerechneten Takts; "weiter auf YouTube"
+   springt im Mix genau an die gehoerte Stelle. Geladen wird erst nach dem Klick, gespeichert nichts. */
+var RADIO_V="1";      /* Version der Ausschnitte in assets/radio -- beim Tausch hochzaehlen */
+var AU={on:false,ctx:null,master:null,ng:null,bp:null,wob:null,el:null,mg:null,lp:null,hp:null,an:null,fb:null,
+        key:"",sync:false,meta:null,metaP:null,tick:null,level:0,beat:0,lo:0,hi:.3,bands:[0,0,0,0,0],zoomT:-1e9,
+        quietAt:0,lastPos:0,cta:null,ctaSec:-1,lv:null};
 function audioInit(){
   if(AU.ctx)return true;
   try{
@@ -141,12 +150,180 @@ function audioInit(){
     src.connect(AU.bp);AU.bp.connect(AU.ng);AU.ng.connect(AU.master);src.start();
     /* Wobble der Mittenfrequenz wie beim alten Tuner-Rauschen */
     AU.wob=setInterval(function(){if(AU.ctx&&AU.on)AU.bp.frequency.setTargetAtTime(1000+Math.random()*2000,AU.ctx.currentTime,.06);},130);
+    /* Musik: ein <audio> fuer alle Sender (iOS gibt nur ein per Klick gestartetes Element frei), danach Filter, Pegel, Analyse */
+    var el=AU.el=new Audio();el.loop=true;el.preload="auto";el.setAttribute("playsinline","");
+    var ms=c.createMediaElementSource(el);
+    AU.hp=c.createBiquadFilter();AU.hp.type="highpass";AU.hp.frequency.value=20;AU.hp.Q.value=.7;
+    AU.lp=c.createBiquadFilter();AU.lp.type="lowpass";AU.lp.frequency.value=18000;AU.lp.Q.value=.7;
+    AU.mg=c.createGain();AU.mg.gain.value=0;
+    AU.an=c.createAnalyser();AU.an.fftSize=1024;AU.an.smoothingTimeConstant=.45;AU.fb=new Uint8Array(AU.an.frequencyBinCount);
+    var mm=c.createGain();mm.gain.value=.6;
+    ms.connect(AU.hp);AU.hp.connect(AU.lp);AU.lp.connect(AU.mg);AU.mg.connect(AU.an);AU.an.connect(mm);mm.connect(c.destination);
+    mediaHandlers();
     return true;
   }catch(e){return false;}
 }
 function audioStatic(level){
   if(!AU.on||!AU.ctx)return;
   AU.ng.gain.setTargetAtTime(clamp(level,0,1)*.9,AU.ctx.currentTime,.035);
+}
+function radioMeta(){
+  if(!AU.metaP)AU.metaP=fetch("assets/radio.json?v="+RADIO_V).then(function(r){return r.ok?r.json():{};})
+    .then(function(m){AU.meta=m||{};},function(){AU.meta={};});
+  return AU.metaP;
+}
+function clipSrc(s){return "assets/radio/"+s.key+".mp3?v="+RADIO_V;}
+/* Sendezeit: alle Besucher hoeren denselben Moment; je Sender versetzt, damit nicht alle zugleich an der Naht sind */
+function radioPos(s,clip){var o=(Date.now()/1000+s.i*13.7)%clip;return o<0?o+clip:o;}
+function pad3(n){return ("00"+n).slice(-3);}
+function mmss(x){x=Math.max(0,Math.floor(x));var h=Math.floor(x/3600),m=Math.floor(x/60)%60,s=x%60;return (h?h+":"+("0"+m).slice(-2):m)+":"+("0"+s).slice(-2);}
+/* Welcher Sender klingt gerade, und wie klar (0..1; -1 = Geistersender einer toten Frequenz) */
+function musicTarget(){
+  if(MODE==="css")return A&&!A.dead?[A,1]:[null,0];
+  if(phase==="idle"&&A&&!A.dead)return[A,1];
+  if(phase==="reveal"&&B)return[B,smooth(wave/1.1)];
+  if(phase==="drag"){var nl=nearestLive(f);return nl[0]&&nl[1]<.9?[nl[0],1-smooth(nl[1]/.9)]:[null,0];}
+  if(phase==="dead"&&ghost)return[ghost,-1];
+  return[null,0];
+}
+function audioTick(){
+  if(!AU.ctx)return;
+  var T=AU.ctx.currentTime,tg=AU.on?musicTarget():[null,0],s=tg[0],cl=tg[1],gh=cl<0;
+  var meta=s&&AU.meta?AU.meta[s.key]:null;
+  if(AU.meta&&s&&!meta)s=null;          /* Sender ohne Ausschnitt: nur Rauschen */
+  var g=0,drop=0;
+  if(s){
+    if(AU.key!==s.key){AU.key=s.key;AU.el.src=clipSrc(s);AU.sync=T+1e-3;AU.lastPos=0;}
+    if(AU.el.paused){AU.sync=T+1e-3;var pr=AU.el.play();if(pr&&pr.catch)pr.catch(function(){});}
+    var clip=meta?meta.clip:(AU.el.duration||64);
+    /* in Sendezeit springen, sobald die Stelle erreichbar ist (live per Byte-Range sofort). Kann der Server keine Ranges,
+       bleibt es nach 2,5 s beim Anfang -- ein spaeter Sprung mitten im Hoeren waere schlimmer */
+    if(AU.sync&&AU.el.readyState>=1){
+      var want=radioPos(s,clip),sk=AU.el.seekable;
+      if(sk&&sk.length&&sk.end(sk.length-1)>=want-.05){try{AU.el.currentTime=want;}catch(e){}AU.sync=false;}
+      else if(T-AU.sync>2.5)AU.sync=false;
+    }
+    g=gh?.1:Math.pow(cl,1.5);
+    /* Naht des Ausschnitts = kurzer Traegerausfall (die Datei blendet dort aus und ein) */
+    var p=AU.el.currentTime;
+    if(p>clip-2.4||p<1.2)drop=.4;
+    if(p<AU.lastPos-10)ctaNudge();
+    AU.lastPos=p;
+    var c2=gh?0:cl;
+    AU.lp.frequency.setTargetAtTime(gh?650:lerp(1100,18000,c2*c2),T,.06);
+    AU.hp.frequency.setTargetAtTime(gh?180:lerp(420,20,c2),T,.06);
+    AU.quietAt=0;
+  }else if(AU.el&&!AU.el.paused&&AU.level<.01){
+    /* lange nichts zu hoeren: anhalten; beim naechsten Sender geht es in Sendezeit weiter */
+    if(!AU.quietAt)AU.quietAt=T;else if(T-AU.quietAt>1.5){AU.el.pause();AU.quietAt=0;}
+  }
+  AU.level=gh?0:g;
+  if(AU.mg)AU.mg.gain.setTargetAtTime(g,T,.08);
+  audioStatic(Math.max(staticLevel(),drop*(s&&!gh?1:0)));
+  nowHud(AU.on&&s&&!gh&&cl>.6&&meta?s:null,meta);
+}
+/* Bass (40-130 Hz) als Licht: Bereich laeuft mit (unten = Pegel zwischen den Kicks), damit jeder Song gleich stark pulst */
+var BANDS=[[60,150],[150,400],[400,1000],[1000,2500],[2500,6000]];
+function musicBeat(dt){
+  if(!AU.on||!AU.an||AU.level<.02){AU.beat=Math.max(0,AU.beat-dt*3);for(var q=0;q<5;q++)AU.bands[q]*=.8;return;}
+  AU.an.getByteFrequencyData(AU.fb);
+  var hz=AU.ctx.sampleRate/AU.an.fftSize;
+  function band(a,b){var i0=Math.max(1,Math.round(a/hz)),i1=Math.max(i0,Math.round(b/hz)),s=0;for(var i=i0;i<=i1;i++)s+=AU.fb[i];return s/(i1-i0+1)/255;}
+  var b=band(40,130);
+  AU.lo+=(b-AU.lo)*(b<AU.lo?.25:dt*.6);
+  AU.hi=Math.max(b,AU.hi-dt*.05);
+  var n=clamp((b-AU.lo)/Math.max(.08,AU.hi-AU.lo),0,1);
+  AU.beat+=(n-AU.beat)*(n>AU.beat?1-Math.exp(-dt/.03):1-Math.exp(-dt/.2));
+  for(var k=0;k<5;k++)AU.bands[k]+=(band(BANDS[k][0],BANDS[k][1])-AU.bands[k])*.5;
+}
+/* Anteil der echten Musik am Licht eines Senders (0 = gerechneter Takt) */
+function musicMix(s){return AU.on&&s&&AU.key===s.key?AU.level:0;}
+
+/* Senderanzeige waehrend des Hoerens: Song statt Band, Pegel, "weiter auf YouTube" an die gehoerte Sekunde */
+var elListen=$("rxListen");
+function bandDefault(s){if(s&&!s.dead)elBand.textContent=[s.band].concat(s.genres).join(" · ");}
+function playDefault(s){
+  if(!s||s.dead)return;
+  var r=rising(s);
+  if(r){elPlay.textContent="SUBSCRIBE ↗";elPlay.href=s.yt||("#"+s.key);elPlay.target="_blank";elPlay.rel="noopener";}
+  else{elPlay.textContent="▶ PLAY LATEST";elPlay.href="#"+s.key;elPlay.removeAttribute("target");elPlay.removeAttribute("rel");}
+  elPlay.setAttribute("data-key",s.key);
+}
+function ctaStyle(){
+  if(!elListen)return;
+  elListen.textContent=AU.on?"■ STOP":"◉ LISTEN LIVE";
+  elListen.setAttribute("aria-pressed",AU.on?"true":"false");
+  elListen.classList.toggle("ghost",AU.on);
+  elPlay.classList.toggle("ghost",!AU.cta);
+}
+function nowHud(s,meta){
+  if(s!==AU.cta){
+    var was=AU.cta;AU.cta=s;AU.ctaSec=-1;
+    if(s){
+      elBand.innerHTML='<span class="lv" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="rx-song"></span>';
+      elBand.lastChild.textContent="RECEIVING ▸ "+meta.song.toUpperCase()+" · VOL."+pad3(meta.volume);
+      AU.lv=[].slice.call(elBand.querySelectorAll(".lv i"));
+      elPlay.target="_blank";elPlay.rel="noopener";elPlay.removeAttribute("data-key");elPlay.hidden=false;
+      mediaMeta(s,meta);
+      announce("Now receiving "+meta.song+" on "+s.name);
+    }else{
+      AU.lv=null;
+      var cur=was&&was===tunedNow()?was:tunedNow();
+      if(cur){bandDefault(cur);playDefault(cur);}
+    }
+    ctaStyle();
+  }
+  if(!s)return;
+  var sec=Math.floor(meta.mix_start+(AU.el.currentTime||0));
+  if(sec!==AU.ctaSec){
+    AU.ctaSec=sec;
+    elPlay.textContent="CONTINUE ON YOUTUBE ↗ "+mmss(sec);
+    elPlay.href="https://www.youtube.com/watch?v="+encodeURIComponent(meta.youtube_id)+"&t="+sec+"s";
+  }
+}
+/* Nach einem ganzen Durchlauf des Ausschnitts leuchtet "weiter auf YouTube" einmal auf */
+function ctaNudge(){
+  if(!AU.cta||REDUCE)return;
+  elPlay.classList.remove("nudge");void elPlay.offsetWidth;elPlay.classList.add("nudge");
+}
+/* Sperrbildschirm / Medientasten (Handy, Tastatur): Sender, Song, Bild; Weiter/Zurueck schaltet den Sender */
+function mediaMeta(s,meta){
+  if(!("mediaSession" in navigator)||!window.MediaMetadata)return;
+  try{
+    navigator.mediaSession.metadata=new MediaMetadata({title:meta.song,artist:s.name+" · "+s.fq.toFixed(1)+" FM",
+      album:"ECHO VERSE · Vol."+pad3(meta.volume),artwork:[{src:new URL(s.imgUrl,location.href).href,type:"image/jpeg"}]});
+  }catch(e){}
+}
+function mediaHandlers(){
+  if(!("mediaSession" in navigator))return;
+  var h={play:function(){setSound(true);},pause:function(){setSound(false);},stop:function(){setSound(false);},
+    nexttrack:function(){userActed();tuneTo(nextLive(tunedNow()||A,1));},
+    previoustrack:function(){userActed();tuneTo(nextLive(tunedNow()||A,-1));}};
+  for(var k in h){try{navigator.mediaSession.setActionHandler(k,h[k]);}catch(e){}}
+}
+function setSound(on){
+  if(on&&!AU.on){
+    if(!audioInit())return;
+    if(AU.ctx.state==="suspended")AU.ctx.resume();
+    AU.on=true;auto=false;lastUser=now();
+    radioMeta();
+    /* im Klick starten: sonst gibt iOS das Element nicht frei */
+    var s0=tunedNow()||nearestLive(f)[0];
+    if(s0&&AU.key!==s0.key){AU.key=s0.key;AU.el.src=clipSrc(s0);}
+    AU.sync=AU.ctx.currentTime+1e-3;
+    var pr=AU.el.play();if(pr&&pr.catch)pr.catch(function(){});
+    if(!AU.tick)AU.tick=setInterval(audioTick,60);
+  }else if(!on&&AU.on){
+    AU.on=false;
+    if(AU.ng)AU.ng.gain.setTargetAtTime(0,AU.ctx.currentTime,.03);
+    if(AU.mg)AU.mg.gain.setTargetAtTime(0,AU.ctx.currentTime,.05);
+    setTimeout(function(){if(!AU.on&&AU.el)AU.el.pause();},400);
+    nowHud(null,null);
+  }else return;
+  if("mediaSession" in navigator)try{navigator.mediaSession.playbackState=AU.on?"playing":"paused";}catch(e){}
+  if(sndBtn){sndBtn.setAttribute("aria-pressed",AU.on?"true":"false");sndBtn.querySelector(".sl").textContent=AU.on?"SOUND ON":"SOUND OFF";}
+  ctaStyle();
+  if(AU.on)audioTick();
 }
 function audioBlip(){
   if(!AU.on||!AU.ctx)return;
@@ -160,20 +337,10 @@ function audioBlip(){
 var sndBtn=$("sndBtn");
 if(sndBtn&&(window.AudioContext||window.webkitAudioContext)){
   sndBtn.hidden=false;
-  sndBtn.addEventListener("click",function(){
-    if(!AU.on){
-      if(!audioInit())return;
-      if(AU.ctx.state==="suspended")AU.ctx.resume();
-      AU.on=true;
-    }else{
-      AU.on=false;
-      if(AU.ng)AU.ng.gain.setTargetAtTime(0,AU.ctx.currentTime,.03);
-    }
-    sndBtn.setAttribute("aria-pressed",AU.on?"true":"false");
-    sndBtn.querySelector(".sl").textContent=AU.on?"SOUND ON":"SOUND OFF";
-    if(AU.on)audioStatic(staticLevel());
-  });
-}
+  sndBtn.addEventListener("click",function(){setSound(!AU.on);});
+  if(elListen)elListen.addEventListener("click",function(){userActed();setSound(!AU.on);});
+}else if(elListen){elListen.remove();elListen=null;}
+if(elListen&&elOpen)elOpen.remove();   /* LISTEN LIVE ersetzt TUNE IN (das Panel bleibt ueber die Navigation erreichbar) */
 
 /* ---------- Laden: Bild + Tiefenkarte je Sender ---------- */
 function loadImg(url){
@@ -459,6 +626,7 @@ function staticLevel(){
 function setRxColor(hex){root.style.setProperty("--sig",hex);}
 function announce(t){if(elLive)elLive.textContent=t;}
 function hud(s){
+  if(AU.cta){AU.cta=null;AU.lv=null;}   /* Anzeige wird neu geschrieben -- die Hoer-Anzeige setzt der naechste Ton-Takt wieder */
   dial.querySelectorAll(".rx-st").forEach(function(e){e.classList.toggle("on",!!s&&e===s.el);});
   hero.classList.toggle("rx-scan",!s);
   if(!s){elStatus.textContent="SCANNING";hero.setAttribute("data-state","scan");return;}
@@ -468,19 +636,21 @@ function hud(s){
     elBand.textContent="NO CARRIER ON "+s.fq.toFixed(1);
     elStatus.textContent="DEAD";hero.setAttribute("data-state","dead");
     elPlay.hidden=true;elOpen.hidden=true;
+    if(elListen)elListen.hidden=!AU.on;
+    ctaStyle();
     return;
   }
   setRxColor(s.hex);
   decode(elName,s.name,650);
-  elBand.textContent=[s.band].concat(s.genres).join(" · ");
+  bandDefault(s);
   var r=rising(s);
   elStatus.textContent=r?"RISING":"LIVE";
   hero.setAttribute("data-state",r?"rising":"live");
   elPlay.hidden=false;elOpen.hidden=false;
-  if(r){elPlay.textContent="SUBSCRIBE ↗";elPlay.href=s.yt||("#"+s.key);elPlay.target="_blank";elPlay.rel="noopener";}
-  else{elPlay.textContent="▶ PLAY LATEST";elPlay.href="#"+s.key;elPlay.removeAttribute("target");elPlay.removeAttribute("rel");}
-  elPlay.setAttribute("data-key",s.key);
+  if(elListen)elListen.hidden=false;
+  playDefault(s);
   elOpen.href="#"+s.key;
+  ctaStyle();
   announce("Tuned to "+s.fq.toFixed(1)+" FM — "+s.name+(r?", rising":", live"));
 }
 function setWord(word,ls,gap){curLs=ls||.1;curGap=gap||0;curWord=word||"";wordProg=REDUCE?1:0;wordT0=now();drawWord(curWord,wordProg);txtDirty=true;if(elWord)elWord.textContent=curWord;}
@@ -648,7 +818,7 @@ function update(t,dt){
   }else if(phase==="idle"){
     loss=Math.max(0,loss-dt*3);
     if(!auto&&t-lastUser>30&&visible)auto=!REDUCE;
-    if(auto&&t-lockAt>HOLD&&visible){tuneTo(nextLive(A,1));}
+    if(auto&&t-lockAt>HOLD&&visible&&!AU.on){tuneTo(nextLive(A,1));}   /* wer zuhoert, bleibt auf dem Sender */
   }else if(phase==="dead"){
     loss=.8+.12*Math.sin(t*5.3)+.06*Math.sin(t*13.7);
     if(t-deadAt>5&&(auto||t-lastUser>8)){auto=!REDUCE;tuneTo(nextLive(null,1));}
@@ -662,20 +832,27 @@ function update(t,dt){
     loss=1;
     if(t-pt>6&&t-lastUser>6){auto=!REDUCE;tuneTo(nearestLive(f)[0]);}
   }
-  setNeedle();
-  audioStatic(staticLevel());
+  setNeedle();   /* Rauschen und Musik stellt audioTick ein (eigener Takt, laeuft auch ohne Animations-Frames) */
 }
 
 function beatOf(s,t){
   if(!s||REDUCE)return 0;
   var per=60/s.bpm*(s.half?2:1),ph=(((t%per)+per)%per)/per;   /* positives Modulo: auch vor dem Seitenstart (t<0) bleibt die Phase in 0..1 */
-  return Math.exp(-ph*(s.half?3.2:5.5));
+  var syn=Math.exp(-ph*(s.half?3.2:5.5));
+  return lerp(syn,AU.beat,musicMix(s));   /* mit Ton: das Licht folgt dem Bass der Musik (E1020) */
 }
 /* Beat-Zoom: ein Puls je zbeats Schlaege, ~18 % der Periode weich hinein, der Rest langsam (Kosinus) zurueck */
+function zoomShape(ph){var att=.18;return ph<att?easeOutQuad(ph/att):.5+.5*Math.cos(Math.PI*(ph-att)/(1-att));}
 function zoomOf(s,t){
   if(!s||!s.zoom||REDUCE)return 0;
-  var per=60/s.bpm*(s.zbeats||1),ph=(((t%per)+per)%per)/per,att=.18;
-  return ph<att?easeOutQuad(ph/att):.5+.5*Math.cos(Math.PI*(ph-att)/(1-att));
+  var per=60/s.bpm*(s.zbeats||1);
+  /* mit Ton: der Puls startet auf einem kraeftigen Kick, hoechstens einer je zbeats Schlaege (bleibt "1 weicher Puls je Takt") */
+  if(musicMix(s)>.5){
+    if(AU.beat>.85&&t-AU.zoomT>per*.9)AU.zoomT=t;
+    var q=(t-AU.zoomT)/per;
+    return q>=0&&q<1?zoomShape(q):0;
+  }
+  return zoomShape((((t%per)+per)%per)/per);
 }
 function setLayer(s,which,t){
   var unit=which==="A"?0:2;
@@ -787,7 +964,7 @@ function specRow(t){
     var sd=k*17.31,br=Math.sin(t*(.8+.13*k)+k*1.7),hh;
     if(s.dead)hh=.05+.02*br+(phase==="dead"&&Math.abs(f-s.fq)<.05?.12:0);
     else if(rising(s))hh=.24+.04*br;
-    else{hh=.36+.05*br;if(s===cur)hh+=.2;}
+    else{hh=.36+.05*br;if(s===cur)hh+=.2+.12*AU.beat*musicMix(s);}   /* mit Ton atmet der Kamm leicht im Bass */
     return{c:s.pos+.45*vnoise(t*.6+sd*1.7),
            w:(s.dead?1.1:1.7)*(1+.18*vnoise(t*.75+sd*2.3)),
            h:hh*(1+.3*vnoise(t*.85+sd)+.12*vnoise(t*2.1+sd*.37)),
@@ -919,6 +1096,8 @@ function frame(ts){
   var t=now();
   if(small()&&lastT&&t-lastT<1/32){schedule();return;}
   var dt=lastT?Math.min(.1,t-lastT):.016;lastT=t;
+  musicBeat(dt);
+  if(AU.lv)for(var li=0;li<5;li++)AU.lv[li].style.transform="scaleY("+(.15+.85*clamp(AU.bands[li]*1.5,0,1)).toFixed(3)+")";
   if(MODE==="gl"){
     update(t,dt);
     render(t);
@@ -1074,6 +1253,9 @@ window.ECHO_RECEIVER={
   step:function(sec,n){n=n||1;for(var i=0;i<n;i++){toff+=sec;update(now(),sec);}render(now());return phase+" "+f.toFixed(1)+(A?" A="+A.key:"")+(B?" B="+B.key:"");},
   bench:function(n){if(!gl)return null;n=n||20;var t0=performance.now();var px=new Uint8Array(4);for(var i=0;i<n;i++){render(now());gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,px);}return +((performance.now()-t0)/n).toFixed(2)+" ms/Bild bei "+W+"x"+H;},
   spec:function(draw){var e=null;if(draw){try{specDraw(now());}catch(x){e=String(x&&x.stack||x);}}return{cx:!!SP.cx,w:SP.w,h:SP.h,by:SP.by,N:SP.N,M:SP.M,rows:SP.rows.length,last:SP.last,err:e};},
-  state:function(){return{phase:phase,f:f,A:A&&A.key,B:B&&B.key,loss:loss,wave:wave,mode:MODE,W:W,H:H,auto:auto,qual:QUAL};}
+  state:function(){return{phase:phase,f:f,A:A&&A.key,B:B&&B.key,loss:loss,wave:wave,mode:MODE,W:W,H:H,auto:auto,qual:QUAL,
+    au:{on:AU.on,key:AU.key,level:+AU.level.toFixed(3),beat:+AU.beat.toFixed(3),pos:AU.el?+AU.el.currentTime.toFixed(2):null,
+        paused:AU.el?AU.el.paused:null,cta:AU.cta&&AU.cta.key,lp:AU.lp?Math.round(AU.lp.frequency.value):null}};},
+  listen:function(on){setSound(on!==false);return AU.on;}
 };
 })();

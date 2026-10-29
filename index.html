@@ -53,6 +53,16 @@ body{
 }
 ::selection{background:rgba(34,211,238,.25)}
 
+/* ── Seitenwechsel als Signalverlust (E1020, gleicher Block in assets/site.css) ── */
+@view-transition{navigation:auto}
+@media (prefers-reduced-motion:no-preference){
+  ::view-transition-old(root){animation:vtOut .3s cubic-bezier(.6,0,.9,.35) both}
+  ::view-transition-new(root){animation:vtIn .46s cubic-bezier(.2,.75,.25,1) .14s both}
+}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+@keyframes vtOut{0%{opacity:1;filter:none;transform:none}35%{filter:brightness(1.3) saturate(.5);transform:scaleY(.97)}100%{opacity:0;filter:brightness(.4) blur(4px);transform:scaleY(.02) scaleX(1.02)}}
+@keyframes vtIn{0%{opacity:.2;clip-path:inset(49.6% 0 49.6% 0);filter:brightness(1.6) blur(3px)}55%{opacity:1;clip-path:inset(0 0 0 0);filter:brightness(1.1) blur(0)}100%{opacity:1;clip-path:inset(0 0 0 0);filter:none}}
+
 /* ── CRT scanlines (very subtle) ─────────────────── */
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:9000;
@@ -209,6 +219,18 @@ section{scroll-margin-top:58px}
 .rx-btn:hover,.rx-btn:focus-visible{background:color-mix(in srgb,var(--sig) 14%,rgba(4,6,11,.45));box-shadow:0 0 24px color-mix(in srgb,var(--sig) 35%,transparent)}
 .rx-btn.ghost{border-color:rgba(160,180,220,.28);color:var(--text-dim)}
 .rx-btn.ghost:hover,.rx-btn.ghost:focus-visible{color:var(--text);box-shadow:none;background:rgba(160,180,220,.08)}
+/* Live Carrier (E1020): LISTEN LIVE startet echte Musik; beim Hoeren zeigt die Bandzeile den Song mit Pegel, der
+   Hauptknopf springt auf YouTube an die gehoerte Stelle und leuchtet nach jedem Durchlauf des Ausschnitts einmal auf */
+button.rx-btn{cursor:pointer;font-family:var(--mono)}
+.rx-btn.listen:not(.ghost){box-shadow:0 0 18px color-mix(in srgb,var(--sig) 22%,transparent)}
+.rx-btn.listen.ghost{order:2}   /* beim Hoeren steht "weiter auf YouTube" vorn (am Handy oben) */
+.rx-band .lv{display:inline-flex;align-items:flex-end;gap:2px;height:.95em;margin-right:.7em;vertical-align:-.1em}
+.rx-band .lv i{width:3px;height:100%;background:var(--sig);transform-origin:bottom;transform:scaleY(.15);box-shadow:0 0 6px var(--sig)}
+.rx-band .rx-song{color:var(--text)}
+@media (prefers-reduced-motion:no-preference){
+  .rx-btn.nudge{animation:nudge 2.6s ease-out 1}
+  @keyframes nudge{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--sig) 60%,transparent)}25%{box-shadow:0 0 34px 4px color-mix(in srgb,var(--sig) 45%,transparent);background:color-mix(in srgb,var(--sig) 18%,rgba(4,6,11,.45))}100%{box-shadow:0 0 0 0 transparent}}
+}
 /* Skala: ziehen, klicken oder Pfeiltasten */
 .rx-dialwrap{grid-area:dial;margin-top:clamp(12px,2.4vh,28px)}
 .rx-dial{position:relative;height:62px;touch-action:pan-y;cursor:ew-resize;-webkit-user-select:none;user-select:none}
@@ -584,7 +606,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="rx-row"><div class="rx-fq"><span id="rxFq">87.5</span><small>FM</small></div><div class="rx-stat"><span class="dot" aria-hidden="true"></span><span id="rxStatus">SCANNING</span></div></div>
       <div class="rx-name" id="rxName">ACQUIRING SIGNAL…</div>
       <div class="rx-band" id="rxBand">THE OLD FM BAND · MOST FREQUENCIES FELL SILENT</div>
-      <div class="rx-act"><a class="rx-btn" id="rxPlay" href="#frequency" hidden>▶ PLAY LATEST</a><a class="rx-btn ghost" id="rxOpen" href="#frequency" hidden>TUNE IN ▾</a></div>
+      <div class="rx-act"><button class="rx-btn listen" id="rxListen" type="button" aria-pressed="false" hidden>◉ LISTEN LIVE</button><a class="rx-btn" id="rxPlay" href="#frequency" hidden>▶ PLAY LATEST</a><a class="rx-btn ghost" id="rxOpen" href="#frequency" hidden>TUNE IN ▾</a></div>
     </div>
     <div class="rx-dialwrap">
       <div class="rx-dial" role="group" aria-label="Frequency dial — five signals, three dead. Drag, click or use the arrow keys to tune.">
@@ -1304,6 +1326,6 @@ latestSignal.then(function(l){
   new IntersectionObserver(function(es){nav.classList.toggle("solid",es[0].intersectionRatio<.35);},{threshold:[0,.35,.7,1]}).observe(hero);
 })();
 </script>
-<script src="assets/receiver.js?v=2"></script>
+<script src="assets/receiver.js?v=3"></script>
 </body>
 </html>

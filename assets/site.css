@@ -157,3 +157,16 @@ footer.site{border-top:1px solid var(--line);padding:64px 24px 46px;background:v
 /* Pruefansicht (nur localhost, ?still): Erscheinen-Effekte aus, damit Headless-Fotos den Endzustand zeigen */
 .still .reveal,.still .card,.still .fragt{opacity:1!important;transform:none!important}
 .still .thumb img,.still .fragt img{animation:none!important}
+
+/* ── Seitenwechsel als Signalverlust (E1020) ──────────
+   Browser mit seitenuebergreifenden View Transitions (Chrome/Edge, Safari 18.2+): die alte Seite faellt wie ein
+   abgeschalteter Roehrenschirm auf eine Linie zusammen, die neue rastet von dieser Linie aus ein. Gleicher Block in
+   index.html (eigenes CSS der Startseite). Andere Browser wechseln wie bisher, "Bewegung reduzieren" = kein Effekt. */
+@view-transition{navigation:auto}
+@media (prefers-reduced-motion:no-preference){
+  ::view-transition-old(root){animation:vtOut .3s cubic-bezier(.6,0,.9,.35) both}
+  ::view-transition-new(root){animation:vtIn .46s cubic-bezier(.2,.75,.25,1) .14s both}
+}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+@keyframes vtOut{0%{opacity:1;filter:none;transform:none}35%{filter:brightness(1.3) saturate(.5);transform:scaleY(.97)}100%{opacity:0;filter:brightness(.4) blur(4px);transform:scaleY(.02) scaleX(1.02)}}
+@keyframes vtIn{0%{opacity:.2;clip-path:inset(49.6% 0 49.6% 0);filter:brightness(1.6) blur(3px)}55%{opacity:1;clip-path:inset(0 0 0 0);filter:brightness(1.1) blur(0)}100%{opacity:1;clip-path:inset(0 0 0 0);filter:none}}
