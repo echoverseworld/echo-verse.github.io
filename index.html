@@ -316,6 +316,9 @@ body.zen-on .topnav{opacity:0;pointer-events:none;transition:opacity .6s}
 .rx-note{position:relative;min-height:1.5em;margin-top:.45rem;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--text-faint)}
 #deadMsg{position:absolute;left:0;right:0;top:0;color:var(--magenta);opacity:0;transition:opacity .4s;pointer-events:none}
 #deadMsg.show{opacity:.9}
+#deadMsg.run.show{pointer-events:auto}
+#deadMsg .run-btn{margin-left:.6em;background:none;border:1px solid var(--magenta);border-radius:2px;color:var(--magenta);font:inherit;letter-spacing:.14em;padding:.2em .7em;cursor:pointer}
+#deadMsg .run-btn:hover{background:rgba(255,45,155,.12)}
 .rx-hint{transition:opacity .4s}
 #deadMsg.show+.rx-hint{opacity:0}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -1270,7 +1273,7 @@ latestSignal.then(function(l){
     var cmd=q.toLowerCase();
     if(cmd==="help"){
       print("&gt; available routines:");
-      print("&nbsp;&nbsp;help · status · tune &lt;freq&gt; · fragments · decrypt · archive · who · forget · clear · exit");
+      print("&nbsp;&nbsp;help · status · tune &lt;freq&gt; · fragments · decrypt · archive · run · who · forget · clear · exit");
     }else if(cmd==="status"){
       print("&gt; querying broadcast array…");
       /* wartet auf latest.json wie Player/Ticker (wirkt wie eine echte Abfrage); ECHO Aurora ist rising, bis latest.json den Key kennt */
@@ -1310,6 +1313,10 @@ latestSignal.then(function(l){
       print("&gt; …contact log erased. the archive forgets you. nothing else.");
     }else if(cmd==="clear"){
       out.innerHTML="";
+    }else if(cmd==="run"){
+      /* Carrier Run (E1024, assets/carrier-run.js) */
+      if(window.ECHO_CARRIER_RUN){print("&gt; …a carrier still moves on 108.0. keeping it alive.");setTimeout(function(){closeTerm();window.ECHO_CARRIER_RUN.open();},500);}
+      else print("&gt; …routine missing. the archive is incomplete.");
     }else if(cmd==="exit"){
       print("&gt; carrier dropped.");
       setTimeout(closeTerm,300);
@@ -1383,6 +1390,7 @@ latestSignal.then(function(l){
   new IntersectionObserver(function(es){nav.classList.toggle("solid",es[0].intersectionRatio<.35);},{threshold:[0,.35,.7,1]}).observe(hero);
 })();
 </script>
-<script src="assets/receiver.js?v=4"></script>
+<script src="assets/receiver.js?v=5"></script>
+<script src="assets/carrier-run.js?v=1"></script>
 </body>
 </html>

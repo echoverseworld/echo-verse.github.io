@@ -49,6 +49,7 @@ a:hover{background:rgba(34,211,238,.09);box-shadow:0 0 22px rgba(34,211,238,.25)
 .links{margin-top:1.4rem;font-size:.7rem;letter-spacing:.16em}
 .links a{display:inline;margin:0 .8em;border:0;padding:0;color:#8b93a8;font-size:inherit}
 .links a:hover{color:#dfe4f0;background:none;box-shadow:none}
+.links a#runLink{color:#FF2D9B;white-space:nowrap}
 @media (prefers-reduced-motion:no-preference){
   body::before{animation:st .18s steps(2) infinite}
   @keyframes st{50%{transform:translate(6px,-4px)}}
@@ -71,7 +72,14 @@ a:hover{background:rgba(34,211,238,.09);box-shadow:0 0 22px rgba(34,211,238,.25)
   </div>
   <div class="readout" aria-hidden="true">SCANNING &nbsp;·&nbsp; NO CARRIER</div>
   <a href="/">↩ BACK TO THE BAND</a>
-  <div class="links"><a href="/archive.html">ALL TRANSMISSIONS</a><a href="/codex.html">CODEX</a></div>
+  <div class="links"><a href="/archive.html">ALL TRANSMISSIONS</a><a href="/codex.html">CODEX</a><a href="#run" id="runLink" hidden>▶ RUN THE CARRIER</a></div>
 </div>
+<!-- Carrier Run (E1024): wer sich hierher verirrt, darf den Traeger am Leben halten -->
+<script src="/assets/carrier-run.js?v=1"></script>
+<script>
+(function(){var a=document.getElementById("runLink");if(!a||!window.ECHO_CARRIER_RUN)return;a.hidden=false;
+a.addEventListener("click",function(e){e.preventDefault();window.ECHO_CARRIER_RUN.open();});
+document.addEventListener("keydown",function(e){if(e.key===" "&&!document.body.classList.contains("cr-on")){e.preventDefault();window.ECHO_CARRIER_RUN.open();}});})();
+</script>
 </body>
 </html>
