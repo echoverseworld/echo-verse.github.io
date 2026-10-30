@@ -697,8 +697,20 @@ function deadIn(s){
   A=ghost&&ensureTex(ghost)?ghost:null;
   setWord("");
   hud(s);
-  if(elMsg){elMsg.textContent="["+s.fq.toFixed(1)+" FM] "+DEAD_LINES[Math.floor(Math.random()*DEAD_LINES.length)];elMsg.classList.add("show");}
+  deadMessage(s);
   announce(s.fq.toFixed(1)+" FM, signal lost");
+}
+/* Tote Frequenz: Zeile aus DEAD_LINES; auf 108.0 laeuft noch ein Traeger -- dort startet Carrier Run (E1024) */
+var RUN_FQ=108.0;
+function deadMessage(s){
+  if(!elMsg)return;
+  elMsg.classList.remove("run");
+  if(Math.abs(s.fq-RUN_FQ)<.05&&window.ECHO_CARRIER_RUN){
+    elMsg.innerHTML='['+s.fq.toFixed(1)+' FM] …something still runs on this carrier. <button type="button" class="run-btn">▶ RUN THE CARRIER</button>';
+    elMsg.querySelector(".run-btn").addEventListener("click",function(){window.ECHO_CARRIER_RUN.open();});
+    elMsg.classList.add("run");
+  }else elMsg.textContent="["+s.fq.toFixed(1)+" FM] "+DEAD_LINES[Math.floor(Math.random()*DEAD_LINES.length)];
+  elMsg.classList.add("show");
 }
 function revealStart(s){
   B=s;phase="reveal";pt=now();wave=0;specFlash(s);
@@ -825,7 +837,8 @@ function update(t,dt){
     if(auto&&t-lockAt>HOLD&&visible&&!AU.on){tuneTo(nextLive(A,1));}   /* wer zuhoert, bleibt auf dem Sender */
   }else if(phase==="dead"){
     loss=.8+.12*Math.sin(t*5.3)+.06*Math.sin(t*13.7);
-    if(t-deadAt>5&&(auto||t-lastUser>8)){auto=!REDUCE;tuneTo(nextLive(null,1));}
+    var dh=elMsg&&elMsg.classList.contains("run")?14:5;   /* 108.0: Zeit, das Spiel zu starten */
+    if(t-deadAt>dh&&(auto||t-lastUser>dh+3)){auto=!REDUCE;tuneTo(nextLive(null,1));}
   }else if(phase==="drag"){
     var nl=nearestLive(f),s=nl[0],d=nl[1];
     if(s&&!s.dead){load(s);if(s.ready&&ensureTex(s))A=s;}
@@ -1096,7 +1109,7 @@ function specPrefill(t){
 var perf={n:0,sum:0};
 function frame(ts){
   running=false;
-  if(!visible||document.hidden)return;
+  if(!visible||document.hidden||paused)return;
   var t=now();
   if(small()&&lastT&&t-lastT<1/32){schedule();return;}
   var dt=lastT?Math.min(.1,t-lastT):.016;lastT=t;
@@ -1115,7 +1128,7 @@ function frame(ts){
   specDraw(t);
   schedule();
 }
-function schedule(){if(!running&&visible&&!document.hidden&&!REDUCE&&(MODE==="gl"||SP.cx)){running=true;requestAnimationFrame(frame);}}
+function schedule(){if(!running&&!paused&&visible&&!document.hidden&&!REDUCE&&(MODE==="gl"||SP.cx)){running=true;requestAnimationFrame(frame);}}
 /* Ruhe-Modus (reduced motion): kein Dauerlauf -- gerechnet wird nur bei Zustandswechseln */
 function kick(){
   if(!REDUCE){schedule();return;}
@@ -1141,9 +1154,9 @@ function cssTune(s){
   f=s.fq;setNeedle();
   if(s.dead){
     hud(s);hero.classList.add("rx-static");
-    if(elMsg){elMsg.textContent="["+s.fq.toFixed(1)+" FM] "+DEAD_LINES[Math.floor(Math.random()*DEAD_LINES.length)];elMsg.classList.add("show");}
+    deadMessage(s);
     clearTimeout(cssTimer);
-    if(!REDUCE)cssTimer=setTimeout(function(){auto=true;cssTune(nextLive(null,1));},6000);
+    if(!REDUCE)cssTimer=setTimeout(function(){auto=true;cssTune(nextLive(null,1));},elMsg&&elMsg.classList.contains("run")?14000:6000);
     return;
   }
   if(elMsg)elMsg.classList.remove("show");
@@ -1180,7 +1193,7 @@ function quickTune(s){
 }
 /* Empfaenger auf dem Schirm? Direkt aus der Lage gemessen -- der IntersectionObserver meldet nur mit Animations-Frames */
 function heroOnScreen(){var r=hero.getBoundingClientRect();return r.bottom>60&&r.top<window.innerHeight;}
-function tuneSmart(s){if(heroOnScreen()&&!document.hidden&&!REDUCE)tuneTo(s);else quickTune(s);}
+function tuneSmart(s){if(heroOnScreen()&&!paused&&!document.hidden&&!REDUCE)tuneTo(s);else quickTune(s);}
 function stepStation(dir){userActed();tuneSmart(nextLive(tunedNow()||A,dir));}
 
 /* Mini-Tuner */
@@ -1208,6 +1221,9 @@ if(elMini){
   $("mtNext").addEventListener("click",function(){stepStation(1);});
   $("mtStop").addEventListener("click",function(){setSound(false);miniUpdate();});
 }
+
+/* Pause fuer Carrier Run (E1024): das Bild rechnet nicht mit, Ton und Senderwahl laufen weiter */
+var paused=false;
 
 /* FULL SIGNAL */
 var zen=false,zenIdle=null;
@@ -1397,6 +1413,10 @@ window.ECHO_RECEIVER={
         paused:AU.el?AU.el.paused:null,cta:AU.cta&&AU.cta.key,lp:AU.lp?Math.round(AU.lp.frequency.value):null}};},
   listen:function(on){setSound(on!==false);return AU.on;},
   sleepIn:function(sec){sleepI=1;sleepEnd=Date.now()+sec*1000;sleepShow();return sleepTxt;},   /* Pruefhilfe: Sleep-Timer mit kurzer Restzeit */
-  zen:function(on){zenSet(on!==false);return zen;}
+  zen:function(on){zenSet(on!==false);return zen;},
+  /* fuer Carrier Run (E1024): eingestellter Sender, Sender per Schluessel, Bild anhalten */
+  current:function(){var s=tunedNow()||A;return s&&!s.dead?s.key:null;},
+  station:function(k){var s=LIVE.filter(function(x){return x.key===k;})[0];if(s){userActed();tuneSmart(s);}return !!s;},
+  pause:function(on){paused=!!on;if(!paused){lastT=0;kick();}return paused;}
 };
 })();
