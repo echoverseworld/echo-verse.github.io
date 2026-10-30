@@ -1,7 +1,11 @@
 {
-  "frequency": "LTtvJTSms-E",
-  "frequency_title": "ECHO 88.5 — MOONLIGHT ON MONOLITHS // Chillwave, Dreamwave, Downtempo Mix",
+  "frequency": "xvolfmLrX9k",
+  "frequency_title": "ECHO 97.8 — THE ANALOG AFTERLIFE // Darksynth, Cyberpunk, Outrun Mix",
   "recent_frequency": [
+    {
+      "id": "xvolfmLrX9k",
+      "title": "ECHO 97.8 — THE ANALOG AFTERLIFE // Darksynth, Cyberpunk, Outrun Mix"
+    },
     {
       "id": "LTtvJTSms-E",
       "title": "ECHO 88.5 — MOONLIGHT ON MONOLITHS // Chillwave, Dreamwave, Downtempo Mix"
@@ -13,15 +17,15 @@
     {
       "id": "VG0a-I2N7HE",
       "title": "ECHO 103.6 — MIDNIGHT ARCHIVE // Darksynth, Cyberpunk, Outrun Mix"
-    },
-    {
-      "id": "1aot25iLgBk",
-      "title": "ECHO 98.5 — EMBERS OF THE GRID // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "qG-DkAIUjbw",
-  "drift_title": "ECHO 95.7 — LOW BEAM LAMENT // Drift Phonk, Night Drive Mix",
+  "drift": "Ij0I-_4C27Y",
+  "drift_title": "Drift Phonk Mix · Night Parking Lot | Garage Exorcist · ECHO 89.1",
   "recent_drift": [
+    {
+      "id": "Ij0I-_4C27Y",
+      "title": "Drift Phonk Mix · Night Parking Lot | Garage Exorcist · ECHO 89.1"
+    },
     {
       "id": "qG-DkAIUjbw",
       "title": "ECHO 95.7 — LOW BEAM LAMENT // Drift Phonk, Night Drive Mix"
@@ -33,15 +37,15 @@
     {
       "id": "yADs4Du8zjA",
       "title": "ECHO 94.9 — TORQUE DEMON // Phonk, Drift Phonk Mix"
-    },
-    {
-      "id": "XgIF0KAZdQI",
-      "title": "ECHO 104.5 — NITROUS NOCTURNE // Drift Phonk, Night Drive Mix"
     }
   ],
-  "pulse": "VZ8Mzsk8Y4Q",
-  "pulse_title": "ECHO 107.0 — BODY OF LIGHT // Deep House, Melodic House, Organic House Mix",
+  "pulse": "rK5YDHMP2-Y",
+  "pulse_title": "Melodic House Mix · Sunset Lagoon | Reef of Resonance · ECHO 107.1",
   "recent_pulse": [
+    {
+      "id": "rK5YDHMP2-Y",
+      "title": "Melodic House Mix · Sunset Lagoon | Reef of Resonance · ECHO 107.1"
+    },
     {
       "id": "VZ8Mzsk8Y4Q",
       "title": "ECHO 107.0 — BODY OF LIGHT // Deep House, Melodic House, Organic House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "54_HL8nH20M",
       "title": "ECHO 93.3 — HARBOR OF HUSH // Deep House, Melodic House, Organic House Mix"
-    },
-    {
-      "id": "RrXSHdcRbgI",
-      "title": "ECHO 91.2 — NOMAD HEARTLINE // Melodic House, Organic House, Chill House Mix"
     }
   ],
-  "vigil": "yrKFJEqu35c",
-  "vigil_title": "ECHO 101.5 — NO ACKNOWLEDGMENT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+  "vigil": "-g-MxaUQyAo",
+  "vigil_title": "Dub Techno Mix · Android Throne Room | Nothing Answered · ECHO 87.7",
   "recent_vigil": [
+    {
+      "id": "-g-MxaUQyAo",
+      "title": "Dub Techno Mix · Android Throne Room | Nothing Answered · ECHO 87.7"
+    },
     {
       "id": "yrKFJEqu35c",
       "title": "ECHO 101.5 — NO ACKNOWLEDGMENT // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
@@ -73,15 +77,15 @@
     {
       "id": "WACvaVW1ZDI",
       "title": "ECHO 92.1 — COOLING TOWERS AT DAWN // Hypnotic Techno, Deep Techno, Dark Techno Mix"
-    },
-    {
-      "id": "C3T21WDodd4",
-      "title": "ECHO 100.1 — LAST OPERATOR // Dark Techno, Dub Techno, Hypnotic Techno Mix"
     }
   ],
-  "aurora": "1eubIFNA0A4",
-  "aurora_title": "ECHO 89.9 — THE ARCHIVE LOOKS UP // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
+  "aurora": "o0IhdnH_Fcs",
+  "aurora_title": "Melodic Trance Mix · Sky City Angel | Above the Cloud Line · ECHO 89.7",
   "recent_aurora": [
+    {
+      "id": "o0IhdnH_Fcs",
+      "title": "Melodic Trance Mix · Sky City Angel | Above the Cloud Line · ECHO 89.7"
+    },
     {
       "id": "1eubIFNA0A4",
       "title": "ECHO 89.9 — THE ARCHIVE LOOKS UP // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
@@ -93,11 +97,7 @@
     {
       "id": "itprjX5SXvs",
       "title": "ECHO 96.0 — LISTENING UPWARD // Melodic Trance, Uplifting Trance, Progressive Trance Mix"
-    },
-    {
-      "id": "w8WzE0ijtCY",
-      "title": "ECHO 95.0 — CARRIER AT SUNRISE // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
     }
   ],
-  "updated": "2026-10-30T13:10:17Z"
+  "updated": "2026-10-30T22:28:23Z"
 }
