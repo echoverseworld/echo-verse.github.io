@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T17:30:04",
+  "generated": "2026-10-30T17:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "aurora",
+      "volume": 6,
+      "title": "Melodic Trance Mix · Sky City Angel | Above the Cloud Line · ECHO 89.7",
+      "fm": "89.7",
+      "fragment": "ABOVE THE CLOUD LINE",
+      "genres": "Melodic Trance, Progressive Trance, Ethereal Trance",
+      "duration": "63:23",
+      "published": "2026-10-30",
+      "youtube_id": "o0IhdnH_Fcs",
+      "thumb": "assets/archive/aurora_006.jpg",
+      "art": "assets/fragments/aurora_006.jpg",
+      "page": "sig/aurora-006.html"
+    },
+    {
+      "channel": "frequency",
+      "volume": 50,
+      "title": "ECHO 97.8 — THE ANALOG AFTERLIFE // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "97.8",
+      "fragment": "THE ANALOG AFTERLIFE",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "63:49",
+      "published": "2026-10-30",
+      "youtube_id": "xvolfmLrX9k",
+      "thumb": "assets/archive/wave_050.jpg",
+      "art": "assets/fragments/wave_050.jpg",
+      "page": "sig/frequency-050.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 50,
+      "title": "Drift Phonk Mix · Night Parking Lot | Garage Exorcist · ECHO 89.1",
+      "fm": "89.1",
+      "fragment": "GARAGE EXORCIST",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "63:18",
+      "published": "2026-10-30",
+      "youtube_id": "Ij0I-_4C27Y",
+      "thumb": "assets/archive/drift_050.jpg",
+      "art": "assets/fragments/drift_050.jpg",
+      "page": "sig/drift-050.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 39,
+      "title": "Melodic House Mix · Sunset Lagoon | Reef of Resonance · ECHO 107.1",
+      "fm": "107.1",
+      "fragment": "REEF OF RESONANCE",
+      "genres": "Melodic House, Organic House, Chill House",
+      "duration": "64:25",
+      "published": "2026-10-30",
+      "youtube_id": "rK5YDHMP2-Y",
+      "thumb": "assets/archive/pulse_039.jpg",
+      "art": "assets/fragments/pulse_039.jpg",
+      "page": "sig/pulse-039.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 37,
+      "title": "Dub Techno Mix · Android Throne Room | Nothing Answered · ECHO 87.7",
+      "fm": "87.7",
+      "fragment": "NOTHING ANSWERED",
+      "genres": "Dub Techno, Deep Techno, Dark Techno",
+      "duration": "61:06",
+      "published": "2026-10-30",
+      "youtube_id": "-g-MxaUQyAo",
+      "thumb": "assets/archive/vigil_037.jpg",
+      "art": "assets/fragments/vigil_037.jpg",
+      "page": "sig/vigil-037.html"
+    },
     {
       "channel": "aurora",
       "volume": 5,
