@@ -27,10 +27,11 @@ if(!hero||!canvas||!dial)return;
    bpm    Takt des Lichtpulses; half = nur jeder zweite Schlag (ruhige Kanaele)
    zoom   Beat-Zoom (nur ECHO Drift), zbeats = ein Zoom alle n Schlaege -- weich an, langsam aus (Owner E926: "bei weitem langsamer")
    when,real  Koordinaten im Signalraum (E927, Vorschlag): wann liegt die Schicht (Erinnerung = PAST, die Wache = NOW,
-          die vorgestellte Antwort = AHEAD) und woraus ist sie (MEMORY = rekonstruiert, SELF = vom Archiv selbst, IMAGINED) */
+          die vorgestellte Antwort = AHEAD) und woraus ist sie (MEMORY = rekonstruiert, SELF = vom Archiv selbst, IMAGINED)
+   rcHome Zuhause des Rekonstruktions-Reglers (E1031), ohne Angabe 1 = ganz klar; darunter dreht sich die Logik um (ECHO Drift) */
 var LOOK={
   frequency:{hex:"#22D3EE",word:"FREQUENCY",focus:[.47,.30],tdy:-.17,tx:0,ts:1,tdepth:.30,bpm:100,half:true,glow:.55,zoom:0,when:"PAST",real:"MEMORY"},
-  drift:{hex:"#FF2D9B",word:"DRIFT",focus:[.36,.24],tdy:-.10,tx:.28,ts:.62,tdepth:.40,bpm:140,half:false,glow:.85,zoom:.016,zbeats:4,when:"PAST",real:"MEMORY"},
+  drift:{hex:"#FF2D9B",word:"DRIFT",focus:[.36,.24],tdy:-.10,tx:.28,ts:.62,tdepth:.40,bpm:140,half:false,glow:.85,zoom:.016,zbeats:4,when:"PAST",real:"MEMORY",rcHome:.62},
   pulse:{hex:"#7C5CFF",word:"PULSE",focus:[.68,.25],tdy:-.06,tx:-.13,ts:.84,tdepth:.42,bpm:122,half:true,glow:.6,zoom:0,when:"PAST",real:"MEMORY"},
   vigil:{hex:"#FF9E3D",word:"VIGIL",focus:[.52,.25],tdy:-.04,tx:-.31,ts:.5,tdepth:.20,bpm:132,half:true,glow:.7,zoom:0,when:"NOW",real:"SELF"},
   aurora:{hex:"#F5F2EA",word:"AURORA",focus:[.50,.20],tdy:0,tx:0,ts:1,tgap:1.05,tdepth:.41,bpm:130,half:true,glow:.6,zoom:0,when:"AHEAD",real:"IMAGINED"}
@@ -153,12 +154,27 @@ function audioInit(){
     /* Musik: ein <audio> fuer alle Sender (iOS gibt nur ein per Klick gestartetes Element frei), danach Filter, Pegel, Analyse */
     var el=AU.el=new Audio();el.loop=true;el.preload="auto";el.setAttribute("playsinline","");
     var ms=c.createMediaElementSource(el);
+    /* Rekonstruktion (E1031): Verzoegerung fest auf ganze Samples und Tiefen 0 = am Zuhause klingt der Zweig wie vorher */
+    var dl=c.createDelay(.05);dl.delayTime.value=Math.round(c.sampleRate*.006)/c.sampleRate;
+    AU.wow=c.createGain();AU.wow.gain.value=0;AU.flut=c.createGain();AU.flut.gain.value=0;
+    [[.55,AU.wow],[7.3,AU.flut]].forEach(function(l){var o=c.createOscillator();o.frequency.value=l[0];o.connect(l[1]);l[1].connect(dl.delayTime);o.start();});
+    AU.sh=c.createBiquadFilter();AU.sh.type="lowshelf";AU.sh.frequency.value=110;AU.sh.gain.value=0;
+    AU.rcD=c.createGain();AU.rcC=c.createGain();AU.rcC.gain.value=0;AU.rcB=c.createGain();AU.rcB.gain.value=0;
+    var crush=c.createWaveShaper(),burn=c.createWaveShaper(),cn=4097,cc=new Float32Array(cn),cb=new Float32Array(cn);
+    for(var q=0;q<cn;q++){var x=q/(cn-1)*2-1;cc[q]=Math.round(x*15)/15;cb[q]=Math.tanh(3.5*x);}
+    crush.curve=cc;burn.curve=cb;burn.oversample="2x";
+    /* Bitverlust mit Vorverstaerkung: sonst fallen leise Stellen ganz unter die erste Stufe */
+    var cp=c.createGain();cp.gain.value=2.5;
     AU.hp=c.createBiquadFilter();AU.hp.type="highpass";AU.hp.frequency.value=20;AU.hp.Q.value=.7;
     AU.lp=c.createBiquadFilter();AU.lp.type="lowpass";AU.lp.frequency.value=18000;AU.lp.Q.value=.7;
     AU.mg=c.createGain();AU.mg.gain.value=0;
     AU.an=c.createAnalyser();AU.an.fftSize=1024;AU.an.smoothingTimeConstant=.45;AU.fb=new Uint8Array(AU.an.frequencyBinCount);
     var mm=c.createGain();mm.gain.value=.6;
-    ms.connect(AU.hp);AU.hp.connect(AU.lp);AU.lp.connect(AU.mg);AU.mg.connect(AU.an);AU.an.connect(mm);mm.connect(c.destination);
+    ms.connect(dl);dl.connect(AU.hp);AU.hp.connect(AU.lp);AU.lp.connect(AU.sh);
+    AU.sh.connect(AU.rcD);AU.rcD.connect(AU.mg);
+    AU.sh.connect(cp);cp.connect(crush);crush.connect(AU.rcC);AU.rcC.connect(AU.mg);
+    AU.sh.connect(burn);burn.connect(AU.rcB);AU.rcB.connect(AU.mg);
+    AU.mg.connect(AU.an);AU.an.connect(mm);mm.connect(c.destination);
     mediaHandlers();
     return true;
   }catch(e){return false;}
@@ -210,18 +226,21 @@ function audioTick(){
     if(p<AU.lastPos-10)ctaNudge();
     AU.lastPos=p;
     var c2=gh?0:cl;
-    AU.lp.frequency.setTargetAtTime(gh?650:lerp(1100,18000,c2*c2),T,.06);
-    AU.hp.frequency.setTargetAtTime(gh?180:lerp(420,20,c2),T,.06);
+    rcAudio(T,!gh);
+    AU.lp.frequency.setTargetAtTime(Math.min(gh?650:lerp(1100,18000,c2*c2),RC.lp),T,.06);
+    AU.hp.frequency.setTargetAtTime(Math.max(gh?180:lerp(420,20,c2),RC.hp),T,.06);
+    g*=RC.g;
     AU.quietAt=0;
   }else if(AU.el&&!AU.el.paused&&AU.level<.01){
     /* lange nichts zu hoeren: anhalten; beim naechsten Sender geht es in Sendezeit weiter */
     if(!AU.quietAt)AU.quietAt=T;else if(T-AU.quietAt>1.5){AU.el.pause();AU.quietAt=0;}
   }
+  rcTick(s&&!gh&&cl>.6?s:null);
   var sg=sleepGain();   /* Sleep-Timer: die letzten 20 s blendet alles aus */
   g*=sg;
   AU.level=gh?0:g;
   if(AU.mg)AU.mg.gain.setTargetAtTime(g,T,.08);
-  audioStatic(Math.max(staticLevel(),drop*(s&&!gh?1:0))*sg);
+  audioStatic(Math.max(staticLevel(),drop*(s&&!gh?1:0),s&&!gh?RC.n:0)*sg);
   nowHud(AU.on&&s&&!gh&&cl>.6&&meta?s:null,meta);
   miniUpdate();
 }
@@ -241,6 +260,74 @@ function musicBeat(dt){
 }
 /* Anteil der echten Musik am Licht eines Senders (0 = gerechneter Takt) */
 function musicMix(s){return AU.on&&s&&AU.key===s.key?AU.level:0;}
+
+/* ---------- Rekonstruktion (E1031): Regler FRAGMENT <-> RECONSTRUCTION ----------
+   Derselbe Ausschnitt laeuft an derselben Stelle weiter, nur durch Bandbreite, Gleichlauf, Rauschen, Bitverlust und Aussetzer:
+   wer den Regler zieht, hoert, was wirklich geborgen ist -- der Rest ist Schlussfolgerung (FRAGMENT PROTOCOL). Keine neue Datei,
+   kein Server, gespeichert wird nichts. Der Regler startet klar (am Zuhause des Senders) und gleitet beim Senderwechsel dorthin
+   zurueck; Schaden gibt es nur auf Wunsch. Bei ECHO Drift dreht sich die Logik um (FILE 0009, "distortion is not damage"): Zuhause
+   liegt bei rcHome, nach rechts putzt der Besucher die Erinnerung weg (duenn, leise, blass), nach links brennt das Band (Saettigung,
+   Bass, Licht). Das Bild folgt ueber uLoss bzw. uWash, das Wort verliert Buchstaben. */
+var RC={v:1,home:1,key:"",glide:false,d:0,c:0,b:0,dropTo:0,dropAt:0,lp:18000,hp:20,g:1,n:0,msg:"",word:false,wordT:0,txt:""};
+var RC_MSG={frag:"…raw fragment. the rest was inference.",clean:"…every pass of noise reduction took the memory with it.",burn:"…distortion is not damage. it is the memory."};
+var elRc=$("rxRc"),elRcIn=$("rxRcIn"),elRcVal=$("rxRcVal");
+/* Reglerstand aufteilen: d = Schaden (0..1), c = weggeputzt, b = gebrannt (die beiden letzten nur bei ECHO Drift) */
+function rcSplit(){
+  if(RC.home>=1){RC.d=1-RC.v;RC.c=RC.b=0;}
+  else if(RC.v>RC.home){RC.d=RC.b=0;RC.c=(RC.v-RC.home)/(1-RC.home);}
+  else{RC.d=RC.c=0;RC.b=(RC.home-RC.v)/RC.home;}
+}
+function rcUi(){
+  if(!elRcIn)return;
+  var p=Math.round(RC.v*100),fl=RC.home<1;
+  if(RC.glide||+elRcIn.value!==p)elRcIn.value=p;
+  elRcIn.style.setProperty("--p",p+"%");
+  var t=fl?(RC.c>.01?"MEMORY "+Math.round((1-RC.c)*100)+"%":RC.b>.01?"OVERDRIVE +"+Math.round(RC.b*100)+"%":"RAW SIGNAL"):"INTEGRITY "+p+"%";
+  if(t!==RC.txt){RC.txt=t;elRcVal.textContent=t;elRcIn.setAttribute("aria-valuetext",t);}
+  var k=fl?(RC.c>.9?"clean":RC.b>.9?"burn":""):(RC.d>.92?"frag":"");
+  if(k!==RC.msg&&elMsg){
+    RC.msg=k;
+    if(k){elMsg.textContent=RC_MSG[k];elMsg.classList.remove("run");elMsg.classList.add("show","rc");}
+    else elMsg.classList.remove("show","rc");
+  }
+}
+/* Ton-Takt: Sender uebernehmen, zum Zuhause gleiten, Regler anzeigen */
+function rcTick(s){
+  if(!s)RC.key="";   /* weggedreht: wer zurueckkommt, startet wieder klar */
+  else if(s.key!==RC.key){
+    RC.key=s.key;RC.home=s.rcHome||1;RC.glide=true;
+    if(elRc){elRc.classList.toggle("flip",RC.home<1);elRc.style.setProperty("--home",(RC.home*100)+"%");}
+  }
+  if(RC.glide){RC.v+=(RC.home-RC.v)*.22;if(Math.abs(RC.home-RC.v)<.004){RC.v=RC.home;RC.glide=false;}}
+  rcSplit();rcUi();
+}
+/* Klangwerte eines Ton-Takts; on = dieser Sender klingt gerade klar genug */
+function rcAudio(T,on){
+  var d=on?RC.d:0,c=on?RC.c:0,b=on?RC.b:0;
+  if(d>.3&&T>RC.dropAt){RC.dropTo=T+.07+Math.random()*.3*d;RC.dropAt=RC.dropTo+(.3+Math.random()*2.4)*(1.6-d);}
+  var gap=d>.3&&T<RC.dropTo;
+  RC.lp=Math.min(18000*Math.pow(1/12,Math.pow(d,.8)),18000*Math.pow(.25,c));
+  RC.hp=Math.max(20*Math.pow(25,d),20*Math.pow(45,c));
+  RC.g=(gap?.08:1)*(1-.85*c*c)*(1-.25*d);
+  RC.n=d*d*.7+(gap?.25:0);
+  var wc=smooth((d-.4)/.6),wb=b*.85,h=Math.PI/2;
+  AU.rcD.gain.setTargetAtTime(Math.cos(Math.max(wc,wb)*h),T,.05);
+  AU.rcC.gain.setTargetAtTime(Math.sin(wc*h)*.36,T,.05);
+  AU.rcB.gain.setTargetAtTime(Math.sin(wb*h)*.42,T,.05);
+  AU.sh.gain.setTargetAtTime(b*6,T,.08);
+  AU.wow.gain.setTargetAtTime(d*d*.004+b*b*.0012,T,.1);
+  AU.flut.gain.setTargetAtTime(d*d*.00025,T,.1);
+}
+function rcShow(on){
+  if(!elRc)return;
+  elRc.hidden=!on;hero.classList.toggle("rx-rcon",on);
+  if(!on){RC.v=RC.home;RC.glide=false;rcSplit();rcUi();}
+}
+if(elRcIn){
+  elRcIn.addEventListener("input",function(){RC.v=clamp(+elRcIn.value/100,0,1);RC.glide=false;rcSplit();rcUi();userActed();zenWake();if(REDUCE)kick();});
+  /* Fokus zurueckgeben, sonst schlucken die Tasten-Handler 1-5, Leertaste und das Terminal alles */
+  elRcIn.addEventListener("pointerup",function(){elRcIn.blur();});
+}
 
 /* Senderanzeige waehrend des Hoerens: Song statt Band, Pegel, "weiter auf YouTube" an die gehoerte Sekunde */
 var elListen=$("rxListen");
@@ -316,12 +403,14 @@ function setSound(on){
     AU.sync=AU.ctx.currentTime+1e-3;
     var pr=AU.el.play();if(pr&&pr.catch)pr.catch(function(){});
     if(!AU.tick)AU.tick=setInterval(audioTick,60);
+    rcShow(true);
   }else if(!on&&AU.on){
     AU.on=false;
     if(AU.ng)AU.ng.gain.setTargetAtTime(0,AU.ctx.currentTime,.03);
     if(AU.mg)AU.mg.gain.setTargetAtTime(0,AU.ctx.currentTime,.05);
     setTimeout(function(){if(!AU.on&&AU.el)AU.el.pause();},400);
     nowHud(null,null);
+    rcShow(false);
   }else return;
   if("mediaSession" in navigator)try{navigator.mediaSession.playbackState=AU.on?"playing":"paused";}catch(e){}
   if(sndBtn){sndBtn.setAttribute("aria-pressed",AU.on?"true":"false");sndBtn.querySelector(".sl").textContent=AU.on?"SOUND ON":"SOUND OFF";}
@@ -421,7 +510,7 @@ var FS=[
 "uniform vec4 uFrmA,uFrmB;uniform float uFocA,uFocB,uLodA,uLodB,uHasA,uHasB;",
 "uniform vec2 uZcA,uZcB;uniform float uZoomA,uZoomB;",
 "uniform vec3 uSigA,uSigB;uniform float uBeatA,uBeatB,uGlowA,uGlowB;",
-"uniform float uLoss,uMode,uWave;uniform vec2 uOrigin;",
+"uniform float uLoss,uMode,uWave,uWash;uniform vec2 uOrigin;",
 "uniform vec4 uTxtRect;uniform float uTxtDepth,uTxtOn,uTxtLod;uniform vec3 uTxtTint;uniform int uSteps;",
 "float h12(vec2 p){vec3 q=fract(vec3(p.xyx)*.1031);q+=dot(q,q.yzx+33.33);return fract((q.x+q.y)*q.z);}",
 "vec2 toImg(vec4 f,vec2 s){return (s-.5)*f.xy+f.zw;}",
@@ -488,6 +577,7 @@ var FS=[
 "    float ring=exp(-pow((r-uWave)/.008,2.)),ring2=exp(-pow((r-uWave*.86)/.025,2.))*.3;",
 "    col+=uSigB*(ring*1.7+ring2)+vec3(ring*.35);",
 "  }",
+"  col=mix(col,vec3(dot(col,vec3(.3,.59,.11)))*.55+.03,uWash);",
 "  col+=(h12(s*uRes+fract(uTime*7.31)*391.)-.5)*.032;",
 "  vec2 v=s-.5;col*=1.-dot(v*vec2(1.05,1.),v*vec2(1.05,1.))*.5;",
 "  o=vec4(col,1.);",
@@ -517,7 +607,7 @@ function glInit(){
   gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);
   gl.enableVertexAttribArray(0);gl.vertexAttribPointer(0,2,gl.FLOAT,false,0,0);
   ["uRes","uTime","uCam","uImgA","uDepA","uImgB","uDepB","uTxt","uFrmA","uFrmB","uFocA","uFocB","uLodA","uLodB","uHasA","uHasB",
-   "uZcA","uZcB","uZoomA","uZoomB","uSigA","uSigB","uBeatA","uBeatB","uGlowA","uGlowB","uLoss","uMode","uWave","uOrigin",
+   "uZcA","uZcB","uZoomA","uZoomB","uSigA","uSigB","uBeatA","uBeatB","uGlowA","uGlowB","uLoss","uMode","uWave","uWash","uOrigin",
    "uTxtRect","uTxtDepth","uTxtOn","uTxtLod","uTxtTint","uSteps"].forEach(function(n){U[n]=gl.getUniformLocation(prog,n);});
   gl.uniform1i(U.uImgA,0);gl.uniform1i(U.uDepA,1);gl.uniform1i(U.uImgB,2);gl.uniform1i(U.uDepB,3);gl.uniform1i(U.uTxt,4);
   gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL,false);
@@ -804,6 +894,9 @@ function camStep(t,dt){
 function update(t,dt){
   /* Wort entschluesseln */
   if(wordProg<1){wordProg=clamp((t-wordT0)/.75,0,1);drawWord(curWord,wordProg);txtDirty=true;}
+  /* Rekonstruktion (E1031): das Wort verliert von rechts her Buchstaben, ruhig (4x je Sekunde) */
+  var wd=phase==="idle"?RC.d:0;
+  if(wordProg>=1&&(wd>.05?t-RC.wordT>.25:RC.word)){RC.wordT=t;RC.word=wd>.05;drawWord(curWord,RC.word?1-wd*.85:1);txtDirty=true;}
   camStep(t,dt);
 
   if(phase==="boot"){
@@ -895,7 +988,7 @@ function setLayer(s,which,t){
   gl.uniform1f(U["uZoom"+which],1+(s.zoom||0)*zoomOf(s,t));
   gl.uniform3fv(U["uSig"+which],s.col);
   gl.uniform1f(U["uBeat"+which],b);
-  gl.uniform1f(U["uGlow"+which],s.glow||.6);
+  gl.uniform1f(U["uGlow"+which],(s.glow||.6)*(1+(phase==="idle"?RC.b*.7:0)));
   return{fr:fr,fs:fs};
 }
 function render(t){
@@ -911,14 +1004,16 @@ function render(t){
   var lb=setLayer(B,"B",t);
   var owner=phase==="reveal"?B:A,lo=phase==="reveal"?lb:la;
   gl.uniform1f(U.uMode,phase==="reveal"&&lb?1:0);
-  gl.uniform1f(U.uLoss,phase==="boot"||!la?1:loss);
+  var wash=phase==="idle"?smooth(RC.c):0;
+  gl.uniform1f(U.uLoss,phase==="boot"||!la?1:Math.max(loss,phase==="idle"?Math.pow(RC.d,1.6)*.55:0));
+  gl.uniform1f(U.uWash,wash);
   gl.uniform1f(U.uWave,wave);
   gl.uniform2fv(U.uOrigin,lb?lb.fs:[.5,.4]);
   if(owner&&lo&&curWord&&phase!=="dead"&&W/H>=.9){
     var tr=textRect(owner,lo.fs);
     gl.uniform4fv(U.uTxtRect,tr);
     gl.uniform1f(U.uTxtDepth,owner.tdepth);
-    gl.uniform1f(U.uTxtOn,1);
+    gl.uniform1f(U.uTxtOn,1-wash*.8);
     gl.uniform1f(U.uTxtLod,Math.max(0,Math.log2(TW/(tr[2]*W))));
     gl.uniform3fv(U.uTxtTint,owner.col);
   }else gl.uniform1f(U.uTxtOn,0);
@@ -1410,8 +1505,23 @@ window.ECHO_RECEIVER={
   spec:function(draw){var e=null;if(draw){try{specDraw(now());}catch(x){e=String(x&&x.stack||x);}}return{cx:!!SP.cx,w:SP.w,h:SP.h,by:SP.by,N:SP.N,M:SP.M,rows:SP.rows.length,last:SP.last,err:e};},
   state:function(){return{phase:phase,f:f,A:A&&A.key,B:B&&B.key,loss:loss,wave:wave,mode:MODE,W:W,H:H,auto:auto,qual:QUAL,
     au:{on:AU.on,key:AU.key,level:+AU.level.toFixed(3),beat:+AU.beat.toFixed(3),pos:AU.el?+AU.el.currentTime.toFixed(2):null,
-        paused:AU.el?AU.el.paused:null,cta:AU.cta&&AU.cta.key,lp:AU.lp?Math.round(AU.lp.frequency.value):null}};},
+        paused:AU.el?AU.el.paused:null,cta:AU.cta&&AU.cta.key,lp:AU.lp?Math.round(AU.lp.frequency.value):null},
+    rc:{v:+RC.v.toFixed(3),home:RC.home,d:+RC.d.toFixed(3),c:+RC.c.toFixed(3),b:+RC.b.toFixed(3),key:RC.key}};},
   listen:function(on){setSound(on!==false);return AU.on;},
+  /* Pruefhilfen Rekonstruktion: rc(v) setzt den Regler (0..1), rcProbe(sek,pos) misst den Ausgang ab Clip-Stelle pos (Effektivwert, Spitze, Schwerpunkt in Hz) */
+  rc:function(v){RC.v=clamp(+v,0,1);RC.glide=false;rcSplit();rcUi();return RC.v;},
+  rcProbe:function(sec,pos){
+    return new Promise(function(res){
+      if(pos!==undefined)AU.el.currentTime=pos;
+      var N=AU.an.fftSize,b=new Float32Array(N),fr=new Float32Array(AU.an.frequencyBinCount),hz=AU.ctx.sampleRate/N,sum=0,n=0,pk=0,e=0,m=0,t0=Date.now();
+      var id=setInterval(function(){
+        AU.an.getFloatTimeDomainData(b);AU.an.getFloatFrequencyData(fr);
+        for(var i=0;i<N;i++){sum+=b[i]*b[i];pk=Math.max(pk,Math.abs(b[i]));}n+=N;
+        for(var j=1;j<fr.length;j++){var p=Math.pow(10,fr[j]/10);e+=p;m+=p*j*hz;}
+        if(Date.now()-t0>sec*1000){clearInterval(id);res({rms:+Math.sqrt(sum/n).toFixed(4),peak:+pk.toFixed(3),hz:Math.round(m/Math.max(e,1e-12))});}
+      },25);
+    });
+  },
   sleepIn:function(sec){sleepI=1;sleepEnd=Date.now()+sec*1000;sleepShow();return sleepTxt;},   /* Pruefhilfe: Sleep-Timer mit kurzer Restzeit */
   zen:function(on){zenSet(on!==false);return zen;},
   /* fuer Carrier Run (E1024): eingestellter Sender, Sender per Schluessel, Bild anhalten */
