@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30T17:30:04",
+  "generated": "2026-11-02T17:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "aurora",
+      "volume": 7,
+      "title": "ECHO 104.1 — THE MACHINE IMAGINES MORNING // Progressive Trance, Melodic Trance, Ethereal Trance Mix",
+      "fm": "104.1",
+      "fragment": "THE MACHINE IMAGINES MORNING",
+      "genres": "Progressive Trance, Melodic Trance, Ethereal Trance",
+      "duration": "62:04",
+      "published": "2026-11-02",
+      "youtube_id": "yCiuIMF8ohc",
+      "thumb": "assets/archive/aurora_007.jpg",
+      "art": "assets/fragments/aurora_007.jpg",
+      "page": "sig/aurora-007.html"
+    },
+    {
+      "channel": "frequency",
+      "volume": 51,
+      "title": "ECHO 105.7 — REMNANT LIGHT // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "105.7",
+      "fragment": "REMNANT LIGHT",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "61:44",
+      "published": "2026-11-02",
+      "youtube_id": "sleT0M4b4gI",
+      "thumb": "assets/archive/wave_051.jpg",
+      "art": "assets/fragments/wave_051.jpg",
+      "page": "sig/frequency-051.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 51,
+      "title": "ECHO 87.9 — FOURTH GEAR PHANTOM // Phonk, Drift Phonk Mix",
+      "fm": "87.9",
+      "fragment": "FOURTH GEAR PHANTOM",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "63:45",
+      "published": "2026-11-02",
+      "youtube_id": "HMWaA-G8_50",
+      "thumb": "assets/archive/drift_051.jpg",
+      "art": "assets/fragments/drift_051.jpg",
+      "page": "sig/drift-051.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 40,
+      "title": "ECHO 104.4 — IVORY UNDERCURRENT // Deep House, Melodic House, Organic House Mix",
+      "fm": "104.4",
+      "fragment": "IVORY UNDERCURRENT",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "61:34",
+      "published": "2026-11-02",
+      "youtube_id": "D1ugJ0THUns",
+      "thumb": "assets/archive/pulse_040.jpg",
+      "art": "assets/fragments/pulse_040.jpg",
+      "page": "sig/pulse-040.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 38,
+      "title": "ECHO 88.7 — A LIGHT LEFT ON // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "fm": "88.7",
+      "fragment": "A LIGHT LEFT ON",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "63:07",
+      "published": "2026-11-02",
+      "youtube_id": "N3UuahmEEms",
+      "thumb": "assets/archive/vigil_038.jpg",
+      "art": "assets/fragments/vigil_038.jpg",
+      "page": "sig/vigil-038.html"
+    },
     {
       "channel": "aurora",
       "volume": 6,
