@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T17:30:03",
+  "generated": "2026-11-04T17:30:05",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "aurora",
+      "volume": 8,
+      "title": "Ethereal Trance Mix · Halo Angel | What Morning Sounds Like · ECHO 92.2",
+      "fm": "92.2",
+      "fragment": "WHAT MORNING SOUNDS LIKE",
+      "genres": "Ethereal Trance, Melodic Trance, Progressive Trance",
+      "duration": "64:37",
+      "published": "2026-11-04",
+      "youtube_id": "e-PNVEWohO0",
+      "thumb": "assets/archive/aurora_008.jpg",
+      "art": "assets/fragments/aurora_008.jpg",
+      "page": "sig/aurora-008.html"
+    },
+    {
+      "channel": "frequency",
+      "volume": 52,
+      "title": "ECHO 107.2 — NEON PERMAFROST // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "107.2",
+      "fragment": "NEON PERMAFROST",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "62:01",
+      "published": "2026-11-04",
+      "youtube_id": "h5gnywavH_U",
+      "thumb": "assets/archive/wave_052.jpg",
+      "art": "assets/fragments/wave_052.jpg",
+      "page": "sig/frequency-052.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 52,
+      "title": "Phonk Mix · Mountain Road at Night | Streetlight Scripture · ECHO 104.9",
+      "fm": "104.9",
+      "fragment": "STREETLIGHT SCRIPTURE",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:27",
+      "published": "2026-11-04",
+      "youtube_id": "_seCZAT_XNk",
+      "thumb": "assets/archive/drift_052.jpg",
+      "art": "assets/fragments/drift_052.jpg",
+      "page": "sig/drift-052.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 41,
+      "title": "Melodic House Mix · Sunset Reflection | The Hour of No Name · ECHO 103.3",
+      "fm": "103.3",
+      "fragment": "THE HOUR OF NO NAME",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "61:22",
+      "published": "2026-11-04",
+      "youtube_id": "H3z0A2NyH5Q",
+      "thumb": "assets/archive/pulse_041.jpg",
+      "art": "assets/fragments/pulse_041.jpg",
+      "page": "sig/pulse-041.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 39,
+      "title": "Dub Techno Mix · Red Halo Shrine | Winter in the Archive · ECHO 94.1",
+      "fm": "94.1",
+      "fragment": "WINTER IN THE ARCHIVE",
+      "genres": "Dub Techno, Deep Techno, Dark Techno",
+      "duration": "63:18",
+      "published": "2026-11-04",
+      "youtube_id": "OK4QWH6x51g",
+      "thumb": "assets/archive/vigil_039.jpg",
+      "art": "assets/fragments/vigil_039.jpg",
+      "page": "sig/vigil-039.html"
+    },
     {
       "channel": "aurora",
       "volume": 7,
