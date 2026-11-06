@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-04T17:30:05",
+  "generated": "2026-11-06T17:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "aurora",
+      "volume": 9,
+      "title": "ECHO 104.8 — OPEN CHANNEL AT DAYBREAK // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
+      "fm": "104.8",
+      "fragment": "OPEN CHANNEL AT DAYBREAK",
+      "genres": "Ethereal Trance, Melodic Trance, Progressive Trance",
+      "duration": "62:29",
+      "published": "2026-11-06",
+      "youtube_id": "Kra2KLmNd5g",
+      "thumb": "assets/archive/aurora_009.jpg",
+      "art": "assets/fragments/aurora_009.jpg",
+      "page": "sig/aurora-009.html"
+    },
+    {
+      "channel": "frequency",
+      "volume": 53,
+      "title": "ECHO 100.5 — HOLOGRAM WINTER // Retrowave, Synthwave, Cyberpunk Mix",
+      "fm": "100.5",
+      "fragment": "HOLOGRAM WINTER",
+      "genres": "Retrowave, Synthwave, Cyberpunk",
+      "duration": "63:36",
+      "published": "2026-11-06",
+      "youtube_id": "Ph0lG66WO1A",
+      "thumb": "assets/archive/wave_053.jpg",
+      "art": "assets/fragments/wave_053.jpg",
+      "page": "sig/frequency-053.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 53,
+      "title": "ECHO 88.2 — SKID MARK SIGIL // Phonk, Drift Phonk Mix",
+      "fm": "88.2",
+      "fragment": "SKID MARK SIGIL",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "62:42",
+      "published": "2026-11-06",
+      "youtube_id": "Z58caubR62g",
+      "thumb": "assets/archive/drift_053.jpg",
+      "art": "assets/fragments/drift_053.jpg",
+      "page": "sig/drift-053.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 42,
+      "title": "ECHO 97.9 — A LIGHT THAT BREATHES // Deep House, Melodic House, Organic House Mix",
+      "fm": "97.9",
+      "fragment": "A LIGHT THAT BREATHES",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "61:15",
+      "published": "2026-11-06",
+      "youtube_id": "nSL4PSSXNz4",
+      "thumb": "assets/archive/pulse_042.jpg",
+      "art": "assets/fragments/pulse_042.jpg",
+      "page": "sig/pulse-042.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 40,
+      "title": "ECHO 90.3 — THE DARK KEEPS TIME // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "fm": "90.3",
+      "fragment": "THE DARK KEEPS TIME",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "65:43",
+      "published": "2026-11-06",
+      "youtube_id": "2rtKUr8c0vg",
+      "thumb": "assets/archive/vigil_040.jpg",
+      "art": "assets/fragments/vigil_040.jpg",
+      "page": "sig/vigil-040.html"
+    },
     {
       "channel": "aurora",
       "volume": 8,
