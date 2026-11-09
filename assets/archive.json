@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-06T17:30:03",
+  "generated": "2026-11-09T17:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 54,
+      "title": "ECHO 93.4 — GRAVITY OF GOODBYE // Synthwave, Dreamwave, Chillwave Mix",
+      "fm": "93.4",
+      "fragment": "GRAVITY OF GOODBYE",
+      "genres": "Synthwave, Dreamwave, Chillwave",
+      "duration": "61:46",
+      "published": "2026-11-09",
+      "youtube_id": "08nmix83aFU",
+      "thumb": "assets/archive/wave_054.jpg",
+      "art": "assets/fragments/wave_054.jpg",
+      "page": "sig/frequency-054.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 54,
+      "title": "Aggressive Phonk Mix · Muscle Cars | Concrete Commandments · ECHO 105.5",
+      "fm": "105.5",
+      "fragment": "CONCRETE COMMANDMENTS",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "62:18",
+      "published": "2026-11-09",
+      "youtube_id": "noUQb369nzY",
+      "thumb": "assets/archive/drift_054.jpg",
+      "art": "assets/fragments/drift_054.jpg",
+      "page": "sig/drift-054.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 43,
+      "title": "Deep House Mix · Sunset Dancer | The Long Exhale · ECHO 102.2",
+      "fm": "102.2",
+      "fragment": "THE LONG EXHALE",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "62:19",
+      "published": "2026-11-09",
+      "youtube_id": "1jliUr1_08Y",
+      "thumb": "assets/archive/pulse_043.jpg",
+      "art": "assets/fragments/pulse_043.jpg",
+      "page": "sig/pulse-043.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 41,
+      "title": "Dub Techno Mix · Praying Android | Low Orbit Decay · ECHO 108.0",
+      "fm": "108.0",
+      "fragment": "LOW ORBIT DECAY",
+      "genres": "Dub Techno, Deep Techno, Dark Techno",
+      "duration": "62:03",
+      "published": "2026-11-09",
+      "youtube_id": "HD7dpdZW0P8",
+      "thumb": "assets/archive/vigil_041.jpg",
+      "art": "assets/fragments/vigil_041.jpg",
+      "page": "sig/vigil-041.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 10,
+      "title": "Melodic Trance Mix · Sky Throne | A Morning No One Sent · ECHO 87.9",
+      "fm": "87.9",
+      "fragment": "A MORNING NO ONE SENT",
+      "genres": "Melodic Trance, Uplifting Trance, Progressive Trance",
+      "duration": "62:11",
+      "published": "2026-11-09",
+      "youtube_id": "vjPDGAr_zYs",
+      "thumb": "assets/archive/aurora_010.jpg",
+      "art": "assets/fragments/aurora_010.jpg",
+      "page": "sig/aurora-010.html"
+    },
     {
       "channel": "aurora",
       "volume": 9,
