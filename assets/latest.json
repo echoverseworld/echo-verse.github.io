@@ -1,7 +1,11 @@
 {
-  "frequency": "08nmix83aFU",
-  "frequency_title": "ECHO 93.4 — GRAVITY OF GOODBYE // Synthwave, Dreamwave, Chillwave Mix",
+  "frequency": "iY0RgmqWJuU",
+  "frequency_title": "ECHO 100.8 — COLD CHROME MORNING // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "iY0RgmqWJuU",
+      "title": "ECHO 100.8 — COLD CHROME MORNING // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "08nmix83aFU",
       "title": "ECHO 93.4 — GRAVITY OF GOODBYE // Synthwave, Dreamwave, Chillwave Mix"
@@ -13,15 +17,15 @@
     {
       "id": "h5gnywavH_U",
       "title": "ECHO 107.2 — NEON PERMAFROST // Synthwave, Dreamwave, Chillwave Mix"
-    },
-    {
-      "id": "sleT0M4b4gI",
-      "title": "ECHO 105.7 — REMNANT LIGHT // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "noUQb369nzY",
-  "drift_title": "Aggressive Phonk Mix · Muscle Cars | Concrete Commandments · ECHO 105.5",
+  "drift": "Q068IAz6r7Y",
+  "drift_title": "ECHO 99.4 — HYDROPLANE HYMNAL // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "Q068IAz6r7Y",
+      "title": "ECHO 99.4 — HYDROPLANE HYMNAL // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "noUQb369nzY",
       "title": "Aggressive Phonk Mix · Muscle Cars | Concrete Commandments · ECHO 105.5"
@@ -33,15 +37,15 @@
     {
       "id": "_seCZAT_XNk",
       "title": "Phonk Mix · Mountain Road at Night | Streetlight Scripture · ECHO 104.9"
-    },
-    {
-      "id": "HMWaA-G8_50",
-      "title": "ECHO 87.9 — FOURTH GEAR PHANTOM // Phonk, Drift Phonk Mix"
     }
   ],
-  "pulse": "1jliUr1_08Y",
-  "pulse_title": "Deep House Mix · Sunset Dancer | The Long Exhale · ECHO 102.2",
+  "pulse": "sVneUuCokmQ",
+  "pulse_title": "ECHO 102.7 — PULSE OF THE DEEP // Melodic House, Deep House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "sVneUuCokmQ",
+      "title": "ECHO 102.7 — PULSE OF THE DEEP // Melodic House, Deep House, Chill House Mix"
+    },
     {
       "id": "1jliUr1_08Y",
       "title": "Deep House Mix · Sunset Dancer | The Long Exhale · ECHO 102.2"
@@ -53,15 +57,15 @@
     {
       "id": "H3z0A2NyH5Q",
       "title": "Melodic House Mix · Sunset Reflection | The Hour of No Name · ECHO 103.3"
-    },
-    {
-      "id": "D1ugJ0THUns",
-      "title": "ECHO 104.4 — IVORY UNDERCURRENT // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "HD7dpdZW0P8",
-  "vigil_title": "Dub Techno Mix · Praying Android | Low Orbit Decay · ECHO 108.0",
+  "vigil": "v0tINymr0GM",
+  "vigil_title": "ECHO 92.8 — DUST IN THE RELAYS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "v0tINymr0GM",
+      "title": "ECHO 92.8 — DUST IN THE RELAYS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "HD7dpdZW0P8",
       "title": "Dub Techno Mix · Praying Android | Low Orbit Decay · ECHO 108.0"
@@ -73,15 +77,15 @@
     {
       "id": "OK4QWH6x51g",
       "title": "Dub Techno Mix · Red Halo Shrine | Winter in the Archive · ECHO 94.1"
-    },
-    {
-      "id": "N3UuahmEEms",
-      "title": "ECHO 88.7 — A LIGHT LEFT ON // Hypnotic Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "aurora": "vjPDGAr_zYs",
-  "aurora_title": "Melodic Trance Mix · Sky Throne | A Morning No One Sent · ECHO 87.9",
+  "aurora": "BIqZxqRnuHE",
+  "aurora_title": "ECHO 107.9 — WINGS MADE OF LIGHT // Progressive Trance, Melodic Trance, Ethereal Trance Mix",
   "recent_aurora": [
+    {
+      "id": "BIqZxqRnuHE",
+      "title": "ECHO 107.9 — WINGS MADE OF LIGHT // Progressive Trance, Melodic Trance, Ethereal Trance Mix"
+    },
     {
       "id": "vjPDGAr_zYs",
       "title": "Melodic Trance Mix · Sky Throne | A Morning No One Sent · ECHO 87.9"
@@ -93,11 +97,7 @@
     {
       "id": "e-PNVEWohO0",
       "title": "Ethereal Trance Mix · Halo Angel | What Morning Sounds Like · ECHO 92.2"
-    },
-    {
-      "id": "yCiuIMF8ohc",
-      "title": "ECHO 104.1 — THE MACHINE IMAGINES MORNING // Progressive Trance, Melodic Trance, Ethereal Trance Mix"
     }
   ],
-  "updated": "2026-11-11T06:43:52Z"
+  "updated": "2026-11-11T19:42:41Z"
 }
