@@ -9,11 +9,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://echo-verse.world/">
 <meta property="og:title" content="ECHO VERSE — The Signal After the Silence">
-<meta property="og:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music. Four frequencies carry a signal: Synthwave, Phonk, Deep House &amp; Dark Techno.">
+<meta property="og:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music. Five frequencies carry a signal: Synthwave, Phonk, Deep House, Dark Techno &amp; Melodic Trance.">
 <meta property="og:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ECHO VERSE — The Signal After the Silence">
-<meta name="twitter:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music: Synthwave, Phonk, Deep House &amp; Dark Techno.">
+<meta name="twitter:description" content="An archive system that was never switched off, broadcasting reconstructed memories as music: Synthwave, Phonk, Deep House, Dark Techno &amp; Melodic Trance.">
 <meta name="twitter:image" content="https://echo-verse.world/assets/og_image.jpg">
 <meta name="theme-color" content="#04060b">
 <link rel="icon" type="image/png" href="assets/logos/favicon.png">
@@ -677,7 +677,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="rx-tools" id="rxTools" hidden><button type="button" id="rxFull" aria-pressed="false">⛶ FULL SIGNAL</button><button type="button" id="rxSleep" aria-pressed="false">◷ SLEEP OFF</button><button type="button" id="rxKeysBtn" aria-label="Keyboard controls">?</button></div>
     </div>
     <div class="rx-dialwrap">
-      <div class="rx-dial" role="group" aria-label="Frequency dial — five signals, three dead. Drag, click or use the arrow keys to tune.">
+      <div class="rx-dial" role="group" aria-label="Frequency dial — five signals, four dead. Drag, click or use the arrow keys to tune.">
         <canvas class="rx-spec" aria-hidden="true"></canvas>
         <div class="rx-scale" aria-hidden="true"></div>
         <div class="rx-needle" aria-hidden="true"></div>
@@ -733,7 +733,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="chips">
         <span class="chip">SYNTHWAVE</span><span class="chip">RETROWAVE</span><span class="chip">CHILLWAVE</span><span class="chip">DREAMWAVE</span><span class="chip">DARKSYNTH</span>
       </div>
-      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES + DAILY SHORTS</div>
       <a class="btn" href="https://www.youtube.com/@Echo_Frequency_Synthwave?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
       <div class="recent" data-recent="frequency"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
@@ -789,7 +789,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="chips">
         <span class="chip">DEEP HOUSE</span><span class="chip">MELODIC HOUSE</span><span class="chip">ORGANIC HOUSE</span><span class="chip">CHILL HOUSE</span>
       </div>
-      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES + DAILY SHORTS</div>
       <a class="btn" href="https://www.youtube.com/@Echo_Pulse_House?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
       <div class="recent" data-recent="pulse"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
@@ -817,7 +817,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
       <div class="chips">
         <span class="chip">DARK TECHNO</span><span class="chip">DUB TECHNO</span><span class="chip">HYPNOTIC TECHNO</span><span class="chip">DEEP TECHNO</span>
       </div>
-      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES</div>
+      <div class="ch-meta">NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES + DAILY SHORTS</div>
       <a class="btn" href="https://www.youtube.com/@echo_vigil_techno?sub_confirmation=1" target="_blank" rel="noopener">TUNE IN — YOUTUBE ↗</a>
       <div class="recent" data-recent="vigil"><div class="rc-h">EARLIER TRANSMISSIONS</div></div>
     </div>
@@ -979,7 +979,7 @@ footer{border-top:1px solid var(--line);padding:64px 24px 46px;background:var(--
     "> broadcast array .............. [OK]",
     "> antenna alignment ............ [OK]",
     "> listener detection ........... none. transmitting anyway",
-    "> carriers 100.4 / 106.5 ....... locked"
+    "> carriers 100.4 / 106.5 / 107.9 locked"
   ];
   pool.sort(function(){return Math.random()-.5});
   /* Boot-Anomalie: etwa 1 von 100 Aufrufen bootet "korrupt" -- zwei Zeilen, die nicht in dieses Log gehoeren
@@ -1093,7 +1093,7 @@ latestSignal.then(function(l){
     var pf=document.getElementById(ch.key+"PfLabel");
     if(pf)pf.textContent="▶ LATEST TRANSMISSION";
     var meta=document.getElementById(ch.key+"Meta");
-    if(meta)meta.innerHTML="NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES";
+    if(meta)meta.innerHTML="NEW SIGNAL: MON · WED · FRI &nbsp;//&nbsp; 1-HOUR MIXES + DAILY SHORTS";
   });
   if(liveCount>4){
     var hs=document.getElementById("heroSignals");
@@ -1306,7 +1306,7 @@ latestSignal.then(function(l){
         print('&nbsp;&nbsp;100.4 ECHO PULSE — <span class="cy">LIVE</span>');
         print('&nbsp;&nbsp;106.5 ECHO VIGIL — <span class="cy">LIVE</span>');
         print('&nbsp;&nbsp;107.9 ECHO AURORA — <span class="cy">'+(l&&l.aurora?"LIVE":"RISING")+"</span>");
-        print("&gt; three frequencies dark. transmitting anyway.");
+        print("&gt; four frequencies dark. transmitting anyway.");
       });
     }else if(cmd.indexOf("tune")===0){
       var f=cmd.slice(4).trim(),fv=parseFloat(f);

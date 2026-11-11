@@ -34,22 +34,6 @@ def fetch(url, tries=3, binary=False):
             time.sleep(10 * (i + 1))
     return None
 
-def fetch_thumbnail(key, video_id):
-    """Laedt das echte YouTube-Thumbnail des neuesten Videos nach
-    assets/latest_<key>.jpg -- die Player-Facade zeigt es OHNE externe
-    Requests (Privacy-Konzept der Seite bleibt intakt). maxres zuerst
-    (16:9), Fallback hqdefault (4:3 mit Balken -- object-fit:cover der
-    Facade schneidet exakt die Balken weg). Fehlschlag ist nicht fatal:
-    index.html faellt per onerror auf das Gallery-Artwork zurueck."""
-    dest = ASSETS / f"latest_{key}.jpg"
-    for variant in ("maxresdefault", "hqdefault"):
-        raw = fetch(f"https://i.ytimg.com/vi/{video_id}/{variant}.jpg", tries=2, binary=True)
-        if raw and len(raw) > 1000:  # YouTubes 404-Platzhalter-JPG ist ~1kB
-            dest.write_bytes(raw)
-            print(f"[OK] Thumbnail {key}: {variant} ({len(raw)} bytes)")
-            return
-    print(f"[WARN] Kein Thumbnail fuer {key}/{video_id} -- Facade nutzt Fallback-Artwork.")
-
 API = "https://www.googleapis.com/youtube/v3/"
 API_KEY = os.environ.get("YT_API_KEY", "").strip()
 API_HEADERS = {}  # nur fuer lokale Tests (Bearer-Token statt Key)
@@ -148,7 +132,6 @@ def main():
             data[key] = vids[0]["id"]
             data[f"{key}_title"] = vids[0]["title"]
             data[f"recent_{key}"] = vids
-            fetch_thumbnail(key, vids[0]["id"])
             fresh += 1
         elif key in old:
             # Transient (Feed leer/unerreichbar): bisherige Daten dieses
