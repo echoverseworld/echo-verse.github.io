@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-09T17:30:03",
+  "generated": "2026-11-11T17:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 55,
+      "title": "ECHO 100.8 — COLD CHROME MORNING // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "100.8",
+      "fragment": "COLD CHROME MORNING",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "62:23",
+      "published": "2026-11-11",
+      "youtube_id": "iY0RgmqWJuU",
+      "thumb": "assets/archive/wave_055.jpg",
+      "art": "assets/fragments/wave_055.jpg",
+      "page": "sig/frequency-055.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 55,
+      "title": "ECHO 99.4 — HYDROPLANE HYMNAL // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "99.4",
+      "fragment": "HYDROPLANE HYMNAL",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "62:33",
+      "published": "2026-11-11",
+      "youtube_id": "Q068IAz6r7Y",
+      "thumb": "assets/archive/drift_055.jpg",
+      "art": "assets/fragments/drift_055.jpg",
+      "page": "sig/drift-055.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 44,
+      "title": "ECHO 102.7 — PULSE OF THE DEEP // Melodic House, Deep House, Chill House Mix",
+      "fm": "102.7",
+      "fragment": "PULSE OF THE DEEP",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "64:03",
+      "published": "2026-11-11",
+      "youtube_id": "sVneUuCokmQ",
+      "thumb": "assets/archive/pulse_044.jpg",
+      "art": "assets/fragments/pulse_044.jpg",
+      "page": "sig/pulse-044.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 42,
+      "title": "ECHO 92.8 — DUST IN THE RELAYS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "92.8",
+      "fragment": "DUST IN THE RELAYS",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "62:23",
+      "published": "2026-11-11",
+      "youtube_id": "v0tINymr0GM",
+      "thumb": "assets/archive/vigil_042.jpg",
+      "art": "assets/fragments/vigil_042.jpg",
+      "page": "sig/vigil-042.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 11,
+      "title": "ECHO 107.9 — WINGS MADE OF LIGHT // Progressive Trance, Melodic Trance, Ethereal Trance Mix",
+      "fm": "107.9",
+      "fragment": "WINGS MADE OF LIGHT",
+      "genres": "Progressive Trance, Melodic Trance, Ethereal Trance",
+      "duration": "61:57",
+      "published": "2026-11-11",
+      "youtube_id": "BIqZxqRnuHE",
+      "thumb": "assets/archive/aurora_011.jpg",
+      "art": "assets/fragments/aurora_011.jpg",
+      "page": "sig/aurora-011.html"
+    },
     {
       "channel": "frequency",
       "volume": 54,
