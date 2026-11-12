@@ -1,7 +1,11 @@
 {
-  "frequency": "iY0RgmqWJuU",
-  "frequency_title": "ECHO 100.8 — COLD CHROME MORNING // Chillwave, Dreamwave, Downtempo Mix",
+  "frequency": "m_6t4g8GpPY",
+  "frequency_title": "ECHO 102.9 — WINTER OF WIRES // Synthwave x Strings Mix",
   "recent_frequency": [
+    {
+      "id": "m_6t4g8GpPY",
+      "title": "ECHO 102.9 — WINTER OF WIRES // Synthwave x Strings Mix"
+    },
     {
       "id": "iY0RgmqWJuU",
       "title": "ECHO 100.8 — COLD CHROME MORNING // Chillwave, Dreamwave, Downtempo Mix"
@@ -13,10 +17,6 @@
     {
       "id": "Ph0lG66WO1A",
       "title": "ECHO 100.5 — HOLOGRAM WINTER // Retrowave, Synthwave, Cyberpunk Mix"
-    },
-    {
-      "id": "h5gnywavH_U",
-      "title": "ECHO 107.2 — NEON PERMAFROST // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
   "drift": "Q068IAz6r7Y",
@@ -99,5 +99,5 @@
       "title": "Ethereal Trance Mix · Halo Angel | What Morning Sounds Like · ECHO 92.2"
     }
   ],
-  "updated": "2026-11-12T07:23:32Z"
+  "updated": "2026-11-12T20:05:41Z"
 }
