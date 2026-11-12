@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-11T17:30:03",
+  "generated": "2026-11-12T17:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,20 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 66,
+      "title": "ECHO 102.9 — WINTER OF WIRES // Synthwave x Strings Mix",
+      "fm": "102.9",
+      "fragment": "WINTER OF WIRES",
+      "genres": "Synthwave x Strings",
+      "duration": "62:42",
+      "published": "2026-11-12",
+      "youtube_id": "m_6t4g8GpPY",
+      "thumb": "assets/archive/wave_066.jpg",
+      "art": "assets/fragments/wave_066.jpg",
+      "page": "sig/frequency-066.html"
+    },
     {
       "channel": "frequency",
       "volume": 55,
