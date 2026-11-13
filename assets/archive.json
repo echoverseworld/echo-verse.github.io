@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-12T17:30:04",
+  "generated": "2026-11-13T17:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 56,
+      "title": "ECHO 93.5 — THE UNIVERSE ON PAUSE // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "93.5",
+      "fragment": "THE UNIVERSE ON PAUSE",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "62:03",
+      "published": "2026-11-13",
+      "youtube_id": "23FxQFp1apI",
+      "thumb": "assets/archive/wave_056.jpg",
+      "art": "assets/fragments/wave_056.jpg",
+      "page": "sig/frequency-056.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 56,
+      "title": "Phonk Mix · Red Neon Garage | Chrome Choir · ECHO 96.5",
+      "fm": "96.5",
+      "fragment": "CHROME CHOIR",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "63:00",
+      "published": "2026-11-13",
+      "youtube_id": "_XpGNXFlOzU",
+      "thumb": "assets/archive/drift_056.jpg",
+      "art": "assets/fragments/drift_056.jpg",
+      "page": "sig/drift-056.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 45,
+      "title": "Organic House Mix · Sunset Beach Walk | Coral Communion · ECHO 89.0",
+      "fm": "89.0",
+      "fragment": "CORAL COMMUNION",
+      "genres": "Organic House, Chill House, Deep House",
+      "duration": "62:25",
+      "published": "2026-11-13",
+      "youtube_id": "X6PoEhZHarQ",
+      "thumb": "assets/archive/pulse_045.jpg",
+      "art": "assets/fragments/pulse_045.jpg",
+      "page": "sig/pulse-045.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 43,
+      "title": "Hypnotic Techno Mix · Reactor Core | Transmitting into Nothing · ECHO 88.9",
+      "fm": "88.9",
+      "fragment": "TRANSMITTING INTO NOTHING",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "62:44",
+      "published": "2026-11-13",
+      "youtube_id": "P2KUfVQ51so",
+      "thumb": "assets/archive/vigil_043.jpg",
+      "art": "assets/fragments/vigil_043.jpg",
+      "page": "sig/vigil-043.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 12,
+      "title": "ECHO 95.7 — HIGHER THAN THE NOISE // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
+      "fm": "95.7",
+      "fragment": "HIGHER THAN THE NOISE",
+      "genres": "Melodic Trance, Progressive Trance, Ethereal Trance",
+      "duration": "63:38",
+      "published": "2026-11-13",
+      "youtube_id": "-7Ed5B2rZYI",
+      "thumb": "assets/archive/aurora_012.jpg",
+      "art": "assets/fragments/aurora_012.jpg",
+      "page": "sig/aurora-012.html"
+    },
     {
       "channel": "frequency",
       "volume": 66,
