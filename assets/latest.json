@@ -1,7 +1,11 @@
 {
-  "frequency": "m_6t4g8GpPY",
-  "frequency_title": "ECHO 102.9 — WINTER OF WIRES // Synthwave x Strings Mix",
+  "frequency": "23FxQFp1apI",
+  "frequency_title": "ECHO 93.5 — THE UNIVERSE ON PAUSE // Darksynth, Cyberpunk, Outrun Mix",
   "recent_frequency": [
+    {
+      "id": "23FxQFp1apI",
+      "title": "ECHO 93.5 — THE UNIVERSE ON PAUSE // Darksynth, Cyberpunk, Outrun Mix"
+    },
     {
       "id": "m_6t4g8GpPY",
       "title": "ECHO 102.9 — WINTER OF WIRES // Synthwave x Strings Mix"
@@ -13,15 +17,15 @@
     {
       "id": "08nmix83aFU",
       "title": "ECHO 93.4 — GRAVITY OF GOODBYE // Synthwave, Dreamwave, Chillwave Mix"
-    },
-    {
-      "id": "Ph0lG66WO1A",
-      "title": "ECHO 100.5 — HOLOGRAM WINTER // Retrowave, Synthwave, Cyberpunk Mix"
     }
   ],
-  "drift": "Q068IAz6r7Y",
-  "drift_title": "ECHO 99.4 — HYDROPLANE HYMNAL // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "_XpGNXFlOzU",
+  "drift_title": "Phonk Mix · Red Neon Garage | Chrome Choir · ECHO 96.5",
   "recent_drift": [
+    {
+      "id": "_XpGNXFlOzU",
+      "title": "Phonk Mix · Red Neon Garage | Chrome Choir · ECHO 96.5"
+    },
     {
       "id": "Q068IAz6r7Y",
       "title": "ECHO 99.4 — HYDROPLANE HYMNAL // Aggressive Phonk, Gym Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "Z58caubR62g",
       "title": "ECHO 88.2 — SKID MARK SIGIL // Phonk, Drift Phonk Mix"
-    },
-    {
-      "id": "_seCZAT_XNk",
-      "title": "Phonk Mix · Mountain Road at Night | Streetlight Scripture · ECHO 104.9"
     }
   ],
-  "pulse": "sVneUuCokmQ",
-  "pulse_title": "ECHO 102.7 — PULSE OF THE DEEP // Melodic House, Deep House, Chill House Mix",
+  "pulse": "X6PoEhZHarQ",
+  "pulse_title": "Organic House Mix · Sunset Beach Walk | Coral Communion · ECHO 89.0",
   "recent_pulse": [
+    {
+      "id": "X6PoEhZHarQ",
+      "title": "Organic House Mix · Sunset Beach Walk | Coral Communion · ECHO 89.0"
+    },
     {
       "id": "sVneUuCokmQ",
       "title": "ECHO 102.7 — PULSE OF THE DEEP // Melodic House, Deep House, Chill House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "nSL4PSSXNz4",
       "title": "ECHO 97.9 — A LIGHT THAT BREATHES // Deep House, Melodic House, Organic House Mix"
-    },
-    {
-      "id": "H3z0A2NyH5Q",
-      "title": "Melodic House Mix · Sunset Reflection | The Hour of No Name · ECHO 103.3"
     }
   ],
-  "vigil": "v0tINymr0GM",
-  "vigil_title": "ECHO 92.8 — DUST IN THE RELAYS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+  "vigil": "P2KUfVQ51so",
+  "vigil_title": "Hypnotic Techno Mix · Reactor Core | Transmitting into Nothing · ECHO 88.9",
   "recent_vigil": [
+    {
+      "id": "P2KUfVQ51so",
+      "title": "Hypnotic Techno Mix · Reactor Core | Transmitting into Nothing · ECHO 88.9"
+    },
     {
       "id": "v0tINymr0GM",
       "title": "ECHO 92.8 — DUST IN THE RELAYS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
@@ -73,15 +77,15 @@
     {
       "id": "2rtKUr8c0vg",
       "title": "ECHO 90.3 — THE DARK KEEPS TIME // Hypnotic Techno, Deep Techno, Dark Techno Mix"
-    },
-    {
-      "id": "OK4QWH6x51g",
-      "title": "Dub Techno Mix · Red Halo Shrine | Winter in the Archive · ECHO 94.1"
     }
   ],
-  "aurora": "BIqZxqRnuHE",
-  "aurora_title": "ECHO 107.9 — WINGS MADE OF LIGHT // Progressive Trance, Melodic Trance, Ethereal Trance Mix",
+  "aurora": "-7Ed5B2rZYI",
+  "aurora_title": "ECHO 95.7 — HIGHER THAN THE NOISE // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
   "recent_aurora": [
+    {
+      "id": "-7Ed5B2rZYI",
+      "title": "ECHO 95.7 — HIGHER THAN THE NOISE // Melodic Trance, Progressive Trance, Ethereal Trance Mix"
+    },
     {
       "id": "BIqZxqRnuHE",
       "title": "ECHO 107.9 — WINGS MADE OF LIGHT // Progressive Trance, Melodic Trance, Ethereal Trance Mix"
@@ -93,11 +97,7 @@
     {
       "id": "Kra2KLmNd5g",
       "title": "ECHO 104.8 — OPEN CHANNEL AT DAYBREAK // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
-    },
-    {
-      "id": "e-PNVEWohO0",
-      "title": "Ethereal Trance Mix · Halo Angel | What Morning Sounds Like · ECHO 92.2"
     }
   ],
-  "updated": "2026-11-13T06:56:01Z"
+  "updated": "2026-11-13T19:51:38Z"
 }
