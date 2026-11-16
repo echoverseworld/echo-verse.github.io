@@ -1,7 +1,11 @@
 {
-  "frequency": "23FxQFp1apI",
-  "frequency_title": "ECHO 93.5 — THE UNIVERSE ON PAUSE // Darksynth, Cyberpunk, Outrun Mix",
+  "frequency": "EGE_rEfX6HU",
+  "frequency_title": "ECHO 93.8 — BURN THE HORIZON // Darksynth, Cyberpunk, Outrun Mix",
   "recent_frequency": [
+    {
+      "id": "EGE_rEfX6HU",
+      "title": "ECHO 93.8 — BURN THE HORIZON // Darksynth, Cyberpunk, Outrun Mix"
+    },
     {
       "id": "23FxQFp1apI",
       "title": "ECHO 93.5 — THE UNIVERSE ON PAUSE // Darksynth, Cyberpunk, Outrun Mix"
@@ -13,15 +17,15 @@
     {
       "id": "iY0RgmqWJuU",
       "title": "ECHO 100.8 — COLD CHROME MORNING // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "08nmix83aFU",
-      "title": "ECHO 93.4 — GRAVITY OF GOODBYE // Synthwave, Dreamwave, Chillwave Mix"
     }
   ],
-  "drift": "_XpGNXFlOzU",
-  "drift_title": "Phonk Mix · Red Neon Garage | Chrome Choir · ECHO 96.5",
+  "drift": "gPv9QZJJQAg",
+  "drift_title": "ECHO 97.5 — FUEL INJECTED FAITH // Aggressive Phonk, Gym Phonk Mix",
   "recent_drift": [
+    {
+      "id": "gPv9QZJJQAg",
+      "title": "ECHO 97.5 — FUEL INJECTED FAITH // Aggressive Phonk, Gym Phonk Mix"
+    },
     {
       "id": "_XpGNXFlOzU",
       "title": "Phonk Mix · Red Neon Garage | Chrome Choir · ECHO 96.5"
@@ -33,15 +37,15 @@
     {
       "id": "noUQb369nzY",
       "title": "Aggressive Phonk Mix · Muscle Cars | Concrete Commandments · ECHO 105.5"
-    },
-    {
-      "id": "Z58caubR62g",
-      "title": "ECHO 88.2 — SKID MARK SIGIL // Phonk, Drift Phonk Mix"
     }
   ],
-  "pulse": "X6PoEhZHarQ",
-  "pulse_title": "Organic House Mix · Sunset Beach Walk | Coral Communion · ECHO 89.0",
+  "pulse": "VSBf07YFGSo",
+  "pulse_title": "ECHO 96.2 — UNDERTOW ORCHESTRA // Organic House, Chill House, Deep House Mix",
   "recent_pulse": [
+    {
+      "id": "VSBf07YFGSo",
+      "title": "ECHO 96.2 — UNDERTOW ORCHESTRA // Organic House, Chill House, Deep House Mix"
+    },
     {
       "id": "X6PoEhZHarQ",
       "title": "Organic House Mix · Sunset Beach Walk | Coral Communion · ECHO 89.0"
@@ -53,15 +57,15 @@
     {
       "id": "1jliUr1_08Y",
       "title": "Deep House Mix · Sunset Dancer | The Long Exhale · ECHO 102.2"
-    },
-    {
-      "id": "nSL4PSSXNz4",
-      "title": "ECHO 97.9 — A LIGHT THAT BREATHES // Deep House, Melodic House, Organic House Mix"
     }
   ],
-  "vigil": "P2KUfVQ51so",
-  "vigil_title": "Hypnotic Techno Mix · Reactor Core | Transmitting into Nothing · ECHO 88.9",
+  "vigil": "hTgIZk7bTas",
+  "vigil_title": "ECHO 104.1 — BENEATH THE NOISE FLOOR // Hypnotic Techno, Deep Techno, Dark Techno Mix",
   "recent_vigil": [
+    {
+      "id": "hTgIZk7bTas",
+      "title": "ECHO 104.1 — BENEATH THE NOISE FLOOR // Hypnotic Techno, Deep Techno, Dark Techno Mix"
+    },
     {
       "id": "P2KUfVQ51so",
       "title": "Hypnotic Techno Mix · Reactor Core | Transmitting into Nothing · ECHO 88.9"
@@ -73,15 +77,15 @@
     {
       "id": "HD7dpdZW0P8",
       "title": "Dub Techno Mix · Praying Android | Low Orbit Decay · ECHO 108.0"
-    },
-    {
-      "id": "2rtKUr8c0vg",
-      "title": "ECHO 90.3 — THE DARK KEEPS TIME // Hypnotic Techno, Deep Techno, Dark Techno Mix"
     }
   ],
-  "aurora": "-7Ed5B2rZYI",
-  "aurora_title": "ECHO 95.7 — HIGHER THAN THE NOISE // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
+  "aurora": "OQt1SOVS_9Y",
+  "aurora_title": "ECHO 87.7 — THE SHAPE OF A REPLY // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
   "recent_aurora": [
+    {
+      "id": "OQt1SOVS_9Y",
+      "title": "ECHO 87.7 — THE SHAPE OF A REPLY // Melodic Trance, Progressive Trance, Ethereal Trance Mix"
+    },
     {
       "id": "-7Ed5B2rZYI",
       "title": "ECHO 95.7 — HIGHER THAN THE NOISE // Melodic Trance, Progressive Trance, Ethereal Trance Mix"
@@ -93,11 +97,7 @@
     {
       "id": "vjPDGAr_zYs",
       "title": "Melodic Trance Mix · Sky Throne | A Morning No One Sent · ECHO 87.9"
-    },
-    {
-      "id": "Kra2KLmNd5g",
-      "title": "ECHO 104.8 — OPEN CHANNEL AT DAYBREAK // Ethereal Trance, Melodic Trance, Progressive Trance Mix"
     }
   ],
-  "updated": "2026-11-16T06:46:06Z"
+  "updated": "2026-11-16T22:17:57Z"
 }
