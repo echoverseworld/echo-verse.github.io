@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-13T17:30:04",
+  "generated": "2026-11-16T17:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 57,
+      "title": "ECHO 93.8 — BURN THE HORIZON // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "93.8",
+      "fragment": "BURN THE HORIZON",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "62:18",
+      "published": "2026-11-16",
+      "youtube_id": "EGE_rEfX6HU",
+      "thumb": "assets/archive/wave_057.jpg",
+      "art": "assets/fragments/wave_057.jpg",
+      "page": "sig/frequency-057.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 57,
+      "title": "ECHO 97.5 — FUEL INJECTED FAITH // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "97.5",
+      "fragment": "FUEL INJECTED FAITH",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "63:20",
+      "published": "2026-11-16",
+      "youtube_id": "gPv9QZJJQAg",
+      "thumb": "assets/archive/drift_057.jpg",
+      "art": "assets/fragments/drift_057.jpg",
+      "page": "sig/drift-057.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 46,
+      "title": "ECHO 96.2 — UNDERTOW ORCHESTRA // Organic House, Chill House, Deep House Mix",
+      "fm": "96.2",
+      "fragment": "UNDERTOW ORCHESTRA",
+      "genres": "Organic House, Chill House, Deep House",
+      "duration": "64:12",
+      "published": "2026-11-16",
+      "youtube_id": "VSBf07YFGSo",
+      "thumb": "assets/archive/pulse_046.jpg",
+      "art": "assets/fragments/pulse_046.jpg",
+      "page": "sig/pulse-046.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 44,
+      "title": "ECHO 104.1 — BENEATH THE NOISE FLOOR // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+      "fm": "104.1",
+      "fragment": "BENEATH THE NOISE FLOOR",
+      "genres": "Hypnotic Techno, Deep Techno, Dark Techno",
+      "duration": "63:02",
+      "published": "2026-11-16",
+      "youtube_id": "hTgIZk7bTas",
+      "thumb": "assets/archive/vigil_044.jpg",
+      "art": "assets/fragments/vigil_044.jpg",
+      "page": "sig/vigil-044.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 13,
+      "title": "ECHO 87.7 — THE SHAPE OF A REPLY // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
+      "fm": "87.7",
+      "fragment": "THE SHAPE OF A REPLY",
+      "genres": "Melodic Trance, Progressive Trance, Ethereal Trance",
+      "duration": "63:02",
+      "published": "2026-11-16",
+      "youtube_id": "OQt1SOVS_9Y",
+      "thumb": "assets/archive/aurora_013.jpg",
+      "art": "assets/fragments/aurora_013.jpg",
+      "page": "sig/aurora-013.html"
+    },
     {
       "channel": "frequency",
       "volume": 56,
