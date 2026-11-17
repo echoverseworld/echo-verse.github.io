@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-16T17:30:04",
+  "generated": "2026-11-17T17:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,20 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 67,
+      "title": "ECHO 100.9 — MEMORIES IN MAGENTA // Synthwave x Guitar Mix",
+      "fm": "100.9",
+      "fragment": "MEMORIES IN MAGENTA",
+      "genres": "Synthwave x Guitar",
+      "duration": "61:56",
+      "published": "2026-11-17",
+      "youtube_id": "Nwz2FG5NMTM",
+      "thumb": "assets/archive/wave_067.jpg",
+      "art": "assets/fragments/wave_067.jpg",
+      "page": "sig/frequency-067.html"
+    },
     {
       "channel": "frequency",
       "volume": 57,
