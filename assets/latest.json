@@ -1,7 +1,11 @@
 {
-  "frequency": "Nwz2FG5NMTM",
-  "frequency_title": "ECHO 100.9 — MEMORIES IN MAGENTA // Synthwave x Guitar Mix",
+  "frequency": "lERVUV1OQ-I",
+  "frequency_title": "ECHO 98.8 — ULTRAVIOLET ELEGY // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "lERVUV1OQ-I",
+      "title": "ECHO 98.8 — ULTRAVIOLET ELEGY // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "Nwz2FG5NMTM",
       "title": "ECHO 100.9 — MEMORIES IN MAGENTA // Synthwave x Guitar Mix"
@@ -13,15 +17,15 @@
     {
       "id": "23FxQFp1apI",
       "title": "ECHO 93.5 — THE UNIVERSE ON PAUSE // Darksynth, Cyberpunk, Outrun Mix"
-    },
-    {
-      "id": "m_6t4g8GpPY",
-      "title": "ECHO 102.9 — WINTER OF WIRES // Synthwave x Strings Mix"
     }
   ],
-  "drift": "gPv9QZJJQAg",
-  "drift_title": "ECHO 97.5 — FUEL INJECTED FAITH // Aggressive Phonk, Gym Phonk Mix",
+  "drift": "aaKe_dXjaQk",
+  "drift_title": "ECHO 90.0 — VANISHING POINT RUN // Drift Phonk, Night Drive Mix",
   "recent_drift": [
+    {
+      "id": "aaKe_dXjaQk",
+      "title": "ECHO 90.0 — VANISHING POINT RUN // Drift Phonk, Night Drive Mix"
+    },
     {
       "id": "gPv9QZJJQAg",
       "title": "ECHO 97.5 — FUEL INJECTED FAITH // Aggressive Phonk, Gym Phonk Mix"
@@ -33,15 +37,15 @@
     {
       "id": "Q068IAz6r7Y",
       "title": "ECHO 99.4 — HYDROPLANE HYMNAL // Aggressive Phonk, Gym Phonk Mix"
-    },
-    {
-      "id": "noUQb369nzY",
-      "title": "Aggressive Phonk Mix · Muscle Cars | Concrete Commandments · ECHO 105.5"
     }
   ],
-  "pulse": "VSBf07YFGSo",
-  "pulse_title": "ECHO 96.2 — UNDERTOW ORCHESTRA // Organic House, Chill House, Deep House Mix",
+  "pulse": "ZIrmLomQxMs",
+  "pulse_title": "ECHO 92.5 — VELVET GRAVITY // Organic House, Chill House, Deep House Mix",
   "recent_pulse": [
+    {
+      "id": "ZIrmLomQxMs",
+      "title": "ECHO 92.5 — VELVET GRAVITY // Organic House, Chill House, Deep House Mix"
+    },
     {
       "id": "VSBf07YFGSo",
       "title": "ECHO 96.2 — UNDERTOW ORCHESTRA // Organic House, Chill House, Deep House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "sVneUuCokmQ",
       "title": "ECHO 102.7 — PULSE OF THE DEEP // Melodic House, Deep House, Chill House Mix"
-    },
-    {
-      "id": "1jliUr1_08Y",
-      "title": "Deep House Mix · Sunset Dancer | The Long Exhale · ECHO 102.2"
     }
   ],
-  "vigil": "hTgIZk7bTas",
-  "vigil_title": "ECHO 104.1 — BENEATH THE NOISE FLOOR // Hypnotic Techno, Deep Techno, Dark Techno Mix",
+  "vigil": "TkkE_m7IPG4",
+  "vigil_title": "ECHO 99.1 — THE LONG NORTH // Dub Techno, Deep Techno, Dark Techno Mix",
   "recent_vigil": [
+    {
+      "id": "TkkE_m7IPG4",
+      "title": "ECHO 99.1 — THE LONG NORTH // Dub Techno, Deep Techno, Dark Techno Mix"
+    },
     {
       "id": "hTgIZk7bTas",
       "title": "ECHO 104.1 — BENEATH THE NOISE FLOOR // Hypnotic Techno, Deep Techno, Dark Techno Mix"
@@ -73,15 +77,15 @@
     {
       "id": "v0tINymr0GM",
       "title": "ECHO 92.8 — DUST IN THE RELAYS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
-    },
-    {
-      "id": "HD7dpdZW0P8",
-      "title": "Dub Techno Mix · Praying Android | Low Orbit Decay · ECHO 108.0"
     }
   ],
-  "aurora": "OQt1SOVS_9Y",
-  "aurora_title": "ECHO 87.7 — THE SHAPE OF A REPLY // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
+  "aurora": "fSuCgSPO3Zg",
+  "aurora_title": "ECHO 99.6 — WHERE THE SIGNAL RISES // Melodic Trance, Uplifting Trance, Progressive Trance Mix",
   "recent_aurora": [
+    {
+      "id": "fSuCgSPO3Zg",
+      "title": "ECHO 99.6 — WHERE THE SIGNAL RISES // Melodic Trance, Uplifting Trance, Progressive Trance Mix"
+    },
     {
       "id": "OQt1SOVS_9Y",
       "title": "ECHO 87.7 — THE SHAPE OF A REPLY // Melodic Trance, Progressive Trance, Ethereal Trance Mix"
@@ -93,11 +97,7 @@
     {
       "id": "BIqZxqRnuHE",
       "title": "ECHO 107.9 — WINGS MADE OF LIGHT // Progressive Trance, Melodic Trance, Ethereal Trance Mix"
-    },
-    {
-      "id": "vjPDGAr_zYs",
-      "title": "Melodic Trance Mix · Sky Throne | A Morning No One Sent · ECHO 87.9"
     }
   ],
-  "updated": "2026-11-18T07:41:25Z"
+  "updated": "2026-11-18T20:41:10Z"
 }
