@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-17T17:30:03",
+  "generated": "2026-11-18T17:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 58,
+      "title": "ECHO 98.8 — ULTRAVIOLET ELEGY // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "98.8",
+      "fragment": "ULTRAVIOLET ELEGY",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "63:24",
+      "published": "2026-11-18",
+      "youtube_id": "lERVUV1OQ-I",
+      "thumb": "assets/archive/wave_058.jpg",
+      "art": "assets/fragments/wave_058.jpg",
+      "page": "sig/frequency-058.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 58,
+      "title": "ECHO 90.0 — VANISHING POINT RUN // Drift Phonk, Night Drive Mix",
+      "fm": "90.0",
+      "fragment": "VANISHING POINT RUN",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "63:14",
+      "published": "2026-11-18",
+      "youtube_id": "aaKe_dXjaQk",
+      "thumb": "assets/archive/drift_058.jpg",
+      "art": "assets/fragments/drift_058.jpg",
+      "page": "sig/drift-058.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 47,
+      "title": "ECHO 92.5 — VELVET GRAVITY // Organic House, Chill House, Deep House Mix",
+      "fm": "92.5",
+      "fragment": "VELVET GRAVITY",
+      "genres": "Organic House, Chill House, Deep House",
+      "duration": "61:48",
+      "published": "2026-11-18",
+      "youtube_id": "ZIrmLomQxMs",
+      "thumb": "assets/archive/pulse_047.jpg",
+      "art": "assets/fragments/pulse_047.jpg",
+      "page": "sig/pulse-047.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 45,
+      "title": "ECHO 99.1 — THE LONG NORTH // Dub Techno, Deep Techno, Dark Techno Mix",
+      "fm": "99.1",
+      "fragment": "THE LONG NORTH",
+      "genres": "Dub Techno, Deep Techno, Dark Techno",
+      "duration": "62:16",
+      "published": "2026-11-18",
+      "youtube_id": "TkkE_m7IPG4",
+      "thumb": "assets/archive/vigil_045.jpg",
+      "art": "assets/fragments/vigil_045.jpg",
+      "page": "sig/vigil-045.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 14,
+      "title": "ECHO 99.6 — WHERE THE SIGNAL RISES // Melodic Trance, Uplifting Trance, Progressive Trance Mix",
+      "fm": "99.6",
+      "fragment": "WHERE THE SIGNAL RISES",
+      "genres": "Melodic Trance, Uplifting Trance, Progressive Trance",
+      "duration": "62:08",
+      "published": "2026-11-18",
+      "youtube_id": "fSuCgSPO3Zg",
+      "thumb": "assets/archive/aurora_014.jpg",
+      "art": "assets/fragments/aurora_014.jpg",
+      "page": "sig/aurora-014.html"
+    },
     {
       "channel": "frequency",
       "volume": 67,
