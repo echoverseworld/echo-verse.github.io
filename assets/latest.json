@@ -1,7 +1,11 @@
 {
-  "frequency": "lERVUV1OQ-I",
-  "frequency_title": "ECHO 98.8 — ULTRAVIOLET ELEGY // Chillwave, Dreamwave, Downtempo Mix",
+  "frequency": "jkJDwBteYZk",
+  "frequency_title": "ECHO 91.1 — SLEEPWALK CITY // Synthwave x Strings Mix",
   "recent_frequency": [
+    {
+      "id": "jkJDwBteYZk",
+      "title": "ECHO 91.1 — SLEEPWALK CITY // Synthwave x Strings Mix"
+    },
     {
       "id": "lERVUV1OQ-I",
       "title": "ECHO 98.8 — ULTRAVIOLET ELEGY // Chillwave, Dreamwave, Downtempo Mix"
@@ -13,10 +17,6 @@
     {
       "id": "EGE_rEfX6HU",
       "title": "ECHO 93.8 — BURN THE HORIZON // Darksynth, Cyberpunk, Outrun Mix"
-    },
-    {
-      "id": "23FxQFp1apI",
-      "title": "ECHO 93.5 — THE UNIVERSE ON PAUSE // Darksynth, Cyberpunk, Outrun Mix"
     }
   ],
   "drift": "aaKe_dXjaQk",
@@ -99,5 +99,5 @@
       "title": "ECHO 107.9 — WINGS MADE OF LIGHT // Progressive Trance, Melodic Trance, Ethereal Trance Mix"
     }
   ],
-  "updated": "2026-11-19T07:37:49Z"
+  "updated": "2026-11-19T20:47:24Z"
 }
