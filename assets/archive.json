@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T17:30:04",
+  "generated": "2026-11-19T17:30:10",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,20 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 68,
+      "title": "ECHO 91.1 — SLEEPWALK CITY // Synthwave x Strings Mix",
+      "fm": "91.1",
+      "fragment": "SLEEPWALK CITY",
+      "genres": "Synthwave x Strings",
+      "duration": "61:32",
+      "published": "2026-11-19",
+      "youtube_id": "jkJDwBteYZk",
+      "thumb": "assets/archive/wave_068.jpg",
+      "art": "assets/fragments/wave_068.jpg",
+      "page": "sig/frequency-068.html"
+    },
     {
       "channel": "frequency",
       "volume": 58,
