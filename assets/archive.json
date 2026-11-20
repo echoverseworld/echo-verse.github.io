@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19T17:30:10",
+  "generated": "2026-11-20T17:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 59,
+      "title": "ECHO 95.6 — INFINITE PLAYBACK // Retrowave, Synthwave, Cyberpunk Mix",
+      "fm": "95.6",
+      "fragment": "INFINITE PLAYBACK",
+      "genres": "Retrowave, Synthwave, Cyberpunk",
+      "duration": "63:15",
+      "published": "2026-11-20",
+      "youtube_id": "26MWBW-weXA",
+      "thumb": "assets/archive/wave_059.jpg",
+      "art": "assets/fragments/wave_059.jpg",
+      "page": "sig/frequency-059.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 59,
+      "title": "ECHO 89.6 — WHEELSPIN WORSHIP // Drift Phonk, Night Drive Mix",
+      "fm": "89.6",
+      "fragment": "WHEELSPIN WORSHIP",
+      "genres": "Drift Phonk, Night Drive",
+      "duration": "62:25",
+      "published": "2026-11-20",
+      "youtube_id": "IjRBFRHkHgo",
+      "thumb": "assets/archive/drift_059.jpg",
+      "art": "assets/fragments/drift_059.jpg",
+      "page": "sig/drift-059.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 48,
+      "title": "ECHO 95.8 — UNDERWATER SUNRISE // Deep House, Melodic House, Organic House Mix",
+      "fm": "95.8",
+      "fragment": "UNDERWATER SUNRISE",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "62:07",
+      "published": "2026-11-20",
+      "youtube_id": "xv8c0jHPQ80",
+      "thumb": "assets/archive/pulse_048.jpg",
+      "art": "assets/fragments/pulse_048.jpg",
+      "page": "sig/pulse-048.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 46,
+      "title": "ECHO 106.8 — SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "106.8",
+      "fragment": "SLOW MACHINERY",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "64:49",
+      "published": "2026-11-20",
+      "youtube_id": "nojjOYNXZwQ",
+      "thumb": "assets/archive/vigil_046.jpg",
+      "art": "assets/fragments/vigil_046.jpg",
+      "page": "sig/vigil-046.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 15,
+      "title": "ECHO 95.9 — A HELD NOTE RISING // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
+      "fm": "95.9",
+      "fragment": "A HELD NOTE RISING",
+      "genres": "Melodic Trance, Progressive Trance, Ethereal Trance",
+      "duration": "64:15",
+      "published": "2026-11-20",
+      "youtube_id": "XfTY_jWanrk",
+      "thumb": "assets/archive/aurora_015.jpg",
+      "art": "assets/fragments/aurora_015.jpg",
+      "page": "sig/aurora-015.html"
+    },
     {
       "channel": "frequency",
       "volume": 68,
