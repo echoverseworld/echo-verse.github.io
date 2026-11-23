@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T17:30:03",
+  "generated": "2026-11-23T17:49:22",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 60,
+      "title": "ECHO 90.2 — THE SKYLINE SLEEPS // Chillwave, Dreamwave, Downtempo Mix",
+      "fm": "90.2",
+      "fragment": "THE SKYLINE SLEEPS",
+      "genres": "Chillwave, Dreamwave, Downtempo",
+      "duration": "61:50",
+      "published": "2026-11-23",
+      "youtube_id": "eFJ2pkwAl-E",
+      "thumb": "assets/archive/wave_060.jpg",
+      "art": "assets/fragments/wave_060.jpg",
+      "page": "sig/frequency-060.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 60,
+      "title": "ECHO 105.9 — HEAT HAZE HOSANNA // Phonk, Drift Phonk Mix",
+      "fm": "105.9",
+      "fragment": "HEAT HAZE HOSANNA",
+      "genres": "Phonk, Drift Phonk",
+      "duration": "63:31",
+      "published": "2026-11-23",
+      "youtube_id": "lfVwPNohxRM",
+      "thumb": "assets/archive/drift_060.jpg",
+      "art": "assets/fragments/drift_060.jpg",
+      "page": "sig/drift-060.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 49,
+      "title": "ECHO 91.1 — INDIGO DEPTHS // Melodic House, Deep House, Chill House Mix",
+      "fm": "91.1",
+      "fragment": "INDIGO DEPTHS",
+      "genres": "Melodic House, Deep House, Chill House",
+      "duration": "63:49",
+      "published": "2026-11-23",
+      "youtube_id": "MNIcvcSlJNM",
+      "thumb": "assets/archive/pulse_049.jpg",
+      "art": "assets/fragments/pulse_049.jpg",
+      "page": "sig/pulse-049.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 47,
+      "title": "ECHO 105.4 — BUNKER LIGHTS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "105.4",
+      "fragment": "BUNKER LIGHTS",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "63:51",
+      "published": "2026-11-23",
+      "youtube_id": "50FD2rHF6mA",
+      "thumb": "assets/archive/vigil_047.jpg",
+      "art": "assets/fragments/vigil_047.jpg",
+      "page": "sig/vigil-047.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 16,
+      "title": "ECHO 101.4 — RADIANT AND UNANSWERED // Progressive Trance, Melodic Trance, Ethereal Trance Mix",
+      "fm": "101.4",
+      "fragment": "RADIANT AND UNANSWERED",
+      "genres": "Progressive Trance, Melodic Trance, Ethereal Trance",
+      "duration": "62:44",
+      "published": "2026-11-23",
+      "youtube_id": "fDi1jpvL2Uw",
+      "thumb": "assets/archive/aurora_016.jpg",
+      "art": "assets/fragments/aurora_016.jpg",
+      "page": "sig/aurora-016.html"
+    },
     {
       "channel": "frequency",
       "volume": 59,
