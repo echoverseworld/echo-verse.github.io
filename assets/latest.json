@@ -1,7 +1,11 @@
 {
-  "frequency": "26MWBW-weXA",
-  "frequency_title": "ECHO 95.6 — INFINITE PLAYBACK // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "eFJ2pkwAl-E",
+  "frequency_title": "ECHO 90.2 — THE SKYLINE SLEEPS // Chillwave, Dreamwave, Downtempo Mix",
   "recent_frequency": [
+    {
+      "id": "eFJ2pkwAl-E",
+      "title": "ECHO 90.2 — THE SKYLINE SLEEPS // Chillwave, Dreamwave, Downtempo Mix"
+    },
     {
       "id": "26MWBW-weXA",
       "title": "ECHO 95.6 — INFINITE PLAYBACK // Retrowave, Synthwave, Cyberpunk Mix"
@@ -13,15 +17,15 @@
     {
       "id": "lERVUV1OQ-I",
       "title": "ECHO 98.8 — ULTRAVIOLET ELEGY // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "Nwz2FG5NMTM",
-      "title": "ECHO 100.9 — MEMORIES IN MAGENTA // Synthwave x Guitar Mix"
     }
   ],
-  "drift": "IjRBFRHkHgo",
-  "drift_title": "ECHO 89.6 — WHEELSPIN WORSHIP // Drift Phonk, Night Drive Mix",
+  "drift": "lfVwPNohxRM",
+  "drift_title": "ECHO 105.9 — HEAT HAZE HOSANNA // Phonk, Drift Phonk Mix",
   "recent_drift": [
+    {
+      "id": "lfVwPNohxRM",
+      "title": "ECHO 105.9 — HEAT HAZE HOSANNA // Phonk, Drift Phonk Mix"
+    },
     {
       "id": "IjRBFRHkHgo",
       "title": "ECHO 89.6 — WHEELSPIN WORSHIP // Drift Phonk, Night Drive Mix"
@@ -33,15 +37,15 @@
     {
       "id": "gPv9QZJJQAg",
       "title": "ECHO 97.5 — FUEL INJECTED FAITH // Aggressive Phonk, Gym Phonk Mix"
-    },
-    {
-      "id": "_XpGNXFlOzU",
-      "title": "Phonk Mix · Red Neon Garage | Chrome Choir · ECHO 96.5"
     }
   ],
-  "pulse": "xv8c0jHPQ80",
-  "pulse_title": "ECHO 95.8 — UNDERWATER SUNRISE // Deep House, Melodic House, Organic House Mix",
+  "pulse": "MNIcvcSlJNM",
+  "pulse_title": "ECHO 91.1 — INDIGO DEPTHS // Melodic House, Deep House, Chill House Mix",
   "recent_pulse": [
+    {
+      "id": "MNIcvcSlJNM",
+      "title": "ECHO 91.1 — INDIGO DEPTHS // Melodic House, Deep House, Chill House Mix"
+    },
     {
       "id": "xv8c0jHPQ80",
       "title": "ECHO 95.8 — UNDERWATER SUNRISE // Deep House, Melodic House, Organic House Mix"
@@ -53,15 +57,15 @@
     {
       "id": "VSBf07YFGSo",
       "title": "ECHO 96.2 — UNDERTOW ORCHESTRA // Organic House, Chill House, Deep House Mix"
-    },
-    {
-      "id": "X6PoEhZHarQ",
-      "title": "Organic House Mix · Sunset Beach Walk | Coral Communion · ECHO 89.0"
     }
   ],
-  "vigil": "nojjOYNXZwQ",
-  "vigil_title": "ECHO 106.8 — SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+  "vigil": "50FD2rHF6mA",
+  "vigil_title": "ECHO 105.4 — BUNKER LIGHTS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
   "recent_vigil": [
+    {
+      "id": "50FD2rHF6mA",
+      "title": "ECHO 105.4 — BUNKER LIGHTS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
+    },
     {
       "id": "nojjOYNXZwQ",
       "title": "ECHO 106.8 — SLOW MACHINERY // Dark Techno, Dystopian Techno, Hypnotic Techno Mix"
@@ -73,15 +77,15 @@
     {
       "id": "hTgIZk7bTas",
       "title": "ECHO 104.1 — BENEATH THE NOISE FLOOR // Hypnotic Techno, Deep Techno, Dark Techno Mix"
-    },
-    {
-      "id": "P2KUfVQ51so",
-      "title": "Hypnotic Techno Mix · Reactor Core | Transmitting into Nothing · ECHO 88.9"
     }
   ],
-  "aurora": "XfTY_jWanrk",
-  "aurora_title": "ECHO 95.9 — A HELD NOTE RISING // Melodic Trance, Progressive Trance, Ethereal Trance Mix",
+  "aurora": "fDi1jpvL2Uw",
+  "aurora_title": "ECHO 101.4 — RADIANT AND UNANSWERED // Progressive Trance, Melodic Trance, Ethereal Trance Mix",
   "recent_aurora": [
+    {
+      "id": "fDi1jpvL2Uw",
+      "title": "ECHO 101.4 — RADIANT AND UNANSWERED // Progressive Trance, Melodic Trance, Ethereal Trance Mix"
+    },
     {
       "id": "XfTY_jWanrk",
       "title": "ECHO 95.9 — A HELD NOTE RISING // Melodic Trance, Progressive Trance, Ethereal Trance Mix"
@@ -93,11 +97,7 @@
     {
       "id": "OQt1SOVS_9Y",
       "title": "ECHO 87.7 — THE SHAPE OF A REPLY // Melodic Trance, Progressive Trance, Ethereal Trance Mix"
-    },
-    {
-      "id": "-7Ed5B2rZYI",
-      "title": "ECHO 95.7 — HIGHER THAN THE NOISE // Melodic Trance, Progressive Trance, Ethereal Trance Mix"
     }
   ],
-  "updated": "2026-11-23T07:52:23Z"
+  "updated": "2026-11-24T00:01:55Z"
 }
