@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-23T17:49:22",
+  "generated": "2026-11-24T17:30:03",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,20 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 69,
+      "title": "ECHO 97.3 — FADING TELEMETRY // Synthwave x Guitar Mix",
+      "fm": "97.3",
+      "fragment": "FADING TELEMETRY",
+      "genres": "Synthwave x Guitar",
+      "duration": "61:43",
+      "published": "2026-11-24",
+      "youtube_id": "6EKbCrR0yBA",
+      "thumb": "assets/archive/wave_069.jpg",
+      "art": "assets/fragments/wave_069.jpg",
+      "page": "sig/frequency-069.html"
+    },
     {
       "channel": "frequency",
       "volume": 60,
