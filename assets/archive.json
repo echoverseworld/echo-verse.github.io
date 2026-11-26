@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-25T17:30:03",
+  "generated": "2026-11-26T21:21:15",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,20 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 70,
+      "title": "ECHO 89.3 — GLASS HORIZON // Synthwave x Strings Mix",
+      "fm": "89.3",
+      "fragment": "GLASS HORIZON",
+      "genres": "Synthwave x Strings",
+      "duration": "63:38",
+      "published": "2026-11-26",
+      "youtube_id": "PdjACJIN7SM",
+      "thumb": "assets/archive/wave_070.jpg",
+      "art": "assets/fragments/wave_070.jpg",
+      "page": "sig/frequency-070.html"
+    },
     {
       "channel": "frequency",
       "volume": 61,
