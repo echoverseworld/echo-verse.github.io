@@ -1,7 +1,11 @@
 {
-  "frequency": "8Nh7neTRuK8",
-  "frequency_title": "ECHO 105.6 — STARFIELD SERENITY // Retrowave, Synthwave, Cyberpunk Mix",
+  "frequency": "PdjACJIN7SM",
+  "frequency_title": "ECHO 89.3 — GLASS HORIZON // Synthwave x Strings Mix",
   "recent_frequency": [
+    {
+      "id": "PdjACJIN7SM",
+      "title": "ECHO 89.3 — GLASS HORIZON // Synthwave x Strings Mix"
+    },
     {
       "id": "8Nh7neTRuK8",
       "title": "ECHO 105.6 — STARFIELD SERENITY // Retrowave, Synthwave, Cyberpunk Mix"
@@ -13,10 +17,6 @@
     {
       "id": "eFJ2pkwAl-E",
       "title": "ECHO 90.2 — THE SKYLINE SLEEPS // Chillwave, Dreamwave, Downtempo Mix"
-    },
-    {
-      "id": "26MWBW-weXA",
-      "title": "ECHO 95.6 — INFINITE PLAYBACK // Retrowave, Synthwave, Cyberpunk Mix"
     }
   ],
   "drift": "SMftsI6dFF0",
@@ -99,5 +99,5 @@
       "title": "ECHO 99.6 — WHERE THE SIGNAL RISES // Melodic Trance, Uplifting Trance, Progressive Trance Mix"
     }
   ],
-  "updated": "2026-11-26T08:35:41Z"
+  "updated": "2026-11-26T21:42:31Z"
 }
