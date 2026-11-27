@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-26T21:21:15",
+  "generated": "2026-11-27T17:30:04",
   "channels": {
     "frequency": {
       "name": "ECHO Frequency",
@@ -23,6 +23,76 @@
     }
   },
   "items": [
+    {
+      "channel": "frequency",
+      "volume": 62,
+      "title": "ECHO 105.8 — MIDNIGHT VELOCITY // Darksynth, Cyberpunk, Outrun Mix",
+      "fm": "105.8",
+      "fragment": "MIDNIGHT VELOCITY",
+      "genres": "Darksynth, Cyberpunk, Outrun",
+      "duration": "62:12",
+      "published": "2026-11-27",
+      "youtube_id": "HX0rs-xXFjY",
+      "thumb": "assets/archive/wave_062.jpg",
+      "art": "assets/fragments/wave_062.jpg",
+      "page": "sig/frequency-062.html"
+    },
+    {
+      "channel": "drift",
+      "volume": 62,
+      "title": "ECHO 98.3 — POWERSLIDE PARABLE // Aggressive Phonk, Gym Phonk Mix",
+      "fm": "98.3",
+      "fragment": "POWERSLIDE PARABLE",
+      "genres": "Aggressive Phonk, Gym Phonk",
+      "duration": "63:48",
+      "published": "2026-11-27",
+      "youtube_id": "sI1tcz8rZuA",
+      "thumb": "assets/archive/drift_062.jpg",
+      "art": "assets/fragments/drift_062.jpg",
+      "page": "sig/drift-062.html"
+    },
+    {
+      "channel": "pulse",
+      "volume": 51,
+      "title": "ECHO 88.2 — SIRENS OF THE SHALLOWS // Deep House, Melodic House, Organic House Mix",
+      "fm": "88.2",
+      "fragment": "SIRENS OF THE SHALLOWS",
+      "genres": "Deep House, Melodic House, Organic House",
+      "duration": "66:00",
+      "published": "2026-11-27",
+      "youtube_id": "0D4dS9npfzk",
+      "thumb": "assets/archive/pulse_051.jpg",
+      "art": "assets/fragments/pulse_051.jpg",
+      "page": "sig/pulse-051.html"
+    },
+    {
+      "channel": "vigil",
+      "volume": 49,
+      "title": "ECHO 89.8 — EMPTY CORRIDORS // Dark Techno, Dystopian Techno, Hypnotic Techno Mix",
+      "fm": "89.8",
+      "fragment": "EMPTY CORRIDORS",
+      "genres": "Dark Techno, Dystopian Techno, Hypnotic Techno",
+      "duration": "65:22",
+      "published": "2026-11-27",
+      "youtube_id": "1BBoIl7IoUU",
+      "thumb": "assets/archive/vigil_049.jpg",
+      "art": "assets/fragments/vigil_049.jpg",
+      "page": "sig/vigil-049.html"
+    },
+    {
+      "channel": "aurora",
+      "volume": 18,
+      "title": "ECHO 90.8 — THE FIRST CLEAR HOUR // Ethereal Trance, Melodic Trance, Progressive Trance Mix",
+      "fm": "90.8",
+      "fragment": "THE FIRST CLEAR HOUR",
+      "genres": "Ethereal Trance, Melodic Trance, Progressive Trance",
+      "duration": "64:15",
+      "published": "2026-11-27",
+      "youtube_id": "eVCiMkLsdmM",
+      "thumb": "assets/archive/aurora_018.jpg",
+      "art": "assets/fragments/aurora_018.jpg",
+      "page": "sig/aurora-018.html"
+    },
     {
       "channel": "frequency",
       "volume": 70,
